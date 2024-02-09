@@ -1,4 +1,4 @@
-import './MenuSelection.css';
+import './Menu.css';
 
 const MenuSelection = (title, className, parent) => {
   const select = document.createElement('h3');
