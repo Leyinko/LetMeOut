@@ -1,2 +1,1 @@
-## LETMEOUT -->> SOLO A LUQUITA
-### and Manu & Jeni too
+## LETMEOUT -->> Manu && Jeni && Luca
