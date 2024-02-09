@@ -1,0 +1,36 @@
+#players-hub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-37%, -50%);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0;
+  animation: players-hub-appearance 0.6s ease-in-out forwards;
+}
+
+@keyframes players-hub-appearance {
+  100% {
+    opacity: 1;
+  }
+}
+
+.room-code {
+  font-size: 2rem;
+}
+
+.players {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: auto;
+  height: 200px;
+}
+
+.players img {
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+}

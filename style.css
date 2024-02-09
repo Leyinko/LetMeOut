@@ -1,15 +1,25 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
+@font-face {
+  font-family: 'Hells';
+  src: url('/src/assets/fonts/hells-kittchen-devil-god.bold.otf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
 }
 
 @font-face {
-  font-family: "HellsKitchen";
-  src: url(./assets/fonts/hells-kittchen-devil-god.bold.otf);
+  font-family: 'JMH';
+  src: url('/src/assets/fonts/JMHTypewriter.ttf') format('truetype');
   font-style: normal;
   font-weight: normal;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0px;
+  margin: 0px;
+  font-family: 'Hells';
+  letter-spacing: 1px;
+  color: white;
+  user-select: none;
 }
 
 :root {
@@ -29,18 +39,12 @@
 }
 
 body {
+  font-family: 'Hells';
   background-color: var(--lmo-bg-color);
-  font-family: "HellsKitchen";
   color: var(--lmo-main-text-color);
 }
 
-.app {
+#app {
   width: 100svw;
   height: 100svh;
-}
-
-.mainImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
