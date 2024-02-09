@@ -1,0 +1,13 @@
+[role='lobby-buttons'] {
+  width: 100px;
+  padding: 10px;
+  margin-top: 30px;
+  background-color: rgba(0, 0, 0, 0.37);
+  border: none;
+  border-radius: 5px;
+}
+
+[role='lobby-buttons']:hover {
+  cursor: pointer;
+  background-color: rgba(7, 7, 7, 0.788);
+}
