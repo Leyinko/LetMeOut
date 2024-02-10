@@ -4,6 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "ndm": "nodemon main.js",
     "commit": "git commit -m \"Auto Commit\"",
     "dev": "vite",
     "build": "vite build",
@@ -11,5 +12,8 @@
   },
   "devDependencies": {
     "vite": "^5.0.8"
+  },
+  "dependencies": {
+    "nodemon": "^3.0.3"
   }
 }

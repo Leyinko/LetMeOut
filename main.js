@@ -1,5 +1,5 @@
-import { Lobby } from './src/pages/lobby/Lobby';
-import Audio from './src/components/atoms/audio/Audio';
+import Audio from './src/components/atoms/audio/Audio.js';
+import { Lobby } from './src/pages/Lobby/Lobby';
 import './style.css';
 
 // Main Menu Soundtrack

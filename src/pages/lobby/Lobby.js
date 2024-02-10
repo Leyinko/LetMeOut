@@ -1,6 +1,6 @@
 import GameSelect from './utils/GameSelect';
 import UserInfoField from '../../components/molecules/userField/UserInfoField';
-import MenuSelection from '../../components/atoms/menu/Menu';
+import Menu from '../../components/atoms/menu/Menu';
 import Version from '../../components/atoms/Version/Version';
 import './Lobby.css';
 
@@ -23,7 +23,7 @@ export const Lobby = () => {
   GameSelect('JOin Party', 'join', UserInfoField('USERNAME', 'username'), UserInfoField('ROOM', 'room'));
 
   // General Menu
-  MenuSelection('BACK TO MAIN', 'back-to-main', lobby);
+  Menu('BACK TO MAIN', 'back-to-main', lobby);
 
   // Version
   Version('V1.0', lobby);
