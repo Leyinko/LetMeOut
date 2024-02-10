@@ -4,36 +4,38 @@ import UserFieldsModal from './UserFieldsModal';
 const selectionSound = Audio('../../../../src/assets/audio/sounds/main/Menu-hover.mp3');
 
 const GameSelect = (title, id, ...fields) => {
-  const menu = document.createElement('article');
-  menu.id = `${id}-party`;
+  const container = document.createElement('article');
+  container.id = `${id}-party`;
 
-  let title$$ = document.createElement('h1');
-  title$$.setAttribute('role', 'lobby-menu');
-  title$$.id = id;
-  title$$.textContent = title;
-  title$$.addEventListener('click', () => playSound(selectionSound));
+  let selection = document.createElement('h1');
+  selection.setAttribute('role', 'lobby-menu');
+  selection.id = id;
+  selection.textContent = title;
 
-  menu.appendChild(title$$);
+  selection.addEventListener('click', () => playSound(selectionSound));
 
-  menu.addEventListener('click', (e) => {
+  container.appendChild(selection);
+
+  container.addEventListener('click', (e) => {
     let selections = document.querySelectorAll('[role="lobby-menu"]');
-    let active = document.querySelector('#fields-modal');
+    let selected = document.querySelector('#fields-modal');
+    let parent = e.target.parentElement;
 
     selections.forEach((selection) => {
-      if (active && active.contains(e.target)) return;
+      if (selected && selected.contains(e.target)) return;
 
       if (selection === e.target) {
         selection.classList.add('active');
-        UserFieldsModal(id.toUpperCase(), e.target.parentElement, fields);
+        UserFieldsModal(id.toUpperCase(), parent, fields);
       } else {
         selection.classList.remove('active');
-        active && active.remove();
+        selected && selected.remove();
       }
     });
   });
 
   const main = document.querySelector('#lobby-main');
-  main.appendChild(menu);
+  main.appendChild(container);
 };
 
 export default GameSelect;

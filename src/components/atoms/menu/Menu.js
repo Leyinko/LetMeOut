@@ -1,6 +1,6 @@
 import './Menu.css';
 
-const MenuSelection = (title, className, parent) => {
+const Menu = (title, className, parent) => {
   const select = document.createElement('h3');
   select.setAttribute('role', 'menu-select');
   select.className = className;
@@ -8,4 +8,4 @@ const MenuSelection = (title, className, parent) => {
   parent.appendChild(select);
 };
 
-export default MenuSelection;
+export default Menu;

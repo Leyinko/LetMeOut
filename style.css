@@ -48,3 +48,9 @@ body {
   width: 100svw;
   height: 100svh;
 }
+
+@keyframes players-hub-appearance {
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,1 +1,1 @@
-## LETMEOUT -->> Manu && Jeni && Luca
+<img src="src\assets\images\logos\Loader.gif">

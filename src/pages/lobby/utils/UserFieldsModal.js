@@ -12,29 +12,25 @@ const UserFieldsModal = (button, parent, ...field) => {
   Button(button, 'field-button', 'submit', modal);
   let submit = document.querySelector('.field-button');
 
-  submit.addEventListener('click', () => {
-    let inputs = document.querySelectorAll('input');
-    let code = inputs.item(1) ? inputs.item(1).value : 'RANDOM';
-    let username = inputs.item(0).value;
+  submit.addEventListener('click', async () => {
+    let username = document.querySelector('#username').value;
+    let room = document.querySelector('#room')?.value;
 
-    // console.log(code, username);
+    // NB : WS Tests
     // const JSON = { category: 'createParty', username: username };
-
     // createPartyData(JSON);
 
-    let sections = document.querySelectorAll('article');
-    sections.forEach((section) => section.classList.add('out'));
+    let selections = document.querySelectorAll('article');
+    selections.forEach((section) => section.classList.add('out'));
 
-    PlayersHub(code, username);
-
-    inputs.forEach((input) => (input.value = ''));
+    parent.addEventListener('transitionend', () => PlayersHub(room ?? 'RANDOM', username), { once: true });
   });
 };
 
 export default UserFieldsModal;
 
+// NB : WS Tests
 // const ws = new WebSocket('ws://localhost:3000');
-
 // const createPartyData = (message) => {
 //   ws.send(JSON.stringify(message));
 // };

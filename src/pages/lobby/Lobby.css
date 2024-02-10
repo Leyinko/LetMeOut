@@ -67,12 +67,16 @@ article[id$='party'] h1.active {
   bottom: 150px;
   left: 49%;
   font-size: 1.5rem;
+  opacity: 0;
+  animation: players-hub-appearance 1s ease-in-out forwards;
 }
 
 .cancel-lobby {
   position: fixed;
   bottom: 100px;
   right: 100px;
+  opacity: 0;
+  animation: players-hub-appearance 1s ease-in-out forwards;
 }
 
 .back-to-main {
