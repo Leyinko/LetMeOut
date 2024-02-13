@@ -7,7 +7,7 @@ const GameSelect = (title, id, ...fields) => {
   const container = document.createElement('article');
   container.id = `${id}-party`;
 
-  let selection = document.createElement('h1');
+  let selection = document.createElement('h2');
   selection.setAttribute('role', 'lobby-menu');
   selection.id = id;
   selection.textContent = title;
