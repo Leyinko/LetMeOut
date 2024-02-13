@@ -1,0 +1,28 @@
+.modal {
+    width: 50%;
+    height: 50%;
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.imageContainer {
+    width: 100px;
+    height: 100px;
+}
+
+.imageContainer > img {
+    width: 100%;
+    height: 100%;
+}
+
+.modal-content p {
+font-size: var(--lmo-fs-l);
+}
