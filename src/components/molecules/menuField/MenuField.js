@@ -1,16 +1,15 @@
-import Button from '../../atoms/button/Button';
+import Menu from '../../atoms/menu/Menu';
 import './MenuField.css';
 
-const menuField = () => {
+const menuField = (parent) => {
   const menuField = document.createElement('div');
   menuField.id = 'menu-field';
 
-  Button('START', 'start-button', 'submit', menuField);
-  Button('INSTRUCTIONS', 'instructions-button', 'submit', menuField);
-  Button('CREDITS', 'credits-button', 'submit', menuField);
+  Menu('START', 'start-button', menuField);
+  Menu('INSTRUCTIONS', 'instructions-button', menuField);
+  Menu('CREDITS', 'credits-button', menuField);
 
-  const intro = document.querySelector('#intro');
-  intro.append(menuField);
+  parent.append(menuField);
 };
 
 export default menuField;

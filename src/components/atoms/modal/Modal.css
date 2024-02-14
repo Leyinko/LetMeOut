@@ -1,29 +1,58 @@
 .modal {
-    width: 50%;
-    height: 50%;
-    z-index: 9;
-    display: flex;
-    flex-direction: column;
-    position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 9;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  animation: appearance 3s ease-in-out forwards;
+  backdrop-filter: blur(0.1875rem);
+}
+
+.modal.on {
+  opacity: 0;
+  visibility: visible;
+  animation: appearance 3s ease-in-out forwards;
+}
+
+@keyframes appearance {
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.modal.off {
+  animation: disappear 3s ease-in-out forwards;
+  transition: backdrop-filter 1s ease-in-out;
+  backdrop-filter: none;
+}
+
+@keyframes disappear {
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
 }
 
 .modal-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .imageContainer {
-    width: 100px;
-    height: 100px;
+  width: 100px;
+  height: 100px;
 }
 
 .imageContainer > img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .modal-content p {
-font-size: var(--lmo-fs-l);
+  font-size: var(--lmo-fs-l);
 }

@@ -6,6 +6,7 @@
   opacity: 0;
   z-index: 1;
   bottom: 80px;
-  left: 30px;
+  left: 80px;
   position: fixed;
+  animation: players-hub-appearance 3s ease-in-out forwards;
 }
