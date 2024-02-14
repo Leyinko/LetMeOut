@@ -1,17 +1,14 @@
-const ws = new WebSocket('ws://localhost:3000');
+export const ws = new WebSocket('ws://localhost:3000');
 
-class ReqBody {
-  constructor({ tag = null, name = null, lobbyCode = null, playerState = null, message = null }) {
-    this.tag = tag;
-    this.name = name;
-    this.lobbyCode = lobbyCode;
-    this.playerState = playerState;
-    this.message = message;
-  }
-
-  sendMessage(req) {
-    ws.send(req);
-  }
+function sendRequest(tag = null, name = null, lobbyCode = null, playerState = null, message = null) {
+  let req = {
+    tag: tag,
+    name: name,
+    lobbyCode: lobbyCode,
+    playerState: playerState,
+    message: message,
+  };
+  ws.send(JSON.stringify(req));
 }
 
-export default { ws, ReqBody };
+export default sendRequest;

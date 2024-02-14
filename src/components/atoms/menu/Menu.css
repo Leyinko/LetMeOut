@@ -2,6 +2,7 @@
   font-size: 1.7rem;
   opacity: 0.7;
   cursor: pointer;
+  text-shadow: 6px 6px 8px rgb(241, 234, 234);
 }
 
 [role='menu-select']:hover {
