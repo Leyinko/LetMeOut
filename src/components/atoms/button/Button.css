@@ -5,10 +5,17 @@
   background-color: rgba(0, 0, 0, 0.37);
   border: none;
   border-radius: 5px;
+  /* pointer-events: none; */
+  opacity: 0.6;
 }
 
 [role='lobby-buttons']:hover {
   cursor: pointer;
   background-color: rgba(201, 201, 201, 0.219);
   transition: all 0.2s ease-in-out;
+}
+
+[role='lobby-buttons'].granted {
+  pointer-events: all;
+  opacity: 1;
 }

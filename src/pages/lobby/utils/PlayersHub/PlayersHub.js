@@ -1,6 +1,6 @@
 import Button from '../../../../components/atoms/button/Button';
 import Menu from '../../../../components/atoms/menu/Menu';
-// import { ws } from '../UserFieldsModal';
+import sendRequest from '../../../../webSocket/webSocket';
 import './PlayersHub.css';
 
 const PlayersHub = (code, username, ws) => {
@@ -39,32 +39,30 @@ const PlayersHub = (code, username, ws) => {
     let players = document.querySelectorAll('.players img');
     const data = JSON.parse(event.data);
 
-    data.players.forEach((player, index) => {
-      if (player.state) {
-        players[index].style.opacity = '1';
-      } else {
-        players[index].style.opacity = '';
-      }
-    });
+    data.players &&
+      data.players.forEach((player, index) => {
+        if (player.ready) {
+          players[index].style.opacity = '1';
+        } else {
+          players[index].style.opacity = '';
+        }
+      });
   };
 
   Menu('CANCEL', 'cancel-lobby', lobby);
   let cancel = document.querySelector('.cancel-lobby');
-  cancel.addEventListener('click', () => closePlayersHub(playersHub, ready, cancel));
+  cancel.addEventListener('click', () => {
+    console.log(username, code);
+    sendRequest('exitLobby', username, code);
+
+    closePlayersHub(playersHub, ready, cancel);
+  });
 };
 
 function updatePlayerState(ready, code, username, ws) {
   ready.classList.toggle('ready');
   const buttonState = ready.classList.contains('ready') ? true : false;
-
-  const reqTest = {
-    tag: 'playerState',
-    name: username,
-    lobbyCode: code,
-    playerState: buttonState,
-  };
-
-  ws.send(JSON.stringify(reqTest));
+  sendRequest('playerState', username, code, buttonState);
 }
 
 const closePlayersHub = (...elements) => {

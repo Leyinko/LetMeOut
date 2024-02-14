@@ -36,6 +36,9 @@
   --lmo-fs-l: 1.5em;
   --lmo-fs-xl: 2em;
   --lmo-fs-xxl: 3vw;
+
+  /* COLORS */
+  --blood-color: #8a0303;
 }
 
 body {

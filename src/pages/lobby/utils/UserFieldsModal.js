@@ -1,8 +1,7 @@
 import Button from '../../../components/atoms/button/Button';
 import PlayersHub from './PlayersHub/PlayersHub';
 import { generateRandomString } from '../../../../utils';
-
-export const ws = new WebSocket('ws://localhost:3000');
+import sendRequest, { ws } from '../../../webSocket/webSocket';
 
 const UserFieldsModal = (button, parent, ...field) => {
   let modal = document.createElement('div');
@@ -15,32 +14,39 @@ const UserFieldsModal = (button, parent, ...field) => {
   Button(button, 'field-button', 'submit', modal);
   let submit = document.querySelector('.field-button');
 
-  submit.addEventListener('click', () => {
-    let username = document.querySelector('#username').value;
+  document
+    .querySelector('#username')
+    .addEventListener('input', (e) =>
+      e.target.value ? submit.classList.add('granted') : submit.classList.remove('granted')
+    );
+
+  submit.addEventListener('click', (e) => {
+    let username = document.querySelector('#username');
     let room = document.querySelector('#room');
-    let code = room?.value;
 
-    let generated = generateRandomString();
-
-    !room
-      ? ws.send(JSON.stringify({ tag: 'createLobby', lobbyCode: generated, name: username }))
-      : ws.send(JSON.stringify({ tag: 'joinLobby', lobbyCode: code, name: username }));
+    if (e.target.textContent === 'CREATE') {
+      sendRequest('createLobby', username.value, generateRandomString());
+    } else {
+      sendRequest('joinLobby', username.value, room.value);
+    }
 
     ws.onmessage = function (event) {
       const data = JSON.parse(event.data);
-
-      console.log(data);
-
-      !data.error ? launchLobby(parent, code, generated, ws) : (document.querySelector('button').style.color = 'red');
+      !data.error ? launchLobby(data.lobbyCode, username.value, ws) : fieldError(room);
     };
   });
 };
 
-function launchLobby(parent, code, generated, ws) {
-  parent.addEventListener('transitionend', () => PlayersHub(code ?? generated, username, ws), { once: true });
+function launchLobby(code, username, ws) {
+  let parent = document.querySelector('article');
+  parent.addEventListener('transitionend', () => PlayersHub(code, username, ws), { once: true });
 
   let selections = document.querySelectorAll('article');
   selections.forEach((section) => section.classList.add('out'));
+}
+
+function fieldError(input) {
+  setTimeout(() => input.classList.add('error'), 0) && setTimeout(() => input.classList.remove('error'), 1000);
 }
 
 export default UserFieldsModal;
