@@ -1,0 +1,32 @@
+#intro {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#intro::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/src/assets/images/pictures/menu/Main-menu.png') center/cover no-repeat;
+  filter: blur(0.1875rem);
+}
+
+#let-me-out {
+  font-size: var(--lmo-fs-xxl);
+  z-index: 1;
+  position: absolute;
+  rotate: 350deg;
+  margin-bottom: var(--lmo-margin-xl);
+}
+
+.version {
+  z-index: 1;
+  left: 20px;
+}
