@@ -10,7 +10,6 @@ const createModal = (id, modalContent) => {
   const content = document.createElement('div');
   content.className = 'modal-content';
 
-
   // Fill content
 for (const item of modalContent) {
     if (typeof item === 'string' && (item.endsWith('.svg') || (item.endsWith('.png')))) {
