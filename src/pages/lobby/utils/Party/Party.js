@@ -1,5 +1,6 @@
-import Audio, { playSound } from '../../../components/atoms/audio/Audio';
-import UserFieldsModal from './UserFieldsModal';
+import Audio, { playSound } from '../../../../components/atoms/audio/Audio';
+import UserFieldsModal from '../User/User';
+import './Party.css';
 
 const selectionSound = Audio('../../../../src/assets/audio/sounds/main/Menu-hover.mp3');
 
@@ -16,7 +17,7 @@ const GameSelect = (title, id, ...fields) => {
 
   container.appendChild(selection);
 
-  container.addEventListener('click', (e) => {
+  selection.addEventListener('click', (e) => {
     let selections = document.querySelectorAll('[role="lobby-menu"]');
     let selected = document.querySelector('#fields-modal');
     let parent = e.target.parentElement;

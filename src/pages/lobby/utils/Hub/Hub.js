@@ -1,9 +1,9 @@
 import Button from '../../../../components/atoms/button/Button';
 import Menu from '../../../../components/atoms/menu/Menu';
-import sendRequest from '../../../../webSocket/webSocket';
-import './PlayersHub.css';
+import sendRequest, { ws } from '../../../../webSocket/webSocket';
+import './Hub.css';
 
-const PlayersHub = (code, username, ws) => {
+const PlayersHub = (code, username) => {
   const lobby = document.querySelector('#lobby');
   const main = document.querySelector('#lobby-main');
 
@@ -33,11 +33,13 @@ const PlayersHub = (code, username, ws) => {
 
   Button('READY', 'ready-button', 'submit', playersHub);
   let ready = document.querySelector('.ready-button');
-  ready.addEventListener('click', () => updatePlayerState(ready, code, username, ws));
+  ready.addEventListener('click', () => toggleReadyState(ready, code, username));
 
   ws.onmessage = function (event) {
     let players = document.querySelectorAll('.players img');
     const data = JSON.parse(event.data);
+
+    console.log(data);
 
     data.players &&
       data.players.forEach((player, index) => {
@@ -52,14 +54,12 @@ const PlayersHub = (code, username, ws) => {
   Menu('CANCEL', 'cancel-lobby', lobby);
   let cancel = document.querySelector('.cancel-lobby');
   cancel.addEventListener('click', () => {
-    console.log(username, code);
     sendRequest('exitLobby', username, code);
-
     closePlayersHub(playersHub, ready, cancel);
   });
 };
 
-function updatePlayerState(ready, code, username, ws) {
+function toggleReadyState(ready, code, username) {
   ready.classList.toggle('ready');
   const buttonState = ready.classList.contains('ready') ? true : false;
   sendRequest('playerState', username, code, buttonState);

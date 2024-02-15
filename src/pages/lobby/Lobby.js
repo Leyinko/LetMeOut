@@ -1,4 +1,4 @@
-import GameSelect from './utils/GameSelect';
+import GameSelect from './utils/Party/Party';
 import UserInfoField from '../../components/molecules/userField/UserInfoField';
 import Menu from '../../components/atoms/menu/Menu';
 import Version from '../../components/atoms/Version/Version';

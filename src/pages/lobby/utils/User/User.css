@@ -1,0 +1,39 @@
+.error-field {
+  position: absolute;
+  bottom: 0;
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--blood-color);
+  font-family: 'JMH';
+}
+
+input.error {
+  animation: error-field 3 0.7s ease-in-out;
+}
+
+input:focus {
+  outline: none;
+}
+
+input::selection {
+  background-color: rgba(0, 0, 0, 0.562);
+}
+
+@keyframes error-field {
+  25% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-3px);
+    outline: 1px solid var(--blood-color);
+    color: var(--blood-color);
+  }
+  75% {
+    transform: translateX(3px);
+  }
+  100% {
+    transform: translateX(-3px);
+    outline: none;
+    color: white;
+  }
+}

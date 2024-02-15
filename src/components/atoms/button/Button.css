@@ -2,10 +2,10 @@
   width: 100px;
   padding: 10px;
   margin-top: 10px;
-  background-color: rgba(0, 0, 0, 0.37);
+  background-color: rgba(0, 0, 0, 0.973);
   border: none;
   border-radius: 5px;
-  /* pointer-events: none; */
+  pointer-events: none;
   opacity: 0.6;
 }
 
@@ -17,5 +17,6 @@
 
 [role='lobby-buttons'].granted {
   pointer-events: all;
+  border: 1px solid rgba(255, 255, 255, 0.267);
   opacity: 1;
 }
