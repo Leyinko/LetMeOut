@@ -37,16 +37,16 @@
   --lmo-fs-xl: 2em;
   --lmo-fs-xxl: 5em;
 
-    /* MARGIN */
-    --lmo-margin-xs: 0.5em;
-    --lmo-margin-s: 0.8em;
-    --lmo-margin-m: 1em;
-    --lmo-margin-l: 1.5em;
-    --lmo-margin-xl: 2em;
-    --lmo-margin-xxl: 3em;
+  /* MARGIN */
+  --lmo-margin-xs: 0.5em;
+  --lmo-margin-s: 0.8em;
+  --lmo-margin-m: 1em;
+  --lmo-margin-l: 1.5em;
+  --lmo-margin-xl: 2em;
+  --lmo-margin-xxl: 3em;
 
-     /* COLORS */
-    --blood-color: #8a0303;
+  /* COLORS */
+  --blood-color: #8a0303;
 }
 
 body {
