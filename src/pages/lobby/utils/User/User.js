@@ -31,14 +31,14 @@ const UserFieldsModal = (button, parent, ...field) => {
     ws.onmessage = function (event) {
       const data = JSON.parse(event.data);
       const tag = /[a-zA-Z]*/.exec(data.message);
-      !data.error ? launchLobby(data.lobbyCode, username.value) : serverError(data.message, tag[0]);
+      !data.error ? launchLobby(data.lobbyCode, username.value, data) : serverError(data.message, tag[0]);
     };
   });
 };
 
-function launchLobby(code, username) {
+function launchLobby(code, username, party) {
   let parent = document.querySelector('article');
-  parent.addEventListener('transitionend', () => PlayersHub(code, username), { once: true });
+  parent.addEventListener('transitionend', () => PlayersHub(code, username, party), { once: true });
 
   let selections = document.querySelectorAll('article');
   selections.forEach((section) => section.classList.add('out'));

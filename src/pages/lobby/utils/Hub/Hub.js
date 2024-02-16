@@ -3,7 +3,7 @@ import Menu from '../../../../components/atoms/menu/Menu';
 import sendRequest, { ws } from '../../../../webSocket/webSocket';
 import './Hub.css';
 
-const PlayersHub = (code, username) => {
+const PlayersHub = (code, username, party) => {
   const lobby = document.querySelector('#lobby');
   const main = document.querySelector('#lobby-main');
 
@@ -35,34 +35,34 @@ const PlayersHub = (code, username) => {
   let ready = document.querySelector('.ready-button');
   ready.addEventListener('click', () => toggleReadyState(ready, code, username));
 
-  ws.onmessage = function (event) {
-    let players = document.querySelectorAll('.players img');
-    const data = JSON.parse(event.data);
-
-    console.log(data);
-
-    data.players &&
-      data.players.forEach((player, index) => {
-        if (player.ready) {
-          players[index].style.opacity = '1';
-        } else {
-          players[index].style.opacity = '';
-        }
-      });
-  };
-
   Menu('CANCEL', 'cancel-lobby', lobby);
   let cancel = document.querySelector('.cancel-lobby');
   cancel.addEventListener('click', () => {
     sendRequest('exitLobby', username, code);
     closePlayersHub(playersHub, ready, cancel);
   });
+
+  updateReadyState(party);
+
+  ws.onmessage = function (event) {
+    const current = JSON.parse(event.data);
+    updateReadyState(current);
+  };
 };
 
 function toggleReadyState(ready, code, username) {
   ready.classList.toggle('ready');
   const buttonState = ready.classList.contains('ready') ? true : false;
   sendRequest('playerState', username, code, buttonState);
+}
+
+function updateReadyState(data) {
+  let players = document.querySelectorAll('.players img');
+  let length = data.players.length;
+  data.players.forEach((player, index) => {
+    if (length === 0 || length > 3) return;
+    player && player.ready ? (players[index].style.opacity = '1') : (players[index].style.opacity = '');
+  });
 }
 
 const closePlayersHub = (...elements) => {
