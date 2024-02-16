@@ -1,3 +1,4 @@
+import { copyText } from '../../../../../utils';
 import Button from '../../../../components/atoms/button/Button';
 import Menu from '../../../../components/atoms/menu/Menu';
 import sendRequest, { ws } from '../../../../webSocket/webSocket';
@@ -15,6 +16,14 @@ const PlayersHub = (code, username, party) => {
   const room = document.createElement('span');
   room.className = 'room-code';
   room.textContent = code;
+
+  const copy = document.createElement('img');
+  copy.src = 'src/assets/images/icons/menu/copy.svg';
+  copy.className = 'copy-code';
+
+  copy.addEventListener('click', () => copyText());
+
+  room.appendChild(copy);
 
   const nickname = document.createElement('h3');
   nickname.className = 'player';
