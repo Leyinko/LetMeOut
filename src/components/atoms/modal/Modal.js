@@ -1,6 +1,6 @@
 import './Modal.css';
 
-const createModal = (id, modalContent, parent) => {
+const createModal = (id, parent) => {
   // Create
   const modal = document.createElement('article');
   modal.id = `${id}-modal`;
@@ -9,30 +9,30 @@ const createModal = (id, modalContent, parent) => {
   // 🐛
   modal.classList.add('on');
 
-  // Content 🐛
-  const content = document.createElement('div');
-  content.className = 'modal-content';
+  // // Content 🐛
+  // const content = document.createElement('div');
+  // content.className = 'modal-content';
 
   // Fill content // 🐛
-  for (const item of modalContent) {
-    if (item.endsWith('.svg') || item.endsWith('.png')) {
-      const imageContainer = document.createElement('div');
-      imageContainer.classList = 'imageContainer';
+  // for (const item of modalContent) {
+  //   if (item.endsWith('.svg') || item.endsWith('.png')) {
+  //     const imageContainer = document.createElement('div');
+  //     imageContainer.classList = 'imageContainer';
 
-      const image = document.createElement('img');
-      image.src = item;
-      image.alt = item.split('.')[0];
+  //     const image = document.createElement('img');
+  //     image.src = item;
+  //     image.alt = item.split('.')[0];
 
-      imageContainer.appendChild(image);
-      content.appendChild(imageContainer);
-    } else {
-      const paragraph = document.createElement('p');
-      paragraph.textContent = item;
-      content.appendChild(paragraph);
-    }
-  }
+  //     imageContainer.appendChild(image);
+  //     content.appendChild(imageContainer);
+  //   } else {
+  //     const paragraph = document.createElement('p');
+  //     paragraph.textContent = item;
+  //     content.appendChild(paragraph);
+  //   }
+  // }
 
-  modal.append(content);
+  // modal.append(content);
   parent.append(modal);
 };
 

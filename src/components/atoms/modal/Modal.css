@@ -4,7 +4,8 @@
   z-index: 9;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  padding-top: 10%;
+  align-items: center;
   position: absolute;
   animation: appearance 3s ease-in-out forwards;
   backdrop-filter: blur(0.1875rem);
@@ -34,25 +35,4 @@
     opacity: 0;
     visibility: hidden;
   }
-}
-
-.modal-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.imageContainer {
-  width: 100px;
-  height: 100px;
-}
-
-.imageContainer > img {
-  width: 100%;
-  height: 100%;
-}
-
-.modal-content p {
-  font-size: var(--lmo-fs-l);
 }
