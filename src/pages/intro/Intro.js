@@ -1,5 +1,7 @@
+import title from '../../components/atoms/Title/Title';
 import Version from '../../components/atoms/Version/Version';
 import createModal from '../../components/atoms/modal/Modal';
+import modalContent from '../../components/atoms/modalContent/ModalContent';
 import menuField from '../../components/molecules/menuField/MenuField';
 import './Intro.css';
 
@@ -19,7 +21,8 @@ export const Intro = () => {
   intro.addEventListener('click', () => closeModalHeadphones(), { once: true });
 
   // Show Modal
-  createModal('headphones', headphones, intro);
+  createModal('headphones', intro);
+  modalContent('headphones', headphones);
 };
 
 // > OUTSIDE
@@ -33,17 +36,8 @@ const closeModalHeadphones = () => {
 
   headphonesModal.addEventListener('animationend', () => {
     headphonesModal.remove();
-    MainTitle('LET ME OUT', 'let-me-out', intro);
+    title('LET ME OUT', 'let-me-out', intro);
     menuField(intro);
     Version('V1.0', intro);
   });
-};
-
-// > Componente
-
-const MainTitle = (title, id, parent) => {
-  const element = document.createElement('h1');
-  element.id = id;
-  element.textContent = title;
-  parent.append(element);
 };

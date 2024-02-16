@@ -10,7 +10,7 @@
 }
 
 #let-me-out {
-  font-size: var(--lmo-fs-xxl);
+  font-size: 10em;
   z-index: 1;
   position: absolute;
   rotate: 350deg;
