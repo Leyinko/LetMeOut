@@ -22,6 +22,83 @@
   cursor: pointer;
 }
 
+/* CHAT */
+
+.chat-code {
+  position: absolute;
+  width: 40px;
+  right: 60px;
+  bottom: 30px;
+  opacity: 0.5;
+}
+
+.chat-code.on {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+.chat-code:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+#chat-container {
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  padding: 40px 20px;
+  float: right;
+  margin-top: 150px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  /* border: 1px solid red; */
+  height: 50svh;
+  width: 300px;
+  background-color: rgba(240, 248, 255, 0.247);
+  animation: slide-left 0.6s ease-in-out forwards;
+  scrollbar-width: 0rem;
+}
+
+*::-webkit-scrollbar,
+*::-webkit-scrollbar-thumb {
+  width: 0px;
+  height: 0px;
+  background-color: transparent;
+}
+
+.messages {
+  height: 90%;
+  width: 90%;
+  list-style: none;
+  overflow-y: scroll;
+}
+
+.messages li {
+  margin: 10px 0px;
+}
+
+.messages li * {
+  font-family: 'JMH';
+}
+
+#chat-container input {
+  position: absolute;
+  bottom: 0;
+  /* border: 1px solid red; */
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(1000px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+/* CHAT */
+
 .players {
   display: flex;
   justify-content: center;

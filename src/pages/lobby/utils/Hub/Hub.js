@@ -17,6 +17,64 @@ const PlayersHub = (code, username, party) => {
   room.className = 'room-code';
   room.textContent = code;
 
+  // ! TEST CHAT
+
+  const chat = document.createElement('img');
+  chat.src = 'src/assets/images/icons/menu/chat.svg';
+  chat.className = 'chat-code';
+
+  chat.addEventListener('click', (e) => {
+    e.target.classList.toggle('on');
+
+    const chatContainer = document.createElement('div');
+    chatContainer.id = 'chat-container';
+
+    const messages = document.createElement('ul');
+    messages.className = 'messages';
+
+    const inputMessage = document.createElement('input');
+    inputMessage.id = 'chat-test-value';
+    inputMessage.type = 'text';
+
+    inputMessage.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        let message = document.querySelector('#chat-test-value');
+        sendRequest('chatMessage', username, null, null, message.value);
+        message.value = '';
+      }
+    });
+
+    ws.onmessage = function (event) {
+      let data = JSON.parse(event.data);
+      if (data.tag === 'chat') {
+        let littleContainer = document.createElement('li');
+        littleContainer.id = 'little-container';
+
+        let sender = document.createElement('h4');
+        sender.textContent = data.name;
+
+        let content = document.createElement('span');
+        content.textContent = data.message;
+
+        littleContainer.append(sender, content);
+
+        messages.appendChild(littleContainer);
+
+        messages.scrollTop = messages.scrollHeight;
+      }
+    };
+
+    chatContainer.append(messages, inputMessage);
+
+    e.target.classList.contains('on')
+      ? lobby.appendChild(chatContainer)
+      : document.querySelector('#chat-container').remove();
+  });
+
+  main.appendChild(chat);
+
+  // ! TEST CHAT
+
   const copy = document.createElement('img');
   copy.src = 'src/assets/images/icons/menu/copy.svg';
   copy.className = 'copy-code';
