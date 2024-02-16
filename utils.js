@@ -7,3 +7,8 @@ export function generateRandomString() {
   }
   return randomString.toUpperCase();
 }
+
+export function copyText() {
+  let code = document.querySelector('.room-code').textContent;
+  navigator.clipboard.writeText(code);
+}
