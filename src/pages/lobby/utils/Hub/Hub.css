@@ -15,6 +15,13 @@
   font-size: 2rem;
 }
 
+.copy-code {
+  position: absolute;
+  right: 40px;
+  width: 15px;
+  cursor: pointer;
+}
+
 .players {
   display: flex;
   justify-content: center;
