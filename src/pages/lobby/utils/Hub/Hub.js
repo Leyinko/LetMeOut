@@ -2,6 +2,7 @@ import { copyText } from '../../../../../utils';
 import Button from '../../../../components/atoms/button/Button';
 import Menu from '../../../../components/atoms/menu/Menu';
 import sendRequest, { ws } from '../../../../webSocket/webSocket';
+import ChatBox, { chatMessage } from '../Chat/Chat';
 import './Hub.css';
 
 const PlayersHub = (code, username, party) => {
@@ -10,7 +11,6 @@ const PlayersHub = (code, username, party) => {
 
   const playersHub = document.createElement('div');
   playersHub.id = 'players-hub';
-
   main.insertAdjacentElement('afterbegin', playersHub);
 
   const room = document.createElement('span');
@@ -38,9 +38,19 @@ const PlayersHub = (code, username, party) => {
     player++;
   }
 
-  playersHub.append(room, nickname, players);
+  const chat = document.createElement('img');
+  chat.setAttribute('role', 'button');
+  chat.className = 'chat-icon';
+  chat.src = 'src/assets/images/icons/menu/chat.svg';
 
-  Button('READY', 'ready-button', 'submit', playersHub);
+  chat.addEventListener('click', (e) => {
+    e.target.classList.toggle('on');
+    ChatBox(username, playersHub);
+  });
+
+  playersHub.append(room, nickname, players, chat);
+
+  Button('', 'ready-button', 'submit', lobby);
   let ready = document.querySelector('.ready-button');
   ready.addEventListener('click', () => toggleReadyState(ready, code, username));
 
@@ -48,14 +58,18 @@ const PlayersHub = (code, username, party) => {
   let cancel = document.querySelector('.cancel-lobby');
   cancel.addEventListener('click', () => {
     sendRequest('exitLobby', username, code);
-    closePlayersHub(playersHub, ready, cancel);
+    setTimeout(() => closePlayersHub(playersHub, ready, cancel), 100);
   });
 
   updateReadyState(party);
 
   ws.onmessage = function (event) {
     const current = JSON.parse(event.data);
-    updateReadyState(current);
+    if (current.tag === 'chat') {
+      chatMessage(current.name, current.message);
+    } else {
+      updateReadyState(current);
+    }
   };
 };
 
@@ -67,10 +81,8 @@ function toggleReadyState(ready, code, username) {
 
 function updateReadyState(data) {
   let players = document.querySelectorAll('.players img');
-  let length = data.players.length;
   data.players.forEach((player, index) => {
-    if (length === 0 || length > 3) return;
-    player && player.ready ? (players[index].style.opacity = '1') : (players[index].style.opacity = '');
+    player.ready ? (players[index].style.opacity = '0.9') : (players[index].style.opacity = '');
   });
 }
 

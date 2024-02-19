@@ -1,22 +1,27 @@
 [role='lobby-buttons'] {
-  width: 100px;
-  padding: 10px;
   margin-top: 10px;
-  background-color: rgba(0, 0, 0, 0.973);
+  width: 80px;
+  padding: 7px;
   border: none;
   border-radius: 5px;
   pointer-events: none;
   opacity: 0.6;
+  background-color: rgba(250, 235, 215, 0.11);
 }
 
 [role='lobby-buttons']:hover {
   cursor: pointer;
-  background-color: rgba(201, 201, 201, 0.219);
-  transition: all 0.2s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.822);
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
 }
 
 [role='lobby-buttons'].granted {
   pointer-events: all;
-  border: 1px solid rgba(255, 255, 255, 0.267);
+  outline: 1px solid rgba(255, 255, 255, 0.267);
   opacity: 1;
+}
+
+[role='lobby-buttons'].error {
+  animation: error-field 3 0.7s ease-in-out;
 }

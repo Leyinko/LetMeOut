@@ -9,10 +9,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
+  width: inherit;
   height: 55%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
   overflow: hidden;
 }
 

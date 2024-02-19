@@ -25,7 +25,7 @@ const GameSelect = (title, id, ...fields) => {
     selections.forEach((selection) => {
       if (selected && selected.contains(e.target)) return;
 
-      if (selection === e.target) {
+      if (selection === e.target && !selection.classList.contains('active')) {
         selection.classList.add('active');
         UserFieldsModal(id.toUpperCase(), parent, fields);
       } else {

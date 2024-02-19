@@ -47,7 +47,7 @@ function launchLobby(code, username, party) {
 function fieldsControl(inputs, button) {
   [...inputs].forEach((input) => {
     input.addEventListener('input', (e) => {
-      if (e.target.closest('article').id === 'create-party') {
+      if (e.target && e.target.closest('article').id === 'create-party') {
         input.value ? button.classList.add('granted') : button.classList.remove('granted');
       } else {
         [...inputs].every((input) => input.value)
@@ -55,18 +55,24 @@ function fieldsControl(inputs, button) {
           : button.classList.remove('granted');
       }
     });
+    input.addEventListener('keydown', (e) => {
+      e.key === 'Tab' && e.preventDefault();
+      e.key === 'Enter' && document.querySelector('button').click();
+    });
   });
 }
 
 function serverError(message, tag) {
-  let target = document.querySelector(`#${tag.toLowerCase()}`);
+  let target = document.querySelector(`#${tag.toLowerCase()}`) || document.querySelector(`.field-button`);
   let inputs = document.querySelectorAll('input');
 
   let error = document.createElement('span');
   error.className = 'error-field';
-  error.textContent = message;
+  error.textContent = message.toUpperCase();
 
-  setTimeout(() => target.classList.add('error'), 0) && setTimeout(() => target.classList.remove('error'), 1000);
+  target &&
+    setTimeout(() => target.classList.add('error'), 0) &&
+    setTimeout(() => target.classList.remove('error'), 1000);
 
   !document.querySelector('.error-field') && target.insertAdjacentElement('afterend', error);
 
