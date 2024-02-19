@@ -1,9 +1,7 @@
 #players-hub {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-37%, -50%);
   height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -12,125 +10,80 @@
 }
 
 .room-code {
-  font-size: 2rem;
+  font-size: 3rem;
 }
 
 .copy-code {
   position: absolute;
-  right: 40px;
-  width: 15px;
+  margin-left: 14px;
+  width: 20px;
   cursor: pointer;
 }
 
-/* CHAT */
-
-.chat-code {
-  position: absolute;
-  width: 40px;
-  right: 60px;
-  bottom: 30px;
-  opacity: 0.5;
+.player {
+  font-size: 1.5rem;
 }
-
-.chat-code.on {
-  transform: scale(1.1);
-  opacity: 1;
-}
-
-.chat-code:hover {
-  cursor: pointer;
-  transform: scale(1.1);
-  opacity: 1;
-}
-
-#chat-container {
-  display: flex;
-  justify-content: center;
-  /* align-items: center; */
-  padding: 40px 20px;
-  float: right;
-  margin-top: 150px;
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
-  /* border: 1px solid red; */
-  height: 50svh;
-  width: 300px;
-  background-color: rgba(240, 248, 255, 0.247);
-  animation: slide-left 0.6s ease-in-out forwards;
-  scrollbar-width: 0rem;
-}
-
-*::-webkit-scrollbar,
-*::-webkit-scrollbar-thumb {
-  width: 0px;
-  height: 0px;
-  background-color: transparent;
-}
-
-.messages {
-  height: 90%;
-  width: 90%;
-  list-style: none;
-  overflow-y: scroll;
-}
-
-.messages li {
-  margin: 10px 0px;
-}
-
-.messages li * {
-  font-family: 'JMH';
-}
-
-#chat-container input {
-  position: absolute;
-  bottom: 0;
-  /* border: 1px solid red; */
-}
-
-@keyframes slide-left {
-  0% {
-    transform: translateX(1000px);
-  }
-  100% {
-    transform: translateX(0px);
-  }
-}
-
-/* CHAT */
 
 .players {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: auto;
-  height: 200px;
+  position: fixed;
+  bottom: -20px;
+  height: 60%;
 }
 
 .players img {
-  height: 100%;
+  height: 280px;
   object-fit: cover;
   opacity: 0.4;
   pointer-events: none;
 }
 
+.players img:nth-child(1) {
+  height: 220px;
+  margin-bottom: 10px;
+}
+
+.players img:nth-child(3) {
+  height: 190px;
+  margin-bottom: 30px;
+}
+
 .ready-button {
-  margin-top: 30px;
-  width: 130px;
-  height: 70px;
-  font-size: 2.5rem;
-  background-color: rgba(0, 0, 0, 0.747);
-  transition: all 0.6s ease-in-out;
-  color: rgb(110, 13, 13);
+  background: url('src/assets/images/icons/menu/ReadyN.png') center/contain no-repeat;
+  position: absolute;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 110px;
+  width: 110px;
   pointer-events: all;
+  opacity: 0.7;
 }
 
 .ready-button:hover {
-  background-color: rgba(0, 0, 0, 0.747);
-  border: 1px solid white;
-  /* transition: all 0.6s ease-in-out; */
+  background-color: transparent;
+  opacity: 1;
 }
 
 .ready-button.ready {
-  color: green;
+  background: url('src/assets/images/icons/menu/ReadyY.png') center/contain no-repeat;
+  opacity: 1;
+}
+
+.chat-icon {
+  position: absolute;
+  width: 40px;
+  right: 80px;
+  bottom: 40px;
+  opacity: 0.5;
+}
+
+.chat-icon.on {
+  transform: scale(1.2);
+  opacity: 1;
+  transition: all 0.3s linear;
+}
+
+.chat-icon:hover {
+  cursor: pointer;
+  opacity: 1;
 }

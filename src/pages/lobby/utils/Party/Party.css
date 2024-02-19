@@ -6,12 +6,25 @@ article[id$='party'] {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: 1s ease-in-out;
-  backdrop-filter: blur(3px) brightness(0.6);
-  box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.5);
+  transition: all 1s ease-in-out;
+  backdrop-filter: blur(3px);
+  box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.253);
+  /* animation: menu-down 1s ease-in-out forwards; */
+}
+
+@keyframes menu-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-62.5rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
 }
 
 article[id$='party'] h2 {
+  margin-bottom: 5px;
   font-size: 3.5rem;
   transition: all 0.3s ease-in-out;
   filter: blur(0.1875rem);
@@ -44,4 +57,6 @@ article[id$='party'] h2.active {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  opacity: 0;
+  animation: players-hub-appearance 1s ease-in-out forwards;
 }
