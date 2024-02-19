@@ -1,17 +1,4 @@
-#room {
-  position: relative;
-  width: 100svw;
-  height: 100svh;
-  overflow: hidden;
-}
-
-.background {
-  position: fixed;
-  width: 1920px;
-  height: 1080px;
-  overflow: hidden;
-  /* object-fit: cover; */
-}
+/* TEST POSITIONING */
 
 /* .object {
   position: absolute;
@@ -20,11 +7,39 @@
   width: 50px;
 } */
 
-.collider {
+/* .collider {
   position: absolute;
-  left: 300px;
+  left: 988px;
   top: 319px;
-  width: 60px;
-  height: 60px;
+  width: 15px;
+  height: 15px;
   border: 1px solid yellow;
+} */
+
+/* TEST POSITIONING */
+
+#room {
+  position: relative;
+  width: 100svw;
+  height: 100svh;
+  overflow: hidden;
+}
+
+#room img {
+  pointer-events: none;
+}
+
+.background {
+  position: fixed;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
+}
+
+.open {
+  display: block;
+}
+
+.closed {
+  display: none;
 }

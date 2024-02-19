@@ -1,3 +1,4 @@
+import Stage, { R1 } from './RoomClass';
 import './Room.css';
 
 export const Room = () => {
@@ -9,28 +10,29 @@ export const Room = () => {
   room.id = 'room';
   app.append(room);
 
-  // Background
-  let background = document.createElement('img');
-  background.src = 'src/assets/images/pictures/1F/BATHROOM-POINTED.png';
-  background.className = 'background';
+  // Print Room
+  let bathroom = new Stage(R1);
+  bathroom.printRoom();
 
-  room.appendChild(background);
-
-  // Object
-  let object = document.createElement('img');
-  object.src = 'src/assets/images/pictures/1F/pointers/SECRETNOTE _3.png';
-  object.className = 'object';
-
-  room.appendChild(object);
-
-  // Collider
-  let collider = document.createElement('div');
-  collider.className = 'collider';
-
-  room.appendChild(collider);
-
-  // Version
-  // version('V1.0', room);
+  // Stages
+  randomStages();
 };
 
 export default Room;
+
+function randomStages() {
+  let pointers = document.querySelectorAll('div:not(#app)');
+  let shuffled = fisherYatesShuffle(Array.from(pointers));
+  console.log(shuffled);
+}
+
+function fisherYatesShuffle(arr) {
+  var n = arr.length;
+  for (var i = n - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+  }
+  return arr;
+}
