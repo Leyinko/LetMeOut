@@ -18,31 +18,40 @@ export const Intro = () => {
   intro.id = 'intro';
   app.append(intro);
 
-  // Show Modal
-  createModal('headphones', intro);
+  // Create & Show Modal Headphones
+  const headphonesModal = document.createElement('article');
+  headphonesModal.id = 'headphones-modal';
+  headphonesModal.className = 'modal';
+  headphonesModal.classList.add('on');
+  intro.append(headphonesModal);
+
   modalContent('headphones', headphones);
 
   intro.addEventListener('click', () => {
     closeModal('headphones');
-    closeModal('instructions');
-    closeModal('credits');
   });
 };
 
 // > OUTSIDE
 
-const closeModal = (id) => {
+export const closeModal = (id) => {
   const modal = document.getElementById(`${id}-modal`);
-  console.log(modal);
+
+  if (modal) {
+    modal.classList.remove('on');
+    modal.classList.add('off');
+
+    modal.addEventListener('animationend', () => {
+      modal.remove();
+      main();
+    });
+  }
+};
+
+export const main = () => {
   const intro = document.getElementById('intro');
 
-  modal.classList.remove('on');
-  modal.classList.add('off');
-
-  modal.addEventListener('animationend', () => {
-    modal.remove();
-    title('LET ME OUT', 'let-me-out', intro);
-    menuField(intro);
-    Version('V1.0', intro);
-  });
+  title('LET ME OUT', 'let-me-out', intro);
+  menuField(intro);
+  Version('V1.0', intro);
 };
