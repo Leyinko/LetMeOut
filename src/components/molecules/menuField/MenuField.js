@@ -6,42 +6,47 @@ import modalContent from '../../atoms/modalContent/ModalContent';
 import './MenuField.css';
 
 const hoverMenu = Audio('../../../../src/assets/audio/sounds/main/Menu-hover.mp3');
-const instructionsMenu = ['Esto es una prueba para el modal del menu', 'a ver si funciona correctamente'];
-const creditsMenu = ['Manu', 'Luca', 'Jeni'];
+const instructionsMenu = ['ESTO ES UNA PRUUEBA PARA EL MODAL DEL MENU', 'A VER SI FUNCIONA CORRECTAMENTE'];
+const creditsMenu = ['MANU', 'LUCA', 'JENI'];
 
 const menuField = (parent) => {
+  const intro = document.getElementById('intro');
+
   const menuField$ = document.createElement('div');
   menuField$.id = 'menu-field';
 
-  Menu('START', 'start-menu', menuField);
-  Menu('INSTRUCTIONS', 'instructions-menu', menuField);
-  Menu('CREDITS', 'credits-menu', menuField);
+  Menu('START', 'start-menu', menuField$);
+  Menu('INSTRUCTIONS', 'instructions-menu', menuField$);
+  Menu('CREDITS', 'credits-menu', menuField$);
 
   parent.append(menuField$);
 
-  // let menuIntro = document.querySelectorAll('[role="menu-select"]');
+  let menuIntro = document.querySelectorAll('[role="menu-select"]');
 
-  // menuIntro.forEach((element) => {
-  //   element.addEventListener('mouseenter', () => {
-  //     playSound(hoverMenu);
-  //   });
+  menuIntro.forEach((element) => {
+    element.addEventListener('mouseenter', () => {
+      playSound(hoverMenu);
+    });
 
-  //   if (element.classList.contains('start-menu')) {
-  //     element.addEventListener('click', () => {
-  //       Lobby();
-  //     });
-  //   } else if (element.classList.contains('instructions-menu')) {
-  //     element.addEventListener('click', () => {
-  //       createModal('instructionsMenu', parent);
-  //       modalContent('instructionsMenuContent', instructionsMenu);
-  //     });
-  //   } else if (element.classList.contains('credits-menu')) {
-  //     element.addEventListener('click', () => {
-  //       createModal('creditsMenu', parent);
-  //       modalContent('creditsMenuContent', creditsMenu);
-  //     });
-  //   }
-  // });
+    if (element.classList.contains('start-menu')) {
+      element.addEventListener('click', () => {
+        app.innerHTML = '';
+        Lobby();
+      });
+    } else if (element.classList.contains('instructions-menu')) {
+      element.addEventListener('click', () => {
+        intro.innerHTML = '';
+        createModal('instructions', intro);
+        modalContent('instructions', instructionsMenu);
+      });
+    } else if (element.classList.contains('credits-menu')) {
+      element.addEventListener('click', () => {
+        intro.innerHTML = '';
+        createModal('credits', intro);
+        modalContent('credits', creditsMenu);
+      });
+    }
+  });
 };
 
 export default menuField;

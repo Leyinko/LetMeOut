@@ -18,24 +18,29 @@ export const Intro = () => {
   intro.id = 'intro';
   app.append(intro);
 
-  intro.addEventListener('click', () => closeModalHeadphones(), { once: true });
-
   // Show Modal
   createModal('headphones', intro);
   modalContent('headphones', headphones);
+
+  intro.addEventListener('click', () => {
+    closeModal('headphones');
+    closeModal('instructions');
+    closeModal('credits');
+  });
 };
 
 // > OUTSIDE
 
-const closeModalHeadphones = () => {
-  const headphonesModal = document.getElementById('headphones-modal');
-  const intro = document.querySelector('#intro');
+const closeModal = (id) => {
+  const modal = document.getElementById(`${id}-modal`);
+  console.log(modal);
+  const intro = document.getElementById('intro');
 
-  headphonesModal.classList.remove('on');
-  headphonesModal.classList.add('off');
+  modal.classList.remove('on');
+  modal.classList.add('off');
 
-  headphonesModal.addEventListener('animationend', () => {
-    headphonesModal.remove();
+  modal.addEventListener('animationend', () => {
+    modal.remove();
     title('LET ME OUT', 'let-me-out', intro);
     menuField(intro);
     Version('V1.0', intro);
