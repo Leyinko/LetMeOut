@@ -1,3 +1,4 @@
+import Button from '../button/Button';
 import './Modal.css';
 
 const createModal = (id, parent) => {
@@ -7,6 +8,8 @@ const createModal = (id, parent) => {
 
   modal.classList.add('on');
 
+  Button('', 'close-modal-button', 'submit', modal);
+  
   parent.append(modal);
 };
 
