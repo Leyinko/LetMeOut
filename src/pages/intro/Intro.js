@@ -27,9 +27,13 @@ export const Intro = () => {
 
   modalContent('headphones', headphones);
 
-  intro.addEventListener('click', () => {
-    closeModal('headphones');
-  });
+  intro.addEventListener(
+    'click',
+    () => {
+      closeModal('headphones');
+    },
+    { once: true }
+  );
 };
 
 // > OUTSIDE

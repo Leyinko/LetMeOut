@@ -13,11 +13,14 @@ const creditsMenu = ['MANU', 'LUCA', 'JENI'];
 const closeModalButton = (id) => {
   // const modal = document.getElementById(`${id}-modal`);
   const closeButton = document.querySelector('.close-modal-button');
-  closeButton.addEventListener('click', () => {
-    closeModal(id);
-    Main();
-  }),
-    { once: true };
+  closeButton.addEventListener(
+    'click',
+    () => {
+      closeModal(id);
+      Main();
+    },
+    { once: true }
+  );
 };
 
 const menuField = (parent) => {
