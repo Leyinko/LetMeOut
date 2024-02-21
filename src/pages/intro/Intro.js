@@ -43,12 +43,12 @@ export const closeModal = (id) => {
 
     modal.addEventListener('animationend', () => {
       modal.remove();
-      main();
+      Main();
     });
   }
 };
 
-export const main = () => {
+export const Main = () => {
   const intro = document.getElementById('intro');
 
   title('LET ME OUT', 'let-me-out', intro);

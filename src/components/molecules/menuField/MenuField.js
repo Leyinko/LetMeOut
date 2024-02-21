@@ -1,5 +1,5 @@
 import { Lobby } from '../../../pages/Lobby/Lobby';
-import { closeModal, main } from '../../../pages/intro/Intro';
+import { closeModal, Main } from '../../../pages/intro/Intro';
 import Audio, { playSound } from '../../atoms/audio/Audio';
 import Menu from '../../atoms/menu/Menu';
 import createModal from '../../atoms/modal/Modal';
@@ -11,12 +11,13 @@ const instructionsMenu = ['ESTO ES UNA PRUEBA PARA EL MODAL DEL MENU', 'A VER SI
 const creditsMenu = ['MANU', 'LUCA', 'JENI'];
 
 const closeModalButton = (id) => {
-  const modal = document.getElementById(`${id}-modal`);
+  // const modal = document.getElementById(`${id}-modal`);
   const closeButton = document.querySelector('.close-modal-button');
   closeButton.addEventListener('click', () => {
     closeModal(id);
-    main();
-  });
+    Main();
+  }),
+    { once: true };
 };
 
 const menuField = (parent) => {
