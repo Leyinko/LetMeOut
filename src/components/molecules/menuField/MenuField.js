@@ -11,7 +11,6 @@ const instructionsMenu = ['ESTO ES UNA PRUEBA PARA EL MODAL DEL MENU', 'A VER SI
 const creditsMenu = ['MANU', 'LUCA', 'JENI'];
 
 const closeModalButton = (id) => {
-  // const modal = document.getElementById(`${id}-modal`);
   const closeButton = document.querySelector('.close-modal-button');
   closeButton.addEventListener(
     'click',
