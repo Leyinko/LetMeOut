@@ -12,3 +12,29 @@ export function copyText() {
   let code = document.querySelector('.room-code').textContent;
   navigator.clipboard.writeText(code);
 }
+
+export function fisherYatesShuffle(arr) {
+  let length = arr.length;
+  for (let i = length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+    let temp = arr[i];
+    arr[i] = arr[j];
+    arr[j] = temp;
+  }
+  return arr;
+}
+
+export const soundFadeOut = (audio) => {
+  let duration = audio.duration - audio.currentTime;
+  let fadeStep = 0.4;
+  if (duration < 3) {
+    const fadeOutInterval = setInterval(() => {
+      if (duration < 3 && audio.volume > 0.1) {
+        audio.volume -= fadeStep;
+      } else {
+        audio.volume = 0;
+        clearInterval(fadeOutInterval);
+      }
+    }, 20);
+  }
+};

@@ -1,8 +1,8 @@
-import Audio, { playSound } from '../../../../components/atoms/audio/Audio';
+import { playSound } from '../../../../components/atoms/audio/Audio';
 import UserFieldsModal from '../User/User';
 import './Party.css';
 
-const selectionSound = Audio('../../../../src/assets/audio/sounds/main/Menu-hover.mp3');
+const selectionSound = new Audio('../../../../src/assets/audio/sounds/main/Menu-hover.mp3');
 
 const GameSelect = (title, id, ...fields) => {
   const container = document.createElement('article');
@@ -35,8 +35,7 @@ const GameSelect = (title, id, ...fields) => {
     });
   });
 
-  const main = document.querySelector('#lobby-main');
-  main.appendChild(container);
+  document.querySelector('#lobby-main').appendChild(container);
 };
 
 export default GameSelect;

@@ -1,11 +1,24 @@
+<<<<<<< HEAD
 import Audio from './src/components/atoms/audio/Audio.js';
 // import Room from './ROOMTEST/Room.js';
 import { Intro } from './src/pages/intro/Intro.js';
+=======
+<<<<<<< HEAD
+import { audioConfig } from './src/components/atoms/audio/Audio.js';
+// import { Intro } from './src/pages/intro/Intro.js';
+=======
+import Audio from './src/components/atoms/audio/Audio.js';
+// import Room from './ROOMTEST/Room.js';
+import { Intro } from './src/pages/intro/Intro.js';
+>>>>>>> 53ed6e87e2554f026d2a028a779c82ce73aba46e
+>>>>>>> main
 // import { Lobby } from './src/pages/Lobby/Lobby';
+import Room from './ROOMTEST/Room.js';
 import './style.css';
 
 // Main Menu Soundtrack
-Audio('/src/assets/audio/music/Main-soundtrack.mp3', true, false);
+const soundtrackMenu = new Audio('/src/assets/audio/music/Main-soundtrack.mp3');
+audioConfig(soundtrackMenu, false, true, 0.7);
 
 // Lobby();
 // Room();

@@ -1,4 +1,7 @@
-import Stage, { R1 } from './RoomClass';
+import { audioConfig } from '../src/components/atoms/audio/Audio';
+import BATHROOM from './Levels/1F/Bathroom/Bathroom';
+import Stage from './Class/Class';
+import Progression from './Progression/Progression';
 import './Room.css';
 
 export const Room = () => {
@@ -10,29 +13,16 @@ export const Room = () => {
   room.id = 'room';
   app.append(room);
 
-  // Print Room
-  let bathroom = new Stage(R1);
-  bathroom.printRoom();
+  // Audio
+  const soundtrack = new Audio('src/assets/audio/music/The-Prospector.mp3');
+  audioConfig(soundtrack, false, true, 0.4);
 
-  // Stages
-  randomStages();
+  // Print Room
+  let level = new Stage(BATHROOM);
+  level.printRoom();
+
+  // TESTING ZONE ------> HUD for Progression test
+  Progression();
 };
 
 export default Room;
-
-function randomStages() {
-  let pointers = document.querySelectorAll('div:not(#app)');
-  let shuffled = fisherYatesShuffle(Array.from(pointers));
-  console.log(shuffled);
-}
-
-function fisherYatesShuffle(arr) {
-  var n = arr.length;
-  for (var i = n - 1; i > 0; i--) {
-    var j = Math.floor(Math.random() * (i + 1));
-    var temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
-  }
-  return arr;
-}
