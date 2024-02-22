@@ -25,6 +25,8 @@
 :root {
   /* TEXT COLORS */
   --lmo-main-text-color: #f4f4f4;
+  --lmo-secondary-text-color: #1e1d1e;
+  --lmo-tertiary-text-color: #1e1d1e;
 
   /* BACKGROUND COLORS*/
   --lmo-bg-color: #1e1d1e;

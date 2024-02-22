@@ -1,0 +1,1 @@
+import './ianasays.css';
