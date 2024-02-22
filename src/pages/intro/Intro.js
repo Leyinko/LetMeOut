@@ -22,11 +22,17 @@ export const Intro = () => {
   createModal('headphones', intro);
   modalContent('headphones', headphones);
 
-  intro.addEventListener('click', () => {
-    closeModal('headphones');
-    closeModal('instructions');
-    closeModal('credits');
-  });
+  intro.addEventListener(
+    'click',
+    (e) => {
+      console.log(e.target);
+      closeModal('headphones');
+      closeModal('instructions');
+      closeModal('credits');
+    },
+    // NB : Render x-times
+    { once: true }
+  );
 };
 
 // > OUTSIDE

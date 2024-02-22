@@ -1,13 +1,11 @@
-const Audio = (src, loop = false, autoplay = false) => {
-  const audio = document.createElement('audio');
-  audio.preload = 'auto';
-  audio.src = src;
-  audio.loop = loop;
-  audio.autoplay = autoplay;
-  return audio;
-};
-
-export default Audio;
+export function audioConfig(target, autoplay, loop, volume) {
+  Object.assign(target, {
+    preload: 'auto',
+    autoplay: autoplay,
+    loop: loop,
+    volume: volume,
+  });
+}
 
 export function playSound(sound) {
   sound.currentTime = 0;

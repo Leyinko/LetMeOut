@@ -25,21 +25,21 @@
   overflow: hidden;
 }
 
-#room img {
+#room > img {
+  position: absolute;
+  transition: all 1s ease-in-out;
   pointer-events: none;
 }
 
-.background {
+#room > div {
+  position: absolute;
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+#background {
   position: fixed;
   width: 1920px;
   height: 1080px;
   overflow: hidden;
-}
-
-.open {
-  display: block;
-}
-
-.closed {
-  display: none;
 }

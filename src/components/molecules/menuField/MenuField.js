@@ -1,11 +1,11 @@
 import { Lobby } from '../../../pages/Lobby/Lobby';
-import Audio, { playSound } from '../../atoms/audio/Audio';
+import { playSound } from '../../atoms/audio/Audio';
 import Menu from '../../atoms/menu/Menu';
 import createModal from '../../atoms/modal/Modal';
 import modalContent from '../../atoms/modalContent/ModalContent';
 import './MenuField.css';
 
-const hoverMenu = Audio('../../../../src/assets/audio/sounds/main/Menu-hover.mp3');
+const hoverMenu = new Audio('../../../../src/assets/audio/sounds/main/Menu-hover.mp3');
 const instructionsMenu = ['ESTO ES UNA PRUUEBA PARA EL MODAL DEL MENU', 'A VER SI FUNCIONA CORRECTAMENTE'];
 const creditsMenu = ['MANU', 'LUCA', 'JENI'];
 
