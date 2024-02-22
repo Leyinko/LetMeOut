@@ -1,25 +1,19 @@
+menuField;
+
 import { Lobby } from '../../../pages/Lobby/Lobby';
-<<<<<<< HEAD
-import { playSound } from '../../atoms/audio/Audio';
-=======
 import { closeModal, Main } from '../../../pages/intro/Intro';
 import Audio, { playSound } from '../../atoms/audio/Audio';
->>>>>>> 53ed6e87e2554f026d2a028a779c82ce73aba46e
 import Menu from '../../atoms/menu/Menu';
 import createModal from '../../atoms/modal/Modal';
 import modalContent from '../../atoms/modalContent/ModalContent';
 import './MenuField.css';
 
-<<<<<<< HEAD
 const hoverMenu = new Audio('../../../../src/assets/audio/sounds/main/Menu-hover.mp3');
-const instructionsMenu = ['ESTO ES UNA PRUUEBA PARA EL MODAL DEL MENU', 'A VER SI FUNCIONA CORRECTAMENTE'];
-=======
-const hoverMenu = Audio('../../../../src/assets/audio/sounds/main/Menu-hover.mp3');
 const instructionsMenu = ['ESTO ES UNA PRUEBA PARA EL MODAL DEL MENU', 'A VER SI FUNCIONA CORRECTAMENTE'];
->>>>>>> 53ed6e87e2554f026d2a028a779c82ce73aba46e
 const creditsMenu = ['MANU', 'LUCA', 'JENI'];
 
 const closeModalButton = (id) => {
+  // const modal = document.getElementById(`${id}-modal`);
   const closeButton = document.querySelector('.close-modal-button');
   closeButton.addEventListener(
     'click',

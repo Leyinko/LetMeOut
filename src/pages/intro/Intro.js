@@ -29,19 +29,9 @@ export const Intro = () => {
 
   intro.addEventListener(
     'click',
-<<<<<<< HEAD
-    (e) => {
-      console.log(e.target);
-      closeModal('headphones');
-      closeModal('instructions');
-      closeModal('credits');
-    },
-    // NB : Render x-times
-=======
     () => {
       closeModal('headphones');
     },
->>>>>>> 53ed6e87e2554f026d2a028a779c82ce73aba46e
     { once: true }
   );
 };
