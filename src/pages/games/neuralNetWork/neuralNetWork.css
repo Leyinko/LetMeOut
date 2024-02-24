@@ -1,0 +1,36 @@
+.neuralnetwork-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.pattern-row {
+  display: flex;
+  gap: 20px;
+}
+.neuron {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background-color: red;
+}
+.neuron-active {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  background-color: blue;
+}
+.display-timer-2 {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 100px;
+  font-family: 'JMH';
+  color: turquoise;
+  z-index: 3;
+}
