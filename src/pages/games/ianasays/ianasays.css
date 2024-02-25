@@ -1,0 +1,66 @@
+.ianasays-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.ianasays-input {
+  width: 600px;
+  height: 400px;
+  padding: 10px;
+  border-radius: 5px;
+  background-image: url('../../../assets/images/pictures/game/screenTextureTest.png');
+  border-width: 20px; /* Ancho del borde */
+  border-style: solid; /* Estilo del borde */
+  border-image: linear-gradient(to top, #bab6a6, #b1a377);
+  border-image-slice: 1;
+  font-size: 30px;
+  box-shadow: 5px 5px 5px 5px black;
+}
+.keyboard-game {
+  width: 650px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+.keyboard-row {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+.keyboard-key {
+  width: 50px;
+  height: 50px;
+  color: black;
+  font-family: 'JMH';
+  background: rgb(251, 245, 224);
+  background: linear-gradient(0deg, #fbf5e0 0%, #f1dea2 100%);
+  border-left: 5px solid grey;
+  border-right: 5px solid grey;
+  border-bottom: 5px solid grey;
+  border-top: 3px solid grey;
+}
+
+.display-timer {
+  position: fixed;
+  top: 30%;
+  font-size: 100px;
+  font-family: 'JMH';
+  color: red;
+  z-index: 3;
+}
+
+@keyframes show {
+  0% {
+    transform: scale(0.8);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
