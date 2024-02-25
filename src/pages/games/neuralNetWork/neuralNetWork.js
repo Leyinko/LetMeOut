@@ -6,14 +6,6 @@ const app = document.getElementById('app');
 const neuralNetWorkContainer = document.createElement('section');
 neuralNetWorkContainer.className = 'neuralnetwork-container';
 
-const patternTemplate = [
-  [0, 0, 0, 0],
-  [0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0],
-  [0, 0, 0, 0],
-];
-
 let playerPattern = [
   [0, 0, 0, 0],
   [0, 0, 0, 0, 0],
@@ -30,9 +22,9 @@ let resultPattern = [];
 const animationPattern = [];
 
 const generateNewPatterns = () => {
-  resultPattern = patternGenerator(patternTemplate);
+  resultPattern = patternGenerator(playerPattern);
   for (var i = 0; i <= 5; i++) {
-    animationPattern[i] = patternGenerator(patternTemplate);
+    animationPattern[i] = patternGenerator(playerPattern);
   }
 };
 
@@ -105,13 +97,15 @@ function animatePattern() {
 }
 
 function checkResult(resultOne, resultTwo) {
-  if (resultOne === resultTwo) {
-    touchOn = false;
-    stage++;
-    playerPattern = [...patternTemplate];
-    console.log('Player reseteado', playerPattern);
-    console.log('plantilla:', patternTemplate);
-    generateNewPatterns();
-    start('stage: ' + stage, neuralNetWorkContainer, animatePattern, 'display-timer-2');
+  if (stage < 3) {
+    if (resultOne === resultTwo) {
+      touchOn = false;
+      stage++;
+      playerPattern = playerPattern.map((row) => row.map((element) => 0));
+      generateNewPatterns();
+      start('stage: ' + stage, neuralNetWorkContainer, animatePattern, 'display-timer-2');
+    }
+  } else {
+    alert('Fin del juego');
   }
 }
