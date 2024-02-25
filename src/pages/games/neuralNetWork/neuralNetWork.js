@@ -1,11 +1,20 @@
 import { fisherYatesShuffle } from '../../../../utils';
+import { start } from '../game-utils';
 import './neuralNetWork.css';
 
 const app = document.getElementById('app');
 const neuralNetWorkContainer = document.createElement('section');
 neuralNetWorkContainer.className = 'neuralnetwork-container';
 
-let patternTemplate = [
+const patternTemplate = [
+  [0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0],
+];
+
+let playerPattern = [
   [0, 0, 0, 0],
   [0, 0, 0, 0, 0],
   [0, 0, 0, 0, 0],
@@ -16,17 +25,21 @@ let patternTemplate = [
 let touchOn = false;
 let stage = 1;
 
-const resultPattern = patternGenerator(patternTemplate);
+let resultPattern = [];
 
 const animationPattern = [];
 
-for (var i = 0; i < 5; i++) {
-  animationPattern[i] = patternGenerator(patternTemplate);
-}
+const generateNewPatterns = () => {
+  resultPattern = patternGenerator(patternTemplate);
+  for (var i = 0; i <= 5; i++) {
+    animationPattern[i] = patternGenerator(patternTemplate);
+  }
+};
 
 export default function neuralNetWork() {
-  printPattern(patternTemplate);
-  start();
+  generateNewPatterns();
+  printPattern(playerPattern);
+  start(false, neuralNetWorkContainer, animatePattern, 'display-timer-2');
   console.log(resultPattern);
   app.append(neuralNetWorkContainer);
 }
@@ -61,9 +74,9 @@ function printPattern(pattern) {
 
       neuronElement.addEventListener('click', () => {
         if (touchOn) {
-          patternTemplate[columnIndex][neuronIndex] = patternTemplate[columnIndex][neuronIndex] == 0 ? 1 : 0;
-          printPattern(patternTemplate);
-          setTimeout(checkResult, 0);
+          playerPattern[columnIndex][neuronIndex] = playerPattern[columnIndex][neuronIndex] == 0 ? 1 : 0;
+          printPattern(playerPattern);
+          setTimeout(checkResult(playerPattern.flat().toString(), resultPattern.flat().toString()), 0);
         }
       });
       rowElement.append(neuronElement);
@@ -76,11 +89,11 @@ function animatePattern() {
   let index = 1;
   const interval = setInterval(() => {
     if (index % 2 != 0) {
-      printPattern(patternTemplate);
+      printPattern(playerPattern);
     } else {
       if (index / 2 < animationPattern.length) {
         printPattern(animationPattern[index / 2 - 1]);
-      } else if (index / 2 > animatePattern.length && index / 2 < animationPattern.length + 3) {
+      } else if (index / 2 > animationPattern.length - 1 && index / 2 < animationPattern.length + 3) {
         printPattern(resultPattern);
       } else {
         clearInterval(interval);
@@ -91,41 +104,14 @@ function animatePattern() {
   }, 500);
 }
 
-function checkResult() {
-  const resultOne = patternTemplate.flat().toString();
-  const resultTwo = resultPattern.flat().toString();
-
+function checkResult(resultOne, resultTwo) {
   if (resultOne === resultTwo) {
-    alert('Bien');
+    touchOn = false;
     stage++;
-    start('stage: ' + stage);
-  }
-}
-
-function start(displayStage) {
-  const displayMessage = document.createElement('h2');
-  displayMessage.classList.add('display-timer-2');
-
-  if (!displayStage) {
-    let timer = 3;
-    const starInterval = setInterval(() => {
-      if (timer > 0) {
-        displayMessage.textContent = timer.toString();
-        timer--;
-        neuralNetWorkContainer.appendChild(displayMessage);
-      } else {
-        clearInterval(starInterval);
-        neuralNetWorkContainer.removeChild(displayMessage);
-        animatePattern();
-      }
-    }, 1000);
-  } else {
-    displayMessage.textContent = displayStage;
-    neuralNetWorkContainer.appendChild(displayMessage);
-    var stageTimeout = setTimeout(() => {
-      displayMessage.remove();
-      clearTimeout(stageTimeout);
-      start();
-    }, 1000);
+    playerPattern = [...patternTemplate];
+    console.log('Player reseteado', playerPattern);
+    console.log('plantilla:', patternTemplate);
+    generateNewPatterns();
+    start('stage: ' + stage, neuralNetWorkContainer, animatePattern, 'display-timer-2');
   }
 }
