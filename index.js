@@ -4,6 +4,7 @@
 // import neuralNetWork from './src/pages/games/neuralNetWork/neuralNetWork.js';
 // import Main from './src/pages/Main/utils/Main/Main';
 // import Launch from './src/pages/Main/Opening';
+import Smash from './src/pages/games/smashThatTrash/Smash';
 import './style.css';
 
 // > Menus
@@ -15,5 +16,6 @@ import './style.css';
 //Room();
 
 // > Mini-Games
+Smash();
 //ianasays();
 // neuralNetWork();
