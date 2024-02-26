@@ -12,7 +12,7 @@ const UserFieldsModal = (button, parent, ...field) => {
 
   parent.append(modal);
 
-  Button(button, 'field-button', 'submit', modal);
+  Button(button, 'field-button', 'lobby-buttons', 'submit', modal);
   let submit = document.querySelector('.field-button');
 
   let inputs = document.querySelectorAll('input');

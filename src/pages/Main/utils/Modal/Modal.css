@@ -1,0 +1,45 @@
+.modal * {
+  font-family: 'JMH';
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80svw;
+  height: 60svh;
+  z-index: 9;
+  opacity: 0;
+  visibility: visible;
+  animation: appearance 1s ease-in-out forwards;
+  backdrop-filter: blur(3.1875rem) brightness(0.4);
+}
+
+.close-modal-button {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 20px;
+  font-size: 2rem;
+  pointer-events: all;
+  opacity: 0.7;
+  background-color: transparent;
+  border: none;
+}
+
+.close-modal-button:hover {
+  cursor: pointer;
+  opacity: 1;
+  font-size: 2.3rem;
+}
+
+@keyframes appearance {
+  100% {
+    opacity: 1;
+    visibility: visible;
+  }
+}

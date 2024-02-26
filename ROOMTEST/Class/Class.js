@@ -75,18 +75,15 @@ function pointerHandlers(object, collider, item) {
     item.hiddenOnPrint && object.remove();
 
     if (object.classList.contains('active')) {
-      // Sound
       let sound = new Audio(item.itemSound);
       playSound(sound);
       soundFadeOut(sound);
 
-      // Collider New Position
       object.addEventListener('transitionend', () => {
         let rect = object.getBoundingClientRect();
         colliderAssign(collider, `${rect.top}px`, `${rect.left}px`, `${rect.width}px`, `${rect.height}px`);
       });
 
-      // Conditionals
       item.disappearOnClick && object.remove();
       item.hiddenOnPrint && room.append(object);
     }
