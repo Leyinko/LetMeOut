@@ -50,7 +50,7 @@ const PlayersHub = (code, username, party) => {
 
   playersHub.append(room, nickname, players, chat);
 
-  Button('', 'ready-button', 'submit', lobby);
+  Button('', 'ready-button', 'lobby-buttons', 'submit', lobby);
   let ready = document.querySelector('.ready-button');
   ready.addEventListener('click', () => toggleReadyState(ready, code, username));
 

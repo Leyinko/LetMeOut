@@ -1,0 +1,23 @@
+#main {
+  width: inherit;
+  height: inherit;
+  background: url('/src/assets/images/pictures/menu/Main-menu.png') center/cover no-repeat;
+  opacity: 0;
+  animation: animation-fade 1s ease-in-out forwards;
+}
+
+#let-me-out {
+  font-size: 13em;
+  position: absolute;
+  left: 50%;
+  top: 20%;
+  transform: translateX(-50%);
+  rotate: 350deg;
+  opacity: 0;
+  animation: players-hub-appearance 0.6s ease-in-out forwards 0.4s;
+}
+
+.version {
+  z-index: 1;
+  left: 20px;
+}

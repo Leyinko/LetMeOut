@@ -1,0 +1,90 @@
+#smash-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  width: 600px;
+  height: 600px;
+}
+
+#smash-container div {
+  cursor: pointer;
+  width: 150px;
+  height: 42.5%;
+  clip-path: polygon(0 27%, 58% 34%, 100% 59%, 100% 86%, 52% 56%, 0% 50%);
+  background-color: rgb(0, 255, 255);
+}
+
+#B1 {
+  top: 0px;
+  right: 80px;
+}
+
+#B2 {
+  top: 160px;
+  right: -30px;
+}
+
+#B3 {
+  top: 340px;
+  right: 0px;
+}
+
+#B4 {
+  top: 440px;
+  right: 150px;
+}
+
+#B5 {
+  top: 410px;
+  left: 120px;
+}
+
+#B6 {
+  top: 250px;
+  left: 10px;
+}
+
+#B7 {
+  top: 70px;
+  left: 40px;
+}
+
+#B8 {
+  top: -30px;
+  left: 180px;
+}
+
+#smash-container div.active {
+  animation: flash-button 0.8s ease-in-out;
+}
+
+.smash-your-trash {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 100px;
+  font-family: 'JMH';
+  color: var(--blood-color);
+  z-index: 3;
+}
+
+@keyframes flash-button {
+  0% {
+    background-color: rgb(0, 255, 255);
+  }
+  20% {
+    background-color: purple;
+  }
+  80% {
+    background-color: purple;
+  }
+  100% {
+    background-color: rgb(0, 255, 255);
+  }
+}
