@@ -25,3 +25,7 @@
 [role='lobby-buttons'].error {
   animation: error-field 3 0.7s ease-in-out;
 }
+
+[role='close-modal-main']:hover {
+  transition: none;
+}

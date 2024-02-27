@@ -1,3 +1,4 @@
+import { start } from '../game-utils';
 import './ianasays.css';
 
 const keyBoardLayout = [
@@ -59,7 +60,7 @@ export default function ianasays() {
                 gameStage++;
                 speedWrite *= 0.75;
                 keyboardOn = false;
-                start('Stage: ' + (gameStage + 1));
+                start('Stage: ' + (gameStage + 1), ianasaysContainer, keyHint, 'display-timer');
                 inputGame.value = '';
               }
             } else {
@@ -76,7 +77,7 @@ export default function ianasays() {
     keyboardGame.appendChild(rowElement);
   });
 
-  start();
+  start(false, ianasaysContainer, keyHint, 'display-timer');
 }
 
 function checkGame(word) {
@@ -103,32 +104,4 @@ function keyHint() {
       keyboardOn = true;
     }
   }, speedWrite);
-}
-
-function start(displayStage) {
-  const displayMessage = document.createElement('h2');
-  displayMessage.classList.add('display-timer');
-
-  if (!displayStage) {
-    let timer = 3;
-    const starInterval = setInterval(() => {
-      if (timer > 0) {
-        displayMessage.textContent = timer.toString();
-        timer--;
-        ianasaysContainer.appendChild(displayMessage);
-      } else {
-        clearInterval(starInterval);
-        ianasaysContainer.removeChild(displayMessage);
-        keyHint();
-      }
-    }, 1000);
-  } else {
-    displayMessage.textContent = displayStage;
-    ianasaysContainer.appendChild(displayMessage);
-    var stageTimeout = setTimeout(() => {
-      displayMessage.remove();
-      clearTimeout(stageTimeout);
-      start();
-    }, 1000);
-  }
 }
