@@ -6,6 +6,9 @@
 // import Launch from './src/pages/Main/Opening';
 import MemoryPath from './src/pages/games/memoryPath/memoryPath';
 import Smash from './src/pages/games/smashThatTrash/Smash';
+import countdown from './src/components/atoms/countdownTimer/Timer';
+
+
 import './style.css';
 
 // > Menus
@@ -21,3 +24,9 @@ import './style.css';
 //ianasays();
 // neuralNetWork();
 MemoryPath();
+
+// Smash();
+//ianasays();
+// neuralNetWork();
+//countdown();
+
