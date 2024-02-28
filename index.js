@@ -1,4 +1,4 @@
-// import Room from './ROOMTEST/Room.js';
+import Room from './ROOMTEST/Room.js';
 // import { Lobby } from './src/pages/Lobby/Lobby';
 // import ianasays from './src/pages/games/ianasays/ianasays.js';
 // import neuralNetWork from './src/pages/games/neuralNetWork/neuralNetWork.js';
@@ -9,6 +9,7 @@ import Smash from './src/pages/games/smashThatTrash/Smash';
 import countdown from './src/components/atoms/countdownTimer/Timer';
 
 import './style.css';
+import Inventory from './src/components/molecules/inventory/inventory';
 
 // > Menus
 // Main();
@@ -16,15 +17,29 @@ import './style.css';
 // Lobby();
 
 // > Game
-//Room();
+Room();
 
 // > Mini-Games
 //Smash();
 //ianasays();
 // neuralNetWork();
-MemoryPath();
+//MemoryPath();
 
 // Smash();
 //ianasays();
 // neuralNetWork();
-countdown();
+//countdown();
+
+const iconsArray = [
+  './src/assets/images/icons/active/Clock.png',
+  './src/assets/images/icons/active/Diskette.png',
+  './src/assets/images/icons/active/Ethernet.png',
+  './src/assets/images/icons/active/Fusible.png',
+];
+const clickableIconsArray = [
+  './src/assets/images/icons/active/Clock.png',
+  './src/assets/images/icons/active/Diskette.png',
+];
+
+Inventory(iconsArray, 'main-inventory');
+Inventory(clickableIconsArray, 'clickable-inventory');
