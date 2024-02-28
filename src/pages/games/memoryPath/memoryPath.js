@@ -1,5 +1,6 @@
 import './memoryPath.css';
 import { start } from '../game-utils';
+import { handleTime } from '../../../components/atoms/countdownTimer/Timer';
 
 const app = document.getElementById('app');
 const memoryPathContainer = document.createElement('section');
@@ -128,7 +129,8 @@ function checkResult() {
         resultPath = [];
         start(`stage: ${stage}`, memoryPathContainer, createPath, 'display-timer-3');
       } else {
-        alert('fallaste');
+        handleTime(20, false);
+        start(`Stage: ${stage}`, memoryPathContainer, createPath, 'display-timer-3');
       }
     }
   } else {

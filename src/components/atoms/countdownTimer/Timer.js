@@ -13,17 +13,26 @@ function countdown() {
   app.appendChild(timer);
 
   // Functionality
-  setInterval(() => {
+  const interval = setInterval(() => {
     let minutes = Math.floor(remainingTime / 60);
     let seconds = remainingTime % 60;
 
-    minutes = minutes < 10 ? '0' + minutes : minutes;
-    seconds = seconds < 10 ? '0' + seconds : seconds;
+    if (remainingTime != 0) {
+      minutes = minutes < gameTime ? '0' + minutes : minutes;
+      seconds = seconds < gameTime ? '0' + seconds : seconds;
 
-    timer.innerHTML = `${minutes}:${seconds}`;
+      timer.innerHTML = `${minutes}:${seconds}`;
 
-    remainingTime--;
+      remainingTime--;
+    } else {
+      clearInterval(interval);
+      alert('mueriste');
+    }
   }, 1000);
+}
+
+export function handleTime(time, operation) {
+  remainingTime = operation ? remainingTime + time : remainingTime - time;
 }
 
 export default countdown;
