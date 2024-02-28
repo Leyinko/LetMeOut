@@ -4,8 +4,11 @@
 // import neuralNetWork from './src/pages/games/neuralNetWork/neuralNetWork.js';
 // import Main from './src/pages/Main/utils/Main/Main';
 // import Launch from './src/pages/Main/Opening';
+import MemoryPath from './src/pages/games/memoryPath/memoryPath';
+import Smash from './src/pages/games/smashThatTrash/Smash';
 import countdown from './src/components/atoms/countdownTimer/Timer';
-// import Smash from './src/pages/games/smashThatTrash/Smash';
+
+
 import './style.css';
 
 // > Menus
@@ -17,7 +20,13 @@ import './style.css';
 //Room();
 
 // > Mini-Games
+//Smash();
+//ianasays();
+// neuralNetWork();
+MemoryPath();
+
 // Smash();
 //ianasays();
 // neuralNetWork();
-countdown();
+//countdown();
+
