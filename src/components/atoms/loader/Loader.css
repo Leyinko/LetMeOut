@@ -3,8 +3,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) rotate(25deg);
-  width: 500px;
-  /* filter: invert(1); */
+  width: 40%;
+  filter: invert(1);
 }
 
 .loader img {

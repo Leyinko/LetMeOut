@@ -1,16 +1,30 @@
 [role='menu-select'] {
   padding: 10px 17px 3px 17px;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   line-height: 1.7rem;
   opacity: 0.7;
   cursor: pointer;
   margin-block: 0rem;
   border-radius: 10px;
+  width: fit-content;
 }
 
 [role='menu-select']:hover {
-  outline: 1px solid rgba(255, 255, 255, 0.267);
   opacity: 1;
-  transition: all 0.5s ease-in-out;
-  background-color: rgba(250, 235, 215, 0.075);
+  transform: scale(1.15);
+  animation: glitch 0.4s ease-in-out;
+}
+
+@keyframes glitch {
+  2%,
+  64% {
+    transform: translate(-2px, 0);
+  }
+  4%,
+  60% {
+    transform: translate(-2px, 0);
+  }
+  62% {
+    transform: translate(-22px, 5px) skew(21deg);
+  }
 }

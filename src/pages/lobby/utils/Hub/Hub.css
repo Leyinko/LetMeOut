@@ -26,37 +26,38 @@
 
 .players {
   position: fixed;
-  bottom: -20px;
-  height: 60%;
+  bottom: 0px;
+  margin-left: -30px;
 }
 
 .players img {
-  height: 280px;
+  height: 220px;
   object-fit: cover;
   opacity: 0.4;
   pointer-events: none;
 }
 
 .players img:nth-child(1) {
-  height: 220px;
-  margin-bottom: 10px;
+  height: 190px;
+  margin-bottom: 50px;
 }
 
 .players img:nth-child(3) {
-  height: 190px;
-  margin-bottom: 30px;
+  height: 150px;
+  margin-bottom: 80px;
 }
 
 .ready-button {
   background: url('src/assets/images/icons/menu/ReadyN.png') center/contain no-repeat;
   position: absolute;
-  bottom: 70px;
+  bottom: 40px;
   left: 50%;
   transform: translateX(-50%);
-  height: 110px;
-  width: 110px;
+  height: 90px;
+  width: 90px;
   pointer-events: all;
   opacity: 0.7;
+  animation: players-hub-appearance 0.6s ease-in-out forwards;
 }
 
 .ready-button:hover {
@@ -72,13 +73,13 @@
 .chat-icon {
   position: absolute;
   width: 40px;
-  right: 80px;
+  right: 50px;
   bottom: 40px;
   opacity: 0.5;
 }
 
 .chat-icon.on {
-  transform: scale(1.2);
+  transform: scale(1.1);
   opacity: 1;
   transition: all 0.3s linear;
 }

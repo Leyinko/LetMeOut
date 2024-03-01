@@ -1,6 +1,6 @@
 article[id$='party'] {
   padding: 30px 50px 40px 50px;
-  width: fit-content;
+  width: 400px;
   height: fit-content;
   display: flex;
   flex-direction: column;
