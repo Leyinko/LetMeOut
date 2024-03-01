@@ -1,23 +1,49 @@
 #main {
+  position: relative;
   width: inherit;
   height: inherit;
-  background: url('/src/assets/images/pictures/menu/Main-menu.png') center/cover no-repeat;
+  background: url('/src/assets/images/pictures/menu/Menu-16-9.png') center/cover no-repeat;
   opacity: 0;
-  animation: animation-fade 1s ease-in-out forwards;
+  animation: animation-fade 2s ease-in-out forwards;
 }
 
 #let-me-out {
-  font-size: 13em;
+  font-size: 9rem;
   position: absolute;
   left: 50%;
-  top: 20%;
-  transform: translateX(-50%);
-  rotate: 350deg;
+  top: 15%;
+  transform: translateX(-50%) rotate(-10deg);
   opacity: 0;
   animation: players-hub-appearance 0.6s ease-in-out forwards 0.4s;
 }
 
-.version {
-  z-index: 1;
-  left: 20px;
+#main.first-pop {
+  animation: main-background 9s ease-out forwards;
+}
+
+#let-me-out.first-pop {
+  animation: players-hub-appearance 4s ease-in-out forwards 7s;
+}
+
+#menu-field.first-pop {
+  animation: players-hub-appearance 1.3s ease-in-out forwards 10s;
+}
+
+@keyframes main-background {
+  0% {
+    opacity: 0;
+    height: 75%;
+    transform: scale(1.1);
+    filter: blur(5px);
+  }
+  35% {
+    opacity: 0.7;
+    height: 80%;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    height: 90svh;
+    filter: none;
+  }
 }

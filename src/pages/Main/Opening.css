@@ -7,30 +7,35 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.25rem;
+  /* border: 1px solid red; */
 }
 
 #warning h3 {
   font-weight: 100;
-  font-size: 4rem;
+  font-size: 3.3rem;
   color: var(--blood-color);
 }
 
 #warning p {
-  line-height: 40px;
+  font-size: var(--lmo-fs-s);
+  /* text-align: center; */
+  white-space: pre-line;
+  line-height: 2.5;
 }
 
 #warning span {
+  font-size: 13px;
   opacity: 0.3;
   margin-top: 30px;
 }
 
-#headphones-modal {
+#immersion {
   position: absolute;
-  z-index: 99999;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -41,26 +46,39 @@
   width: 100%;
   height: 100%;
   opacity: 0;
-  animation: players-hub-appearance 1.5s ease-in-out 0.5s forwards;
+  animation: players-hub-appearance 1.5s ease-in-out forwards;
 }
 
-#headphones-modal img {
+#immersion img {
   width: 200px;
   object-fit: cover;
+  display: none;
 }
 
-#headphones-modal * {
+#immersion * {
   font-family: 'JMH';
   font-size: 1.4rem;
 }
 
-#headphones-modal span {
-  margin-top: 60px;
-  opacity: 0.5;
+#immersion p {
+  padding: 20px;
+  font-size: var(--lmo-fs-m);
+  line-height: 2;
+  text-align: center;
+  white-space: pre-line;
+  width: 60%;
+  backdrop-filter: blur(0.625rem);
 }
 
-#headphones-modal span:hover {
+#immersion span {
+  position: absolute;
+  bottom: 100px;
+  margin-top: 60px;
+  font-size: var(--lmo-fs-m);
+  opacity: 0;
+  animation: players-hub-appearance 1.5s ease-in-out forwards 2s;
+}
+
+#immersion span:hover {
   cursor: pointer;
-  transform: scale(1.05);
-  opacity: 1;
 }

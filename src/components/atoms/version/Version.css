@@ -1,6 +1,7 @@
 .version {
-  position: fixed;
-  bottom: 0px;
-  padding: 20px;
-  opacity: 0.3;
+  position: absolute;
+  bottom: 5px;
+  left: 15px;
+  font-size: 13px;
+  opacity: 0.2;
 }

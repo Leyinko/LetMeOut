@@ -20,9 +20,19 @@ export const Main = () => {
 
   // Menu Selection
   menuSelection(main);
+  let selections = document.querySelector('#menu-field');
 
   // Version
   Version('V1.0', main);
+
+  // First Animation
+  openingAnimation(main, title, selections);
 };
+
+function openingAnimation(...args) {
+  let elements = [...args];
+  let audio = document.querySelector('#app audio');
+  elements.forEach((element) => (!audio ? element.classList.add('first-pop') : element.classList.remove('first-pop')));
+}
 
 export default Main;
