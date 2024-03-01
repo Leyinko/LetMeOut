@@ -1,0 +1,110 @@
+#hide {
+  display: none;
+}
+
+#main-inventory {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  padding: 5px;
+}
+.inventory-element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: rgba(244, 222, 179, 0.5);
+}
+.inventory-element:hover {
+  background-color: rgba(244, 222, 179, 0.7);
+}
+.inventory-icon {
+  width: 30px;
+  height: auto;
+}
+#clickable-inventory {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  position: fixed;
+  bottom: 30px;
+  left: 61%;
+  transform: translate(-50%, 0);
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.note-gallery {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(5px);
+}
+.close-gallery {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 50px;
+  right: 150px;
+  background-color: transparent;
+  color: white;
+  font-size: 50px;
+  border: none;
+  cursor: pointer;
+}
+.close-gallery:hover {
+  transform: scale(1.2);
+}
+.gallery-image {
+  max-height: 70%;
+}
+
+#note-inventory {
+  display: none;
+  position: fixed;
+  bottom: 30px;
+  right: 120px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  padding: 5px;
+}
+.dropdown-button {
+  position: fixed;
+  bottom: 30px;
+  right: 70px;
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  background-color: rgba(244, 222, 179, 0.5);
+  padding: 5px;
+}
+
+#dropdown-note {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 30px;
+  right: 50px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  padding: 5px;
+}
