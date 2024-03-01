@@ -1,8 +1,10 @@
 import { fisherYatesShuffle } from '../../../../utils';
+import { handleTime } from '../../../components/atoms/countdownTimer/Timer';
 import { start } from '../game-utils';
+import { showFinalNumber } from '../games';
+import Smash from '../smashThatTrash/Smash';
 import './neuralNetWork.css';
 
-const app = document.getElementById('app');
 const neuralNetWorkContainer = document.createElement('section');
 neuralNetWorkContainer.className = 'neuralnetwork-container';
 
@@ -29,11 +31,12 @@ const generateNewPatterns = () => {
 };
 
 export default function neuralNetWork() {
+  const gamesModal = document.querySelector('.games-modal');
   generateNewPatterns();
   printPattern(playerPattern);
   start(false, neuralNetWorkContainer, animatePattern, 'display-timer-2');
   console.log(resultPattern);
-  app.append(neuralNetWorkContainer);
+  gamesModal.append(neuralNetWorkContainer);
 }
 
 function patternGenerator(pattern) {
@@ -68,7 +71,7 @@ function printPattern(pattern) {
         if (touchOn) {
           playerPattern[columnIndex][neuronIndex] = playerPattern[columnIndex][neuronIndex] == 0 ? 1 : 0;
           printPattern(playerPattern);
-          setTimeout(checkResult(playerPattern.flat().toString(), resultPattern.flat().toString()), 0);
+          setTimeout(checkResult(playerPattern, resultPattern), 0);
         }
       });
       rowElement.append(neuronElement);
@@ -85,7 +88,7 @@ function animatePattern() {
     } else {
       if (index / 2 < animationPattern.length) {
         printPattern(animationPattern[index / 2 - 1]);
-      } else if (index / 2 > animationPattern.length - 1 && index / 2 < animationPattern.length + 3) {
+      } else if (index / 2 > animationPattern.length - 1 && index / 2 < animationPattern.length + (4 - stage)) {
         printPattern(resultPattern);
       } else {
         clearInterval(interval);
@@ -97,15 +100,29 @@ function animatePattern() {
 }
 
 function checkResult(resultOne, resultTwo) {
-  if (stage < 3) {
-    if (resultOne === resultTwo) {
-      touchOn = false;
-      stage++;
-      playerPattern = playerPattern.map((row) => row.map((element) => 0));
-      generateNewPatterns();
-      start('stage: ' + stage, neuralNetWorkContainer, animatePattern, 'display-timer-2');
+  if (stage <= 3) {
+    const neuronPressed = resultOne.map((row) => row.filter((neuron) => neuron == 1));
+
+    console.log(neuronPressed, neuronPressed.flat().length);
+
+    if (neuronPressed.flat().length == 10) {
+      if (resultOne.flat().toString() === resultTwo.flat().toString()) {
+        touchOn = false;
+        stage++;
+        playerPattern = playerPattern.map((row) => row.map((element) => 0));
+        generateNewPatterns();
+        stage == 4 && checkResult();
+        stage != 4 && start('stage: ' + stage, neuralNetWorkContainer, animatePattern, 'display-timer-2');
+      } else {
+        alert('fashaste');
+        handleTime(20, false);
+        generateNewPatterns();
+        playerPattern = playerPattern.map((row) => row.map((element) => 0));
+        start('Wrong pattern', neuralNetWorkContainer, animatePattern, 'display-timer-2');
+      }
     }
   } else {
-    alert('Fin del juego');
+    neuralNetWorkContainer.remove();
+    showFinalNumber();
   }
 }

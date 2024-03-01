@@ -1,8 +1,8 @@
 import './memoryPath.css';
 import { start } from '../game-utils';
 import { handleTime } from '../../../components/atoms/countdownTimer/Timer';
+import neuralNetWork from '../neuralNetWork/neuralNetWork';
 
-const app = document.getElementById('app');
 const memoryPathContainer = document.createElement('section');
 memoryPathContainer.className = 'memorypath-container';
 
@@ -23,6 +23,7 @@ let moveSpeed = 1000;
 
 export default function MemoryPath() {
   //dispaly cells
+  const gamesModal = document.querySelector('.games-modal');
   map.forEach((row, columnIndex) => {
     const rowElement = document.createElement('div');
     rowElement.className = 'map-row';
@@ -73,7 +74,7 @@ export default function MemoryPath() {
 
   memoryPathContainer.appendChild(keyboard);
 
-  app.appendChild(memoryPathContainer);
+  gamesModal.appendChild(memoryPathContainer);
   start('Starting...', memoryPathContainer, createPath, 'display-timer-3');
 }
 
@@ -142,7 +143,8 @@ function checkResult() {
       }
     }
   } else {
-    alert('Ganaste');
+    memoryPathContainer.remove();
+    neuralNetWork();
   }
 }
 

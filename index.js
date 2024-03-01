@@ -1,7 +1,6 @@
 import Room from './ROOMTEST/Room.js';
 // import { Lobby } from './src/pages/Lobby/Lobby';
 // import ianasays from './src/pages/games/ianasays/ianasays.js';
-// import neuralNetWork from './src/pages/games/neuralNetWork/neuralNetWork.js';
 // import { playSound } from './src/components/atoms/audio/Audio';
 // import Main from './src/pages/Main/utils/Main/Main';
 import Launch from './src/pages/Main/Opening';
@@ -15,6 +14,7 @@ import Smash from './src/pages/games/smashThatTrash/Smash';
 import countdown from './src/components/atoms/countdownTimer/Timer';
 import './style.css';
 import Inventory from './src/components/molecules/inventory/inventory';
+import Games from './src/pages/games/games.js';
 
 // const audio = new Audio('src/assets/audio/music/Main-soundtrack.mp3');
 // const audio = new Audio('src/assets/audio/music/The-Prospector.mp3');
@@ -37,7 +37,7 @@ import Inventory from './src/components/molecules/inventory/inventory';
 
 // > Menus
 // Main();
-Launch();
+//Launch();
 // Lobby();
 
 // > Game
@@ -47,7 +47,9 @@ Launch();
 // > Mini-Games
 //ianasays();
 // neuralNetWork();
-MemoryPath();
+//MemoryPath();
 // Smash();
 
-countdown();
+Games();
+
+//countdown();
