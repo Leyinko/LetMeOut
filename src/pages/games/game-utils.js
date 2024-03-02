@@ -1,6 +1,8 @@
-export function start(displayStage, node, callback, className) {
+import './games.css';
+
+export function start(displayStage, node, callback) {
   const displayMessage = document.createElement('h2');
-  displayMessage.classList.add(className);
+  displayMessage.classList.add('display-timer');
 
   if (!displayStage) {
     let timer = 3;
@@ -21,7 +23,16 @@ export function start(displayStage, node, callback, className) {
     var stageTimeout = setTimeout(() => {
       displayMessage.remove();
       clearTimeout(stageTimeout);
-      start(false, node, callback, className);
-    }, 1000);
+      start(false, node, callback);
+    }, 2000);
   }
 }
+
+export const mistakePhrases = [
+  "Keep trying, it's getting closer.",
+  "Try again, there's no time.",
+  '...',
+  "It's almost there.",
+  'Take it seriously...',
+  "Don't be nervous, you're almost there.",
+];

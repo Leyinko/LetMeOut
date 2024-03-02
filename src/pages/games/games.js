@@ -9,7 +9,7 @@ export default function Games() {
   gamesModal.className = 'games-modal';
 
   app.appendChild(gamesModal);
-  neuralNetWork();
+  Smash();
 }
 
 export function showFinalNumber() {
@@ -17,6 +17,8 @@ export function showFinalNumber() {
   const finalNumberModal = document.createElement('h2');
   finalNumberModal.className = 'final-number';
   finalNumberModal.textContent = '3';
+
+  gamesModal.innerHTML = '';
 
   gamesModal.appendChild(finalNumberModal);
 }

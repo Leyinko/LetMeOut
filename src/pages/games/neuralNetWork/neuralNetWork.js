@@ -1,6 +1,6 @@
 import { fisherYatesShuffle } from '../../../../utils';
 import { handleTime } from '../../../components/atoms/countdownTimer/Timer';
-import { start } from '../game-utils';
+import { mistakePhrases, start } from '../game-utils';
 import { showFinalNumber } from '../games';
 import Smash from '../smashThatTrash/Smash';
 import './neuralNetWork.css';
@@ -34,7 +34,7 @@ export default function neuralNetWork() {
   const gamesModal = document.querySelector('.games-modal');
   generateNewPatterns();
   printPattern(playerPattern);
-  start(false, neuralNetWorkContainer, animatePattern, 'display-timer-2');
+  start('Last pattern...', neuralNetWorkContainer, animatePattern);
   console.log(resultPattern);
   gamesModal.append(neuralNetWorkContainer);
 }
@@ -103,8 +103,6 @@ function checkResult(resultOne, resultTwo) {
   if (stage <= 3) {
     const neuronPressed = resultOne.map((row) => row.filter((neuron) => neuron == 1));
 
-    console.log(neuronPressed, neuronPressed.flat().length);
-
     if (neuronPressed.flat().length == 10) {
       if (resultOne.flat().toString() === resultTwo.flat().toString()) {
         touchOn = false;
@@ -112,17 +110,20 @@ function checkResult(resultOne, resultTwo) {
         playerPattern = playerPattern.map((row) => row.map((element) => 0));
         generateNewPatterns();
         stage == 4 && checkResult();
-        stage != 4 && start('stage: ' + stage, neuralNetWorkContainer, animatePattern, 'display-timer-2');
+        stage != 4 && start('stage: ' + stage, neuralNetWorkContainer, animatePattern);
       } else {
-        alert('fashaste');
         handleTime(20, false);
         generateNewPatterns();
         playerPattern = playerPattern.map((row) => row.map((element) => 0));
-        start('Wrong pattern', neuralNetWorkContainer, animatePattern, 'display-timer-2');
+        start(
+          mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)],
+          neuralNetWorkContainer,
+          animatePattern
+        );
       }
     }
   } else {
     neuralNetWorkContainer.remove();
-    showFinalNumber();
+    Smash();
   }
 }

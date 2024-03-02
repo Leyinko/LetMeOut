@@ -60,7 +60,7 @@ export default function ianasays() {
                 gameStage++;
                 speedWrite *= 0.75;
                 keyboardOn = false;
-                start('Stage: ' + (gameStage + 1), ianasaysContainer, keyHint, 'display-timer');
+                start('Stage: ' + (gameStage + 1), ianasaysContainer, keyHint);
                 inputGame.value = '';
               }
             } else {
@@ -77,7 +77,7 @@ export default function ianasays() {
     keyboardGame.appendChild(rowElement);
   });
 
-  start(false, ianasaysContainer, keyHint, 'display-timer');
+  start(false, ianasaysContainer, keyHint);
 }
 
 function checkGame(word) {
