@@ -11,7 +11,6 @@
   transform: translate(-50%, -50%);
   width: 500px;
   height: 500px;
-  border: 1px solid red;
 }
 .map-row {
   display: flex;
@@ -34,13 +33,13 @@
   align-items: center;
   width: 75px;
   height: 75px;
-  background-color: red;
+  border: 2px outset white;
 }
 .active {
   background-color: blue;
 }
 .active-selected {
-  background-color: green;
+  background-color: #03af23;
 }
 .keyboard-memorypath {
   width: 100%;
@@ -61,15 +60,4 @@
 }
 #b3 {
   transform: rotate(-90deg);
-}
-
-.display-timer-3 {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 70px;
-  font-family: 'JMH';
-  color: turquoise;
-  z-index: 3;
 }
