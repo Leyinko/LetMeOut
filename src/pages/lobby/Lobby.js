@@ -28,7 +28,7 @@ export const Lobby = () => {
   const back = document.querySelector('.back-to-main');
   back.addEventListener('click', () => {
     // Reset Previous Section
-    document.querySelector('section').remove();
+    lobby.remove();
     // Main
     Main();
   });

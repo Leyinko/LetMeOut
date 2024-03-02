@@ -1,0 +1,19 @@
+#intro {
+  padding: 100px;
+  width: inherit;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: black;
+}
+
+#intro img {
+  width: 450px;
+  opacity: 0.9;
+}
+
+#intro * {
+  font-family: 'JMH';
+}

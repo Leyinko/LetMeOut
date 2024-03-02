@@ -54,13 +54,16 @@
 body {
   font-family: 'Hells';
   background-color: black;
-  /* background-color: var(--lmo-bg-color); */
   color: var(--lmo-main-text-color);
 }
 
 #app {
   width: 100svw;
-  height: 100svh;
+  height: 90svh;
+  margin-top: 5svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes players-hub-appearance {

@@ -1,20 +1,14 @@
 import Loader from '../../components/atoms/loader/Loader';
 import Main from './utils/Main/Main';
+import { immersion_message, opening_warning } from './utils/Text';
 import './Opening.css';
 
 const Launch = () => {
   // App
   const app = document.querySelector('#app');
-  // Audio
-  const audio = document.createElement('audio');
-  audio.src = 'src/assets/audio/music/Main-soundtrack.mp3';
-  audio.loop = true;
-  audio.volume = 0.6;
-  app.appendChild(audio);
-  // Start
 
-  // Loader
   Loader(app);
+
   setTimeout(() => {
     document.querySelector('.loader').remove();
   }, 2000);
@@ -25,7 +19,7 @@ const Launch = () => {
     warning.remove();
   }, 7000);
   setTimeout(() => {
-    headphonesModal(app);
+    immersionModal(app);
   }, 9000);
 };
 
@@ -34,34 +28,46 @@ function warningScreen(app) {
   warning.id = 'warning';
 
   warning.innerHTML = `
-    <h3>WARNING</h3>
-    <p>The motion pictures contained in this video game are protected under the copyright laws of the United States and Other countries. This diskette is sold for home use only and all Other rights are expressly reserved by the copyright owner of such motion pictures.
-    Any copying or public performance of such motion pictures is strictly prohibited and may subject the offender to civil liability and severe criminal penalties.</p>
-    <span>(title 17, United States Code, Section 501 and 506)</span>
+    <h3>${opening_warning.warning}</h3>
+    <p>${opening_warning.content}</p>
+    <span>${opening_warning.laws}</span>
   `;
 
   app.appendChild(warning);
 }
 
-function headphonesModal(app) {
-  const headphonesModal = document.createElement('div');
-  headphonesModal.id = 'headphones-modal';
+function immersionModal(app) {
+  const immersionModal = document.createElement('div');
+  immersionModal.id = 'immersion';
 
-  headphonesModal.innerHTML = `
-    <img src="src/assets/images/icons/menu/headphones.png">
-    <p>We recommend the use of Headphones for a better experience.</p>
-    <span>Click to continue</span>
+  immersionModal.innerHTML = `
+    <p>${immersion_message.content}</p>
+    <span>${immersion_message.continue}</span>
   `;
 
-  app.appendChild(headphonesModal);
+  app.appendChild(immersionModal);
 
-  const click = document.querySelector('#headphones-modal span');
+  const click = document.querySelector('#immersion span');
   click.addEventListener('click', () => {
-    document.querySelector('audio').play();
-    headphonesModal.remove();
-    // Main Menu
-    Main();
+    immersionModal.remove();
+
+    setTimeout(() => toMain(app), 1000);
   });
+}
+
+function toMain(app) {
+  // Main Menu
+  Main();
+  // Audio
+  const audio = document.createElement('audio');
+  audio.src = 'src/assets/audio/music/Main-soundtrack.mp3';
+  audio.loop = true;
+  audio.volume = 0.7;
+  audio.play();
+
+  app.appendChild(audio);
+  // FullScreen
+  document.documentElement.requestFullscreen();
 }
 
 export default Launch;

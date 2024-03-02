@@ -1,8 +1,8 @@
 import './memoryPath.css';
 import { start } from '../game-utils';
 import { handleTime } from '../../../components/atoms/countdownTimer/Timer';
+import neuralNetWork from '../neuralNetWork/neuralNetWork';
 
-const app = document.getElementById('app');
 const memoryPathContainer = document.createElement('section');
 memoryPathContainer.className = 'memorypath-container';
 
@@ -10,6 +10,7 @@ let map = Array.from(Array(5), () => new Array(5).fill(0));
 let resultPath = [];
 let playerPath = [];
 let firstMove = [];
+let moves = -1;
 const directions = [
   [0, -1],
   [1, 0],
@@ -22,6 +23,7 @@ let moveSpeed = 1000;
 
 export default function MemoryPath() {
   //dispaly cells
+  const gamesModal = document.querySelector('.games-modal');
   map.forEach((row, columnIndex) => {
     const rowElement = document.createElement('div');
     rowElement.className = 'map-row';
@@ -31,13 +33,6 @@ export default function MemoryPath() {
       cellElement.className = cell ? 'cell' : 'void-cell';
       cellElement.textContent = cell;
       cellElement.id = `cell${columnIndex}${rowIndex}`;
-
-      cellElement.addEventListener('click', () => {
-        map[columnIndex][rowIndex] = map[columnIndex][rowIndex] ? 0 : 1;
-        cellElement.className = map[columnIndex][rowIndex] ? 'cell' : 'void-cell';
-        cellElement.textContent = map[columnIndex][rowIndex];
-        console.log(map);
-      });
 
       rowElement.appendChild(cellElement);
     });
@@ -64,6 +59,12 @@ export default function MemoryPath() {
         map[newX][newY] = 1;
         const cell = document.querySelector(`#cell${newY}${newX}`);
         cell.classList.add('active-selected');
+        moves++;
+        checkResult();
+      } else {
+        cleanCell();
+        playerPath.push(dir);
+        moves++;
         checkResult();
       }
     });
@@ -73,7 +74,7 @@ export default function MemoryPath() {
 
   memoryPathContainer.appendChild(keyboard);
 
-  app.appendChild(memoryPathContainer);
+  gamesModal.appendChild(memoryPathContainer);
   start('Starting...', memoryPathContainer, createPath, 'display-timer-3');
 }
 
@@ -119,23 +120,38 @@ function isValidMove(dir, x, y) {
 
 function checkResult() {
   console.log(playerPath, resultPath);
-  if (stage < 3) {
-    if (playerPath.join('').length == resultPath.join('').replace(/\d$/, '').length) {
-      if (playerPath.join('') == resultPath.join('').replace(/\d$/, '')) {
-        stage++;
-        steps += 2;
-        moveSpeed * 0.75;
-        playerPath = [];
-        resultPath = [];
-        start(`stage: ${stage}`, memoryPathContainer, createPath, 'display-timer-3');
-      } else {
-        handleTime(20, false);
-        start(`Stage: ${stage}`, memoryPathContainer, createPath, 'display-timer-3');
+  if (stage <= 3) {
+    if (resultPath[moves] != playerPath[moves]) {
+      cleanCell();
+      resetGame();
+      handleTime(20, false);
+      start(`Wrong path`, memoryPathContainer, createPath, 'display-timer-3');
+    } else {
+      if (playerPath.join('').length == resultPath.join('').replace(/\d$/, '').length) {
+        if (playerPath.join('') == resultPath.join('').replace(/\d$/, '')) {
+          stage++;
+          steps += 2;
+          moveSpeed * 0.75;
+          resetGame();
+          stage == 4 && checkResult();
+          stage != 4 && start(`stage: ${stage}`, memoryPathContainer, createPath, 'display-timer-3');
+        } else {
+          resetGame();
+          handleTime(20, false);
+          start(`Stage: ${stage}`, memoryPathContainer, createPath, 'display-timer-3');
+        }
       }
     }
   } else {
-    alert('Ganaste');
+    memoryPathContainer.remove();
+    neuralNetWork();
   }
+}
+
+function resetGame() {
+  playerPath = [];
+  resultPath = [];
+  moves = -1;
 }
 
 function cleanCell() {

@@ -2,11 +2,11 @@ import './Smash.css';
 
 function Smash() {
   // App
-  const app = document.querySelector('#app');
+  const gamesModal = document.querySelector('.games-modal');
   const container = document.createElement('section');
   container.id = 'smash-container';
 
-  app.appendChild(container);
+  gamesModal.appendChild(container);
 
   // Buttons
   let buttons = 0;

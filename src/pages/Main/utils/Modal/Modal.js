@@ -1,4 +1,5 @@
 import Button from '../../../../components/atoms/button/Button';
+import { modals_main_template } from '../Text';
 import './Modal.css';
 
 const createModal = (id, parent) => {
@@ -6,7 +7,7 @@ const createModal = (id, parent) => {
   modal.id = `${id}-modal`;
   modal.className = 'modal';
 
-  modal.innerHTML = modalsMenusText[id];
+  modal.innerHTML = modals_main_template[id];
 
   Button('X', 'close-modal-button', 'close-modal-main', 'button', modal);
 
@@ -14,11 +15,6 @@ const createModal = (id, parent) => {
 
   const close = document.querySelector('.close-modal-button');
   close.addEventListener('click', () => modal.remove());
-};
-
-const modalsMenusText = {
-  credits: `<p>Jeni || Manu || Luca</p>`,
-  instructions: `<span>Please be kind to your fellow players.. Animals first :3</span>`,
 };
 
 export default createModal;
