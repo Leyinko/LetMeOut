@@ -36,8 +36,8 @@
   height: 75px;
   background-color: red;
 }
-.active {
-  background-color: blue;
+.pop {
+  background-color: rgb(255, 0, 242);
 }
 .active-selected {
   background-color: green;

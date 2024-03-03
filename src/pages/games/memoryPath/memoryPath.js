@@ -89,7 +89,7 @@ function createPath() {
 
     if (index < steps) {
       const cell = document.querySelector(`#cell${y}${x}`);
-      cell.classList.add('active');
+      cell.classList.add('pop');
 
       let dir = Math.floor(Math.random() * 4);
       let dirIndex = 0;
@@ -157,7 +157,7 @@ function resetGame() {
 function cleanCell() {
   const cells = document.querySelectorAll('.void-cell');
   cells.forEach((element) => {
-    element.classList.remove('active');
+    element.classList.remove('pop');
     element.classList.remove('active-selected');
     element.classList.remove('cell');
   });

@@ -1,7 +1,10 @@
+import { addNoteToCollectables } from '../../src/localStorage/LS';
+import { random } from '../../utils';
 import { notes, stage1, stage2, stage3, tickets } from '../Class/Objects';
 import './Progression.css';
 
-// TESTING ZONE ------> HUD for Progression test
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TESTING ZONE ------> HUD for Progression test
+
 const Progression = () => {
   let room = document.querySelector('#room');
 
@@ -25,18 +28,19 @@ function checkProgressPhases() {
   Array.from(phases).every((phase) => phase.classList.contains('completed')) &&
     alert('Congratulations you are free from Luca for a few days, do not get used of it...');
 }
-// TESTING ZONE ------> HUD for Progression test
+
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TESTING ZONE ------> HUD for Progression test
 
 export function itemsPrintOnStage(stage) {
   switch (stage) {
     case 0:
       let first = document.querySelectorAll(`${stage1.query}`);
-      itemPop(stage1.items, first[0]);
+      itemPop(stage1.items, first[random(first.length)]);
       break;
     case 1:
       let second = Array.from(document.querySelectorAll(`${stage2.query}`));
-      stage2.items.forEach((item, index) => {
-        let element = document.querySelector(`#${second[index].getAttribute('id')}`);
+      stage2.items.forEach((item) => {
+        let element = document.querySelector(`#${second[random(second.length)].getAttribute('id')}`);
         itemPop(item, element);
       });
       break;
@@ -44,7 +48,7 @@ export function itemsPrintOnStage(stage) {
       let third = Array.from(document.querySelectorAll(`${stage3.query}`));
       let room = document.querySelector('#room').getAttribute('room');
       let polaroid = stage3.items.filter((polaroid) => polaroid.includes(room));
-      itemPop(polaroid, third[0]);
+      itemPop(polaroid[0], third[random(third.length)]);
       break;
   }
   // Tickets and Note
@@ -55,17 +59,26 @@ export function itemsPrintOnStage(stage) {
 
 function itemPop(src, parent) {
   let item = document.createElement('img');
-  item.src = src;
+  item.src = 'src/assets/images/icons/active/object-found.png';
   item.className = 'item';
+
+  let colliderPosition = parent.getBoundingClientRect();
+
+  item.style.top = `${colliderPosition.top}px`;
+  item.style.left = `${colliderPosition.left}px`;
+
   parent.appendChild(item);
 
   let collider = item.parentElement;
   collider.classList.add('clickable');
+
   collider.addEventListener('click', () => item.classList.add('found'));
 
   item.addEventListener('click', (e) => {
     let collider = e.target.closest('div');
     item.remove();
+
+    addItemToInventory(src);
 
     let stage = document.querySelector('#room').getAttribute('progression');
     let check = Array.from(document.querySelectorAll(`[stage="${stage}"]`)).filter((item) => item.childElementCount);
@@ -75,6 +88,17 @@ function itemPop(src, parent) {
       checkProgressPhases();
     }
   });
+}
+
+function addItemToInventory(item) {
+  let actives = document.querySelectorAll('[id^="inventory"] img');
+  let pattern = /([a-zA-Z]*?[0-9]*)(?=\.|\-)/;
+
+  item.match(pattern)[0].length === 1
+    ? addNoteToCollectables(item)
+    : actives.forEach(
+        (active) => active.src.match(pattern)[0].at(0) === item.match(pattern)[0].at(0) && active.classList.add('got')
+      );
 }
 
 function ticketAndNotePrint(...elements) {

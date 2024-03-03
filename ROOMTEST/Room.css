@@ -2,17 +2,18 @@
 
 /* .object {
   position: absolute;
-  left: 948px;
-  top: 304px;
-  width: 50px;
-} */
+  left: 456px;
+  top: 466px;
+  width: 175px;
+}
 
-/* .collider {
+.collider {
   position: absolute;
-  left: 988px;
-  top: 319px;
-  width: 15px;
-  height: 15px;
+  position: absolute;
+  left: 456px;
+  top: 466px;
+  width: 173px;
+  height: 140px;
   border: 1px solid yellow;
 } */
 
@@ -27,13 +28,13 @@ section#room {
 
 #room > img {
   position: absolute;
-  transition: all 1s ease-in-out;
+  transition: all 0.7s ease-in-out;
   pointer-events: none;
 }
 
 #room > div {
   position: absolute;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.1s ease-in-out;
   pointer-events: none;
 }
 

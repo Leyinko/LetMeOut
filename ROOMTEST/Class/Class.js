@@ -91,7 +91,7 @@ function pointerHandlers(object, collider, item) {
 }
 
 export function assignStagesItems() {
-  let actives = document.querySelectorAll('#room > div:not(#note):not(#ticket)');
+  let actives = document.querySelectorAll('#room > div:not(#note):not(#ticket):not(#console)');
   let shuffled = fisherYatesShuffle(Array.from(actives)).map((element) => element.getAttribute('id'));
 
   const probabilities = [0.3, 0.7];

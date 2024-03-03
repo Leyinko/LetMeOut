@@ -1,3 +1,4 @@
+import Room from '../../../../../ROOMTEST/Room';
 import { copyText } from '../../../../../utils';
 import Button from '../../../../components/atoms/button/Button';
 import Menu from '../../../../components/atoms/menu/Menu';

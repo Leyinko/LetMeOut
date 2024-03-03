@@ -1,7 +1,7 @@
 .progress {
   position: fixed;
   left: 50%;
-  bottom: 50px;
+  top: 50px;
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
@@ -17,10 +17,9 @@
 }
 
 .item {
-  position: relative;
-  width: 20px;
+  position: fixed;
+  width: 40px;
   display: none;
-  /* border: 3px solid red; */
 }
 
 .item.found {
@@ -35,27 +34,22 @@
 
 .found {
   cursor: pointer;
-  position: absolute;
-  top: 0;
-  right: 0;
-  /* width: 30px; */
-  /* height: 30px; */
   animation: object-found 0.6s infinite ease-in-out;
   z-index: 9999999;
 }
 
 @keyframes object-found {
   0% {
-    transform: scale(1);
+    transform: scale(1) rotate(23deg);
     opacity: 0.7;
   }
   50% {
     filter: drop-shadow(1px 2px 6px #ffffff54);
-    transform: scale(1.1);
+    transform: scale(1.1) rotate(13deg);
     opacity: 1;
   }
   100% {
-    transform: scale(1);
+    transform: scale(1) rotate(23deg);
     filter: drop-shadow(1px 1px 1px #ffffff54);
     opacity: 0.7;
   }

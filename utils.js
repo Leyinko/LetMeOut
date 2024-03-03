@@ -24,6 +24,8 @@ export function fisherYatesShuffle(arr) {
   return arr;
 }
 
+export const random = (length) => Math.floor(Math.random() * length);
+
 export const soundFadeOut = (audio) => {
   let duration = audio.duration - audio.currentTime;
   let fadeStep = 0.4;
