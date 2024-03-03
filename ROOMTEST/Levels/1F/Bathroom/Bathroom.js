@@ -5,6 +5,16 @@ const BATHROOM = {
   backgroundImage: 'src/assets/images/pictures/1F/BATHROOM-POINTED.png',
   items: [
     {
+      itemImage: 'src/assets/images/pictures/1F/pointers/console.gif',
+      itemPosition: { x: '456px', y: '466px' },
+      itemSound: 'src/assets/audio/sounds/rooms/tv-switching.mp3',
+      colliderSize: { w: '173px', h: '140px' },
+      colliderPosition: { x: '456px', y: '466px' },
+      size: '175px',
+      hiddenOnPrint: true,
+      disappearOnClick: true,
+    },
+    {
       itemImage: 'src/assets/images/pictures/1F/pointers/ticket.png',
       itemPosition: { x: '1469px', y: '552px' },
       itemSound: 'src/assets/audio/sounds/rooms/metal-drag.mp3',

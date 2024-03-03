@@ -1,57 +1,67 @@
+import { actives, notes } from '../../../../ROOMTEST/Class/Objects';
+import { getCollectables } from '../../../localStorage/LS';
 import './inventory.css';
 
-const app = document.getElementById('app');
+export function Inventory(type) {
+  // Room
+  const app = document.getElementById('app');
 
-export default function Inventory(items, id) {
   const inventoryContainer = document.createElement('div');
-  inventoryContainer.id = id;
+  inventoryContainer.id = `inventory-${type}`;
 
-  items.forEach((element) => {
-    const inventoryElement = document.createElement('div');
-    inventoryElement.className = 'inventory-element';
-
-    const iconInventory = document.createElement('img');
-    iconInventory.classList.add('inventory-icon');
-    iconInventory.src = element.src;
-
-    inventoryElement.addEventListener('click', () => {
-      if (element.click) {
-        if (id == 'dropdown-note') {
-          const notesInventory = document.querySelector('#note-inventory');
-          notesInventory.style.display = notesInventory.style.display == 'grid' ? 'none' : 'grid';
-        } else {
-          console.log('furula');
-          inventoryModal(element.src);
-        }
-      }
+  if (type === 'active') {
+    actives.forEach((item) => iconItem(item, type, inventoryContainer));
+  } else {
+    inventoryContainer.addEventListener('click', (e) => {
+      // Toggle
+      inventoryContainer.classList.toggle('show');
+      collectablesDropdown(e, type);
     });
-
-    inventoryElement.appendChild(iconInventory);
-    inventoryContainer.appendChild(inventoryElement);
-  });
+  }
 
   app.appendChild(inventoryContainer);
 }
 
+function collectablesDropdown(e, type) {
+  if (e.target.classList.contains('show')) {
+    const collection = document.createElement('div');
+    collection.id = 'collection';
+
+    e.target.appendChild(collection);
+
+    notes.items.forEach((item) => iconItem(item, type, collection));
+
+    let collected = getCollectables();
+    collected.forEach((note) => note && document.querySelector(`#note-${note} img`).classList.add('got'));
+  } else {
+    document.querySelector('#collection').remove();
+  }
+}
+
 function inventoryModal(image) {
   const modalContainer = document.createElement('div');
-  modalContainer.className = 'inventory-modal';
+  modalContainer.className = 'item-modal';
 
-  const modal = `
-      <div class='note-gallery'>
-        <button class='close-gallery'>X</button>
-        <img class='gallery-image' src='${image}'/>
-      </div>
-    `;
+  const item = document.createElement('img');
+  item.src = image;
 
-  modalContainer.innerHTML = modal;
+  modalContainer.appendChild(item);
+
+  modalContainer.addEventListener('click', () => modalContainer.remove());
 
   app.appendChild(modalContainer);
+}
 
-  if (modalContainer) {
-    const closeButton = document.querySelector('.close-gallery');
+function iconItem(item, type, parent) {
+  const object = document.createElement('div');
+  object.className = 'item-inv';
+  object.id = type == 'active' ? 'active' : `note-${item.match(/\d/)[0]}`;
 
-    console.log(closeButton);
-    closeButton.addEventListener('click', () => app.removeChild(modalContainer));
-  }
+  const icon = document.createElement('img');
+  icon.src = item;
+
+  icon.addEventListener('click', () => inventoryModal(item));
+
+  object.appendChild(icon);
+  parent.appendChild(object);
 }
