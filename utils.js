@@ -40,3 +40,9 @@ export const soundFadeOut = (audio) => {
     }, 20);
   }
 };
+
+export function animationReflow(element, animation) {
+  element.style.animation = animation;
+  void element.offsetWidth;
+  element.style.animation = '';
+}

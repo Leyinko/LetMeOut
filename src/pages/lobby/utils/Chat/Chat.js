@@ -31,8 +31,11 @@ const ChatBox = (username, parent) => {
 };
 
 export function chatMessage(user, textContent) {
-  let localUser = document.querySelector('.player').textContent;
   let messages = document.querySelector('.messages');
+
+  let localUser = document.querySelector('.player')
+    ? document.querySelector('.player').textContent
+    : document.querySelector('.id').textContent;
 
   let message = document.createElement('li');
   message.id = 'message';
