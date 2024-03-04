@@ -1,7 +1,9 @@
 import { animationReflow } from '../../../../utils';
-import ChatBox from '../../Lobby/utils/Chat/Chat';
+import { getLocalID } from '../../../localStorage/LS';
+import { ws } from '../../../webSocket/webSocket';
 import Games from '../../games/games';
-
+import Transfer from './Actions/Transfer/Transfer';
+import ChatBox, { chatMessage } from './Chat/Chat';
 import './Console.css';
 
 const Terminal = (parent) => {
@@ -35,7 +37,7 @@ const Terminal = (parent) => {
   // > ID
   const id = document.createElement('h3');
   id.className = 'id';
-  id.textContent = '#4560-GR-77';
+  id.textContent = getLocalID().toUpperCase() ?? 'NOMANFACE';
 
   screen.appendChild(id);
 
@@ -84,9 +86,22 @@ const console_actions = {
   transfer: (parent) => {
     // Window
     createWindow('time-transfer', parent);
+    // Action
+    Transfer();
   },
   connect: (parent) => {
-    ChatBox(document.querySelector('.id').textContent, parent);
+    // Window
+    createWindow('chat', parent);
+
+    const chat = document.querySelector('#chat');
+    const messages = document.querySelector('.messages');
+    // Start Chat
+    !messages && ChatBox(document.querySelector('.id').textContent, chat);
+    //
+    ws.onmessage = function (event) {
+      const current = JSON.parse(event.data);
+      chatMessage(current.name, current.message);
+    };
   },
   fix: (parent) => {
     // Window

@@ -1,0 +1,48 @@
+#transfer-panel {
+  position: absolute;
+  bottom: 15px;
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+  left: -3px;
+  padding: 10px 20px;
+  width: 100%;
+  height: 60px;
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.625rem;
+  /* z-index: 333333; */
+}
+
+#transfer-panel button {
+  /* display: none; */
+  height: 30px;
+  padding: 0px 20px;
+  color: black;
+  border: 2px outset black;
+  background-color: transparent;
+  /* border: 1px solid red; */
+}
+
+#transfer-panel > div {
+  padding: 1px;
+  /* width: 97%; */
+  width: 100%;
+  height: 36px;
+  display: flex;
+  gap: 0.125rem;
+  /* height: fit-content; */
+  border: 2px inset black;
+}
+
+.downloading-block {
+  width: 14.19px;
+  height: 30px;
+  background-color: rgba(0, 0, 0, 0.836);
+}
+
+#transfer-panel input {
+  border: 1px solid green;
+  /* display: none; */
+}

@@ -7,8 +7,9 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100svw;
-  height: 100svh;
+  width: 1920px;
+  height: 1080px;
+  overflow: hidden;
   z-index: 1;
   opacity: 0;
   visibility: hidden;
@@ -118,17 +119,19 @@
 #window-usb.onscreen,
 #time-transfer.onscreen,
 #repair.onscreen,
-#reboot.onscreen {
+#reboot.onscreen,
+#chat.onscreen {
   position: absolute;
   display: block;
   z-index: 4;
   opacity: 0.9;
 }
 
-#window-usb span,
-#time-transfer span,
-#repair span,
-#reboot span {
+#window-usb span:first-child,
+#time-transfer span:first-child,
+#repair span:first-child,
+#reboot span:first-child,
+#chat span:first-child {
   cursor: pointer;
   position: absolute;
   width: 40px;
@@ -145,6 +148,7 @@
   width: 490px;
   height: 365px;
   background: url('src/assets/images/pictures/console/windows/diskette.png') center/contain no-repeat;
+  filter: brightness(1.1);
   /* border: 1px solid red; */
 }
 
@@ -174,9 +178,23 @@
   top: 50%;
   left: 50%;
   transform: translate(-54%, -50%);
-  width: 710px;
-  height: 570px;
+  width: 584px;
+  height: 470px;
   background: url('src/assets/images/pictures/console/windows/reboot.png') center/contain no-repeat;
+  box-shadow: 1px 1px 2px 2px rgb(0, 0, 0);
+  /* border: 1px solid red; */
+}
+
+#chat {
+  display: none;
+  top: 45%;
+  right: -50px;
+  transform: translate(-54%, -50%);
+  width: 350px;
+  height: 370px;
+  background: url('src/assets/images/pictures/console/windows/chat.png') center/contain no-repeat;
+  box-shadow: 1px 1px 2px 2px rgb(0, 0, 0);
+  filter: brightness(0.9);
   /* border: 1px solid red; */
 }
 
