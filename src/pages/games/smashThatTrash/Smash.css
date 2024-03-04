@@ -4,59 +4,22 @@
   top: 50%;
   display: flex;
   justify-content: center;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -46%);
   border-radius: 50%;
-  width: 600px;
-  height: 600px;
+  width: 300px;
+  height: 300px;
+  /* border: 1px solid red; */
 }
 
 #smash-container div {
   cursor: pointer;
-  width: 150px;
-  height: 42.5%;
-  clip-path: polygon(0 27%, 58% 34%, 100% 59%, 100% 86%, 52% 56%, 0% 50%);
-  background-color: rgba(255, 255, 255, 0.9);
+  width: 60px;
+  height: 32.5%;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  border: 28px inset black;
+  background-color: rgb(0, 0, 0);
+  opacity: 0.9;
 }
-
-/* #B1 {
-  top: 0px;
-  right: 80px;
-}
-
-#B2 {
-  top: 160px;
-  right: -30px;
-}
-
-#B3 {
-  top: 340px;
-  right: 0px;
-}
-
-#B4 {
-  top: 440px;
-  right: 150px;
-}
-
-#B5 {
-  top: 410px;
-  left: 120px;
-}
-
-#B6 {
-  top: 250px;
-  left: 10px;
-}
-
-#B7 {
-  top: 70px;
-  left: 40px;
-}
-
-#B8 {
-  top: -30px;
-  left: 180px;
-} */
 
 #smash-container div.active {
   animation: flash-button ease-in-out;
@@ -75,18 +38,9 @@
 
 @keyframes flash-button {
   0% {
-    background-color: blue;
-  }
-  /* 20% {
-    background-color: purple;
-  }
-  80% {
-    background-color: purple;
-  } */
-  99% {
-    background-color: blue;
+    background-color: rgb(0, 0, 0);
   }
   100% {
-    background-color: rgb(0, 255, 255);
+    background-color: rgb(255, 255, 255);
   }
 }
