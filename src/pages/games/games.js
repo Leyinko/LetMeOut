@@ -2,14 +2,14 @@ import MemoryPath from './memoryPath/memoryPath';
 import neuralNetWork from './neuralNetWork/neuralNetWork';
 import Smash from './smashThatTrash/Smash';
 
-const app = document.getElementById('app');
-
-export default function Games() {
+export default function Games(parent) {
   const gamesModal = document.createElement('article');
   gamesModal.className = 'games-modal';
 
-  app.appendChild(gamesModal);
+  parent.appendChild(gamesModal);
   Smash();
+  // MemoryPath();
+  // neuralNetWork();
 }
 
 export function showFinalNumber() {

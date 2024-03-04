@@ -29,10 +29,13 @@ export function start(displayStage, node, callback) {
 }
 
 export const mistakePhrases = [
-  "Keep trying, it's getting closer.",
-  "Try again, there's no time.",
-  '...',
-  "It's almost there.",
-  'Take it seriously...',
-  "Don't be nervous, you're almost there.",
+  'Update failure',
+  'Operation aborted.',
+  'Error, please report.',
+  'Critical error - program terminated.',
+  'Bug detected, please contact support.',
+  'Program execution halted',
+  'Data integrity compromised.',
+  'Operation aborted.',
+  'Anomaly detected',
 ];

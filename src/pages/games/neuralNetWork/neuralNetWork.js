@@ -34,7 +34,7 @@ export default function neuralNetWork() {
   const gamesModal = document.querySelector('.games-modal');
   generateNewPatterns();
   printPattern(playerPattern);
-  start('Last pattern...', neuralNetWorkContainer, animatePattern);
+  start('Glitch Memory v3.4 - Reboot issue found...', neuralNetWorkContainer, animatePattern);
   console.log(resultPattern);
   gamesModal.append(neuralNetWorkContainer);
 }

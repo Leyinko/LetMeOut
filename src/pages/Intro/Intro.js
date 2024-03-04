@@ -1,6 +1,6 @@
-import Room from '../../../ROOMTEST/Room';
 import { soundFadeOut } from '../../../utils';
 import { audioConfig, playSound } from '../../components/atoms/audio/Audio';
+import Room from '../Room/Room';
 import './Intro.css';
 
 const Intro = () => {

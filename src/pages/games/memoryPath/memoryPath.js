@@ -46,7 +46,7 @@ export default function MemoryPath() {
   for (let i = 0; i < 4; i++) {
     const button = document.createElement('img');
     button.className = 'button-memorypath';
-    button.src = 'src/assets/images/icons/games/arrow.png';
+    button.src = 'src/assets/images/icons/console/games/arrow.png';
     button.id = `b${i}`;
     button.textContent = '⬆️';
 
@@ -78,7 +78,7 @@ export default function MemoryPath() {
   memoryPathContainer.appendChild(keyboard);
 
   gamesModal.appendChild(memoryPathContainer);
-  start('Will you remember the way?', memoryPathContainer, createPath);
+  start(`Pathfinder v1.3 - Analyzing...`, memoryPathContainer, createPath);
 }
 
 function createPath() {

@@ -1,5 +1,5 @@
-import { actives, notes } from '../../../../ROOMTEST/Class/Objects';
 import { getCollectables } from '../../../localStorage/LS';
+import { actives, notes } from '../../../pages/Room/Class/Objects';
 import './inventory.css';
 
 export function Inventory(type) {

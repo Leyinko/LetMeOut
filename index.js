@@ -1,4 +1,3 @@
-import Room from './ROOMTEST/Room.js';
 import { Lobby } from './src/pages/Lobby/Lobby';
 // import ianasays from './src/pages/games/ianasays/ianasays.js';
 // import { playSound } from './src/components/atoms/audio/Audio';
@@ -15,6 +14,7 @@ import countdown from './src/components/atoms/countdownTimer/Timer';
 import './style.css';
 // import Inventory from './src/components/molecules/inventory/inventory';
 import Games from './src/pages/games/games.js';
+import Room from './src/pages/Room/Room.js';
 
 // const audio = new Audio('src/assets/audio/music/Main-soundtrack.mp3');
 // const audio = new Audio('src/assets/audio/music/The-Prospector.mp3');

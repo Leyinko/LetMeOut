@@ -19,7 +19,7 @@ function Smash() {
   // Buttons
   let buttons = 0;
   let rotation = 22.5;
-  const radius = 200;
+  const radius = 130;
   const totalButtons = 8;
 
   while (buttons < totalButtons) {
@@ -44,7 +44,7 @@ function Smash() {
     buttons++;
     rotation += 45;
   }
-  start('Act quickly', smashContainer, startGame);
+  start('Rapid Rebuild (BETA) - Retrieving code...', smashContainer, startGame);
 }
 
 function startGame() {
