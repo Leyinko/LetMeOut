@@ -37,7 +37,7 @@ const Terminal = (parent) => {
   // > ID
   const id = document.createElement('h3');
   id.className = 'id';
-  id.textContent = getLocalID().toUpperCase() ?? 'NOMANFACE';
+  id.textContent = getLocalID() ?? 'NOMANFACE';
 
   screen.appendChild(id);
 
