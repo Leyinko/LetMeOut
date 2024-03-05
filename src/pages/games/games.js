@@ -1,15 +1,17 @@
+import EthernetConnection from './ethernetConection/ethernetConnection';
 import MemoryPath from './memoryPath/memoryPath';
 import neuralNetWork from './neuralNetWork/neuralNetWork';
 import Smash from './smashThatTrash/Smash';
 
-const app = document.getElementById('app');
-
-export default function Games() {
+export default function Games(parent) {
   const gamesModal = document.createElement('article');
   gamesModal.className = 'games-modal';
 
-  app.appendChild(gamesModal);
-  neuralNetWork();
+  parent.appendChild(gamesModal);
+  //Smash();
+  MemoryPath();
+  //neuralNetWork();
+  //EthernetConnection();
 }
 
 export function showFinalNumber() {
@@ -17,6 +19,8 @@ export function showFinalNumber() {
   const finalNumberModal = document.createElement('h2');
   finalNumberModal.className = 'final-number';
   finalNumberModal.textContent = '3';
+
+  gamesModal.innerHTML = '';
 
   gamesModal.appendChild(finalNumberModal);
 }

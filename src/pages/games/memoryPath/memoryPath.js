@@ -1,5 +1,5 @@
 import './memoryPath.css';
-import { start } from '../game-utils';
+import { start, mistakePhrases } from '../game-utils';
 import { handleTime } from '../../../components/atoms/countdownTimer/Timer';
 import neuralNetWork from '../neuralNetWork/neuralNetWork';
 
@@ -20,6 +20,7 @@ const directions = [
 let stage = 1;
 let steps = 5;
 let moveSpeed = 1000;
+let buttonOn = false;
 
 export default function MemoryPath() {
   //dispaly cells
@@ -31,7 +32,6 @@ export default function MemoryPath() {
     row.forEach((cell, rowIndex) => {
       const cellElement = document.createElement('div');
       cellElement.className = cell ? 'cell' : 'void-cell';
-      cellElement.textContent = cell;
       cellElement.id = `cell${columnIndex}${rowIndex}`;
 
       rowElement.appendChild(cellElement);
@@ -44,28 +44,31 @@ export default function MemoryPath() {
   keyboard.className = 'keyboard-memorypath';
 
   for (let i = 0; i < 4; i++) {
-    const button = document.createElement('button');
+    const button = document.createElement('img');
     button.className = 'button-memorypath';
+    button.src = 'src/assets/images/icons/console/games/arrow.png';
     button.id = `b${i}`;
     button.textContent = '⬆️';
 
     button.addEventListener('click', () => {
-      const dir = parseInt(button.id.substring(1));
-      if (isValidMove(dir, firstMove[0], firstMove[1])) {
-        cleanCell();
-        playerPath.push(dir);
-        let newX = (firstMove[0] += directions[dir][0]);
-        let newY = (firstMove[1] += directions[dir][1]);
-        map[newX][newY] = 1;
-        const cell = document.querySelector(`#cell${newY}${newX}`);
-        cell.classList.add('active-selected');
-        moves++;
-        checkResult();
-      } else {
-        cleanCell();
-        playerPath.push(dir);
-        moves++;
-        checkResult();
+      if (buttonOn) {
+        const dir = parseInt(button.id.substring(1));
+        if (isValidMove(dir, firstMove[0], firstMove[1])) {
+          cleanCell();
+          playerPath.push(dir);
+          let newX = (firstMove[0] += directions[dir][0]);
+          let newY = (firstMove[1] += directions[dir][1]);
+          map[newX][newY] = 1;
+          const cell = document.querySelector(`#cell${newY}${newX}`);
+          cell.classList.add('active-selected');
+          moves++;
+          checkResult();
+        } else {
+          cleanCell();
+          playerPath.push(dir);
+          moves++;
+          checkResult();
+        }
       }
     });
 
@@ -75,7 +78,7 @@ export default function MemoryPath() {
   memoryPathContainer.appendChild(keyboard);
 
   gamesModal.appendChild(memoryPathContainer);
-  start('Starting...', memoryPathContainer, createPath, 'display-timer-3');
+  start(`Pathfinder v1.3 - Analyzing...`, createPath);
 }
 
 function createPath() {
@@ -89,7 +92,7 @@ function createPath() {
 
     if (index < steps) {
       const cell = document.querySelector(`#cell${y}${x}`);
-      cell.classList.add('active');
+      cell.classList.add('pop');
 
       let dir = Math.floor(Math.random() * 4);
       let dirIndex = 0;
@@ -107,6 +110,7 @@ function createPath() {
     } else {
       const firstCell = document.querySelector(`#cell${firstMove[1]}${firstMove[0]}`);
       firstCell.classList.add('active-selected');
+      buttonOn = true;
       clearInterval(interval);
     }
   }, moveSpeed);
@@ -125,7 +129,7 @@ function checkResult() {
       cleanCell();
       resetGame();
       handleTime(20, false);
-      start(`Wrong path`, memoryPathContainer, createPath, 'display-timer-3');
+      start(mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)], createPath);
     } else {
       if (playerPath.join('').length == resultPath.join('').replace(/\d$/, '').length) {
         if (playerPath.join('') == resultPath.join('').replace(/\d$/, '')) {
@@ -134,11 +138,11 @@ function checkResult() {
           moveSpeed * 0.75;
           resetGame();
           stage == 4 && checkResult();
-          stage != 4 && start(`stage: ${stage}`, memoryPathContainer, createPath, 'display-timer-3');
+          stage != 4 && start(`stage: ${stage}`, memoryPathContainer, createPath);
         } else {
           resetGame();
           handleTime(20, false);
-          start(`Stage: ${stage}`, memoryPathContainer, createPath, 'display-timer-3');
+          start(`Stage: ${stage}`, memoryPathContainer, createPath);
         }
       }
     }
@@ -157,7 +161,7 @@ function resetGame() {
 function cleanCell() {
   const cells = document.querySelectorAll('.void-cell');
   cells.forEach((element) => {
-    element.classList.remove('active');
+    element.classList.remove('pop');
     element.classList.remove('active-selected');
     element.classList.remove('cell');
   });

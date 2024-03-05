@@ -47,15 +47,6 @@
   border-top: 3px solid grey;
 }
 
-.display-timer {
-  position: fixed;
-  top: 30%;
-  font-size: 100px;
-  font-family: 'JMH';
-  color: red;
-  z-index: 3;
-}
-
 @keyframes show {
   0% {
     transform: scale(0.8);

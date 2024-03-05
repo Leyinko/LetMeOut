@@ -1,0 +1,59 @@
+#transfer-panel {
+  position: absolute;
+  bottom: 8px;
+  left: -3px;
+  padding: 10px 20px;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.625rem;
+}
+
+#transfer-panel button {
+  height: 30px;
+  padding: 0px 20px;
+  color: black;
+  font-weight: 700;
+  border: 2px outset black;
+  background-color: transparent;
+  /* pointer-events: none;
+  opacity: 0.6; */
+}
+
+#transfer-panel > div {
+  padding: 1px;
+  width: 100%;
+  height: 31px;
+  display: flex;
+  gap: 0.125rem;
+  border: 2px inset rgba(0, 0, 0, 0.5);
+}
+
+.downloading-block {
+  width: 14.19px;
+  height: 25px;
+  background-color: rgba(0, 0, 0, 0.911);
+}
+
+#transfer-panel input {
+  margin-top: 5px;
+  width: 50%;
+  height: 35px;
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: rgba(255, 255, 255, 0.322);
+  border: 2px inset rgba(0, 0, 0, 0.438);
+  border-radius: 5px;
+}
+
+#transfer-panel p {
+  position: absolute;
+  bottom: 5px;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 9px;
+  font-weight: 800;
+  z-index: 88888888;
+}

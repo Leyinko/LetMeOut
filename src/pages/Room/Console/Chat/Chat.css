@@ -1,0 +1,46 @@
+#message-content {
+  margin-top: 28px;
+  margin-left: 5px;
+  width: 95%;
+  text-align: start;
+  font-size: 10px;
+  color: black;
+  /* border: 1px solid red; */
+}
+
+.messages {
+  margin-top: 50px;
+  margin-left: 10px;
+  padding: 5px 15px 15px 15px;
+  height: 48%;
+  width: 95%;
+  list-style: none;
+  overflow-y: scroll;
+  /* border: 1px solid red; */
+}
+
+#message.self {
+  text-align: end;
+}
+
+#message h4 {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 800;
+  font-family: 'JMH';
+  opacity: 0.8;
+  color: black;
+}
+
+#message span {
+  font-size: 11px;
+  font-family: 'JMH';
+  color: black;
+}
+
+*::-webkit-scrollbar,
+*::-webkit-scrollbar-thumb {
+  width: 0px;
+  height: 0px;
+  background-color: transparent;
+}

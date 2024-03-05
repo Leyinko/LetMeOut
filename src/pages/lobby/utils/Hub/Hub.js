@@ -1,9 +1,10 @@
 import { copyText } from '../../../../../utils';
 import Button from '../../../../components/atoms/button/Button';
 import Menu from '../../../../components/atoms/menu/Menu';
+import { storeGameData } from '../../../../localStorage/LS';
 import sendRequest, { ws } from '../../../../webSocket/webSocket';
 import { preIntro } from '../../../Intro/Intro';
-import ChatBox, { chatMessage } from '../Chat/Chat';
+import Room from '../../../Room/Room';
 import './Hub.css';
 
 const PlayersHub = (code, username, party) => {
@@ -40,17 +41,7 @@ const PlayersHub = (code, username, party) => {
       player++;
     }
 
-    const chat = document.createElement('img');
-    chat.setAttribute('role', 'button');
-    chat.className = 'chat-icon';
-    chat.src = 'src/assets/images/icons/menu/chat.svg';
-
-    chat.addEventListener('click', (e) => {
-      e.target.classList.toggle('on');
-      ChatBox(username, playersHub);
-    });
-
-    playersHub.append(room, nickname, players, chat);
+    playersHub.append(room, nickname, players);
 
     Button('', 'ready-button', 'lobby-buttons', 'submit', lobby);
     let ready = document.querySelector('.ready-button');
@@ -67,12 +58,11 @@ const PlayersHub = (code, username, party) => {
 
     ws.onmessage = function (event) {
       const current = JSON.parse(event.data);
-      if (current.tag === 'chat') {
-        chatMessage(current.name, current.message);
-      } else {
-        updateReadyState(current);
-        allPlayersReady();
-      }
+
+      console.log(current);
+
+      updateReadyState(current);
+      allPlayersReady(current, nickname.textContent.toLowerCase());
     };
   }
 };
@@ -90,11 +80,17 @@ function updateReadyState(data) {
   });
 }
 
-function allPlayersReady() {
+function allPlayersReady(data, username) {
   let players = Array.from(document.querySelectorAll('.players img'));
   let confirm = new Audio('src/assets/audio/sounds/lobby/Confirm-game.mp3');
   let ready = players.every((player) => player.style.opacity === '0.9');
 
+  // // ! Local Test ! //
+  // storeGameData(data, username);
+  // Room();
+  // // ! Local Test ! //
+
+  ready && storeGameData(data, username);
   ready && preIntro(confirm);
 }
 

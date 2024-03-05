@@ -26,7 +26,7 @@ function countdown() {
       remainingTime--;
     } else {
       clearInterval(interval);
-      alert('mueriste');
+      alert('Time Out');
     }
   }, 1000);
 }

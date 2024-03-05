@@ -1,4 +1,5 @@
 import Version from '../../../../components/atoms/Version/Version';
+import { Inventory } from '../../../../components/molecules/inventory/inventory';
 import menuSelection from '../MenuSelection/MenuSelection';
 import './Main.css';
 
@@ -21,6 +22,9 @@ export const Main = () => {
   // Menu Selection
   menuSelection(main);
   let selections = document.querySelector('#menu-field');
+
+  // Collectables
+  // Inventory('passive');
 
   // Version
   Version('V1.0', main);
