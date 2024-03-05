@@ -1,31 +1,18 @@
 import './games.css';
 
-export function start(displayStage, node, callback) {
+export function start(displayStage, callback) {
   const displayMessage = document.createElement('h2');
   displayMessage.classList.add('display-timer');
 
-  if (!displayStage) {
-    let timer = 3;
-    const starInterval = setInterval(() => {
-      if (timer > 0) {
-        displayMessage.textContent = timer.toString();
-        timer--;
-        node.appendChild(displayMessage);
-      } else {
-        clearInterval(starInterval);
-        node.removeChild(displayMessage);
-        callback();
-      }
-    }, 1000);
-  } else {
-    displayMessage.textContent = displayStage;
-    node.appendChild(displayMessage);
-    var stageTimeout = setTimeout(() => {
-      displayMessage.remove();
-      clearTimeout(stageTimeout);
-      start(false, node, callback);
-    }, 2000);
-  }
+  const gamesModal = document.querySelector('.games-modal');
+
+  displayMessage.textContent = displayStage;
+  gamesModal.appendChild(displayMessage);
+  var stageTimeout = setTimeout(() => {
+    displayMessage.remove();
+    clearTimeout(stageTimeout);
+    callback();
+  }, 2000);
 }
 
 export const mistakePhrases = [
