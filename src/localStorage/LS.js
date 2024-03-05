@@ -18,9 +18,13 @@ export function storeGameData(data, player) {
 
 export function getLocalID() {
   let data = JSON.parse(localStorage.getItem('data'));
-  let user = data && data.username;
 
-  return data && data.players.find((player) => player.name === user).id;
+  if (data) {
+    let user = data.username;
+    let player = data.players.find((player) => player.name.toLowerCase() === user);
+
+    return player.id.toUpperCase();
+  }
 }
 
 // //! CLICK COUNTER ON SCREEN

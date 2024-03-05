@@ -33,11 +33,10 @@ const Terminal = (parent) => {
   });
 
   // Elements
-
   // > ID
   const id = document.createElement('h3');
   id.className = 'id';
-  id.textContent = getLocalID() ?? 'NOMANFACE';
+  id.textContent = getLocalID() ?? '#XXXX-XX-DEV';
 
   screen.appendChild(id);
 

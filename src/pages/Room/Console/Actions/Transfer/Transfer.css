@@ -1,48 +1,59 @@
 #transfer-panel {
   position: absolute;
-  bottom: 15px;
-  /* left: 50%; */
-  /* transform: translateX(-50%); */
+  bottom: 8px;
   left: -3px;
   padding: 10px 20px;
   width: 100%;
   height: 60px;
-  /* border: 1px solid red; */
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1.625rem;
-  /* z-index: 333333; */
 }
 
 #transfer-panel button {
-  /* display: none; */
   height: 30px;
   padding: 0px 20px;
   color: black;
+  font-weight: 700;
   border: 2px outset black;
   background-color: transparent;
-  /* border: 1px solid red; */
+  /* pointer-events: none;
+  opacity: 0.6; */
 }
 
 #transfer-panel > div {
   padding: 1px;
-  /* width: 97%; */
   width: 100%;
-  height: 36px;
+  height: 31px;
   display: flex;
   gap: 0.125rem;
-  /* height: fit-content; */
-  border: 2px inset black;
+  border: 2px inset rgba(0, 0, 0, 0.5);
 }
 
 .downloading-block {
   width: 14.19px;
-  height: 30px;
-  background-color: rgba(0, 0, 0, 0.836);
+  height: 25px;
+  background-color: rgba(0, 0, 0, 0.911);
 }
 
 #transfer-panel input {
-  border: 1px solid green;
-  /* display: none; */
+  margin-top: 5px;
+  width: 50%;
+  height: 35px;
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: rgba(255, 255, 255, 0.322);
+  border: 2px inset rgba(0, 0, 0, 0.438);
+  border-radius: 5px;
+}
+
+#transfer-panel p {
+  position: absolute;
+  bottom: 5px;
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 9px;
+  font-weight: 800;
+  z-index: 88888888;
 }

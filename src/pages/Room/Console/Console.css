@@ -61,19 +61,25 @@
 .panel {
   position: absolute;
   left: 50%;
-  transform: translateX(-56%);
-  bottom: 14px;
-  width: 43%;
-  height: 180px;
+  transform: translateX(-60%) rotate(1deg);
+  bottom: 63px;
+  /* padding: 0px 20px; */
+  height: fit-content;
+  /* height: 180px; */
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 5.525rem;
+  gap: 3.125rem;
+  /* border: 1px solid red; */
 }
 
 .panel img {
   width: 43px;
   opacity: 0.4;
+}
+
+.panel img:nth-child(1) {
+  margin-top: 7px;
 }
 
 .panel img:nth-child(2) {
@@ -88,7 +94,8 @@
 
 .panel img:nth-child(3),
 .panel img:nth-child(4) {
-  width: 35px;
+  width: 33px;
+  margin-top: px;
 }
 
 .panel img:hover {
@@ -113,6 +120,19 @@
   cursor: pointer;
   opacity: 1;
 }
+
+/* ! */
+
+.access {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.block {
+  pointer-events: none;
+}
+
+/* ! */
 
 /* Windows */
 
