@@ -9,9 +9,9 @@ export default function Games(parent) {
 
   parent.appendChild(gamesModal);
   //Smash();
-  //MemoryPath();
+  MemoryPath();
   //neuralNetWork();
-  EthernetConnection();
+  //EthernetConnection();
 }
 
 export function showFinalNumber() {

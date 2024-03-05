@@ -37,10 +37,6 @@ function Smash() {
 
     smashContainer.appendChild(button);
 
-    button.addEventListener('click', (e) => {
-      !e.target.classList.contains('active') && console.log('Bitch you failed');
-    });
-
     buttons++;
     rotation += 45;
   }
@@ -52,17 +48,8 @@ function startGame() {
   let index = 0;
   let mistakes = 0;
 
-  // Random Sequence
-  // let array = [];
-
-  // for (let i = 0; i < 10; i++) {
-  //   let randomIndex = Math.floor(Math.random() * 8) + 1;
-  //   let query = `#B${randomIndex}`;
-  //   array.push(query);
-  // }
-
   const stageStart = setInterval(() => {
-    let randomButton = Math.floor(Math.random() * 8) + 1; //array.at(-1);
+    let randomButton = Math.floor(Math.random() * 8) + 1;
     let element = document.querySelector(`#B${randomButton}`);
 
     let click = false;
@@ -71,7 +58,10 @@ function startGame() {
       element.classList.add('active');
 
       setTimeout(() => {
-        !click && mistakes++;
+        if (!click) {
+          start(mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)], startGame);
+          clearInterval(stageStart);
+        }
         element.classList.remove('active');
       }, speed - 100);
 
@@ -92,7 +82,7 @@ function checkResult(mistakes) {
       stage++;
       times += 3;
       speed *= 0.8;
-      start(`Stage: ${stage}`, startGame);
+      start(`✅`, startGame);
     }
   } else {
     showFinalNumber();
