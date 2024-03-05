@@ -34,7 +34,7 @@ export default function neuralNetWork() {
   const gamesModal = document.querySelector('.games-modal');
   generateNewPatterns();
   printPattern(playerPattern);
-  start('Glitch Memory v3.4 - Reboot issue found...', neuralNetWorkContainer, animatePattern);
+  start('Glitch Memory v3.4 - Reboot issue found...', animatePattern);
   console.log(resultPattern);
   gamesModal.append(neuralNetWorkContainer);
 }
@@ -115,11 +115,8 @@ function checkResult(resultOne, resultTwo) {
         handleTime(20, false);
         generateNewPatterns();
         playerPattern = playerPattern.map((row) => row.map((element) => 0));
-        start(
-          mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)],
-          neuralNetWorkContainer,
-          animatePattern
-        );
+        touchOn = false;
+        start(mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)], animatePattern);
       }
     }
   } else {

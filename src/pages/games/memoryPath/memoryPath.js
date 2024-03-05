@@ -78,7 +78,7 @@ export default function MemoryPath() {
   memoryPathContainer.appendChild(keyboard);
 
   gamesModal.appendChild(memoryPathContainer);
-  start(`Pathfinder v1.3 - Analyzing...`, memoryPathContainer, createPath);
+  start(`Pathfinder v1.3 - Analyzing...`, createPath);
 }
 
 function createPath() {
@@ -129,7 +129,7 @@ function checkResult() {
       cleanCell();
       resetGame();
       handleTime(20, false);
-      start(mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)], memoryPathContainer, createPath);
+      start(mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)], createPath);
     } else {
       if (playerPath.join('').length == resultPath.join('').replace(/\d$/, '').length) {
         if (playerPath.join('') == resultPath.join('').replace(/\d$/, '')) {

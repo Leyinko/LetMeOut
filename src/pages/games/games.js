@@ -1,3 +1,4 @@
+import EthernetConnection from './ethernetConection/ethernetConnection';
 import MemoryPath from './memoryPath/memoryPath';
 import neuralNetWork from './neuralNetWork/neuralNetWork';
 import Smash from './smashThatTrash/Smash';
@@ -7,9 +8,10 @@ export default function Games(parent) {
   gamesModal.className = 'games-modal';
 
   parent.appendChild(gamesModal);
-  // Smash();
-  // MemoryPath();
-  neuralNetWork();
+  //Smash();
+  //MemoryPath();
+  //neuralNetWork();
+  EthernetConnection();
 }
 
 export function showFinalNumber() {

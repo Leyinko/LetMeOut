@@ -4,7 +4,7 @@ import './Smash.css';
 
 let stage = 1;
 let speed = 1000;
-let clicks = 10;
+let times = 10;
 
 const smashContainer = document.createElement('section');
 
@@ -44,7 +44,7 @@ function Smash() {
     buttons++;
     rotation += 45;
   }
-  start('Rapid Rebuild (BETA) - Retrieving code...', smashContainer, startGame);
+  start('Rapid Rebuild (BETA) - Retrieving code...', startGame);
 }
 
 function startGame() {
@@ -64,22 +64,17 @@ function startGame() {
   const stageStart = setInterval(() => {
     let randomButton = Math.floor(Math.random() * 8) + 1; //array.at(-1);
     let element = document.querySelector(`#B${randomButton}`);
-    element.style.animationDuration = `${speed}ms`;
 
     let click = false;
 
-    if (index < clicks) {
+    if (index < times) {
       element.classList.add('active');
 
-      element.addEventListener(
-        'animationend',
-        () => {
-          element.classList.remove('active');
-          void element.offsetWidth;
-          !click && mistakes++;
-        },
-        { once: true }
-      );
+      setTimeout(() => {
+        !click && mistakes++;
+        element.classList.remove('active');
+      }, speed - 100);
+
       element.addEventListener('click', (e) => (click = true));
       index++;
     } else {
@@ -92,12 +87,12 @@ function startGame() {
 function checkResult(mistakes) {
   if (stage < 3) {
     if (mistakes >= 5) {
-      start(mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)], smashContainer, startGame);
+      start(mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)], startGame);
     } else {
       stage++;
-      clicks += 3;
+      times += 3;
       speed *= 0.8;
-      start(`Stage: ${stage}`, smashContainer, startGame);
+      start(`Stage: ${stage}`, startGame);
     }
   } else {
     showFinalNumber();

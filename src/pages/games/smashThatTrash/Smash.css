@@ -22,7 +22,7 @@
 }
 
 #smash-container div.active {
-  animation: flash-button ease-in-out;
+  background-color: white;
 }
 
 .smash-your-trash {
