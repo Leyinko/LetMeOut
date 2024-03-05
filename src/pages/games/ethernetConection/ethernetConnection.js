@@ -85,7 +85,7 @@ function checkResult(selection, pairs, node) {
     console.log('El array es menor');
   }
 
-  if (pairs.length == 8) {
+  if (pairs.length == 16) {
     const LucaPhrase = document.createElement('h2');
     LucaPhrase.textContent = 'Bring back my girls';
 
