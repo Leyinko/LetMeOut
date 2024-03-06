@@ -8,6 +8,7 @@
 }
 
 #let-me-out {
+  display: none;
   font-size: 9rem;
   position: absolute;
   left: 50%;

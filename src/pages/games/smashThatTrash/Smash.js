@@ -64,7 +64,7 @@ function startGame() {
           clearInterval(stageStart);
         }
         element.classList.remove('active');
-      }, speed - 100);
+      }, speed - (stage === 3 ? 50 : 100));
 
       element.addEventListener('click', (e) => (click = true));
       index++;
@@ -79,7 +79,7 @@ function checkResult(mistakes) {
   if (stage < 3) {
     if (mistakes >= 5) {
       start(mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)], startGame);
-      failsOnMinigames('smash');
+      failsOnMinigames('Smash');
     } else {
       stage++;
       times += 3;

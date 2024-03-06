@@ -47,7 +47,7 @@ export default function MemoryPath() {
   for (let i = 0; i < 4; i++) {
     const button = document.createElement('img');
     button.className = 'button-memorypath';
-    button.src = 'src/assets/images/icons/console/games/arrow.png';
+    button.src = 'src/assets/images/icons/console/games/arrow.svg';
     button.id = `b${i}`;
     button.textContent = '⬆️';
 
@@ -83,6 +83,7 @@ export default function MemoryPath() {
 }
 
 function createPath() {
+  buttonOn = false;
   let index = 0;
   let x = Math.floor(Math.random() * 5);
   let y = Math.floor(Math.random() * 5);
@@ -140,11 +141,11 @@ function checkResult() {
           moveSpeed * 0.75;
           resetGame();
           stage == 4 && checkResult();
-          stage != 4 && start(`stage: ${stage}`, memoryPathContainer, createPath);
+          stage != 4 && start(`stage: ${stage}`, createPath);
         } else {
           resetGame();
           handleTime(20, false);
-          start(`Stage: ${stage}`, memoryPathContainer, createPath);
+          start(`Stage: ${stage}`, createPath);
         }
       }
     }

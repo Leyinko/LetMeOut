@@ -1,6 +1,6 @@
 import { Lobby } from './src/pages/Lobby/Lobby';
 // import ianasays from './src/pages/games/ianasays/ianasays.js';
-// import { playSound } from './src/components/atoms/audio/Audio';
+import { playSound } from './src/components/atoms/audio/Audio';
 // import Main from './src/pages/Main/utils/Main/Main';
 import Launch from './src/pages/Main/Opening';
 // import Smash from './src/pages/games/smashThatTrash/Smash';
