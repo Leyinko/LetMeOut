@@ -43,7 +43,9 @@ export const Room = () => {
   // Inventory Test
   Inventory('active');
   Inventory('passive');
-  incrementClickCount();
+
+  // Click Counter
+  room.addEventListener('click', incrementClickCount);
 };
 
 export default Room;

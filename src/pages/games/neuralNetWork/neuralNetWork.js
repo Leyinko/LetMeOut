@@ -111,14 +111,14 @@ function checkResult(resultOne, resultTwo) {
         playerPattern = playerPattern.map((row) => row.map((element) => 0));
         generateNewPatterns();
         stage == 4 && checkResult();
-        stage != 4 && start('stage: ' + stage, neuralNetWorkContainer, animatePattern);
+        stage != 4 && start('stage: ' + stage, animatePattern);
       } else {
         handleTime(20, false);
         generateNewPatterns();
         playerPattern = playerPattern.map((row) => row.map((element) => 0));
         touchOn = false;
         start(mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)], animatePattern);
-        failsOnMinigames('neuralNetWork');
+        failsOnMinigames('NeuralNetwork');
       }
     }
   } else {

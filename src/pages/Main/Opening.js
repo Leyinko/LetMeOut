@@ -41,6 +41,7 @@ function immersionModal(app) {
   immersionModal.id = 'immersion';
 
   immersionModal.innerHTML = `
+    <img src="${immersion_message.image}">
     <p>${immersion_message.content}</p>
     <span>${immersion_message.continue}</span>
   `;

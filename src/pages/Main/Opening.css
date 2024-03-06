@@ -1,5 +1,5 @@
 #warning * {
-  font-family: 'JMH';
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #warning {
@@ -7,11 +7,13 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 80%;
+  width: 65%;
   display: flex;
   flex-direction: column;
+  /* justify-content: center; */
   align-items: center;
   gap: 1.25rem;
+
   /* border: 1px solid red; */
 }
 
@@ -23,15 +25,15 @@
 
 #warning p {
   font-size: var(--lmo-fs-s);
-  /* text-align: center; */
-  white-space: pre-line;
+  text-align: center;
+  /* white-space: pre-line; */
   line-height: 2.5;
 }
 
 #warning span {
-  font-size: 13px;
+  font-size: 10px;
   opacity: 0.3;
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 #immersion {
@@ -43,30 +45,29 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 110%;
   height: 100%;
   opacity: 0;
   animation: players-hub-appearance 1.5s ease-in-out forwards;
 }
 
 #immersion img {
-  width: 200px;
+  width: 60px;
   object-fit: cover;
-  display: none;
+  filter: invert(1);
+  /* display: none; */
 }
 
 #immersion * {
-  font-family: 'JMH';
-  font-size: 1.4rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #immersion p {
   padding: 20px;
-  font-size: var(--lmo-fs-m);
+  /* font-size: var(--lmo-fs-s); */
   line-height: 2;
   text-align: center;
   white-space: pre-line;
-  width: 60%;
   backdrop-filter: blur(0.625rem);
 }
 
@@ -74,7 +75,7 @@
   position: absolute;
   bottom: 100px;
   margin-top: 60px;
-  font-size: var(--lmo-fs-m);
+  font-size: 16px;
   opacity: 0;
   animation: players-hub-appearance 1.5s ease-in-out forwards 2s;
 }
