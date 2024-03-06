@@ -1,3 +1,4 @@
+import { failsOnMinigames } from '../../../localStorage/LS';
 import { mistakePhrases, start } from '../game-utils';
 import { showFinalNumber } from '../games';
 import './Smash.css';
@@ -78,6 +79,7 @@ function checkResult(mistakes) {
   if (stage < 3) {
     if (mistakes >= 5) {
       start(mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)], startGame);
+      failsOnMinigames('smash');
     } else {
       stage++;
       times += 3;

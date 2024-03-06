@@ -29,27 +29,28 @@ export function getLocalID() {
 
 // //! CLICK COUNTER ON SCREEN
 
-// document.addEventListener('click', incrementClickCount);
+document.addEventListener('click', incrementClickCount);
 
-// let clickCount = 0;
+let clickCount = 0;
 
-// export function incrementClickCount() {
+export function incrementClickCount() {
+  let stats = JSON.parse(localStorage.getItem('stats')) ? JSON.parse(localStorage.getItem('stats')) : {};
 
-//   let stats = JSON.parse(localStorage.getItem('stats')) || {};
-
-//   clickCount++;
-//   localStorage.setItem('clickCount', clickCount);
-//   console.log(clickCount);
-// }
+  clickCount++;
+  stats.clickCount = clickCount;
+  localStorage.setItem('stats', JSON.stringify(stats));
+  console.log(clickCount);
+}
 
 // //! FAILS ON MINIGAMES
 
-// let fails = 0;
+export function failsOnMinigames(minigame) {
+  let stats = JSON.parse(localStorage.getItem('stats')) ? JSON.parse(localStorage.getItem('stats')) : {};
 
-// export function failsOnMinigames(minigame) {
-//   fails++;
-//   localStorage.setItem(minigame, fails);
-//   console.log(minigame, fails);
-// }
+  let fails = stats[minigame] ? stats[minigame] + 1 : 1;
+  stats[minigame] = fails;
+  localStorage.setItem('stats', JSON.stringify(stats));
+  console.log(minigame, fails);
+}
 
-// localStorage.clear();
+localStorage.clear();
