@@ -1,3 +1,4 @@
+import { playSound } from '../../../../../components/atoms/audio/Audio';
 import sendRequest from '../../../../../webSocket/webSocket';
 import './Transfer.css';
 
@@ -72,6 +73,10 @@ function sendTime(input) {
     // Reset
     window.style.background = `url('src/assets/images/pictures/console/windows/time-transferred.png') center/contain no-repeat`;
     window.style.animation = 'glitch 0.3s forwards';
+
+    let sound = new Audio('src/assets/audio/sounds/rooms/time-sent.mp3');
+    playSound(sound);
+
     input.remove();
   }
 }

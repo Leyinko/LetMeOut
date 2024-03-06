@@ -1,4 +1,5 @@
 import { random } from '../../../../utils';
+import { inventoryModal } from '../../../components/molecules/inventory/inventory';
 import { addNoteToCollectables } from '../../../localStorage/LS';
 import { notes, stage1, stage2, stage3, tickets } from '../Class/Objects';
 import './Progression.css';
@@ -35,7 +36,10 @@ export function itemsPrintOnStage(stage) {
   switch (stage) {
     case 0:
       let first = document.querySelectorAll(`${stage1.query}`);
-      itemPop(stage1.items, first[random(first.length)]);
+      stage1.items.forEach((item) => {
+        let element = document.querySelector(`#${first[random(first.length)].getAttribute('id')}`);
+        itemPop(item, element);
+      });
       break;
     case 1:
       let second = Array.from(document.querySelectorAll(`${stage2.query}`));
@@ -78,8 +82,19 @@ function itemPop(src, parent) {
     let collider = e.target.closest('div');
     item.remove();
 
+    // Add to Inventory
     addItemToInventory(src);
 
+    // Polaroid & Ticket
+    let active = document.querySelectorAll('#inventory-active .item-inv img');
+
+    let polaroid = active[active.length - 2];
+    let ticket = active[active.length - 1];
+
+    collider.id === 'ticket' && (ticket.src = src);
+    collider.id === 'polaroid' && (polaroid.src = src);
+
+    // Stage Controller
     let stage = document.querySelector('#room').getAttribute('progression');
     let check = Array.from(document.querySelectorAll(`[stage="${stage}"]`)).filter((item) => item.childElementCount);
 
@@ -96,9 +111,15 @@ function addItemToInventory(item) {
 
   item.match(pattern)[0].length === 1
     ? addNoteToCollectables(item)
-    : actives.forEach(
-        (active) => active.src.match(pattern)[0].at(0) === item.match(pattern)[0].at(0) && active.classList.add('got')
-      );
+    : actives.forEach((active) => {
+        if (active.src.match(pattern)[0].at(0) === item.match(pattern)[0].at(0)) {
+          let parent = active.parentElement;
+          // In inventory
+          active.classList.add('got');
+          // Examine
+          parent.addEventListener('click', () => inventoryModal(item));
+        }
+      });
 }
 
 function ticketAndNotePrint(...elements) {

@@ -1,4 +1,5 @@
 #message-content {
+  /* display: none; */
   margin-top: 28px;
   margin-left: 5px;
   width: 95%;
@@ -17,6 +18,40 @@
   list-style: none;
   overflow-y: scroll;
   /* border: 1px solid red; */
+}
+
+#chat > div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 70%;
+  height: 50px;
+  background-color: #92919180;
+  border: 2px outset rgba(0, 0, 0, 0.473);
+  box-shadow: 1px 1px 2px 2px rgba(0, 0, 0, 0.685);
+}
+
+.messages h3 {
+  position: absolute;
+  top: -30px;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.938);
+}
+
+.messages input {
+  width: 50%;
+  height: 30px;
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.87);
+  background-color: rgba(255, 255, 255, 0.322);
+  border: 2px inset rgba(0, 0, 0, 0.438);
+  border-radius: 5px;
 }
 
 #message.self {

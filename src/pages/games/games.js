@@ -9,8 +9,8 @@ export default function Games(parent) {
 
   parent.appendChild(gamesModal);
   //Smash();
-  MemoryPath();
-  //neuralNetWork();
+  // MemoryPath();
+  neuralNetWork();
   //EthernetConnection();
 }
 

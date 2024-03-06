@@ -85,4 +85,5 @@
 .item-modal img {
   max-height: 70%;
   pointer-events: all;
+  /* -webkit-user-drag: none; */
 }

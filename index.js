@@ -26,9 +26,10 @@ import Room from './src/pages/Room/Room.js';
 // audio.src = './src/assets/audio/sounds/lobby/Clock-loading.mp3';
 
 // const audio = document.createElement('audio');
-// audio.src = 'src/assets/audio/music/Main-soundtrack.mp3';
+// audio.src = 'src/assets/audio/music/The-Trapper.mp3';
+// audio.src = 'src/assets/audio/music/The-Prospector.mp3';
 // audio.loop = true;
-// audio.volume = 0.7;
+// audio.volume = 0.5;
 // audio.play();
 
 // app.appendChild(audio);
