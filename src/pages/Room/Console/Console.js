@@ -92,9 +92,12 @@ const console_actions = {
     // Window
     createWindow('chat', parent);
 
+    // Action
+    // Chat()
+
+    // Start Chat
     const chat = document.querySelector('#chat');
     const messages = document.querySelector('.messages');
-    // Start Chat
     !messages && ChatBox(document.querySelector('.id').textContent, chat);
     //
     ws.onmessage = function (event) {

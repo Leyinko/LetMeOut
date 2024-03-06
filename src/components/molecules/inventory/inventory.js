@@ -32,13 +32,22 @@ function collectablesDropdown(e, type) {
     notes.items.forEach((item) => iconItem(item, type, collection));
 
     let collected = getCollectables();
-    collected.forEach((note) => note && document.querySelector(`#note-${note} img`).classList.add('got'));
+    collected.forEach((page) => {
+      if (page) {
+        let note = document.querySelector(`#note-${page} img`);
+        let parent = note.parentElement;
+        // In inventory
+        note.classList.add('got');
+        // Examine
+        parent.addEventListener('click', () => inventoryModal(note.src));
+      }
+    });
   } else {
     document.querySelector('#collection').remove();
   }
 }
 
-function inventoryModal(image) {
+export function inventoryModal(image) {
   const modalContainer = document.createElement('div');
   modalContainer.className = 'item-modal';
 
@@ -59,8 +68,6 @@ function iconItem(item, type, parent) {
 
   const icon = document.createElement('img');
   icon.src = item;
-
-  icon.addEventListener('click', () => inventoryModal(item));
 
   object.appendChild(icon);
   parent.appendChild(object);

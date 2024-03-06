@@ -1,15 +1,11 @@
 export const stage1 = {
   query: 'div[stage="1"]',
-  items: 'src/assets/images/icons/active/Fusible.png',
+  items: ['src/assets/images/icons/active/Fusible.png', 'src/assets/images/icons/active/Clock.png'],
 };
 
 export const stage2 = {
   query: '[stage="2"]',
-  items: [
-    'src/assets/images/icons/active/Ethernet.png',
-    'src/assets/images/icons/active/Diskette.png',
-    'src/assets/images/icons/active/Clock.png',
-  ],
+  items: ['src/assets/images/icons/active/Ethernet.png', 'src/assets/images/icons/active/Diskette.png'],
 };
 
 export const stage3 = {

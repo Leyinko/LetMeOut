@@ -124,7 +124,6 @@
 /* ! */
 
 .access {
-  opacity: 1;
   pointer-events: all;
 }
 
@@ -207,14 +206,15 @@
 
 #chat {
   display: none;
-  top: 45%;
+  top: 40%;
   right: -50px;
   transform: translate(-54%, -50%);
   width: 350px;
   height: 370px;
   background: url('src/assets/images/pictures/console/windows/chat.png') center/contain no-repeat;
   box-shadow: 1px 1px 2px 2px rgb(0, 0, 0);
-  filter: brightness(0.9);
+  filter: brightness(0.8);
+  /* opacity: 0.6; */
   /* border: 1px solid red; */
 }
 
