@@ -5,6 +5,7 @@ import Progression from './Progression/Progression';
 import { Inventory } from '../../components/molecules/inventory/inventory';
 import Terminal from './Console/Console';
 import './Room.css';
+import { incrementClickCount } from '../../localStorage/LS';
 
 export const Room = () => {
   // App
@@ -42,6 +43,7 @@ export const Room = () => {
   // Inventory Test
   Inventory('active');
   Inventory('passive');
+  incrementClickCount();
 };
 
 export default Room;

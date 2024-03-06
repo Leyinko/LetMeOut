@@ -1,5 +1,6 @@
 import { fisherYatesShuffle } from '../../../../utils';
 import { handleTime } from '../../../components/atoms/countdownTimer/Timer';
+import { failsOnMinigames } from '../../../localStorage/LS';
 import { mistakePhrases, start } from '../game-utils';
 import { showFinalNumber } from '../games';
 import Smash from '../smashThatTrash/Smash';
@@ -117,6 +118,7 @@ function checkResult(resultOne, resultTwo) {
         playerPattern = playerPattern.map((row) => row.map((element) => 0));
         touchOn = false;
         start(mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)], animatePattern);
+        failsOnMinigames('neuralNetWork');
       }
     }
   } else {

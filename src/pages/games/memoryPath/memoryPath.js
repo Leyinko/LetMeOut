@@ -2,6 +2,7 @@ import './memoryPath.css';
 import { start, mistakePhrases } from '../game-utils';
 import { handleTime } from '../../../components/atoms/countdownTimer/Timer';
 import neuralNetWork from '../neuralNetWork/neuralNetWork';
+import { failsOnMinigames } from '../../../localStorage/LS';
 
 const memoryPathContainer = document.createElement('section');
 memoryPathContainer.className = 'memorypath-container';
@@ -130,6 +131,7 @@ function checkResult() {
       resetGame();
       handleTime(20, false);
       start(mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)], createPath);
+      failsOnMinigames('MemoryPath');
     } else {
       if (playerPath.join('').length == resultPath.join('').replace(/\d$/, '').length) {
         if (playerPath.join('') == resultPath.join('').replace(/\d$/, '')) {
