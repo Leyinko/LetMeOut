@@ -33,7 +33,8 @@ let clickCount = 0;
 export function incrementClickCount() {
   let stats = JSON.parse(localStorage.getItem('stats')) || {};
 
-  clickCount++;
+  let clickCount = stats.clickCount ? stats.clickCount + 1 : 1;
+
   stats.clickCount = clickCount;
   localStorage.setItem('stats', JSON.stringify(stats));
 }
@@ -41,8 +42,18 @@ export function incrementClickCount() {
 export function failsOnMinigames(minigame) {
   let stats = JSON.parse(localStorage.getItem('stats')) || {};
 
-  let fails = stats[minigame] ? stats[minigame] + 1 : 1;
-  stats[minigame] = fails;
+  let fails = stats.minigamesFails ? [...stats.minigamesFails] : [];
+  let minigameDetail = fails.find((detail) => Object.keys(detail)[0] === minigame);
+
+  if (minigameDetail) {
+    minigameDetail[minigame]++;
+  } else {
+    let newMinigame = {};
+    newMinigame[minigame] = 1;
+    fails.push(newMinigame);
+  }
+
+  stats.minigamesFails = fails;
 
   localStorage.setItem('stats', JSON.stringify(stats));
 }
