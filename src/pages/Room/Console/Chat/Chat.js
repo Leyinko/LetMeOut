@@ -1,4 +1,5 @@
-import sendRequest from '../../../../webSocket/webSocket';
+import { statsCollector } from '../../../../data/localStorage/LS';
+import sendRequest from '../../../../data/webSocket/webSocket';
 import './Chat.css';
 
 const ChatBox = (username, parent) => {
@@ -33,6 +34,9 @@ export function chatMessage(user, textContent) {
   content.textContent = textContent;
 
   localUser === user.toUpperCase() && (message.className = 'self');
+
+  // Stats
+  statsCollector('messages', localUser === user.toUpperCase() ? 'sent' : 'received');
 
   message.append(sender, content);
 

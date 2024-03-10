@@ -1,5 +1,5 @@
-import Loader from '../../components/atoms/loader/Loader';
 import Main from './utils/Main/Main';
+import Loader from '../../components/loader/Loader';
 import { immersion_message, opening_warning } from './utils/Text';
 import './Opening.css';
 

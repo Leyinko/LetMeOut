@@ -1,5 +1,5 @@
-import { playSound } from '../../../../../components/atoms/audio/Audio';
-import sendRequest from '../../../../../webSocket/webSocket';
+import { playSound } from '../../../../../components/audio/Audio';
+import sendRequest from '../../../../../data/webSocket/webSocket';
 import './Transfer.css';
 
 const Transfer = () => {

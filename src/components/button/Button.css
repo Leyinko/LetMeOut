@@ -1,0 +1,30 @@
+[role='lobby-buttons'] {
+  margin-top: 20px;
+  width: 80px;
+  padding: 8px;
+  border: none;
+  pointer-events: none;
+  opacity: 0.6;
+  background-color: transparent;
+}
+
+[role='lobby-buttons'].granted:hover {
+  cursor: pointer;
+  opacity: 1;
+  outline: 1px solid rgba(255, 255, 255, 0.075);
+  animation: glitch 0.4s linear;
+}
+
+[role='lobby-buttons'].granted {
+  pointer-events: all;
+  background-color: rgba(0, 0, 0, 0.342);
+  opacity: 1;
+}
+
+[role='lobby-buttons'].error {
+  animation: error-field 3 0.7s ease-in-out;
+}
+
+[role='close-modal-main']:hover {
+  transition: none;
+}

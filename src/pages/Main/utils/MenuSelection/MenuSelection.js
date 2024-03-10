@@ -1,7 +1,7 @@
 import { Lobby } from '../../../Lobby/Lobby';
-import Menu from '../../../../components/atoms/menu/Menu';
+import Menu from '../../../../components/menu/Menu';
 import createModal from '../Modal/Modal';
-import { playSound } from '../../../../components/atoms/audio/Audio';
+import { playSound } from '../../../../components/audio/Audio';
 import './MenuSelection.css';
 
 const selectionSound = new Audio('../../../../src/assets/audio/sounds/main/Menu-hover.mp3');
@@ -10,8 +10,8 @@ const menuSelection = (parent) => {
   const menuField$ = document.createElement('div');
   menuField$.id = 'menu-field';
 
-  Menu('START', 'start-menu', menuField$);
-  Menu('INSTRUCTIONS', 'instructions-menu', menuField$);
+  Menu('NEW GAME', 'start-menu', menuField$);
+  Menu('SCORES', 'scores-menu', menuField$);
   Menu('CREDITS', 'credits-menu', menuField$);
 
   parent.append(menuField$);
@@ -30,7 +30,7 @@ const menuSelection = (parent) => {
           // Lobby
           Lobby();
         }
-        selected === 'instructions' && createModal('instructions', parent);
+        selected === 'scores' && createModal('scores', parent);
         selected === 'credits' && createModal('credits', parent);
       }
     });

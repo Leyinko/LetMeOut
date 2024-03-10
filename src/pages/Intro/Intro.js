@@ -1,5 +1,5 @@
-import { soundFadeOut } from '../../../utils';
-import { audioConfig, playSound } from '../../components/atoms/audio/Audio';
+import { audioConfig, playSound } from '../../components/audio/Audio';
+import { soundFadeOut } from '../../utils';
 import Room from '../Room/Room';
 import './Intro.css';
 
@@ -35,17 +35,28 @@ const Intro = () => {
   setTimeout(() => {
     intro.append(date, location);
 
-    audio.src = 'src/assets/audio/sounds/lobby/Intro.mp3';
+    audio.src = 'src/assets/audio/sounds/lobby/Intro-2.mp3';
     audio.loop = false;
     audio.play();
-
-    audio.addEventListener('ended', () => {
-      let section = document.querySelector('section');
-      section.remove();
-
-      Room();
-    });
   }, 7000);
+
+  // Hands
+  const gif = document.createElement('img');
+  gif.src = 'src/assets/images/pictures/lobby/Hands-1-2.gif';
+  gif.className = 'gif';
+
+  setTimeout(() => {
+    let section = document.querySelector('section');
+    section.remove();
+  }, 16000);
+
+  setTimeout(() => {
+    Room();
+  }, 20000);
+
+  setTimeout(() => {
+    app.appendChild(gif);
+  }, 26650);
 };
 
 export function preIntro(confirm) {

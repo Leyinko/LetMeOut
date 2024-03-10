@@ -1,4 +1,4 @@
-import { fisherYatesShuffle } from '../../../../utils';
+import { fisherYatesShuffle } from '../../../utils';
 import './ethernetConnection.css';
 
 export default function EthernetConnection() {

@@ -1,5 +1,5 @@
-import Version from '../../../../components/atoms/Version/Version';
-import { Inventory } from '../../../../components/molecules/inventory/inventory';
+import Version from '../../../../components/version/Version';
+import { Inventory } from '../../../Room/Inventory/inventory';
 import menuSelection from '../MenuSelection/MenuSelection';
 import './Main.css';
 
@@ -24,13 +24,14 @@ export const Main = () => {
   let selections = document.querySelector('#menu-field');
 
   // Collectables
-  // Inventory('passive');
+  Inventory('passive', main);
+  let inventory = document.querySelector('#inventory-passive');
 
   // Version
   Version('V1.0', main);
 
   // First Animation
-  openingAnimation(main, title, selections);
+  openingAnimation(main, title, selections, inventory);
 };
 
 function openingAnimation(...args) {

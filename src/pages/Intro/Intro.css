@@ -17,3 +17,11 @@
 #intro * {
   font-family: 'JMH';
 }
+
+.gif {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  filter: brightness(0.6) blur(10px);
+  pointer-events: none;
+}

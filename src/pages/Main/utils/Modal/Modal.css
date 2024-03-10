@@ -1,5 +1,5 @@
 .modal * {
-  font-family: 'JMH';
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .modal {
@@ -13,12 +13,9 @@
   align-items: center;
   flex-direction: column;
   gap: 30px;
-  width: 80svw;
-  height: 60svh;
-  z-index: 9;
-  opacity: 0;
-  visibility: visible;
-  animation: appearance 1s ease-in-out forwards;
+  width: 55svw;
+  height: 50svh;
+  z-index: 999999;
   backdrop-filter: blur(3.1875rem) brightness(0.4);
   box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0.636);
 }
@@ -28,7 +25,7 @@
   top: 0px;
   right: 0px;
   padding: 20px;
-  font-size: 2rem;
+  font-size: 1.5rem;
   pointer-events: all;
   opacity: 0.7;
   background-color: transparent;
