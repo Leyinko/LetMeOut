@@ -1,4 +1,4 @@
-import { playSound } from '../../../../components/atoms/audio/Audio';
+import { playSound } from '../../../../components/audio/Audio';
 import UserFieldsModal from '../User/User';
 import './Party.css';
 

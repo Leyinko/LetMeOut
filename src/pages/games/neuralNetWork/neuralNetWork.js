@@ -1,10 +1,12 @@
-import { fisherYatesShuffle } from '../../../../utils';
-import { handleTime } from '../../../components/atoms/countdownTimer/Timer';
-import { failsOnMinigames } from '../../../localStorage/LS';
+import { fisherYatesShuffle } from '../../../utils';
+import { statsCollector } from '../../../data/localStorage/LS';
+import { timer } from '../../Room/Room';
+// import { failsOnMinigames } from '../../../localStorage/LS';
 import { mistakePhrases, start } from '../game-utils';
 import { showFinalNumber } from '../games';
 import Smash from '../smashThatTrash/Smash';
 import './neuralNetWork.css';
+import { handleTime } from '../../../components/timer/Timer';
 
 const neuralNetWorkContainer = document.createElement('section');
 neuralNetWorkContainer.className = 'neuralnetwork-container';
@@ -24,6 +26,8 @@ let resultPattern = [];
 
 const animationPattern = [];
 
+let stamp = 0;
+
 const generateNewPatterns = () => {
   resultPattern = patternGenerator(playerPattern);
   for (var i = 0; i <= 5; i++) {
@@ -32,10 +36,13 @@ const generateNewPatterns = () => {
 };
 
 export default function neuralNetWork() {
+  // Stamp
+  stamp = new Date().getTime();
+
   const gamesModal = document.querySelector('.games-modal');
   generateNewPatterns();
   printPattern(playerPattern);
-  start('Glitch Memory v3.4 - Reboot issue found...', animatePattern);
+  start('Memory Glitch v3.4 - Reboot issue found...', animatePattern);
   console.log(resultPattern);
   gamesModal.append(neuralNetWorkContainer);
 }
@@ -118,10 +125,14 @@ function checkResult(resultOne, resultTwo) {
         playerPattern = playerPattern.map((row) => row.map((element) => 0));
         touchOn = false;
         start(mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)], animatePattern);
-        failsOnMinigames('NeuralNetwork');
+        // Error
+        statsCollector('clickCount', 'games', null, '1');
       }
     }
   } else {
+    // Save Stamp
+    statsCollector('timestamps', 'minigames', timer(stamp), '1');
+    //
     neuralNetWorkContainer.remove();
     Smash();
   }

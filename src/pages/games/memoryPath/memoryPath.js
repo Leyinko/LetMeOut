@@ -1,8 +1,10 @@
 import './memoryPath.css';
 import { start, mistakePhrases } from '../game-utils';
-import { handleTime } from '../../../components/atoms/countdownTimer/Timer';
 import neuralNetWork from '../neuralNetWork/neuralNetWork';
-import { failsOnMinigames } from '../../../localStorage/LS';
+import { statsCollector } from '../../../data/localStorage/LS';
+import { timer } from '../../Room/Room';
+import { handleTime } from '../../../components/timer/Timer';
+// import { failsOnMinigames } from '../../../localStorage/LS';
 
 const memoryPathContainer = document.createElement('section');
 memoryPathContainer.className = 'memorypath-container';
@@ -23,7 +25,11 @@ let steps = 5;
 let moveSpeed = 1000;
 let buttonOn = false;
 
+let stamp = 0;
+
 export default function MemoryPath() {
+  // Stamp
+  stamp = new Date().getTime();
   //dispaly cells
   const gamesModal = document.querySelector('.games-modal');
   map.forEach((row, columnIndex) => {
@@ -132,7 +138,8 @@ function checkResult() {
       resetGame();
       handleTime(20, false);
       start(mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)], createPath);
-      failsOnMinigames('MemoryPath');
+      // Error
+      statsCollector('clickCount', 'games', null, '0');
     } else {
       if (playerPath.join('').length == resultPath.join('').replace(/\d$/, '').length) {
         if (playerPath.join('') == resultPath.join('').replace(/\d$/, '')) {
@@ -150,6 +157,9 @@ function checkResult() {
       }
     }
   } else {
+    // Save Stamp
+    statsCollector('timestamps', 'minigames', timer(stamp), '0');
+    //
     memoryPathContainer.remove();
     neuralNetWork();
   }

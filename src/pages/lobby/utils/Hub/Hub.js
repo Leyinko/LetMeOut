@@ -1,11 +1,12 @@
-import { copyText } from '../../../../../utils';
-import Button from '../../../../components/atoms/button/Button';
-import Menu from '../../../../components/atoms/menu/Menu';
-import { storeGameData } from '../../../../localStorage/LS';
-import sendRequest, { ws } from '../../../../webSocket/webSocket';
+import { copyText } from '../../../../utils';
+import { storeGameData } from '../../../../data/localStorage/LS';
+import sendRequest, { ws } from '../../../../data/webSocket/webSocket';
 import { preIntro } from '../../../Intro/Intro';
+import { introduction_lobby } from '../../../Main/utils/Text';
 import Room from '../../../Room/Room';
 import './Hub.css';
+import Button from '../../../../components/button/Button';
+import Menu from '../../../../components/menu/Menu';
 
 const PlayersHub = (code, username, party) => {
   const lobby = document.querySelector('#lobby');
@@ -41,7 +42,15 @@ const PlayersHub = (code, username, party) => {
       player++;
     }
 
-    playersHub.append(room, nickname, players);
+    const introduction = document.createElement('div');
+    introduction.className = 'intro-lobby';
+
+    const text = document.createElement('span');
+    text.textContent = introduction_lobby.intro;
+
+    introduction.appendChild(text);
+
+    playersHub.append(room, nickname, players, introduction);
 
     Button('', 'ready-button', 'lobby-buttons', 'submit', lobby);
     let ready = document.querySelector('.ready-button');
@@ -90,8 +99,16 @@ function allPlayersReady(data, username) {
   // Room();
   // // ! Local Test ! //
 
-  ready && storeGameData(data, username);
-  ready && preIntro(confirm);
+  // ! Test
+
+  preIntro(confirm);
+
+  // ! Test
+
+  // > Final >
+
+  // ready && storeGameData(data, username);
+  // ready && preIntro(confirm);
 }
 
 const closePlayersHub = (...elements) => {

@@ -1,6 +1,6 @@
-import { random } from '../../../../utils';
-import { inventoryModal } from '../../../components/molecules/inventory/inventory';
-import { addNoteToCollectables } from '../../../localStorage/LS';
+import { random } from '../../../utils';
+import { inventoryModal } from '../Inventory/inventory';
+import { addNoteToCollectables } from '../../../data/localStorage/LS';
 import { notes, stage1, stage2, stage3, tickets } from '../Class/Objects';
 import './Progression.css';
 

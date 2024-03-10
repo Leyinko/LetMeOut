@@ -1,3 +1,5 @@
+/* Temporary STAGES */
+
 .progress {
   position: fixed;
   left: 50%;
@@ -16,9 +18,15 @@
   height: 100%;
 }
 
+.completed {
+  background: url('src/assets/images/icons/menu/ReadyY.png') center/cover no-repeat;
+}
+
+/* Temporary STAGES */
+
 .item {
   position: fixed;
-  width: 40px;
+  width: 25px;
   display: none;
 }
 
@@ -26,15 +34,10 @@
   display: block;
 }
 
-.completed {
-  background: url('src/assets/images/icons/menu/ReadyY.png') center/cover no-repeat;
-}
-
 /* SPARKLE */
 
 .found {
-  cursor: pointer;
-  animation: object-found 0.6s infinite ease-in-out;
+  animation: object-found 2s infinite ease-in-out;
   z-index: 9999999;
 }
 
@@ -44,13 +47,13 @@
     opacity: 0.7;
   }
   50% {
-    filter: drop-shadow(1px 2px 6px #ffffff54);
+    filter: drop-shadow(1px 2px 6px #ffffff3a);
     transform: scale(1.1) rotate(13deg);
-    opacity: 1;
+    opacity: 0.9;
   }
   100% {
     transform: scale(1) rotate(23deg);
-    filter: drop-shadow(1px 1px 1px #ffffff54);
+    filter: drop-shadow(1px 1px 1px #ffffff1e);
     opacity: 0.7;
   }
 }

@@ -1,8 +1,8 @@
 import GameSelect from './utils/Party/Party';
-import UserInfoField from '../../components/molecules/userField/UserInfoField';
-import Menu from '../../components/atoms/menu/Menu';
-import Version from '../../components/atoms/Version/Version';
+import UserInfoField from '../../components/input/UserInfoField';
+import Menu from '../../components/menu/Menu';
 import Main from '../Main/utils/Main/Main';
+import Version from '../../components/version/Version';
 import './Lobby.css';
 
 export const Lobby = () => {

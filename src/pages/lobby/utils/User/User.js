@@ -1,7 +1,7 @@
-import Button from '../../../../components/atoms/button/Button';
+import Button from '../../../../components/button/Button';
 import PlayersHub from '../Hub/Hub';
-import { generateRandomString } from '../../../../../utils';
-import sendRequest, { ws } from '../../../../webSocket/webSocket';
+import { generateRandomString } from '../../../../utils';
+import sendRequest, { ws } from '../../../../data/webSocket/webSocket';
 import './User.css';
 
 const UserFieldsModal = (button, parent, ...field) => {

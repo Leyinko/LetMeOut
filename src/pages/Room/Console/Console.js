@@ -1,6 +1,6 @@
-import { animationReflow } from '../../../../utils';
-import { getLocalID } from '../../../localStorage/LS';
-import { ws } from '../../../webSocket/webSocket';
+import { animationReflow } from '../../../utils';
+import { getLocalID } from '../../../data/localStorage/LS';
+import { ws } from '../../../data/webSocket/webSocket';
 import Games from '../../games/games';
 import Transfer from './Actions/Transfer/Transfer';
 import ChatBox, { chatMessage } from './Chat/Chat';

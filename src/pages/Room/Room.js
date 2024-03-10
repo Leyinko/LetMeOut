@@ -1,15 +1,18 @@
-import { audioConfig } from '../../components/atoms/audio/Audio';
+import { audioConfig } from '../../components/audio/Audio';
 import BATHROOM from './Levels/1F/Bathroom/Bathroom';
 import Stage from './Class/Class';
 import Progression from './Progression/Progression';
-import { Inventory } from '../../components/molecules/inventory/inventory';
+import { clickCount, statsCollector } from '../../data/localStorage/LS';
 import Terminal from './Console/Console';
+import { Inventory } from './Inventory/inventory';
 import './Room.css';
-import { incrementClickCount } from '../../localStorage/LS';
 
 export const Room = () => {
   // App
   const app = document.querySelector('#app');
+
+  // Game duration Stamp
+  const start = new Date().getTime();
 
   // Room
   const room = document.createElement('section');
@@ -24,7 +27,7 @@ export const Room = () => {
   let level = new Stage(BATHROOM);
   level.printRoom();
 
-  // Object/Collider Test
+  // NB : Object/Collider Test
   // const object = document.createElement('img');
   // object.className = 'object';
   // object.src = 'src/assets/images/pictures/1F/pointers/console.gif';
@@ -33,19 +36,39 @@ export const Room = () => {
   // collider.className = 'collider';
 
   // app.append(object, collider);
+  // NB : Object/Collider Test
+
+  // Console
+  Terminal(app);
 
   // Stages Test
   Progression();
 
-  // Console Test
-  Terminal(app);
+  // NB : Hands Test
+  // const gif = document.createElement('img');
+  // gif.src = 'src/assets/images/pictures/lobby/Hands-1-2.gif';
+  // gif.className = 'gif';
+  // app.appendChild(gif);
+  // NB : Hands Test
 
-  // Inventory Test
-  Inventory('active');
-  Inventory('passive');
+  // Inventory
+  room.addEventListener(
+    'animationend',
+    () => {
+      Inventory('active', room);
+      Inventory('passive', room);
+    },
+    { once: true }
+  );
 
   // Click Counter
-  room.addEventListener('click', incrementClickCount);
+  document.addEventListener('click', () => statsCollector('clickCount', 'clicks'));
 };
+
+export function timer(stamp) {
+  let now = new Date().getTime();
+  let time = Math.floor((now - stamp) / 1000);
+  return time;
+}
 
 export default Room;

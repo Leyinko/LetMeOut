@@ -24,7 +24,7 @@
 }
 
 #warning p {
-  font-size: var(--lmo-fs-s);
+  font-size: 0.8em;
   text-align: center;
   /* white-space: pre-line; */
   line-height: 2.5;
@@ -64,7 +64,6 @@
 
 #immersion p {
   padding: 20px;
-  /* font-size: var(--lmo-fs-s); */
   line-height: 2;
   text-align: center;
   white-space: pre-line;

@@ -1,0 +1,35 @@
+.bug {
+  width: 250px;
+  height: auto;
+  z-index: 9;
+  position: absolute;
+}
+
+.bugs-area,
+.IANA-gif,
+.IANA-logo {
+  width: 85%;
+  height: 85%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.IANA-gif,
+.IANA-logo {
+  width: 500px;
+  height: auto;
+  z-index: 10;
+}
+
+.IANA-gif {
+  width: 900px;
+}
+
+.bugs-area h2 {
+  position: absolute;
+  font-size: 5rem;
+  text-align: center;
+  z-index: 11;
+}

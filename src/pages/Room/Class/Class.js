@@ -1,6 +1,5 @@
-import { fisherYatesShuffle, soundFadeOut } from '../../../../utils';
-import { playSound } from '../../../components/atoms/audio/Audio';
-
+import { playSound } from '../../../components/audio/Audio';
+import { fisherYatesShuffle, soundFadeOut } from '../../../utils';
 import { itemsPrintOnStage } from '../Progression/Progression';
 
 class Stage {

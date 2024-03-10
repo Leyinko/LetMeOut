@@ -1,4 +1,4 @@
-import Button from '../../../../components/atoms/button/Button';
+import Button from '../../../../components/button/Button';
 import { modals_main_template } from '../Text';
 import './Modal.css';
 

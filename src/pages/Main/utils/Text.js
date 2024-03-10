@@ -24,6 +24,19 @@ export const immersion_message = {
 };
 
 export const modals_main_template = {
-  credits: `<p>Jeni || Manu || Luca</p>`,
-  instructions: `<span>Lost in the Wildlands of Krakow, Poland, you stumble upon a forsaken house.\nYou find yourself locked in a room, separated from your friends.\nEvery corner holds a puzzle, every object a potential key.\nUnravel the mysteries and break free before time runs out.</span><h3>\nRelying on external communication tools won't simplify your journey.</h3><span>Good Luck</span>`,
+  credits: `<h1>COMING SOON</h1>`,
+  scores: `<h1>COMING SOON</h1>`,
+};
+
+export const introduction_lobby = {
+  intro: `
+  Somewhere near Krakow, in the Wildlands of Poland, you stumble upon a forsaken house.
+  You find yourself locked in a room, separated from your friends.
+
+  All interactions and objects are crucial for the correct progression of the game.
+
+  We highly recommend not using external communication tools.
+
+  Your objective is to find your way out.
+  `,
 };

@@ -1,4 +1,6 @@
-import { failsOnMinigames } from '../../../localStorage/LS';
+// import { failsOnMinigames } from '../../../localStorage/LS';
+import { statsCollector } from '../../../data/localStorage/LS';
+import { timer } from '../../Room/Room';
 import { mistakePhrases, start } from '../game-utils';
 import { showFinalNumber } from '../games';
 import './Smash.css';
@@ -7,9 +9,14 @@ let stage = 1;
 let speed = 1000;
 let times = 10;
 
+let stamp = 0;
+
 const smashContainer = document.createElement('section');
 
 function Smash() {
+  // Stamp
+  stamp = new Date().getTime();
+
   // App
   const gamesModal = document.querySelector('.games-modal');
 
@@ -62,6 +69,8 @@ function startGame() {
         if (!click) {
           start(mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)], startGame);
           clearInterval(stageStart);
+          // Error
+          statsCollector('clickCount', 'games', null, '2');
         }
         element.classList.remove('active');
       }, speed - (stage === 3 ? 50 : 100));
@@ -79,7 +88,6 @@ function checkResult(mistakes) {
   if (stage < 3) {
     if (mistakes >= 5) {
       start(mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)], startGame);
-      failsOnMinigames('Smash');
     } else {
       stage++;
       times += 3;
@@ -87,6 +95,9 @@ function checkResult(mistakes) {
       start(`✅`, startGame);
     }
   } else {
+    // Save Stamp
+    statsCollector('timestamps', 'minigames', timer(stamp), '2');
+    //
     showFinalNumber();
   }
 }
