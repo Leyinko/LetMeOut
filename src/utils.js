@@ -24,7 +24,24 @@ export function fisherYatesShuffle(arr) {
   return arr;
 }
 
-export const random = (length) => Math.floor(Math.random() * length);
+export const random = (length, quantity) => {
+  let numbers = [];
+
+  const uniqueRandom = () => {
+    let random = Math.floor(Math.random() * length);
+    if (!numbers.includes(random)) {
+      numbers.push(random);
+    } else {
+      uniqueRandom();
+    }
+  };
+
+  while (numbers.length < quantity) {
+    uniqueRandom();
+  }
+
+  return numbers;
+};
 
 export const soundFadeOut = (audio) => {
   let duration = audio.duration - audio.currentTime;

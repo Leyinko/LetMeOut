@@ -6,7 +6,7 @@ import { mistakePhrases, start } from '../game-utils';
 import { showFinalNumber } from '../games';
 import Smash from '../smashThatTrash/Smash';
 import './neuralNetWork.css';
-import { handleTime } from '../../../components/timer/Timer';
+import { handleTime } from '../../../components/countdown/Countdown';
 
 const neuralNetWorkContainer = document.createElement('section');
 neuralNetWorkContainer.className = 'neuralnetwork-container';

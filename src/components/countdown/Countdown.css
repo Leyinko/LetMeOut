@@ -1,0 +1,20 @@
+#countdown-timer {
+  font-family: 'JMH';
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  font-size: 60px;
+  color: white;
+  letter-spacing: 14px;
+  z-index: 9999999999999999;
+  opacity: 0.8;
+  /* opacity: 0.4; */
+}
+
+/* #countdown-timer:hover {
+  opacity: 1;
+} */

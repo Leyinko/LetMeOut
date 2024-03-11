@@ -3,10 +3,10 @@
   justify-content: center;
   align-items: center;
   gap: 5px;
-  position: fixed;
+  /* position: fixed; */
   bottom: 30px;
   left: 50%;
-  transform: translate(-50%, 0);
+  transform: translateX(-50%);
   padding: 5px;
   opacity: 0;
   animation: players-hub-appearance 1.6s ease-in-out forwards 2s;
@@ -90,7 +90,7 @@
 }
 
 .item-modal img {
-  max-height: 45%;
+  max-height: 55%;
   pointer-events: all;
   -webkit-user-drag: none;
 }

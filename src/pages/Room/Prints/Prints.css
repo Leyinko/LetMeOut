@@ -2,15 +2,15 @@
 
 .progress {
   position: fixed;
-  left: 50%;
+  right: 50px;
   top: 50px;
   transform: translateX(-50%);
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1.9375rem;
-  width: 350px;
-  height: 100px;
+  width: 200px;
+  height: 40px;
 }
 
 .progress div {
