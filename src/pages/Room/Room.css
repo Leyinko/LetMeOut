@@ -20,8 +20,8 @@
 /* TEST POSITIONING */
 
 #room {
-  /* animation: room 8s ease-in-out backwards; */
-  animation: room 0.1s ease-in-out backwards;
+  animation: room 8s ease-in-out backwards;
+  /* animation: room 0.1s ease-in-out backwards; */
 }
 
 section#room {

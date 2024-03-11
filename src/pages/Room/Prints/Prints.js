@@ -2,7 +2,7 @@ import { random } from '../../../utils';
 import { inventoryModal } from '../Inventory/inventory';
 import { addNoteToCollectables } from '../../../data/localStorage/LS';
 import { notes, stage1, stage2, stage3, tickets } from '../Class/Objects';
-import './Progression.css';
+import './Prints.css';
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TESTING ZONE ------> HUD for Progression test
 
@@ -27,7 +27,7 @@ function checkProgressPhases() {
   phases.forEach((phase) => phase.getAttribute('check') == stage - 1 && phase.classList.add('completed'));
 
   Array.from(phases).every((phase) => phase.classList.contains('completed')) &&
-    alert('Congratulations you are free from Luca for a few days, do not get used of it...');
+    alert('Temporary progression system ended ');
 }
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TESTING ZONE ------> HUD for Progression test
@@ -35,24 +35,13 @@ function checkProgressPhases() {
 export function itemsPrintOnStage(stage) {
   switch (stage) {
     case 0:
-      let first = document.querySelectorAll(`${stage1.query}`);
-      stage1.items.forEach((item) => {
-        let element = document.querySelector(`#${first[random(first.length)].getAttribute('id')}`);
-        itemPop(item, element);
-      });
+      activesPrint(stage1);
       break;
     case 1:
-      let second = Array.from(document.querySelectorAll(`${stage2.query}`));
-      stage2.items.forEach((item) => {
-        let element = document.querySelector(`#${second[random(second.length)].getAttribute('id')}`);
-        itemPop(item, element);
-      });
+      activesPrint(stage2);
       break;
     case 2:
-      let third = Array.from(document.querySelectorAll(`${stage3.query}`));
-      let room = document.querySelector('#room').getAttribute('room');
-      let polaroid = stage3.items.filter((polaroid) => polaroid.includes(room));
-      itemPop(polaroid[0], third[random(third.length)]);
+      polaroidPrint(stage3);
       break;
   }
   // Tickets and Note
@@ -120,6 +109,22 @@ function addItemToInventory(item) {
           parent.addEventListener('click', () => inventoryModal(item));
         }
       });
+}
+
+function polaroidPrint(stage) {
+  let colliders = Array.from(document.querySelectorAll(`${stage3.query}`));
+  let room = document.querySelector('#room').getAttribute('room');
+  let polaroid = stage.items.filter((polaroid) => polaroid.includes(room));
+  itemPop(polaroid[0], colliders[random(colliders.length, 1)]);
+}
+
+function activesPrint(stage) {
+  let colliders = document.querySelectorAll(`${stage.query}`);
+  let positions = random(colliders.length, stage.items.length);
+  stage.items.forEach((item, index) => {
+    let element = document.querySelector(`#${colliders[positions[index]].getAttribute('id')}`);
+    itemPop(item, element);
+  });
 }
 
 function ticketAndNotePrint(...elements) {

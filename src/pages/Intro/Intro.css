@@ -6,7 +6,16 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 1rem;
   background-color: black;
+}
+
+#intro h3 {
+  font-size: 2rem;
+}
+
+#intro span {
+  opacity: 0.4;
 }
 
 #intro img {
@@ -20,8 +29,8 @@
 
 .gif {
   position: absolute;
-  width: 100%;
+  width: 120%;
   height: auto;
-  filter: brightness(0.6) blur(10px);
+  filter: brightness(0) blur(10px);
   pointer-events: none;
 }

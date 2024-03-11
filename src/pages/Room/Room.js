@@ -1,17 +1,18 @@
-import { audioConfig } from '../../components/audio/Audio';
+import { audioConfig, playSound } from '../../components/audio/Audio';
 import BATHROOM from './Levels/1F/Bathroom/Bathroom';
 import Stage from './Class/Class';
-import Progression from './Progression/Progression';
-import { clickCount, statsCollector } from '../../data/localStorage/LS';
+import { statsCollector } from '../../data/localStorage/LS';
 import Terminal from './Console/Console';
 import { Inventory } from './Inventory/inventory';
+import Progression from './Prints/Prints';
+import Countdown from '../../components/countdown/Countdown';
 import './Room.css';
 
 export const Room = () => {
   // App
   const app = document.querySelector('#app');
 
-  // Game duration Stamp
+  // Game Duration Stamp
   const start = new Date().getTime();
 
   // Room
@@ -19,13 +20,40 @@ export const Room = () => {
   room.id = 'room';
   app.append(room);
 
-  // Audio
-  const soundtrack = new Audio('src/assets/audio/music/The-Prospector.mp3');
-  audioConfig(soundtrack, false, true, 0.4);
-
   // Print Room
   let level = new Stage(BATHROOM);
   level.printRoom();
+
+  // Console
+  Terminal(app);
+
+  // Start First Click
+  room.addEventListener(
+    'click',
+    () => {
+      let clock = new Audio('src/assets/audio/sounds/lobby/Clock-loading.mp3');
+
+      setTimeout(() => playSound(clock), 500);
+
+      Countdown();
+
+      Inventory('active', room);
+      Inventory('passive', room);
+
+      setTimeout(() => {
+        const audio = document.querySelector('audio');
+        audio.src = 'src/assets/audio/music/The-Prospector.mp3';
+        audio.volume = 0.3;
+        audio.loop = true;
+        audio.play();
+        // ! TEST NO INTRO
+        // const soundtrack = new Audio('src/assets/audio/music/The-Prospector.mp3');
+        // audioConfig(soundtrack, true, true, 0.3);
+        // ! TEST NO INTRO
+      }, 4800);
+    },
+    { once: true }
+  );
 
   // NB : Object/Collider Test
   // const object = document.createElement('img');
@@ -38,12 +66,6 @@ export const Room = () => {
   // app.append(object, collider);
   // NB : Object/Collider Test
 
-  // Console
-  Terminal(app);
-
-  // Stages Test
-  Progression();
-
   // NB : Hands Test
   // const gif = document.createElement('img');
   // gif.src = 'src/assets/images/pictures/lobby/Hands-1-2.gif';
@@ -51,19 +73,15 @@ export const Room = () => {
   // app.appendChild(gif);
   // NB : Hands Test
 
-  // Inventory
-  room.addEventListener(
-    'animationend',
-    () => {
-      Inventory('active', room);
-      Inventory('passive', room);
-    },
-    { once: true }
-  );
+  // NB : Stages Test
+  Progression();
+  // NB : Stages Test
 
-  // Click Counter
-  document.addEventListener('click', () => statsCollector('clickCount', 'clicks'));
+  // Click Counter Stats
+  clicksStats();
 };
+
+const clicksStats = () => document.addEventListener('click', () => statsCollector('clickCount', 'clicks'));
 
 export function timer(stamp) {
   let now = new Date().getTime();

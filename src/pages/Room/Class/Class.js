@@ -1,6 +1,6 @@
 import { playSound } from '../../../components/audio/Audio';
 import { fisherYatesShuffle, soundFadeOut } from '../../../utils';
-import { itemsPrintOnStage } from '../Progression/Progression';
+import { itemsPrintOnStage } from '../Prints/Prints';
 
 class Stage {
   constructor(roomJSON) {

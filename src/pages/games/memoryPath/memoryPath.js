@@ -3,7 +3,7 @@ import { start, mistakePhrases } from '../game-utils';
 import neuralNetWork from '../neuralNetWork/neuralNetWork';
 import { statsCollector } from '../../../data/localStorage/LS';
 import { timer } from '../../Room/Room';
-import { handleTime } from '../../../components/timer/Timer';
+import { handleTime } from '../../../components/countdown/Countdown';
 // import { failsOnMinigames } from '../../../localStorage/LS';
 
 const memoryPathContainer = document.createElement('section');

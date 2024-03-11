@@ -1,9 +1,9 @@
-import './Timer.css';
+import './Countdown.css';
 
 const gameTime = 10;
 let remainingTime = gameTime * 60;
 
-function countdown() {
+const Countdown = () => {
   const app = document.getElementById('app');
 
   // Template
@@ -29,10 +29,10 @@ function countdown() {
       alert('Time Out');
     }
   }, 1000);
-}
+};
 
 export function handleTime(time, operation) {
   remainingTime = operation ? remainingTime + time : remainingTime - time;
 }
 
-export default countdown;
+export default Countdown;
