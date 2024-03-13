@@ -1,11 +1,9 @@
-import { audioConfig, playSound } from '../../components/audio/Audio';
 import BATHROOM from './Levels/1F/Bathroom/Bathroom';
 import Stage from './Class/Class';
-import { statsCollector } from '../../data/localStorage/LS';
 import Terminal from './Console/Console';
-import { Inventory } from './Inventory/inventory';
+import { firstClickStart } from './Progression/Progression';
 import Progression from './Prints/Prints';
-import Countdown from '../../components/countdown/Countdown';
+import { statsCollector } from '../../data/localStorage/LS';
 import './Room.css';
 
 export const Room = () => {
@@ -28,30 +26,7 @@ export const Room = () => {
   Terminal(app);
 
   // Start First Click
-  room.addEventListener(
-    'click',
-    () => {
-      let clock = new Audio('src/assets/audio/sounds/lobby/Clock-loading.mp3');
-
-      setTimeout(() => playSound(clock), 500);
-
-      Countdown();
-
-      Inventory('active', room);
-      Inventory('passive', room);
-
-      setTimeout(() => {
-        const audio = document.querySelector('audio');
-        audio.src = 'src/assets/audio/music/The-Prospector.mp3';
-        audioConfig(audio, true, true, 0.3);
-        // ! TEST NO INTRO
-        // const soundtrack = new Audio('src/assets/audio/music/The-Prospector.mp3');
-        // audioConfig(soundtrack, true, true, 0.3);
-        // ! TEST NO INTRO
-      }, 4800);
-    },
-    { once: true }
-  );
+  room.addEventListener('animationend', () => firstClickStart(), { once: true });
 
   // NB : Object/Collider Test
   // const object = document.createElement('img');
@@ -64,18 +39,11 @@ export const Room = () => {
   // app.append(object, collider);
   // NB : Object/Collider Test
 
-  // NB : Hands Test
-  // const gif = document.createElement('img');
-  // gif.src = 'src/assets/images/pictures/lobby/Hands-1-2.gif';
-  // gif.className = 'gif';
-  // app.appendChild(gif);
-  // NB : Hands Test
-
   // NB : Stages Test
   Progression();
   // NB : Stages Test
 
-  // Click Counter Stats
+  // Stats
   clicksStats();
 };
 

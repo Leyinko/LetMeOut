@@ -1,5 +1,36 @@
-import { playSound } from '../../../components/audio/Audio';
+import { audioConfig, playSound } from '../../../components/audio/Audio';
+import Countdown from '../../../components/countdown/Countdown';
+import { Inventory } from '../Inventory/inventory';
 import './Progression.css';
+
+// Start Game
+export function firstClickStart() {
+  const room = document.querySelector('#room');
+
+  room.addEventListener(
+    'click',
+    () => {
+      console.log('Second');
+
+      let clock = new Audio('src/assets/audio/sounds/lobby/Clock-loading.mp3');
+      setTimeout(() => playSound(clock), 500);
+
+      // Time
+      Countdown();
+
+      // Inventory HUD
+      Inventory('active', room);
+      Inventory('passive', room);
+
+      setTimeout(() => {
+        const audio = document.querySelector('audio');
+        audio.src = 'src/assets/audio/music/The-Prospector.mp3';
+        audioConfig(audio, true, true, 0.3);
+      }, 4800);
+    },
+    { once: true }
+  );
+}
 
 // Simple Input Tests ✔
 export function passwordHandler(input, box) {
@@ -31,4 +62,20 @@ function denied() {
   playSound(sound);
 
   // ! Time Lost
+}
+
+// Objects Unlock
+
+export function unlockTimeTransfer() {
+  let clock = Array.from(document.querySelectorAll('#active img'))[3];
+  let button = document.querySelector('#transfer-panel button');
+
+  clock && clock.classList.contains('got') && button && button.classList.remove('block');
+}
+
+export function unlockConnectivity() {
+  let ethernet = Array.from(document.querySelectorAll('#active img'))[1];
+  let button = document.querySelector('#connect');
+
+  ethernet && ethernet.classList.contains('got') && button && button.classList.remove('block');
 }

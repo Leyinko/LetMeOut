@@ -4,9 +4,11 @@ export function mutationObserver(query, callback) {
   let observer = new MutationObserver(function (mutationsList, observer) {
     for (let mutation of mutationsList) {
       if (mutation.type === 'childList') {
-        callback();
-        // Stop Observing
-        observer.disconnect();
+        if (mutation.removedNodes.length >= 1) {
+          callback();
+          // Stop Observing
+          observer.disconnect();
+        }
       }
     }
   });

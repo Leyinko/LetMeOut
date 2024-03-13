@@ -17,6 +17,9 @@ const Transfer = () => {
     const button = document.createElement('button');
     button.textContent = 'Download';
 
+    // Block
+    button.classList.add('block');
+
     container.appendChild(button);
 
     button.addEventListener('click', () => {
@@ -63,14 +66,15 @@ export default Transfer;
 function sendTime(input) {
   let window = document.querySelector('#time-transfer');
   let IDS = JSON.parse(localStorage.getItem('data')).players.map((player) => player.id.toUpperCase());
+  let self = document.querySelector('.id');
 
-  if (!IDS.includes(input.value.toUpperCase()) && input.value.length === 11) {
-    transferInputError('NO CONSOLE FOUND');
+  if ((!IDS.includes(input.value.toUpperCase()) && input.value.length === 11) || input.value === self.textContent) {
+    transferInputError('NO AVAILABLE CONSOLE');
   } else if (input.value.length < 11) {
     transferInputError('INVALID SYNTAX');
   } else {
     // Send
-    sendRequest('shareTime', null, null, null, input.value);
+    sendRequest('shareTime', null, null, null, null, self.textContent, input.value);
 
     // Reset
     window.style.background = `url('src/assets/images/pictures/console/windows/time-transferred.png') center/contain no-repeat`;
@@ -86,10 +90,12 @@ function sendTime(input) {
 function transferInputError(text) {
   let panel = document.querySelector('#transfer-panel');
 
-  const error = document.createElement('p');
-  error.textContent = text;
+  if (!document.querySelector('#transfer-panel p')) {
+    const error = document.createElement('p');
+    error.textContent = text;
 
-  panel.appendChild(error);
+    panel.appendChild(error);
 
-  setTimeout(() => error.remove(), 1500);
+    setTimeout(() => error.remove(), 1500);
+  }
 }
