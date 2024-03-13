@@ -27,7 +27,7 @@ export function getLocalID() {
   }
 }
 
-// Error Stats
+// Stats
 export let clickCount = {
   clicks: 0,
   games: [0, 0, 0],
@@ -62,15 +62,6 @@ export function statsCollector(action, property, value = null, index = null) {
 
   localStorage.setItem('stats', JSON.stringify(stats));
 }
-
-// export function failsOnMinigames(minigame) {
-//   let stats = JSON.parse(localStorage.getItem('stats')) || {};
-
-//   let fails = stats[minigame] ? stats[minigame] + 1 : 1;
-//   stats[minigame] = fails;
-
-//   localStorage.setItem('stats', JSON.stringify(stats));
-// }
 
 // ! CLEAR !
 // localStorage.clear();

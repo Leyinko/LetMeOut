@@ -19,8 +19,8 @@
 
 /* TEST POSITIONING */
 
-#room {
-  animation: room 8s ease-in-out backwards;
+section#room {
+  /* animation: room 8s ease-in-out backwards; */
   /* animation: room 0.1s ease-in-out backwards; */
 }
 
@@ -79,8 +79,11 @@ section#room {
     filter: blur(30px) brightness(0);
     height: 0px;
   }
-  90% {
+  85% {
+    filter: blur(5px);
     height: 100%;
+  }
+  100% {
     filter: none;
     transform: none;
   }

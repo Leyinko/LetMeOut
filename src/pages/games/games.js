@@ -8,10 +8,9 @@ export default function Games(parent) {
   gamesModal.className = 'games-modal';
 
   parent.appendChild(gamesModal);
+  // MemoryPath();
+  neuralNetWork();
   // Smash();
-  MemoryPath();
-  // neuralNetWork();
-  //EthernetConnection();
 }
 
 export function showFinalNumber() {

@@ -44,7 +44,7 @@ class Stage {
     });
 
     // Random Items Assignment
-    assignStagesItems();
+    randomAssignStagesItems();
 
     // Start Game
     let start = room.getAttribute('progression');
@@ -90,7 +90,7 @@ function pointerHandlers(object, collider, item) {
   });
 }
 
-export function assignStagesItems() {
+export function randomAssignStagesItems() {
   let actives = document.querySelectorAll('#room > div:not(#note):not(#ticket):not(#console)');
   let shuffled = fisherYatesShuffle(Array.from(actives)).map((element) => element.getAttribute('id'));
 
