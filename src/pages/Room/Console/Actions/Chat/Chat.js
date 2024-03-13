@@ -1,3 +1,4 @@
+import { handleTime } from '../../../../../components/countdown/Countdown';
 import { statsCollector } from '../../../../../data/localStorage/LS';
 import sendRequest, { ws } from '../../../../../data/webSocket/webSocket';
 import './Chat.css';
@@ -5,13 +6,19 @@ import './Chat.css';
 const Chat = () => {
   const chat = document.querySelector('#chat');
   const messages = document.querySelector('.messages');
+  let self = document.querySelector('.id');
 
   !messages && ChatBox(document.querySelector('.id').textContent, chat);
 
   // WS
   ws.onmessage = function (event) {
     const current = JSON.parse(event.data);
-    chatMessage(current.name, current.message);
+    if (current.tag === 'chat') {
+      chatMessage(current.name, current.message);
+    } else if (current.tag === 'shareTime') {
+      current.donor === self.textContent && handleTime(45, false);
+      current.receiver === self.textContent && handleTime(45, true);
+    }
   };
 };
 

@@ -5,7 +5,7 @@ import Transfer from './Actions/Transfer/Transfer';
 import Chat from './Actions/Chat/Chat';
 import Repair from './Actions/Repair/Repair';
 import Reboot from './Actions/Reboot/Reboot';
-import { passwordHandler } from '../Progression/Progression';
+import { passwordHandler, unlockConnectivity, unlockTimeTransfer } from '../Progression/Progression';
 import { mutationObserver } from '../../../mutation-observer';
 import './Console.css';
 
@@ -32,10 +32,14 @@ const Terminal = (parent) => {
   terminal.appendChild(screen);
 
   // Actions Trigger
-  screen.addEventListener(
-    'click',
-    (e) => console_actions.hasOwnProperty(e.target.id) && console_actions[e.target.id](screen)
-  );
+  screen.addEventListener('click', (e) => {
+    console_actions.hasOwnProperty(e.target.id) && console_actions[e.target.id](screen);
+
+    // ! TEST
+    unlockTimeTransfer();
+    unlockConnectivity();
+    // ! TEST
+  });
 
   // Elements
   const id = document.createElement('h3');
@@ -68,6 +72,9 @@ const Terminal = (parent) => {
   });
 
   screen.appendChild(panel);
+
+  // Block Chat
+  document.querySelectorAll('.panel img')[1].classList.add('block');
 
   const exit = document.createElement('img');
   exit.src = 'src/assets/images/icons/console/turn-off.svg';

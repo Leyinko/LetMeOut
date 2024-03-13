@@ -67,9 +67,7 @@ const PlayersHub = (code, username, party) => {
 
     ws.onmessage = function (event) {
       const current = JSON.parse(event.data);
-
-      console.log(current);
-
+      // States
       updateReadyState(current);
       allPlayersReady(current, nickname.textContent.toLowerCase());
     };
@@ -94,14 +92,14 @@ function allPlayersReady(data, username) {
   let confirm = new Audio('src/assets/audio/sounds/lobby/Confirm-game.mp3');
   let ready = players.every((player) => player.style.opacity === '0.9');
 
-  // ! Local Test ! //
-  storeGameData(data, username);
-  Room();
-  // ! Local Test ! //
+  // // ! Local Test ! //
+  // storeGameData(data, username);
+  // Room();
+  // // ! Local Test ! //
 
   // ! Test
 
-  // preIntro(confirm);
+  preIntro(confirm);
 
   // ! Test
 
