@@ -1,10 +1,8 @@
-import Games from '../../../../games/games';
+import MemoryPath from '../../../../games/memoryPath/memoryPath';
 
 const Repair = () => {
-  let container = document.querySelector('#repair');
-  let games = document.querySelector('.games-modal');
-
-  !games && Games(container);
+  // First Game
+  MemoryPath();
 };
 
 export default Repair;

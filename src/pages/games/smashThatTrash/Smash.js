@@ -18,16 +18,16 @@ function Smash() {
   stamp = new Date().getTime();
 
   // App
-  const gamesModal = document.querySelector('.games-modal');
+  const parent = document.querySelector('#repair');
 
   smashContainer.id = 'smash-container';
 
-  gamesModal.appendChild(smashContainer);
+  parent.appendChild(smashContainer);
 
   // Buttons
   let buttons = 0;
   let rotation = 22.5;
-  const radius = 100;
+  const radius = 120;
   const totalButtons = 8;
 
   while (buttons < totalButtons) {

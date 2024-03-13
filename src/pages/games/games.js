@@ -1,25 +1,10 @@
-import EthernetConnection from './ethernetConection/ethernetConnection';
-import MemoryPath from './memoryPath/memoryPath';
-import neuralNetWork from './neuralNetWork/neuralNetWork';
-import Smash from './smashThatTrash/Smash';
-
-export default function Games(parent) {
-  const gamesModal = document.createElement('article');
-  gamesModal.className = 'games-modal';
-
-  parent.appendChild(gamesModal);
-  // MemoryPath();
-  neuralNetWork();
-  // Smash();
-}
-
 export function showFinalNumber() {
-  const gamesModal = document.querySelector('.games-modal');
+  const container = document.querySelector('#repair');
   const finalNumberModal = document.createElement('h2');
   finalNumberModal.className = 'final-number';
   finalNumberModal.textContent = '3';
 
-  gamesModal.innerHTML = '';
+  container.innerHTML = '';
 
-  gamesModal.appendChild(finalNumberModal);
+  container.appendChild(finalNumberModal);
 }

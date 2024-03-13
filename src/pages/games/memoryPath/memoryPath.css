@@ -6,11 +6,10 @@
   flex-direction: column;
   position: absolute;
   gap: 10px;
-  top: 10px;
   left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -34%);
   width: 390px;
-  height: 100%;
   opacity: 0.9;
   /* border: 1px solid blue; */
 }

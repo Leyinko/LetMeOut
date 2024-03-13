@@ -31,7 +31,7 @@ export default function MemoryPath() {
   // Stamp
   stamp = new Date().getTime();
   //dispaly cells
-  const gamesModal = document.querySelector('.games-modal');
+  const parent = document.querySelector('#repair');
   map.forEach((row, columnIndex) => {
     const rowElement = document.createElement('div');
     rowElement.className = 'map-row';
@@ -84,7 +84,7 @@ export default function MemoryPath() {
 
   memoryPathContainer.appendChild(keyboard);
 
-  gamesModal.appendChild(memoryPathContainer);
+  parent.appendChild(memoryPathContainer);
   start(`Pathfinder v1.3 - Analyzing...`, createPath);
 }
 

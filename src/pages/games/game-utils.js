@@ -4,10 +4,10 @@ export function start(displayStage, callback) {
   const displayMessage = document.createElement('h2');
   displayMessage.classList.add('display-timer');
 
-  const gamesModal = document.querySelector('.games-modal');
+  const parent = document.querySelector('#repair');
 
   displayMessage.textContent = displayStage;
-  gamesModal.appendChild(displayMessage);
+  parent.appendChild(displayMessage);
   var stageTimeout = setTimeout(() => {
     displayMessage.remove();
     clearTimeout(stageTimeout);

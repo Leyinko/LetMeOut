@@ -1,15 +1,10 @@
-import { statsCollector } from '../../../../data/localStorage/LS';
-import sendRequest, { ws } from '../../../../data/webSocket/webSocket';
-import { createPasswordModal } from '../Console';
+import { statsCollector } from '../../../../../data/localStorage/LS';
+import sendRequest, { ws } from '../../../../../data/webSocket/webSocket';
 import './Chat.css';
 
 const Chat = () => {
   const chat = document.querySelector('#chat');
   const messages = document.querySelector('.messages');
-
-  // Access Denied
-  chat.classList.add('block');
-  createPasswordModal('chat-password', chat);
 
   !messages && ChatBox(document.querySelector('.id').textContent, chat);
 
