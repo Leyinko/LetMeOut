@@ -36,8 +36,7 @@ const Intro = () => {
     intro.append(date, location);
 
     audio.src = 'src/assets/audio/sounds/lobby/Intro-2.mp3';
-    audio.loop = false;
-    audio.play();
+    audioConfig(audio, true, false, 1);
   }, 7000);
 
   // Hands
@@ -57,11 +56,10 @@ const Intro = () => {
   setTimeout(() => {
     app.appendChild(gif);
 
-    audio.src = 'src/assets/audio/sounds/Breathing.mp3';
-    audio.volume = 0.3;
-    audio.loop = false;
-    audio.play();
-  }, 26650);
+    const breathing = new Audio('src/assets/audio/sounds/Breathing.mp3');
+    breathing.volume = 0.4;
+    playSound(breathing);
+  }, 26350);
 };
 
 export function preIntro(confirm) {

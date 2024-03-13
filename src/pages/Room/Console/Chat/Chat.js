@@ -1,8 +1,26 @@
 import { statsCollector } from '../../../../data/localStorage/LS';
-import sendRequest from '../../../../data/webSocket/webSocket';
+import sendRequest, { ws } from '../../../../data/webSocket/webSocket';
+import { createPasswordModal } from '../Console';
 import './Chat.css';
 
-const ChatBox = (username, parent) => {
+const Chat = () => {
+  const chat = document.querySelector('#chat');
+  const messages = document.querySelector('.messages');
+
+  // Access Denied
+  chat.classList.add('block');
+  createPasswordModal('chat-password', chat);
+
+  !messages && ChatBox(document.querySelector('.id').textContent, chat);
+
+  // WS
+  ws.onmessage = function (event) {
+    const current = JSON.parse(event.data);
+    chatMessage(current.name, current.message);
+  };
+};
+
+export const ChatBox = (username, parent) => {
   const messages = document.createElement('ul');
   messages.className = 'messages';
 
@@ -46,4 +64,4 @@ export function chatMessage(user, textContent) {
   }
 }
 
-export default ChatBox;
+export default Chat;

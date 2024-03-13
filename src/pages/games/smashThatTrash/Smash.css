@@ -4,20 +4,21 @@
   top: 50%;
   display: flex;
   justify-content: center;
-  transform: translate(-50%, -46%);
+  transform: translate(-46%, -45%);
   border-radius: 50%;
   width: 300px;
   height: 300px;
+  opacity: 0.9;
   /* border: 1px solid red; */
 }
 
 #smash-container div {
-  cursor: pointer;
-  width: 60px;
-  height: 32.5%;
+  /* cursor: pointer; */
+  width: 45px;
+  height: 28.5%;
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  border: 28px inset black;
-  background-color: rgb(0, 0, 0);
+  border: 18px inset black;
+  background-color: rgba(160, 160, 160, 0.432);
   opacity: 0.9;
 }
 

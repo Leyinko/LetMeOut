@@ -1,6 +1,7 @@
 import Main from './utils/Main/Main';
 import Loader from '../../components/loader/Loader';
 import { immersion_message, opening_warning } from './utils/Text';
+import { audioConfig } from '../../components/audio/Audio';
 import './Opening.css';
 
 const Launch = () => {
@@ -62,9 +63,7 @@ function toMain(app) {
   // Audio
   const audio = document.createElement('audio');
   audio.src = 'src/assets/audio/music/Main-soundtrack.mp3';
-  audio.loop = true;
-  audio.volume = 0.7;
-  audio.play();
+  audioConfig(audio, true, true, 0.7);
 
   app.appendChild(audio);
   // FullScreen

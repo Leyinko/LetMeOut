@@ -53,10 +53,12 @@ const Transfer = () => {
 
           document.querySelector('#transfer-panel').appendChild(input);
         }
-      }, 50);
+      }, 300);
     });
   }
 };
+
+export default Transfer;
 
 function sendTime(input) {
   let window = document.querySelector('#time-transfer');
@@ -91,5 +93,3 @@ function transferInputError(text) {
 
   setTimeout(() => error.remove(), 1500);
 }
-
-export default Transfer;

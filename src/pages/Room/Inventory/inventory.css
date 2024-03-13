@@ -87,10 +87,12 @@
   backdrop-filter: blur(7px) brightness(0.6);
   opacity: 0;
   animation: players-hub-appearance 0.3s ease-in-out forwards;
+  z-index: 777;
 }
 
 .item-modal img {
-  max-height: 55%;
+  max-height: 50%;
   pointer-events: all;
+  filter: drop-shadow(1px 1px 3px black);
   -webkit-user-drag: none;
 }

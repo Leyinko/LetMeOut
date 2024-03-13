@@ -27,7 +27,7 @@ function Smash() {
   // Buttons
   let buttons = 0;
   let rotation = 22.5;
-  const radius = 130;
+  const radius = 100;
   const totalButtons = 8;
 
   while (buttons < totalButtons) {

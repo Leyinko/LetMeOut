@@ -2,6 +2,7 @@ import Launch from './src/pages/Main/Opening';
 import Main from './src/pages/Main/utils/Main/Main';
 import { Lobby } from './src/pages/Lobby/Lobby';
 import Room from './src/pages/Room/Room.js';
+import { audioConfig } from './src/components/audio/Audio.js';
 import './style.css';
 
 //>  Audio src's
@@ -11,16 +12,15 @@ import './style.css';
 
 // NB : Audio for Intro test
 const audio = document.createElement('audio');
-audio.src = 'src/assets/audio/music/Main-soundtrack.mp3';
-audio.loop = true;
-audio.volume = 0.5;
-audio.play();
+// audio.src = 'src/assets/audio/music/Main-soundtrack.mp3';
+// audioConfig(audio, true, true, 0.5);
+
 app.appendChild(audio);
 
 // > Menus
 // Main();
 // Launch();
-Lobby();
+// Lobby();
 
 // > Game
-// Room();
+Room();

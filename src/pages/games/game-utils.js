@@ -16,13 +16,13 @@ export function start(displayStage, callback) {
 }
 
 export const mistakePhrases = [
-  'Update failure',
-  'Operation aborted.',
-  'Error, please report.',
-  'Critical error - program terminated.',
-  'Bug detected, please contact support.',
-  'Program execution halted',
-  'Data integrity compromised.',
-  'Operation aborted.',
-  'Anomaly detected',
+  'UPDATE FAILURE',
+  'OPERATION ABORTED.',
+  'ERROR, PLEASE REPORT.',
+  'CRITICAL ERROR.',
+  'BUG DETECTED, PLEASE CONTACT SUPPORT.',
+  'PROGRAM EXECUTION HALTED',
+  'DATA INTEGRITY COMPROMISED.',
+  'OPERATION ABORTED.',
+  'ANOMALY DETECTED',
 ];

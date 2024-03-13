@@ -38,7 +38,7 @@
 
 .found {
   animation: object-found 2s infinite ease-in-out;
-  z-index: 9999999;
+  /* z-index: 555; */
 }
 
 @keyframes object-found {

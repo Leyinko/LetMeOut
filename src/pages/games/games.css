@@ -1,30 +1,37 @@
 .games-modal {
   position: absolute;
-  bottom: 37px;
-  left: 30px;
-  width: 68%;
-  height: 73%;
+  bottom: 27px;
+  left: 25px;
+  width: 90%;
+  height: 74%;
   display: flex;
   justify-content: center;
   align-items: center;
+  opacity: 0.9;
   /* border: 1px solid red; */
 }
 
 .display-timer {
+  position: absolute;
+  top: -40px;
   width: 100%;
   text-align: center;
   position: absolute;
-  top: 0;
-  font-size: 15px;
+  font-size: 13px;
   font-family: 'JMH';
-  color: black;
+  font-weight: 200;
+  opacity: 0.8;
+  /* border: 1px solid red; */
+  /* color: black; */
 }
 
 .final-number {
-  position: absolute;
+  /* position: absolute; */
   /* right: -210px; */
-  font-size: 2rem;
+  font-size: 7rem;
+  /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+
   /* border: 1px solid red; */
-  color: black;
+  /* color: black; */
   opacity: 0.8;
 }

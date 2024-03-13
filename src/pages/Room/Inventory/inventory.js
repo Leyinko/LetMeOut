@@ -50,17 +50,19 @@ function collectablesDropdown(e, type) {
 }
 
 export function inventoryModal(image) {
-  const modalContainer = document.createElement('div');
-  modalContainer.className = 'item-modal';
+  if (!document.querySelector('.item-modal')) {
+    const modalContainer = document.createElement('div');
+    modalContainer.className = 'item-modal';
 
-  const item = document.createElement('img');
-  item.src = image;
+    const item = document.createElement('img');
+    item.src = image;
 
-  modalContainer.appendChild(item);
+    modalContainer.appendChild(item);
 
-  modalContainer.addEventListener('click', () => modalContainer.remove());
+    modalContainer.addEventListener('click', () => modalContainer.remove());
 
-  app.appendChild(modalContainer);
+    app.appendChild(modalContainer);
+  }
 }
 
 function iconItem(item, type, parent) {

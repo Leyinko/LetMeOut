@@ -43,9 +43,7 @@ export const Room = () => {
       setTimeout(() => {
         const audio = document.querySelector('audio');
         audio.src = 'src/assets/audio/music/The-Prospector.mp3';
-        audio.volume = 0.3;
-        audio.loop = true;
-        audio.play();
+        audioConfig(audio, true, true, 0.3);
         // ! TEST NO INTRO
         // const soundtrack = new Audio('src/assets/audio/music/The-Prospector.mp3');
         // audioConfig(soundtrack, true, true, 0.3);

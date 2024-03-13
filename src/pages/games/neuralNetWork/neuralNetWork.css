@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: column;
   gap: 15px;
+  opacity: 0.9;
   /* border: 1px solid red; */
 }
 
@@ -15,20 +16,20 @@
 }
 
 .neuron {
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   border: 2px inset rgb(19, 19, 19);
   border-radius: 50%;
   clip-path: circle(50% at 50% 50%);
-  border: 15px inset black;
+  border: 5px inset black;
   background-color: rgba(7, 7, 7, 0.932);
 }
 
 .neuron-active {
-  width: 50px;
-  height: 50px;
+  width: 35px;
+  height: 35px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.932);
   clip-path: circle(50% at 50% 50%);
-  border: 15px inset black;
+  border: 5px inset black;
 }

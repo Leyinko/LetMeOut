@@ -39,6 +39,10 @@
   transform: translateX(25px);
 }
 
+.door.active {
+  filter: brightness(0.8);
+}
+
 #room > div.clickable {
   pointer-events: all;
 }

@@ -1,9 +1,9 @@
 import { animationReflow } from '../../../utils';
 import { getLocalID } from '../../../data/localStorage/LS';
-import { ws } from '../../../data/webSocket/webSocket';
-import Games from '../../games/games';
+import Diskette from './Actions/Diskette/Diskette';
 import Transfer from './Actions/Transfer/Transfer';
-import ChatBox, { chatMessage } from './Chat/Chat';
+import Chat from './Chat/Chat';
+import Repair from './Actions/Repair/Repair';
 import './Console.css';
 
 const Terminal = (parent) => {
@@ -28,26 +28,24 @@ const Terminal = (parent) => {
 
   terminal.appendChild(screen);
 
-  screen.addEventListener('click', (e) => {
-    console_actions.hasOwnProperty(e.target.id) && console_actions[e.target.id](screen);
-  });
+  screen.addEventListener(
+    'click',
+    (e) => console_actions.hasOwnProperty(e.target.id) && console_actions[e.target.id](screen)
+  );
 
   // Elements
-  // > ID
   const id = document.createElement('h3');
   id.className = 'id';
   id.textContent = getLocalID() ?? '#XXXX-XX-DEV';
 
   screen.appendChild(id);
 
-  // > Folder
   const folder = document.createElement('img');
   folder.src = 'src/assets/images/icons/console/Folder.png';
   folder.id = 'folder';
 
   screen.appendChild(folder);
 
-  // > Panel
   const panel = document.createElement('div');
   panel.className = 'panel';
 
@@ -67,7 +65,6 @@ const Terminal = (parent) => {
 
   screen.appendChild(panel);
 
-  // > Exit
   const exit = document.createElement('img');
   exit.src = 'src/assets/images/icons/console/turn-off.svg';
   exit.className = 'exit';
@@ -78,50 +75,14 @@ const Terminal = (parent) => {
 };
 
 const console_actions = {
-  folder: (parent) => {
-    // Window
-    createWindow('window-usb', parent);
-  },
-  transfer: (parent) => {
-    // Window
-    createWindow('time-transfer', parent);
-    // Action
-    Transfer();
-  },
-  connect: (parent) => {
-    // Window
-    createWindow('chat', parent);
-
-    // Action
-    // Chat()
-
-    // Start Chat
-    const chat = document.querySelector('#chat');
-    const messages = document.querySelector('.messages');
-    !messages && ChatBox(document.querySelector('.id').textContent, chat);
-    //
-    ws.onmessage = function (event) {
-      const current = JSON.parse(event.data);
-      chatMessage(current.name, current.message);
-    };
-  },
-  fix: (parent) => {
-    // Window
-    createWindow('repair', parent);
-    // Action
-    let container = document.querySelector('#repair');
-    let games = document.querySelector('.games-modal');
-
-    // Conditionals
-    !games && Games(container);
-  },
-  restart: (parent) => {
-    // Window
-    createWindow('reboot', parent);
-  },
+  folder: (parent) => createWindow('window-usb', parent) && Diskette(),
+  transfer: (parent) => createWindow('time-transfer', parent) && Transfer(),
+  connect: (parent) => createWindow('chat', parent) && Chat(),
+  fix: (parent) => createWindow('repair', parent) && Repair(),
+  restart: (parent) => createWindow('reboot', parent),
 };
 
-function createWindow(id, parent) {
+export function createWindow(id, parent) {
   if (!document.querySelector(`#${id}`)) {
     const window = document.createElement('div');
     window.id = id;
@@ -135,8 +96,24 @@ function createWindow(id, parent) {
     close.addEventListener('click', () => window.classList.remove('onscreen'));
 
     window.appendChild(close);
+    // Window Created With Success ✔
+    return true;
   } else {
     !document.querySelector(`#${id}`).classList.add('onscreen');
   }
 }
+
+export function createPasswordModal(id, parent) {
+  const password = document.createElement('div');
+  password.className = 'password';
+  password.id = id;
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.maxLength = 9;
+
+  password.appendChild(input);
+  parent.appendChild(password);
+}
+
 export default Terminal;
