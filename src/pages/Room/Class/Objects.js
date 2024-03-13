@@ -20,9 +20,9 @@ export const stage3 = {
 export const tickets = {
   query: '#ticket',
   items: [
-    'src/assets/images/pictures/enigmas/tickets/Ticket1.png',
-    'src/assets/images/pictures/enigmas/tickets/Ticket2.png',
-    'src/assets/images/pictures/enigmas/tickets/Ticket3.png',
+    'src/assets/images/pictures/enigmas/tickets/Ticket1-01500017.png',
+    'src/assets/images/pictures/enigmas/tickets/Ticket2-33110713.png',
+    'src/assets/images/pictures/enigmas/tickets/Ticket3-42302070.png',
   ],
 };
 
@@ -32,7 +32,7 @@ export const actives = [
   'src/assets/images/icons/active/Diskette.png',
   'src/assets/images/icons/active/Clock.png',
   'src/assets/images/pictures/enigmas/polaroids/Polaroid-bathroom.png',
-  'src/assets/images/pictures/enigmas/tickets/Ticket1.png',
+  'src/assets/images/pictures/enigmas/tickets/Ticket1-01500017.png',
 ];
 
 export const notes = {

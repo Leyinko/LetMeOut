@@ -1,0 +1,25 @@
+#final-reboot {
+  position: absolute;
+  bottom: 27.5%;
+  left: 50%;
+  transform: translateX(-49%);
+  width: 270px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#final-reboot input {
+  margin: 0px;
+  padding: 0px;
+  width: 40px;
+  height: 100%;
+  text-align: center;
+  color: black;
+  font-weight: 900;
+  font-size: 1rem;
+  line-height: inherit;
+  border: 2px inset rgba(0, 0, 0, 0.479);
+  background-color: rgba(255, 255, 255, 0.041);
+}

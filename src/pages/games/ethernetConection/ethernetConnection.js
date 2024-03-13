@@ -34,6 +34,9 @@ export default function EthernetConnection() {
 
         pinBall.addEventListener('click', () => {
           if (!pairs.includes(pinBall.id)) {
+            // ! TEST
+            accessCode();
+            // ! TEST
             if (selection.length < 2) {
               selection.push(pinBall.id);
               checkResult(selection, pairs, EthernetContainer);
@@ -99,7 +102,7 @@ function checkResult(selection, pairs, node) {
   }
 }
 
-function accessCode() {
+export function accessCode() {
   let code = random(9, 6).join('');
 
   document.querySelector('#connect').setAttribute('code', code);

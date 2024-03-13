@@ -2,8 +2,11 @@ import { animationReflow } from '../../../utils';
 import { getLocalID } from '../../../data/localStorage/LS';
 import Diskette from './Actions/Diskette/Diskette';
 import Transfer from './Actions/Transfer/Transfer';
-import Chat from './Chat/Chat';
+import Chat from './Actions/Chat/Chat';
 import Repair from './Actions/Repair/Repair';
+import Reboot from './Actions/Reboot/Reboot';
+import { passwordHandler } from '../Progression/Progression';
+import { mutationObserver } from '../../../mutation-observer';
 import './Console.css';
 
 const Terminal = (parent) => {
@@ -28,6 +31,7 @@ const Terminal = (parent) => {
 
   terminal.appendChild(screen);
 
+  // Actions Trigger
   screen.addEventListener(
     'click',
     (e) => console_actions.hasOwnProperty(e.target.id) && console_actions[e.target.id](screen)
@@ -69,7 +73,7 @@ const Terminal = (parent) => {
   exit.src = 'src/assets/images/icons/console/turn-off.svg';
   exit.className = 'exit';
 
-  exit.addEventListener('click', () => terminal.classList.remove('opened'));
+  exit.addEventListener('click', () => closeAllWindows(terminal));
 
   screen.appendChild(exit);
 };
@@ -77,10 +81,19 @@ const Terminal = (parent) => {
 const console_actions = {
   folder: (parent) => createWindow('window-usb', parent) && Diskette(),
   transfer: (parent) => createWindow('time-transfer', parent) && Transfer(),
-  connect: (parent) => createWindow('chat', parent) && Chat(),
-  fix: (parent) => createWindow('repair', parent) && Repair(),
-  restart: (parent) => createWindow('reboot', parent),
+  connect: (parent) =>
+    createWindow('chat', parent) && createPasswordModal('chat-password', document.querySelector('#chat'), Chat),
+  fix: (parent) =>
+    createWindow('repair', parent) && createPasswordModal('games-password', document.querySelector('#repair'), Repair),
+  restart: (parent) => createWindow('reboot', parent) && Reboot(),
 };
+
+function closeAllWindows(terminal) {
+  let opened = document.querySelectorAll('.onscreen');
+  opened.forEach((window) => window.classList.remove('onscreen'));
+
+  terminal.classList.remove('opened');
+}
 
 export function createWindow(id, parent) {
   if (!document.querySelector(`#${id}`)) {
@@ -96,14 +109,14 @@ export function createWindow(id, parent) {
     close.addEventListener('click', () => window.classList.remove('onscreen'));
 
     window.appendChild(close);
-    // Window Created With Success ✔
+    // Window Created With Success ✔ (for && Logical Operator *wink wink*)
     return true;
   } else {
     !document.querySelector(`#${id}`).classList.add('onscreen');
   }
 }
 
-export function createPasswordModal(id, parent) {
+export function createPasswordModal(id, parent, callback) {
   const password = document.createElement('div');
   password.className = 'password';
   password.id = id;
@@ -112,8 +125,13 @@ export function createPasswordModal(id, parent) {
   input.type = 'text';
   input.maxLength = 9;
 
+  input.addEventListener('keydown', (e) => e.key === 'Enter' && passwordHandler(input, id));
+
   password.appendChild(input);
   parent.appendChild(password);
+
+  // Mutation Observer
+  mutationObserver(parent.id, callback);
 }
 
 export default Terminal;

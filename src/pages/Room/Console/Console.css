@@ -138,7 +138,7 @@
 .password {
   pointer-events: all;
   position: absolute;
-  width: 284px;
+  width: 283px;
   height: 109px;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.418);
 }

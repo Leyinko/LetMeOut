@@ -39,12 +39,12 @@ export default function neuralNetWork() {
   // Stamp
   stamp = new Date().getTime();
 
-  const gamesModal = document.querySelector('.games-modal');
+  const parent = document.querySelector('#repair');
   generateNewPatterns();
   printPattern(playerPattern);
   start('Memory Glitch v3.4 - Reboot issue found...', animatePattern);
   console.log(resultPattern);
-  gamesModal.append(neuralNetWorkContainer);
+  parent.append(neuralNetWorkContainer);
 }
 
 function patternGenerator(pattern) {
