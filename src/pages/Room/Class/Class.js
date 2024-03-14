@@ -69,25 +69,29 @@ function colliderAssign(collider, y, x, width, height) {
 function pointerHandlers(object, collider, item) {
   let room = document.querySelector('#room');
 
-  collider.addEventListener('click', () => {
-    object.classList.toggle('active');
+  collider.addEventListener(
+    'click',
+    () => {
+      object.classList.add('active');
 
-    item.hiddenOnPrint && object.remove();
+      item.hiddenOnPrint && object.remove();
 
-    if (object.classList.contains('active')) {
-      let sound = new Audio(item.itemSound);
-      playSound(sound);
-      soundFadeOut(sound);
+      if (object.classList.contains('active')) {
+        let sound = new Audio(item.itemSound);
+        playSound(sound);
+        soundFadeOut(sound);
 
-      object.addEventListener('transitionend', () => {
-        let rect = object.getBoundingClientRect();
-        colliderAssign(collider, `${rect.top}px`, `${rect.left}px`, `${rect.width}px`, `${rect.height}px`);
-      });
+        object.addEventListener('transitionend', () => {
+          let rect = object.getBoundingClientRect();
+          colliderAssign(collider, `${rect.top}px`, `${rect.left}px`, `${rect.width}px`, `${rect.height}px`);
+        });
 
-      item.disappearOnClick && object.remove();
-      item.hiddenOnPrint && room.append(object);
-    }
-  });
+        item.disappearOnClick && object.remove();
+        item.hiddenOnPrint && room.append(object);
+      }
+    },
+    { once: true }
+  );
 }
 
 export function randomAssignStagesItems() {

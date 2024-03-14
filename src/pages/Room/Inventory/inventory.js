@@ -1,5 +1,6 @@
-import { getCollectables } from '../../../data/localStorage/LS';
+import { addNoteToCollectables, getCollectables } from '../../../data/localStorage/LS';
 import { actives, notes } from '../Class/Objects';
+import { unlockPathFromObject } from '../Progression/Progression';
 import './inventory.css';
 
 export function Inventory(type, parent) {
@@ -47,6 +48,25 @@ function collectablesDropdown(e, type) {
   } else {
     document.querySelector('#collection').remove();
   }
+}
+
+export function addItemToInventory(item) {
+  let actives = document.querySelectorAll('[id^="inventory"] img');
+  let pattern = /([a-zA-Z]*?[0-9]*)(?=\.|\-)/;
+
+  item.match(pattern)[0].length === 1
+    ? addNoteToCollectables(item)
+    : actives.forEach((active, index) => {
+        if (active.src.match(pattern)[0].at(0) === item.match(pattern)[0].at(0)) {
+          let parent = active.parentElement;
+          // In inventory
+          active.classList.add('got');
+          // Unlock
+          unlockPathFromObject(index);
+          // Examine
+          parent.addEventListener('click', () => inventoryModal(item));
+        }
+      });
 }
 
 export function inventoryModal(image) {
