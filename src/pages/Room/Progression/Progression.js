@@ -1,5 +1,6 @@
 import { audioConfig, playSound } from '../../../components/audio/Audio';
 import Countdown from '../../../components/countdown/Countdown';
+import { startListen } from '../../../data/webSocket/webSocket';
 import { Inventory } from '../Inventory/inventory';
 import './Progression.css';
 
@@ -75,7 +76,7 @@ export function unlockPathFromObject(index) {
   let element = queries[index];
 
   // Ticket Conditional
-  index === 4 && inv && inv.classList.contains('got') && (listen = true);
+  index === 4 && inv && inv.classList.contains('got') && startListen();
 
   inv && inv.classList.contains('got') && element && element.classList.remove('block');
 

@@ -152,6 +152,7 @@ function checkResult() {
         } else {
           resetGame();
           handleTime(20, false);
+          buttonOn = false;
           start(`win`, createPath);
         }
       }
