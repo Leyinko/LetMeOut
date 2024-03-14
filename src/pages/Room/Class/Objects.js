@@ -17,7 +17,7 @@ export const stage3 = {
   items: [
     'src/assets/images/pictures/enigmas/polaroids/Polaroid-bathroom.png',
     'src/assets/images/pictures/enigmas/polaroids/Polaroid-kitchen.png',
-    'src/assets/images/pictures/enigmas/polaroids/Polaroid-salon.png',
+    'src/assets/images/pictures/enigmas/polaroids/Polaroid-living.png',
   ],
 };
 

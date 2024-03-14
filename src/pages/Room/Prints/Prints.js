@@ -25,8 +25,8 @@ function checkProgressPhases() {
   let stage = document.querySelector('#room').getAttribute('progression');
   phases.forEach((phase) => phase.getAttribute('check') == stage - 1 && phase.classList.add('completed'));
 
-  Array.from(phases).every((phase) => phase.classList.contains('completed')) &&
-    alert('Temporary progression system ended ');
+  // Array.from(phases).every((phase) => phase.classList.contains('completed')) &&
+  //   alert('Temporary progression system ended ');
 }
 
 // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TESTING ZONE ------> HUD for Progression test
@@ -35,6 +35,7 @@ export function itemsPrintOnStage(stage) {
   switch (stage) {
     case 0:
       activesPrint(stage1);
+
       break;
     case 1:
       activesPrint(stage2);
@@ -63,6 +64,9 @@ function itemPop(src, parent) {
 
   let collider = item.parentElement;
   collider.classList.add('clickable');
+
+  // Block Ticket
+  collider.id === 'ticket' && collider.classList.add('block');
 
   collider.addEventListener('click', () => item.classList.add('found'));
 

@@ -74,6 +74,11 @@ const Terminal = (parent) => {
 
   screen.appendChild(panel);
 
+  // Transfer Time Block
+  createWindow('time-transfer', screen) &&
+    Transfer() &&
+    document.querySelector('#time-transfer').classList.remove('onscreen');
+
   // Block Chat
   document.querySelectorAll('.panel img')[1].classList.add('block');
 
@@ -88,7 +93,7 @@ const Terminal = (parent) => {
 
 const console_actions = {
   folder: (parent) => createWindow('window-usb', parent) && Diskette(),
-  transfer: (parent) => createWindow('time-transfer', parent) && Transfer(),
+  transfer: () => document.querySelector(`#time-transfer`).classList.add('onscreen'),
   connect: (parent) =>
     createWindow('chat', parent) && createPasswordModal('chat-password', document.querySelector('#chat'), Chat),
   fix: (parent) =>

@@ -58,7 +58,6 @@ function granted() {
 function denied() {
   let sound = new Audio('src/assets/audio/sounds/console/error.mp3');
   playSound(sound);
-
   // ! Time Lost
 }
 
@@ -75,9 +74,15 @@ export function unlockPathFromObject(index) {
   let inv = Array.from(document.querySelectorAll('#active img'))[index];
   let element = queries[index];
 
+  // Ticket Conditional
+  index === 4 && inv && inv.classList.contains('got') && (listen = true);
+
   inv && inv.classList.contains('got') && element && element.classList.remove('block');
 
+  // Terminal Conditional
   index === 0 ? element.click() || terminal.classList.remove('opened') : null;
 }
+
+function WSListener() {}
 
 // NB : WS POLAROID && PICTURE COLLIDER UNLOCK
