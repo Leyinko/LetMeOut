@@ -37,7 +37,7 @@ export default function EthernetConnection() {
             if (selection.length < 2) {
               selection.push(pinBall.id);
               checkResult(selection, pairs, EthernetContainer);
-              markCheck(selection);
+              pairs.length < 15 && markCheck(selection);
             } else {
               selection = [];
               selection.push(pinBall.id);
@@ -61,7 +61,8 @@ function markCheck(selected) {
   let balls = document.querySelectorAll('.pin-ball');
   balls.forEach((ball) => ball.classList.remove('pin-ball-selected'));
 
-  selected?.forEach((element) => element && document.querySelector(`#${element}`).classList.add('pin-ball-selected'));
+  selected &&
+    selected.forEach((element) => element && document.querySelector(`#${element}`).classList.add('pin-ball-selected'));
 }
 
 function checkResult(selection, pairs, node) {
@@ -76,18 +77,8 @@ function checkResult(selection, pairs, node) {
       pairs.push(selection[0], selection[1]);
       document.querySelector(`#${selection[0]}`).classList.add('pin-ball-check');
       document.querySelector(`#${selection[1]}`).classList.add('pin-ball-check');
-      markCheck();
-      console.log('casan');
-      console.log(pairs);
-    } else {
-      console.log('no casan');
-      console.log(pairs);
     }
-  } else {
-    console.log('El array es menor');
   }
-
-  console.log(pairs.length);
 
   if (pairs.length == 16) {
     const access = document.createElement('h2');
