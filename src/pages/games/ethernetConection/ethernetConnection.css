@@ -55,7 +55,7 @@
   border-radius: 50%;
 }
 
-.pin-ball-check {
+div[id*='ball'].pin-ball-check {
   background-color: white;
 }
 

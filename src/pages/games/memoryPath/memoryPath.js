@@ -130,7 +130,6 @@ function isValidMove(dir, x, y) {
 }
 
 function checkResult() {
-  console.log(playerPath, resultPath);
   if (stage <= 3) {
     if (resultPath[moves] != playerPath[moves]) {
       cleanCell();
