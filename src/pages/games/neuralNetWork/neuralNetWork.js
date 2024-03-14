@@ -2,7 +2,7 @@ import { fisherYatesShuffle } from '../../../utils';
 import { statsCollector } from '../../../data/localStorage/LS';
 import { timer } from '../../Room/Room';
 // import { failsOnMinigames } from '../../../localStorage/LS';
-import { mistakePhrases, start } from '../game-utils';
+import { start } from '../game-utils';
 import { showFinalNumber } from '../games';
 import Smash from '../smashThatTrash/Smash';
 import './neuralNetWork.css';
@@ -42,7 +42,7 @@ export default function neuralNetWork() {
   const parent = document.querySelector('#repair');
   generateNewPatterns();
   printPattern(playerPattern);
-  start('Memory Glitch v3.4 - Reboot issue found...', animatePattern);
+  start('default', animatePattern);
   console.log(resultPattern);
   parent.append(neuralNetWorkContainer);
 }
@@ -118,13 +118,13 @@ function checkResult(resultOne, resultTwo) {
         playerPattern = playerPattern.map((row) => row.map((element) => 0));
         generateNewPatterns();
         stage == 4 && checkResult();
-        stage != 4 && start('stage: ' + stage, animatePattern);
+        stage != 4 && start('win', animatePattern);
       } else {
         handleTime(20, false);
         generateNewPatterns();
         playerPattern = playerPattern.map((row) => row.map((element) => 0));
         touchOn = false;
-        start(mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)], animatePattern);
+        start('lose', animatePattern);
         // Error
         statsCollector('clickCount', 'games', null, '1');
       }

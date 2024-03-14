@@ -64,7 +64,7 @@ function markCheck(selected) {
   let balls = document.querySelectorAll('.pin-ball');
   balls.forEach((ball) => ball.classList.remove('pin-ball-selected'));
 
-  selected.forEach((element) => element && document.querySelector(`#${element}`).classList.add('pin-ball-selected'));
+  selected?.forEach((element) => element && document.querySelector(`#${element}`).classList.add('pin-ball-selected'));
 }
 
 function checkResult(selection, pairs, node) {
