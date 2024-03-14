@@ -26,12 +26,14 @@
 
 .item {
   position: fixed;
-  width: 25px;
+  width: 30px;
   display: none;
 }
 
 .item.found {
   display: block;
+  z-index: 1;
+  /* border: 1px solid red; */
 }
 
 /* SPARKLE */
@@ -43,16 +45,16 @@
 
 @keyframes object-found {
   0% {
-    transform: scale(1) rotate(23deg);
+    transform: scale(1) rotate(43deg);
     opacity: 0.7;
   }
   50% {
     filter: drop-shadow(1px 2px 6px #ffffff3a);
-    transform: scale(1.1) rotate(13deg);
-    opacity: 0.9;
+    transform: scale(1.2) rotate(13deg);
+    opacity: 0.7;
   }
   100% {
-    transform: scale(1) rotate(23deg);
+    transform: scale(1) rotate(43deg);
     filter: drop-shadow(1px 1px 1px #ffffff1e);
     opacity: 0.7;
   }

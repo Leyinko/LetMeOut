@@ -10,8 +10,6 @@ export function firstClickStart() {
   room.addEventListener(
     'click',
     () => {
-      console.log('Second');
-
       let clock = new Audio('src/assets/audio/sounds/lobby/Clock-loading.mp3');
       setTimeout(() => playSound(clock), 500);
 
@@ -65,17 +63,21 @@ function denied() {
 }
 
 // Objects Unlock
+export function unlockPathFromObject(index) {
+  let terminal = document.querySelector('#terminal');
+  let queries = [
+    document.querySelector('#console'),
+    document.querySelector('#connect'),
+    document.querySelector('#folder'),
+    document.querySelector('#transfer-panel button'),
+  ];
 
-export function unlockTimeTransfer() {
-  let clock = Array.from(document.querySelectorAll('#active img'))[3];
-  let button = document.querySelector('#transfer-panel button');
+  let inv = Array.from(document.querySelectorAll('#active img'))[index];
+  let element = queries[index];
 
-  clock && clock.classList.contains('got') && button && button.classList.remove('block');
+  inv && inv.classList.contains('got') && element && element.classList.remove('block');
+
+  index === 0 ? element.click() || terminal.classList.remove('opened') : null;
 }
 
-export function unlockConnectivity() {
-  let ethernet = Array.from(document.querySelectorAll('#active img'))[1];
-  let button = document.querySelector('#connect');
-
-  ethernet && ethernet.classList.contains('got') && button && button.classList.remove('block');
-}
+// NB : WS POLAROID && PICTURE COLLIDER UNLOCK

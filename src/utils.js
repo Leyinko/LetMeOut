@@ -62,4 +62,5 @@ export function animationReflow(element, animation) {
   element.style.animation = animation;
   void element.offsetWidth;
   element.style.animation = '';
+  return true;
 }

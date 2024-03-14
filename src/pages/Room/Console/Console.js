@@ -5,41 +5,39 @@ import Transfer from './Actions/Transfer/Transfer';
 import Chat from './Actions/Chat/Chat';
 import Repair from './Actions/Repair/Repair';
 import Reboot from './Actions/Reboot/Reboot';
-import { passwordHandler, unlockConnectivity, unlockTimeTransfer } from '../Progression/Progression';
+import { passwordHandler } from '../Progression/Progression';
 import { mutationObserver } from '../../../mutation-observer';
 import './Console.css';
 
 const Terminal = (parent) => {
-  // Opening Handler
+  // TV = Click
   const tv = document.querySelector('#console');
-  tv.style.pointerEvents = 'all';
 
-  tv.addEventListener('click', () => {
-    terminal.classList.add('opened');
-    animationReflow(terminal, 'players-hub-appearance 1s ease-in-out');
-  });
+  tv.addEventListener(
+    'click',
+    () => animationReflow(terminal, 'players-hub-appearance 1s ease-in-out') && terminal.classList.add('opened')
+  );
 
-  // Console
+  // Block TV
+  tv.classList.add('block');
+
+  // TERMINAL = Full Background
   const terminal = document.createElement('section');
   terminal.id = 'terminal';
 
   parent.appendChild(terminal);
 
-  // Screen
+  // SCREEN = Elements Delimitation
   const screen = document.createElement('article');
   screen.id = 'screen';
 
   terminal.appendChild(screen);
 
   // Actions Trigger
-  screen.addEventListener('click', (e) => {
-    console_actions.hasOwnProperty(e.target.id) && console_actions[e.target.id](screen);
-
-    // ! TEST
-    unlockTimeTransfer();
-    unlockConnectivity();
-    // ! TEST
-  });
+  screen.addEventListener(
+    'click',
+    (e) => console_actions.hasOwnProperty(e.target.id) && console_actions[e.target.id](screen)
+  );
 
   // Elements
   const id = document.createElement('h3');
@@ -51,6 +49,9 @@ const Terminal = (parent) => {
   const folder = document.createElement('img');
   folder.src = 'src/assets/images/icons/console/Folder.png';
   folder.id = 'folder';
+
+  // Block Folder
+  folder.classList.add('block');
 
   screen.appendChild(folder);
 

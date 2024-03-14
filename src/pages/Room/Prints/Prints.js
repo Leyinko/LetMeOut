@@ -1,6 +1,5 @@
 import { random } from '../../../utils';
-import { inventoryModal } from '../Inventory/inventory';
-import { addNoteToCollectables } from '../../../data/localStorage/LS';
+import { addItemToInventory } from '../Inventory/inventory';
 import { notes, stage1, stage2, stage3, tickets } from '../Class/Objects';
 import './Prints.css';
 
@@ -92,23 +91,6 @@ function itemPop(src, parent) {
       checkProgressPhases();
     }
   });
-}
-
-function addItemToInventory(item) {
-  let actives = document.querySelectorAll('[id^="inventory"] img');
-  let pattern = /([a-zA-Z]*?[0-9]*)(?=\.|\-)/;
-
-  item.match(pattern)[0].length === 1
-    ? addNoteToCollectables(item)
-    : actives.forEach((active) => {
-        if (active.src.match(pattern)[0].at(0) === item.match(pattern)[0].at(0)) {
-          let parent = active.parentElement;
-          // In inventory
-          active.classList.add('got');
-          // Examine
-          parent.addEventListener('click', () => inventoryModal(item));
-        }
-      });
 }
 
 function polaroidPrint(stage) {

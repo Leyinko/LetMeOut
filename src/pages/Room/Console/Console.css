@@ -1,3 +1,20 @@
+#room #console {
+  position: absolute;
+  transition: all 0.1s ease-in-out;
+  pointer-events: all;
+}
+
+#room #console.block {
+  pointer-events: none;
+}
+
+/* #room #console img {
+  position: absolute;
+  transition: all 0.7s ease-in-out;
+  pointer-events: all;
+  border: 1px solid red;
+} */
+
 #terminal * {
   font-family: 'JMH';
   -webkit-user-drag: none;
@@ -60,7 +77,7 @@
 
 .panel img {
   width: 43px;
-  opacity: 0.4;
+  /* opacity: 0.4; */
 }
 
 .panel img:nth-child(1) {
