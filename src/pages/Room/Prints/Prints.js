@@ -3,39 +3,10 @@ import { addItemToInventory } from '../Inventory/inventory';
 import { notes, stage1, stage2, stage3, tickets } from '../Class/Objects';
 import './Prints.css';
 
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TESTING ZONE ------> HUD for Progression test
-
-const Progression = () => {
-  let room = document.querySelector('#room');
-
-  let progress = document.createElement('aside');
-  progress.classList = 'progress';
-
-  progress.innerHTML = `
-		<div check="1"></div>
-		<div check="2"></div>
-		<div check="3"></div>
-	`;
-
-  room.appendChild(progress);
-};
-
-function checkProgressPhases() {
-  let phases = document.querySelectorAll('[check]');
-  let stage = document.querySelector('#room').getAttribute('progression');
-  phases.forEach((phase) => phase.getAttribute('check') == stage - 1 && phase.classList.add('completed'));
-
-  // Array.from(phases).every((phase) => phase.classList.contains('completed')) &&
-  //   alert('Temporary progression system ended ');
-}
-
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! TESTING ZONE ------> HUD for Progression test
-
 export function itemsPrintOnStage(stage) {
   switch (stage) {
     case 0:
       activesPrint(stage1);
-
       break;
     case 1:
       activesPrint(stage2);
@@ -85,15 +56,6 @@ function itemPop(src, parent) {
 
     collider.id === 'ticket' && (ticket.src = src);
     collider.id === 'polaroid' && (polaroid.src = src);
-
-    // Stage Controller
-    let stage = document.querySelector('#room').getAttribute('progression');
-    let check = Array.from(document.querySelectorAll(`[stage="${stage}"]`)).filter((item) => item.childElementCount);
-
-    if (collider.getAttribute('stage') && check.length === 0) {
-      itemsPrintOnStage(Number(stage));
-      checkProgressPhases();
-    }
   });
 }
 
@@ -121,5 +83,3 @@ function ticketAndNotePrint(...elements) {
     itemPop(pack[target], element);
   });
 }
-
-export default Progression;

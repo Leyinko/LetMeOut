@@ -1,6 +1,7 @@
 import { handleTime } from '../../../../../components/countdown/Countdown';
 import { statsCollector } from '../../../../../data/localStorage/LS';
 import sendRequest, { ws } from '../../../../../data/webSocket/webSocket';
+import { nextStage, unlockTicket } from '../../../Progression/Progression';
 import './Chat.css';
 
 const Chat = () => {
@@ -15,9 +16,10 @@ const Chat = () => {
     const current = JSON.parse(event.data);
     if (current.tag === 'chat') {
       chatMessage(current.name, current.message);
-      if (current.ticket == 'bathroom') {
-        document.querySelector('#ticket').classList.remove('block');
-      }
+      // NEXT STAGE
+      JSON.parse(localStorage.getItem('stats')).at(-1).sent >= 1 && nextStage('2');
+      // Ticket Unlock
+      current.ticket && current.name !== document.querySelector('.id').textContent && unlockTicket(current.ticket);
     } else if (current.tag === 'shareTime') {
       current.donor === self.textContent && handleTime(45, false);
       current.receiver === self.textContent && handleTime(45, true);
