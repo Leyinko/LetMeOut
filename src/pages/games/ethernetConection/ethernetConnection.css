@@ -20,7 +20,7 @@
 }
 
 .ethernet-port:nth-child(1) {
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .ethernet-port:nth-child(1) div div {
@@ -30,7 +30,7 @@
 }
 
 .ethernet-port:nth-child(2) {
-  align-items: flex-start;
+  align-items: flex-end;
 }
 
 .ethernet-port:nth-child(2) div div {

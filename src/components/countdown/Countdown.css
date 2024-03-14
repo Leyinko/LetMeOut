@@ -17,6 +17,30 @@
   /* opacity: 0.4; */
 }
 
+#timer-operation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'JMH';
+  position: fixed;
+  top: 60px;
+  left: 54%;
+  width: 70px;
+  line-height: 40px;
+  padding-left: 15px;
+  font-size: 20px;
+  color: white;
+  letter-spacing: 14px;
+  z-index: 9999999999999999;
+  opacity: 0.8;
+  /* opacity: 0.4; */
+}
+.add-time {
+  background-color: green;
+}
+.subtract-time {
+  background-color: red;
+}
 /* #countdown-timer:hover {
   opacity: 1;
 } */

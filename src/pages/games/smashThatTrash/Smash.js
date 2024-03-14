@@ -1,7 +1,8 @@
 // import { failsOnMinigames } from '../../../localStorage/LS';
+import { handleTime } from '../../../components/countdown/Countdown';
 import { statsCollector } from '../../../data/localStorage/LS';
 import { timer } from '../../Room/Room';
-import { mistakePhrases, start } from '../game-utils';
+import { start } from '../game-utils';
 import { showFinalNumber } from '../games';
 import './Smash.css';
 
@@ -48,13 +49,12 @@ function Smash() {
     buttons++;
     rotation += 45;
   }
-  start('Rapid Rebuild (BETA) - Retrieving code...', startGame);
+  start('default', startGame);
 }
 
 function startGame() {
   // Difficulty
   let index = 0;
-  let mistakes = 0;
 
   const stageStart = setInterval(() => {
     let randomButton = Math.floor(Math.random() * 8) + 1;
@@ -67,7 +67,8 @@ function startGame() {
 
       setTimeout(() => {
         if (!click) {
-          start(mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)], startGame);
+          handleTime(20, false);
+          start('lose', startGame);
           clearInterval(stageStart);
           // Error
           statsCollector('clickCount', 'games', null, '2');
@@ -79,21 +80,17 @@ function startGame() {
       index++;
     } else {
       clearInterval(stageStart);
-      checkResult(mistakes, parent);
+      checkResult();
     }
   }, speed);
 }
 
-function checkResult(mistakes) {
+function checkResult() {
   if (stage < 3) {
-    if (mistakes >= 5) {
-      start(mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)], startGame);
-    } else {
-      stage++;
-      times += 3;
-      speed *= 0.8;
-      start(`✅`, startGame);
-    }
+    stage++;
+    times += 3;
+    speed *= 0.8;
+    start(`win`, startGame);
   } else {
     // Save Stamp
     statsCollector('timestamps', 'minigames', timer(stamp), '2');

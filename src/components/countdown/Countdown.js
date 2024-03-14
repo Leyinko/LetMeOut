@@ -2,10 +2,9 @@ import './Countdown.css';
 
 const gameTime = 10;
 let remainingTime = gameTime * 60;
+const app = document.getElementById('app');
 
 const Countdown = () => {
-  const app = document.getElementById('app');
-
   // Template
   const timer = document.createElement('span');
   timer.id = 'countdown-timer';
@@ -33,6 +32,15 @@ const Countdown = () => {
 
 export function handleTime(time, operation) {
   remainingTime = operation ? remainingTime + time : remainingTime - time;
+
+  const timerOperation = document.createElement('span');
+  timerOperation.id = 'timer-operation';
+  timerOperation.className = operation ? 'add-time' : 'subtract-time';
+  timerOperation.textContent = operation ? `+${time}` : `-${time}`;
+  app.appendChild(timerOperation);
+  setTimeout(() => {
+    timerOperation.remove();
+  }, 1000);
 }
 
 export default Countdown;

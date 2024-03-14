@@ -1,5 +1,5 @@
 import './memoryPath.css';
-import { start, mistakePhrases } from '../game-utils';
+import { start } from '../game-utils';
 import neuralNetWork from '../neuralNetWork/neuralNetWork';
 import { statsCollector } from '../../../data/localStorage/LS';
 import { timer } from '../../Room/Room';
@@ -46,7 +46,7 @@ export default function MemoryPath() {
     memoryPathContainer.appendChild(rowElement);
   });
 
-  //display controll buttons
+  //display control buttons
   const keyboard = document.createElement('div');
   keyboard.className = 'keyboard-memorypath';
 
@@ -85,11 +85,10 @@ export default function MemoryPath() {
   memoryPathContainer.appendChild(keyboard);
 
   parent.appendChild(memoryPathContainer);
-  start(`Pathfinder v1.3 - Analyzing...`, createPath);
+  start('default', createPath);
 }
 
 function createPath() {
-  buttonOn = false;
   let index = 0;
   let x = Math.floor(Math.random() * 5);
   let y = Math.floor(Math.random() * 5);
@@ -137,7 +136,8 @@ function checkResult() {
       cleanCell();
       resetGame();
       handleTime(20, false);
-      start(mistakePhrases[Math.floor(Math.random() * mistakePhrases.length)], createPath);
+      buttonOn = false;
+      start('lose', createPath);
       // Error
       statsCollector('clickCount', 'games', null, '0');
     } else {
@@ -152,7 +152,7 @@ function checkResult() {
         } else {
           resetGame();
           handleTime(20, false);
-          start(`Stage: ${stage}`, createPath);
+          start(`win`, createPath);
         }
       }
     }
