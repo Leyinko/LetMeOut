@@ -15,6 +15,9 @@ const Chat = () => {
     const current = JSON.parse(event.data);
     if (current.tag === 'chat') {
       chatMessage(current.name, current.message);
+      if (current.ticket == 'bathroom') {
+        document.querySelector('#ticket').classList.remove('block');
+      }
     } else if (current.tag === 'shareTime') {
       current.donor === self.textContent && handleTime(45, false);
       current.receiver === self.textContent && handleTime(45, true);
