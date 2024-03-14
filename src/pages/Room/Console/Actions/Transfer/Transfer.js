@@ -59,6 +59,8 @@ const Transfer = () => {
       }, 300);
     });
   }
+
+  return true;
 };
 
 export default Transfer;

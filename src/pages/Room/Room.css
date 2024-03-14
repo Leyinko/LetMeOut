@@ -19,6 +19,10 @@
 
 /* TEST POSITIONING */
 
+#ticket.clickable.block {
+  pointer-events: none;
+}
+
 section#room {
   /* animation: room 8s ease-in-out backwards; */
   animation: room 0.1s ease-in-out backwards;
@@ -41,6 +45,11 @@ section#room {
   position: absolute;
   transition: all 0.1s ease-in-out;
   pointer-events: none;
+}
+
+#room > div.clickable {
+  pointer-events: all;
+  border: 1px solid red;
 }
 
 #background {

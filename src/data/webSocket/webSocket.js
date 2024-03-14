@@ -1,6 +1,8 @@
 // export const ws = new WebSocket('ws://5.250.185.179:3000');
 export const ws = new WebSocket('ws://localhost:3000');
 
+export let listen = false;
+
 function sendRequest(
   tag = null,
   name = null,
@@ -8,7 +10,8 @@ function sendRequest(
   playerState = null,
   message = null,
   from = null,
-  to = null
+  to = null,
+  signal = listen
 ) {
   let req = {
     tag: tag,
@@ -18,6 +21,7 @@ function sendRequest(
     message: message,
     donor: from,
     receiver: to,
+    signal: signal,
   };
 
   ws.send(JSON.stringify(req));
