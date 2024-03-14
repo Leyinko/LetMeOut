@@ -5,12 +5,11 @@ import Transfer from './Actions/Transfer/Transfer';
 import Chat from './Actions/Chat/Chat';
 import Repair from './Actions/Repair/Repair';
 import Reboot from './Actions/Reboot/Reboot';
-import { passwordHandler } from '../Progression/Progression';
+import { nextStage, passwordHandler } from '../Progression/Progression';
 import { mutationObserver } from '../../../mutation-observer';
 import './Console.css';
 
 const Terminal = (parent) => {
-  // TV = Click
   const tv = document.querySelector('#console');
 
   tv.addEventListener(
@@ -21,23 +20,24 @@ const Terminal = (parent) => {
   // Block TV
   tv.classList.add('block');
 
-  // TERMINAL = Full Background
+  // = Full Background
   const terminal = document.createElement('section');
   terminal.id = 'terminal';
 
   parent.appendChild(terminal);
 
-  // SCREEN = Elements Delimitation
+  // = Elements Delimitation
   const screen = document.createElement('article');
   screen.id = 'screen';
 
   terminal.appendChild(screen);
 
   // Actions Trigger
-  screen.addEventListener(
-    'click',
-    (e) => console_actions.hasOwnProperty(e.target.id) && console_actions[e.target.id](screen)
-  );
+  screen.addEventListener('click', (e) => {
+    console_actions.hasOwnProperty(e.target.id) && console_actions[e.target.id](screen);
+    // NEXT STAGE
+    nextStage('1');
+  });
 
   // Elements
   const id = document.createElement('h3');
@@ -87,6 +87,11 @@ const Terminal = (parent) => {
   exit.className = 'exit';
 
   exit.addEventListener('click', () => closeAllWindows(terminal));
+
+  // Exit on ESC
+  document.addEventListener('keydown', (e) => {
+    e.key === 'Escape' && document.querySelector('#terminal').classList.contains('opened') && exit.click();
+  });
 
   screen.appendChild(exit);
 };

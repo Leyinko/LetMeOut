@@ -1,7 +1,8 @@
 import { audioConfig, playSound } from '../../../components/audio/Audio';
 import Countdown from '../../../components/countdown/Countdown';
-import { startListen } from '../../../data/webSocket/webSocket';
+import { ticketWSListen } from '../../../data/webSocket/webSocket';
 import { Inventory } from '../Inventory/inventory';
+import { itemsPrintOnStage } from '../Prints/Prints';
 import './Progression.css';
 
 // Start Game
@@ -49,7 +50,7 @@ export function passwordHandler(input, box) {
   }
 }
 
-// Access Granted/Denied Sounds
+// Access Granted/Denied/Notifications Stages && Colliders Sounds
 function granted() {
   let sound = new Audio('src/assets/audio/sounds/console/access-granted.mp3');
   playSound(sound);
@@ -75,15 +76,20 @@ export function unlockPathFromObject(index) {
   let inv = Array.from(document.querySelectorAll('#active img'))[index];
   let element = queries[index];
 
-  // Ticket Conditional
-  index === 4 && inv && inv.classList.contains('got') && startListen();
-
   inv && inv.classList.contains('got') && element && element.classList.remove('block');
 
   // Terminal Conditional
   index === 0 ? element.click() || terminal.classList.remove('opened') : null;
+  // Ticket Conditional
+  index === 4 && inv && inv.classList.contains('got') && ticketWSListen();
 }
 
-function WSListener() {}
+export function unlockTicket(signal) {
+  let room = document.querySelector(`#room[room="${signal}"]`);
+  room && document.querySelector('#ticket').classList.remove('block');
+}
 
-// NB : WS POLAROID && PICTURE COLLIDER UNLOCK
+// Next Stage
+export function nextStage(current) {
+  document.querySelector('#room').getAttribute('progression') === current && itemsPrintOnStage(Number(current));
+}

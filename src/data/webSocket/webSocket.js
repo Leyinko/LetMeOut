@@ -2,8 +2,7 @@
 export const ws = new WebSocket('ws://localhost:3000');
 
 let listen = false;
-
-export const startListen = () => (listen = true);
+export const ticketWSListen = () => (listen = true);
 
 function sendRequest(
   tag = null,

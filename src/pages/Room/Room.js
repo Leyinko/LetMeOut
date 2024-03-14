@@ -2,7 +2,7 @@ import BATHROOM from './Levels/1F/Bathroom/Bathroom';
 import Stage from './Class/Class';
 import Terminal from './Console/Console';
 import { firstClickStart } from './Progression/Progression';
-import Progression from './Prints/Prints';
+// import Progression from './Prints/Prints';
 import { statsCollector } from '../../data/localStorage/LS';
 import './Room.css';
 
@@ -40,7 +40,7 @@ export const Room = () => {
   // NB : Object/Collider Test
 
   // NB : Stages Test
-  Progression();
+  // Progression();
   // NB : Stages Test
 
   // Stats
