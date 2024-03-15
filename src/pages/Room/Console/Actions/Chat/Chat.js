@@ -20,6 +20,11 @@ const Chat = () => {
       JSON.parse(localStorage.getItem('stats')).at(-1).sent >= 1 && nextStage('2');
       // Ticket Unlock
       current.ticket && current.name !== document.querySelector('.id').textContent && unlockTicket(current.ticket);
+      // ! TEST
+      // current.ticket && unlockTicket(current.ticket);
+      // ! TEST
+      // Final Game
+      current.win && alert(`${current.message}`);
     } else if (current.tag === 'shareTime') {
       current.donor === self.textContent && handleTime(45, false);
       current.receiver === self.textContent && handleTime(45, true);
