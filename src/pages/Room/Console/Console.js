@@ -111,6 +111,9 @@ function closeAllWindows(terminal) {
   opened.forEach((window) => window.classList.remove('onscreen'));
 
   terminal.classList.remove('opened');
+
+  let inputs = document.querySelectorAll('input');
+  inputs.forEach((input) => (input.value = ''));
 }
 
 export function createWindow(id, parent) {

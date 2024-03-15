@@ -4,7 +4,7 @@ export function showFinalNumber() {
   finalNumberModal.className = 'final-number';
   finalNumberModal.textContent = '3';
 
-  container.innerHTML = '';
+  document.querySelector('#smash-container').remove();
 
   container.appendChild(finalNumberModal);
 }

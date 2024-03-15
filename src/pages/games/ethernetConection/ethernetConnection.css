@@ -63,6 +63,11 @@ div[id*='ball'].pin-ball-check {
   background-color: black;
 }
 
+#ethernet-container h2 {
+  width: 100%;
+  text-align: center;
+}
+
 #E0 {
   background-image: url('../../../assets/images/icons/console/games/patterns/pattern1.webp');
   background-size: cover;

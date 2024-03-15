@@ -7,7 +7,7 @@ import { showFinalNumber } from '../games';
 import './Smash.css';
 
 let stage = 1;
-let speed = 1000;
+let speed = 1100;
 let times = 10;
 
 let stamp = 0;

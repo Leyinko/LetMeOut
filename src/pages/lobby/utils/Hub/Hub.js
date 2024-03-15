@@ -4,9 +4,9 @@ import sendRequest, { ws } from '../../../../data/webSocket/webSocket';
 import { preIntro } from '../../../Intro/Intro';
 import { introduction_lobby } from '../../../Main/utils/Text';
 import Room from '../../../Room/Room';
-import './Hub.css';
 import Button from '../../../../components/button/Button';
 import Menu from '../../../../components/menu/Menu';
+import './Hub.css';
 
 const PlayersHub = (code, username, party) => {
   const lobby = document.querySelector('#lobby');
@@ -97,17 +97,16 @@ function allPlayersReady(data, username) {
   storeGameData(data, username);
   Room();
   // ! Local Test ! //
-
   // ! Test
-
   // preIntro(confirm);
-
   // ! Test
 
   // > Final >
-
   // ready && storeGameData(data, username);
   // ready && preIntro(confirm);
+
+  // Send Request
+  sendRequest('generateFinalCode');
 }
 
 const closePlayersHub = (...elements) => {
