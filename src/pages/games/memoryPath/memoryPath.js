@@ -134,7 +134,7 @@ function checkResult() {
     if (resultPath[moves] != playerPath[moves]) {
       cleanCell();
       resetGame();
-      handleTime(20, false);
+      handleTime(0.05, false, true);
       buttonOn = false;
       start('lose', createPath);
       // Error

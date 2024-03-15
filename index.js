@@ -20,7 +20,7 @@ app.appendChild(audio);
 // > Menus
 // Main();
 // Launch();
-// Lobby();
+Lobby();
 
 // > Game
-Room();
+//Room();

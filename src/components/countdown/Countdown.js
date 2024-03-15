@@ -30,8 +30,12 @@ const Countdown = () => {
   }, 1000);
 };
 
-export function handleTime(time, operation) {
-  remainingTime = operation ? remainingTime + time : remainingTime - time;
+export function handleTime(time, operation, percentage) {
+  if (!percentage) {
+    remainingTime = operation ? remainingTime + time : remainingTime - time;
+  } else {
+    remainingTime * time;
+  }
 
   const timerOperation = document.createElement('span');
   timerOperation.id = 'timer-operation';
