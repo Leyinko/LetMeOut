@@ -1,5 +1,5 @@
 import { audioConfig, playSound } from '../../../components/audio/Audio';
-import Countdown from '../../../components/countdown/Countdown';
+import Countdown, { handleTime } from '../../../components/countdown/Countdown';
 import { ticketWSListen } from '../../../data/webSocket/webSocket';
 import { Inventory } from '../Inventory/inventory';
 import { itemsPrintOnStage } from '../Prints/Prints';
@@ -42,22 +42,22 @@ export function passwordHandler(input, box) {
     // Check Access
     actives.length >= 1 && actives.at(-1).src.match(code)[0].substring(1) == input.value
       ? granted() && access.remove()
-      : denied();
+      : (denied(), handleTime(0.96, false, true));
   } else {
     let connect = document.querySelector('img#connect').getAttribute('code');
     // Check Access
-    connect == input.value ? granted() && access.remove() : denied();
+    connect == input.value ? granted() && access.remove() : (denied(), handleTime(0.97, false, true));
   }
 }
 
 // Access Granted/Denied/Notifications Stages && Colliders Sounds
-function granted() {
+export function granted() {
   let sound = new Audio('src/assets/audio/sounds/console/access-granted.mp3');
   playSound(sound);
   return true;
 }
 
-function denied() {
+export function denied() {
   let sound = new Audio('src/assets/audio/sounds/console/error.mp3');
   playSound(sound);
   // ! Time Lost

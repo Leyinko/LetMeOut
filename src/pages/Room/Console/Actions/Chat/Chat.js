@@ -1,7 +1,7 @@
 import { handleTime } from '../../../../../components/countdown/Countdown';
 import { statsCollector } from '../../../../../data/localStorage/LS';
 import sendRequest, { ws } from '../../../../../data/webSocket/webSocket';
-import { nextStage, unlockTicket } from '../../../Progression/Progression';
+import { denied, nextStage, unlockTicket } from '../../../Progression/Progression';
 import './Chat.css';
 
 const Chat = () => {
@@ -19,12 +19,21 @@ const Chat = () => {
       // NEXT STAGE
       JSON.parse(localStorage.getItem('stats')).at(-1).sent >= 1 && nextStage('2');
       // Ticket Unlock
-      current.ticket && current.name !== document.querySelector('.id').textContent && unlockTicket(current.ticket);
+      //current.ticket && current.name !== document.querySelector('.id').textContent && unlockTicket(current.ticket);
       // ! TEST
-      // current.ticket && unlockTicket(current.ticket);
+      current.ticket && unlockTicket(current.ticket);
       // ! TEST
       // Final Game
-      current.win && alert(`${current.message}`);
+
+      // current.win && alert(`${current.message}`);
+
+      //Test time lose on final code
+      if (current.win) {
+        alert(current.message);
+      } else {
+        denied();
+        handleTime(0.8, false, true);
+      }
     } else if (current.tag === 'shareTime') {
       current.donor === self.textContent && handleTime(45, false);
       current.receiver === self.textContent && handleTime(45, true);

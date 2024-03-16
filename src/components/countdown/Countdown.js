@@ -2,6 +2,7 @@ import './Countdown.css';
 
 const gameTime = 10;
 let remainingTime = gameTime * 60;
+let subtractTime = 0;
 const app = document.getElementById('app');
 
 const Countdown = () => {
@@ -14,7 +15,7 @@ const Countdown = () => {
   // Functionality
   const interval = setInterval(() => {
     let minutes = Math.floor(remainingTime / 60);
-    let seconds = remainingTime % 60;
+    let seconds = Math.round(remainingTime % 60);
 
     if (remainingTime != 0) {
       minutes = minutes < gameTime ? '0' + minutes : minutes;
@@ -34,13 +35,14 @@ export function handleTime(time, operation, percentage) {
   if (!percentage) {
     remainingTime = operation ? remainingTime + time : remainingTime - time;
   } else {
-    remainingTime * time;
+    remainingTime = remainingTime * time + 2;
+    subtractTime = remainingTime * (1 - time);
   }
 
   const timerOperation = document.createElement('span');
   timerOperation.id = 'timer-operation';
   timerOperation.className = operation ? 'add-time' : 'subtract-time';
-  timerOperation.textContent = operation ? `+${time}` : `-${time}`;
+  timerOperation.textContent = !percentage ? (operation ? `+${time}` : `-${time}`) : `-${Math.round(subtractTime)}`;
   app.appendChild(timerOperation);
   setTimeout(() => {
     timerOperation.remove();
