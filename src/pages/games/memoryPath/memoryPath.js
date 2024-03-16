@@ -30,7 +30,7 @@ let stamp = 0;
 export default function MemoryPath() {
   // Stamp
   stamp = new Date().getTime();
-  //dispaly cells
+  //display cells
   const parent = document.querySelector('#repair');
   map.forEach((row, columnIndex) => {
     const rowElement = document.createElement('div');
@@ -117,8 +117,8 @@ function createPath() {
     } else {
       const firstCell = document.querySelector(`#cell${firstMove[1]}${firstMove[0]}`);
       firstCell.classList.add('active-selected');
-      buttonOn = true;
       clearInterval(interval);
+      buttonOn = true;
     }
   }, moveSpeed);
 }
@@ -134,7 +134,7 @@ function checkResult() {
     if (resultPath[moves] != playerPath[moves]) {
       cleanCell();
       resetGame();
-      handleTime(0.05, false, true);
+      handleTime(0.95, false, true);
       buttonOn = false;
       start('lose', createPath);
       // Error
@@ -147,12 +147,13 @@ function checkResult() {
           moveSpeed * 0.75;
           resetGame();
           stage == 4 && checkResult();
-          stage != 4 && start(`stage: ${stage}`, createPath);
+          buttonOn = false;
+          stage != 4 && start(`win`, createPath);
         } else {
           resetGame();
-          handleTime(20, false);
+          handleTime(0.95, false, true);
           buttonOn = false;
-          start(`win`, createPath);
+          start(`lose`, createPath);
         }
       }
     }

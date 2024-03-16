@@ -67,7 +67,7 @@ function startGame() {
 
       setTimeout(() => {
         if (!click) {
-          handleTime(20, false);
+          handleTime(0.98, false, true);
           start('lose', startGame);
           clearInterval(stageStart);
           // Error
