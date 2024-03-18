@@ -4,6 +4,7 @@ import Terminal from './Console/Console';
 import { firstClickStart } from './Progression/Progression';
 import { statsCollector } from '../../data/localStorage/LS';
 import './Room.css';
+import { randomSounds } from '../../components/audio/Audio';
 
 export const Room = () => {
   // App
@@ -37,6 +38,9 @@ export const Room = () => {
 
   // app.append(object, collider);
   // NB : Object/Collider Test
+
+  //test random sound
+  randomSounds();
 
   // NB : Stages Test
   // Progression();
