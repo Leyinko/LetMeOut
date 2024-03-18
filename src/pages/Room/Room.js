@@ -3,8 +3,9 @@ import Stage from './Class/Class';
 import Terminal from './Console/Console';
 import { firstClickStart } from './Progression/Progression';
 import { statsCollector } from '../../data/localStorage/LS';
-import './Room.css';
 import { randomSounds } from '../../components/audio/Audio';
+import { inGameWebSocket } from '../../data/webSocket/webSocket';
+import './Room.css';
 
 export const Room = () => {
   // App
@@ -39,13 +40,12 @@ export const Room = () => {
   // app.append(object, collider);
   // NB : Object/Collider Test
 
-  //test random sound
+  // NB: Test random sound
   randomSounds();
+  // NB: Test random sound
 
-  // NB : Stages Test
-  // Progression();
-  // NB : Stages Test
-
+  // WS Listener
+  inGameWebSocket();
   // Stats
   clicksStats();
 };

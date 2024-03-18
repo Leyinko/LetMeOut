@@ -39,4 +39,6 @@ export function randomSounds() {
       playSound(soundEffect);
     }
   }, 20000);
+  // End
+  !document.querySelector('#room') && clearInterval(interval);
 }

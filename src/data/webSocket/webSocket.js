@@ -1,3 +1,8 @@
+import { handleTime } from '../../components/countdown/Countdown';
+import { Win } from '../../pages/Result/Result';
+import { chatMessage } from '../../pages/Room/Console/Actions/Chat/Chat';
+import { denied, nextStage, unlockTicket } from '../../pages/Room/Progression/Progression';
+
 // export const ws = new WebSocket('ws://5.250.185.179:3000');
 export const ws = new WebSocket('ws://localhost:3000');
 
@@ -26,6 +31,32 @@ function sendRequest(
   };
 
   ws.send(JSON.stringify(req));
+}
+
+export function inGameWebSocket() {
+  let self = document.querySelector('.id');
+  // WS
+  ws.onmessage = function (event) {
+    const current = JSON.parse(event.data);
+    switch (current.tag) {
+      case 'shareTime':
+        current.donor === self.textContent && handleTime(45, false);
+        current.receiver === self.textContent && handleTime(45, true);
+        break;
+      case 'checkExit':
+        current.win ? Win() : denied() && handleTime(0.8, false, true);
+        break;
+      default:
+        chatMessage(current.name, current.message);
+        // NEXT STAGE
+        JSON.parse(localStorage.getItem('stats')).at(-1).sent >= 1 && nextStage('2');
+        // Ticket Unlock
+        // current.ticket && current.name !== document.querySelector('.id').textContent && unlockTicket(current.ticket);
+        // ! TEST
+        current.ticket && unlockTicket(current.ticket);
+      // ! TEST
+    }
+  };
 }
 
 export default sendRequest;

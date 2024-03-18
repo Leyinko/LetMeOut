@@ -1,3 +1,4 @@
+import { Lose } from '../../pages/Result/Result';
 import './Countdown.css';
 
 const gameTime = 10;
@@ -26,7 +27,7 @@ const Countdown = () => {
       remainingTime--;
     } else {
       clearInterval(interval);
-      alert('Time Out');
+      Lose();
     }
   }, 1000);
 };
