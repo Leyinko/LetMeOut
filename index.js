@@ -3,8 +3,8 @@ import Main from './src/pages/Main/utils/Main/Main';
 import { Lobby } from './src/pages/Lobby/Lobby';
 import Room from './src/pages/Room/Room.js';
 import { audioConfig } from './src/components/audio/Audio.js';
+import cheatDetect from './src/components/anticheat/cheatsDetect.js';
 import './style.css';
-import cheatDetect from './src/components/cheatsDetect/cheatsDetect.js';
 
 //>  Audio src's
 // audio.src = './src/assets/audio/sounds/lobby/Clock-loading.mp3';
@@ -21,10 +21,10 @@ app.appendChild(audio);
 // > Menus
 // Main();
 // Launch();
-//Lobby();
+Lobby();
 
 // > Game
-Room();
+// Room();
 
 //Puedes ponerlo donde te salga de la pinga. Comentalo si no quieres que te quite tiempo mientras haces cosas jeje
 // cheatDetect();

@@ -1,3 +1,4 @@
+import { handleTime } from '../../../components/countdown/Countdown';
 import { fisherYatesShuffle, random } from '../../../utils';
 import './ethernetConnection.css';
 
@@ -77,6 +78,8 @@ function checkResult(selection, pairs, node) {
       pairs.push(selection[0], selection[1]);
       document.querySelector(`#${selection[0]}`).classList.add('pin-ball-check');
       document.querySelector(`#${selection[1]}`).classList.add('pin-ball-check');
+    } else {
+      handleTime(0.97, false, true);
     }
   }
 
