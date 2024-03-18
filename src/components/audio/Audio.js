@@ -11,3 +11,7 @@ export function playSound(sound) {
   sound.currentTime = 0;
   sound.play();
 }
+
+export function stopSound(sound) {
+  sound.pause();
+}
