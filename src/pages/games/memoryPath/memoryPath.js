@@ -149,6 +149,7 @@ function checkResult() {
           stage == 4 && checkResult();
           buttonOn = false;
           stage != 4 && start(`win`, createPath);
+          setTimeout(cleanCell(), 200);
         } else {
           resetGame();
           handleTime(0.95, false, true);

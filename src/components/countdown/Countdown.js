@@ -17,7 +17,7 @@ const Countdown = () => {
     let minutes = Math.floor(remainingTime / 60);
     let seconds = Math.round(remainingTime % 60);
 
-    if (remainingTime != 0) {
+    if (remainingTime >= 0) {
       minutes = minutes < gameTime ? '0' + minutes : minutes;
       seconds = seconds < gameTime ? '0' + seconds : seconds;
 
@@ -46,7 +46,7 @@ export function handleTime(time, operation, percentage) {
   app.appendChild(timerOperation);
   setTimeout(() => {
     timerOperation.remove();
-  }, 1000);
+  }, 300);
 }
 
 export default Countdown;
