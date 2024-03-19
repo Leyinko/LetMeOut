@@ -44,7 +44,7 @@ export function inGameWebSocket() {
         current.receiver === self.textContent && handleTime(45, true);
         break;
       case 'checkExit':
-        current.win ? Win() : denied() && handleTime(0.8, false, true);
+        current.win ? Win() : denied() && handleTime(40, false);
         break;
       default:
         chatMessage(current.name, current.message);

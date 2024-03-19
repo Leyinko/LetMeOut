@@ -1,10 +1,12 @@
 import { Lose } from '../../pages/Result/Result';
+import { playSound } from '../audio/Audio';
 import './Countdown.css';
 
 const gameTime = 10;
 let remainingTime = gameTime * 60;
 let subtractTime = 0;
 const app = document.getElementById('app');
+let lastTen = false;
 
 const Countdown = () => {
   // Template
@@ -25,6 +27,13 @@ const Countdown = () => {
       timer.innerHTML = `${minutes}:${seconds}`;
 
       remainingTime--;
+
+      if (remainingTime <= 10) {
+        lastTen = true;
+        const lastAudio = new Audio('src/assets/audio/sounds/lobby/Clock-loading.mp3');
+
+        playSound(lastAudio);
+      }
     } else {
       clearInterval(interval);
       Lose();
@@ -32,18 +41,13 @@ const Countdown = () => {
   }, 1000);
 };
 
-export function handleTime(time, operation, percentage) {
-  if (!percentage) {
-    remainingTime = operation ? remainingTime + time : remainingTime - time;
-  } else {
-    remainingTime = remainingTime * time + 2;
-    subtractTime = remainingTime * (1 - time);
-  }
+export function handleTime(time, operation) {
+  remainingTime = operation ? remainingTime + time : remainingTime - time;
 
   const timerOperation = document.createElement('span');
   timerOperation.id = 'timer-operation';
   timerOperation.className = operation ? 'add-time' : 'subtract-time';
-  timerOperation.textContent = !percentage ? (operation ? `+${time}` : `-${time}`) : `-${Math.round(subtractTime)}`;
+  timerOperation.textContent = operation ? `+${time}` : `-${time}`;
   app.appendChild(timerOperation);
   setTimeout(() => {
     timerOperation.remove();

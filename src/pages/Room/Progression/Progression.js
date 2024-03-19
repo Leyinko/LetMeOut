@@ -42,11 +42,11 @@ export function passwordHandler(input, box) {
     // Check Access
     actives.length >= 1 && actives.at(-1).src.match(code)[0].substring(1) == input.value
       ? granted() && access.remove()
-      : denied() && handleTime(0.96, false, true);
+      : denied() && handleTime(30, false);
   } else {
     let connect = document.querySelector('img#connect').getAttribute('code');
     // Check Access
-    connect == input.value ? granted() && access.remove() : denied() && handleTime(0.97, false, true);
+    connect == input.value ? granted() && access.remove() : denied() && handleTime(30, false);
   }
 }
 

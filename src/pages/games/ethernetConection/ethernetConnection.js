@@ -79,7 +79,7 @@ function checkResult(selection, pairs, node) {
       document.querySelector(`#${selection[0]}`).classList.add('pin-ball-check');
       document.querySelector(`#${selection[1]}`).classList.add('pin-ball-check');
     } else {
-      handleTime(0.97, false, true);
+      handleTime(10, false);
     }
   }
 
