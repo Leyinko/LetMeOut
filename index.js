@@ -3,7 +3,6 @@ import Main from './src/pages/Main/utils/Main/Main';
 import { Lobby } from './src/pages/Lobby/Lobby';
 import Room from './src/pages/Room/Room.js';
 import { audioConfig } from './src/components/audio/Audio.js';
-import cheatDetect from './src/components/anticheat/cheatsDetect.js';
 import './style.css';
 
 //>  Audio src's
@@ -25,6 +24,3 @@ Lobby();
 
 // > Game
 // Room();
-
-//Puedes ponerlo donde te salga de la pinga. Comentalo si no quieres que te quite tiempo mientras haces cosas jeje
-// cheatDetect();

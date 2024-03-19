@@ -2,11 +2,9 @@ import { Lose } from '../../pages/Result/Result';
 import { playSound } from '../audio/Audio';
 import './Countdown.css';
 
+const app = document.getElementById('app');
 const gameTime = 10;
 let remainingTime = gameTime * 60;
-let subtractTime = 0;
-const app = document.getElementById('app');
-let lastTen = false;
 
 const Countdown = () => {
   // Template
@@ -18,7 +16,7 @@ const Countdown = () => {
   // Functionality
   const interval = setInterval(() => {
     let minutes = Math.floor(remainingTime / 60);
-    let seconds = Math.round(remainingTime % 60);
+    let seconds = remainingTime % 60;
 
     if (remainingTime >= 0) {
       minutes = minutes < gameTime ? '0' + minutes : minutes;
@@ -28,10 +26,8 @@ const Countdown = () => {
 
       remainingTime--;
 
-      if (remainingTime <= 10) {
-        lastTen = true;
+      if (remainingTime <= 3) {
         const lastAudio = new Audio('src/assets/audio/sounds/lobby/Clock-loading.mp3');
-
         playSound(lastAudio);
       }
     } else {

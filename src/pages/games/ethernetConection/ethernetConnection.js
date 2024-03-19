@@ -91,6 +91,7 @@ function checkResult(selection, pairs, node) {
   }
 }
 
+// Final Code
 export function accessCode() {
   let code = random(9, 6).join('');
   document.querySelector('#connect').setAttribute('code', code);

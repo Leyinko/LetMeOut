@@ -1,7 +1,7 @@
 // import { failsOnMinigames } from '../../../localStorage/LS';
 import { handleTime } from '../../../components/countdown/Countdown';
 import { statsCollector } from '../../../data/localStorage/LS';
-import { timer } from '../../Room/Room';
+import { timer } from '../../../utils';
 import { start } from '../game-utils';
 import { showFinalNumber } from '../games';
 import './Smash.css';

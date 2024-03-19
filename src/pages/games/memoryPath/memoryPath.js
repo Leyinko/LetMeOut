@@ -2,8 +2,8 @@ import './memoryPath.css';
 import { start } from '../game-utils';
 import neuralNetWork from '../neuralNetWork/neuralNetWork';
 import { statsCollector } from '../../../data/localStorage/LS';
-import { timer } from '../../Room/Room';
 import { handleTime } from '../../../components/countdown/Countdown';
+import { timer } from '../../../utils';
 // import { failsOnMinigames } from '../../../localStorage/LS';
 
 const memoryPathContainer = document.createElement('section');

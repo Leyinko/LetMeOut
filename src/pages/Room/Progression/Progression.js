@@ -5,6 +5,8 @@ import { Inventory } from '../Inventory/inventory';
 import { itemsPrintOnStage } from '../Prints/Prints';
 import './Progression.css';
 
+let next = new Audio('src/assets/audio/sounds/next-stage.mp3');
+
 // Start Game
 export function firstClickStart() {
   const room = document.querySelector('#room');
@@ -25,7 +27,7 @@ export function firstClickStart() {
       setTimeout(() => {
         const audio = document.querySelector('audio');
         audio.src = 'src/assets/audio/music/The-Prospector.mp3';
-        audioConfig(audio, true, true, 0.3);
+        audioConfig(audio, true, true, 0.2);
       }, 4800);
     },
     { once: true }
@@ -37,10 +39,11 @@ export function passwordHandler(input, box) {
   let access = document.querySelector(`#${box}`);
 
   if (access.id === 'games-password') {
-    let actives = Array.from(document.querySelectorAll('#active .got'));
+    let ticket = Array.from(document.querySelectorAll('#active img')).at(-1);
     let code = /\-[0-9]*/;
+
     // Check Access
-    actives.length >= 1 && actives.at(-1).src.match(code)[0].substring(1) == input.value
+    ticket.classList.contains('got') && ticket.src.match(code)[0].substring(1) == input.value
       ? granted() && access.remove()
       : denied() && handleTime(30, false);
   } else {
@@ -78,18 +81,20 @@ export function unlockPathFromObject(index) {
 
   inv && inv.classList.contains('got') && element && element.classList.remove('block');
 
-  // Terminal Conditional
+  // Terminal
   index === 0 ? element.click() || terminal.classList.remove('opened') : null;
-  // Ticket Conditional
+  // Polaroid
   index === 4 && inv && inv.classList.contains('got') && ticketWSListen();
 }
 
 export function unlockTicket(signal) {
   let room = document.querySelector(`#room[room="${signal}"]`);
   room && document.querySelector('#ticket').classList.remove('block');
+  playSound(next);
 }
 
 // Next Stage
-export function nextStage(current) {
-  document.querySelector('#room').getAttribute('progression') === current && itemsPrintOnStage(Number(current));
-}
+export const nextStage = (current) =>
+  document.querySelector('#room').getAttribute('progression') === current &&
+  playSound(next) &&
+  itemsPrintOnStage(Number(current));
