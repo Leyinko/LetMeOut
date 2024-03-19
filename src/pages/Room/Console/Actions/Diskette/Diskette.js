@@ -40,7 +40,7 @@ function downloadFiles(parent) {
   bar.id = 'download-usb';
   parent.appendChild(bar);
 
-  let blocks = 28;
+  let blocks = 32;
 
   let download = setInterval(() => {
     let bar = document.querySelector('#download-usb');
@@ -53,7 +53,7 @@ function downloadFiles(parent) {
 
     // Files
     let ids = Array.from(document.querySelectorAll('[id*="usb-"].locked'));
-    blocks % 7 === 0 && ids.at(0).classList.remove('locked');
+    blocks % 8 === 0 && ids.at(0).classList.remove('locked');
     blocks === 0 &&
       !clearInterval(download) &&
       (document.querySelector('#files-explorer span').textContent = 'COMPLETE');

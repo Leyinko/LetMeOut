@@ -12,7 +12,7 @@ export const getCollectables = () => JSON.parse(localStorage.getItem('story'));
 
 // Game Data
 export function storeGameData(data, player) {
-  let start = { ...data, username: player };
+  let start = { lobbyCode: data.lobbyCode, players: data.players, username: player };
   localStorage.setItem('data', JSON.stringify(start));
 }
 
@@ -38,7 +38,7 @@ export let timestamps = {
   stage2: '',
   stage3: '',
   minigames: ['', '', ''],
-  finalPhase: '',
+  total: '',
 };
 
 export let messages = {

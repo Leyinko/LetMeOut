@@ -1,10 +1,12 @@
 import Menu from '../../components/menu/Menu';
+import { statsCollector } from '../../data/localStorage/LS';
 import Main from '../Main/utils/Main/Main';
 import './Result.css';
 
 export const Win = () => {
   // App
   const app = document.querySelector('#app');
+  app.innerHTML = '';
 
   const result = document.createElement('section');
   result.id = 'result';
@@ -24,6 +26,12 @@ export const Win = () => {
     // Main
     Main();
   });
+
+  // Final Time
+  let totalTime = Object.values(JSON.parse(localStorage.getItem('stats'))[1])
+    .flat(1)
+    .reduce((acc, next) => acc + next);
+  statsCollector('timestamps', 'total', totalTime);
 };
 
 export const Lose = () => {

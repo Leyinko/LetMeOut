@@ -35,7 +35,7 @@ export const Room = () => {
 
 function gameStartControllers() {
   // Cheat Control
-  cheatDetect();
+  // cheatDetect();
   // Random Sounds
   randomSounds();
   // WS Listener

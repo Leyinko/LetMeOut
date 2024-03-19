@@ -22,7 +22,6 @@ const Reboot = () => {
 
     inputs.forEach((input) => {
       input.addEventListener('keydown', (e) => {
-        // e.key === 'Enter' && sendRequest('checkFinalCode');
         let code = `${inputs[0].value}${inputs[1].value}${inputs[2].value}`;
         e.key === 'Enter' && sendRequest('checkFinalCode', null, null, null, code);
       });
