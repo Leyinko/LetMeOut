@@ -1,6 +1,8 @@
 import { audioConfig, playSound } from '../../../components/audio/Audio';
 import Countdown, { handleTime } from '../../../components/countdown/Countdown';
+import { statsCollector } from '../../../data/localStorage/LS';
 import { ticketWSListen } from '../../../data/webSocket/webSocket';
+import { timer } from '../../../utils';
 import { Inventory } from '../Inventory/inventory';
 import { itemsPrintOnStage } from '../Prints/Prints';
 import './Progression.css';
@@ -37,6 +39,7 @@ export function firstClickStart() {
 // Simple Input Tests ✔
 export function passwordHandler(input, box) {
   let access = document.querySelector(`#${box}`);
+  let room = document.querySelector('#room');
 
   if (access.id === 'games-password') {
     let ticket = Array.from(document.querySelectorAll('#active img')).at(-1);
@@ -44,7 +47,7 @@ export function passwordHandler(input, box) {
 
     // Check Access
     ticket.classList.contains('got') && ticket.src.match(code)[0].substring(1) == input.value
-      ? granted() && access.remove()
+      ? granted() && (access.remove(), statsCollector('timestamps', 'stage3', timer(room.getAttribute('stamp'))))
       : denied() && handleTime(30, false);
   } else {
     let connect = document.querySelector('img#connect').getAttribute('code');
@@ -94,7 +97,19 @@ export function unlockTicket(signal) {
 }
 
 // Next Stage
-export const nextStage = (current) =>
+export const nextStage = (current) => {
+  // Stage
   document.querySelector('#room').getAttribute('progression') === current &&
-  playSound(next) &&
-  itemsPrintOnStage(Number(current));
+    playSound(next) &&
+    itemsPrintOnStage(Number(current));
+  // Stamps
+  let room = document.querySelector('#room');
+  // Save Stamp
+  statsCollector('timestamps', `stage${current}`, timer(room.getAttribute('stamp')));
+  // New
+  room.setAttribute('stamp', new Date().getTime());
+
+  // Stamp
+  let totalTime = Object.values(JSON.parse(localStorage.getItem('stats'))[1]).reduce((acc, next) => acc + next);
+  console.log(totalTime);
+};

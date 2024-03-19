@@ -35,9 +35,10 @@ const Terminal = (parent) => {
   // Actions Trigger
   screen.addEventListener('click', (e) => {
     console_actions.hasOwnProperty(e.target.id) && console_actions[e.target.id](screen);
-    // NEXT STAGE
-    nextStage('1');
   });
+
+  // Next Stage
+  screen.addEventListener('click', () => nextStage('1'), { once: true });
 
   // Elements
   const id = document.createElement('h3');
