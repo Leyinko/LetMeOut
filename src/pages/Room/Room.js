@@ -5,57 +5,56 @@ import { firstClickStart } from './Progression/Progression';
 import { statsCollector } from '../../data/localStorage/LS';
 import { randomSounds } from '../../components/audio/Audio';
 import { inGameWebSocket } from '../../data/webSocket/webSocket';
+import cheatDetect from '../../components/anticheat/cheatsDetect';
 import './Room.css';
 
 export const Room = () => {
   // App
   const app = document.querySelector('#app');
 
-  // Game Duration Stamp
-  const start = new Date().getTime();
-
   // Room
   const room = document.createElement('section');
   room.id = 'room';
+
+  // Time Stamp
+  room.setAttribute('stamp', new Date().getTime());
+
   app.append(room);
 
   // Print Room
   let level = new Stage(BATHROOM);
   level.printRoom();
-
-  // Console
   Terminal(app);
+
+  // Game Controllers
+  gameStartControllers();
 
   // Start First Click
   room.addEventListener('animationend', () => firstClickStart(), { once: true });
+};
 
-  // NB : Object/Collider Test
-  // const object = document.createElement('img');
-  // object.className = 'object';
-  // object.src = 'src/assets/images/pictures/1F/pointers/console.gif';
-
-  // const collider = document.createElement('div');
-  // collider.className = 'collider';
-
-  // app.append(object, collider);
-  // NB : Object/Collider Test
-
-  // NB: Test random sound
+function gameStartControllers() {
+  // Cheat Control
+  cheatDetect();
+  // Random Sounds
   randomSounds();
-  // NB: Test random sound
-
   // WS Listener
   inGameWebSocket();
   // Stats
   clicksStats();
-};
+}
 
 const clicksStats = () => document.addEventListener('click', () => statsCollector('clickCount', 'clicks'));
 
-export function timer(stamp) {
-  let now = new Date().getTime();
-  let time = Math.floor((now - stamp) / 1000);
-  return time;
-}
-
 export default Room;
+
+// NB : Object/Collider Test
+// const object = document.createElement('img');
+// object.className = 'object';
+// object.src = 'src/assets/images/pictures/1F/pointers/console.gif';
+
+// const collider = document.createElement('div');
+// collider.className = 'collider';
+
+// app.append(object, collider);
+// NB : Object/Collider Test

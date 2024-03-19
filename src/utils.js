@@ -64,3 +64,9 @@ export function animationReflow(element, animation) {
   element.style.animation = '';
   return true;
 }
+
+export function timer(stamp) {
+  let now = new Date().getTime();
+  let time = Math.floor((now - stamp) / 1000);
+  return time;
+}

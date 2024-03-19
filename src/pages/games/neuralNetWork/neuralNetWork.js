@@ -1,6 +1,5 @@
-import { fisherYatesShuffle } from '../../../utils';
+import { fisherYatesShuffle, timer } from '../../../utils';
 import { statsCollector } from '../../../data/localStorage/LS';
-import { timer } from '../../Room/Room';
 // import { failsOnMinigames } from '../../../localStorage/LS';
 import { start } from '../game-utils';
 import { showFinalNumber } from '../games';
