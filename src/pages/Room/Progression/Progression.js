@@ -7,7 +7,7 @@ import { Inventory } from '../Inventory/inventory';
 import { itemsPrintOnStage } from '../Prints/Prints';
 import './Progression.css';
 
-let next = new Audio('src/assets/audio/sounds/next-stage.mp3');
+let next = new Audio('src/assets/audio/sounds/console/next-stage.mp3');
 
 // Start Game
 export function firstClickStart() {
@@ -36,7 +36,7 @@ export function firstClickStart() {
   );
 }
 
-// Simple Input Tests ✔
+// Inputs
 export function passwordHandler(input, box) {
   let access = document.querySelector(`#${box}`);
   let room = document.querySelector('#room');
@@ -56,7 +56,7 @@ export function passwordHandler(input, box) {
   }
 }
 
-// Access Granted/Denied/Notifications Stages && Colliders Sounds
+// Access Granted/Denied/
 export function granted() {
   let sound = new Audio('src/assets/audio/sounds/console/access-granted.mp3');
   playSound(sound);
@@ -96,20 +96,15 @@ export function unlockTicket(signal) {
   playSound(next);
 }
 
-// Next Stage
+// Next Stage & Time Stamp
 export const nextStage = (current) => {
+  let room = document.querySelector('#room');
   // Stage
   document.querySelector('#room').getAttribute('progression') === current &&
     playSound(next) &&
     itemsPrintOnStage(Number(current));
-  // Stamps
-  let room = document.querySelector('#room');
-  // Save Stamp
+  // Stats
   statsCollector('timestamps', `stage${current}`, timer(room.getAttribute('stamp')));
-  // New
+  // Reset
   room.setAttribute('stamp', new Date().getTime());
-
-  // Stamp
-  let totalTime = Object.values(JSON.parse(localStorage.getItem('stats'))[1]).reduce((acc, next) => acc + next);
-  console.log(totalTime);
 };

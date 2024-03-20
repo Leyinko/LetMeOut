@@ -56,7 +56,7 @@ const Intro = () => {
   setTimeout(() => {
     app.appendChild(gif);
 
-    const breathing = new Audio('src/assets/audio/sounds/Breathing.mp3');
+    const breathing = new Audio('src/assets/audio/sounds/lobby/Breathing.mp3');
     breathing.volume = 0.4;
     playSound(breathing);
   }, 26350);
