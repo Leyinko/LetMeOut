@@ -97,15 +97,12 @@ function allPlayersReady(data, username) {
   storeGameData(data, username);
   Room();
   // ! Local Test ! //
-  // ! Test
+  // ! Test INTRO
   // preIntro(confirm);
-  // ! Test
-
+  // ! Test INTRO
   // > Final >
-  // ready && storeGameData(data, username);
-  // ready && preIntro(confirm);
-
-  // Send Request
+  // ready && storeGameData(data, username) && preIntro(confirm);
+  // Final Code API
   sendRequest('generateFinalCode');
 }
 

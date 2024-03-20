@@ -26,9 +26,11 @@ const Countdown = () => {
 
       remainingTime--;
 
-      if (remainingTime <= 3) {
-        const lastAudio = new Audio('src/assets/audio/sounds/lobby/Clock-loading.mp3');
-        playSound(lastAudio);
+      if (remainingTime === 3) {
+        setTimeout(() => {
+          const lastAudio = new Audio('src/assets/audio/sounds/lobby/Clock-loading.mp3');
+          playSound(lastAudio);
+        }, 500);
       }
     } else {
       clearInterval(interval);

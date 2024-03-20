@@ -14,6 +14,7 @@ export const getCollectables = () => JSON.parse(localStorage.getItem('story'));
 export function storeGameData(data, player) {
   let start = { lobbyCode: data.lobbyCode, players: data.players, username: player };
   localStorage.setItem('data', JSON.stringify(start));
+  return true;
 }
 
 export function getLocalID() {

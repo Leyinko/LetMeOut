@@ -12,13 +12,6 @@ export const Main = () => {
   main.id = 'main';
   app.append(main);
 
-  // Title
-  const title = document.createElement('h1');
-  title.textContent = 'LET ME OUT';
-  title.id = 'let-me-out';
-
-  main.appendChild(title);
-
   // Menu Selection
   menuSelection(main);
   let selections = document.querySelector('#menu-field');
@@ -31,7 +24,7 @@ export const Main = () => {
   Version('V1.0', main);
 
   // First Animation
-  openingAnimation(main, title, selections, inventory);
+  openingAnimation(main, selections, inventory);
 };
 
 function openingAnimation(...args) {
