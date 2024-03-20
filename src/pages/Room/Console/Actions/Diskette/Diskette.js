@@ -1,3 +1,4 @@
+import Release from '../../../../../components/release/release';
 import EthernetConnection from '../../../../games/ethernetConection/ethernetConnection';
 import { inventoryModal } from '../../../Inventory/inventory';
 import { createWindow } from '../../Console';
@@ -64,7 +65,7 @@ const diskette_actions = {
   0: (e) => createWindow('ethernet-game', e.target.parentElement) && EthernetConnection(),
   1: () => inventoryModal('src/assets/images/pictures/console/USB/Doctor.png'),
   2: () => inventoryModal('src/assets/images/pictures/console/USB/DoctorAndDiana.jpg'),
-  3: () => console.log('Confidential'),
+  3: () => Release(),
 };
 
 export default Diskette;

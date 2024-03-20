@@ -18,9 +18,9 @@ const audio = document.createElement('audio');
 app.appendChild(audio);
 
 // > Menus
-// Main();
+Main();
 // Launch();
-Lobby();
+// Lobby();
 
 // > Game
 // Room();
