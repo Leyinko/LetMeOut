@@ -5,7 +5,7 @@ const BATHROOM = {
   backgroundImage: 'src/assets/images/pictures/1F/BATHROOM-POINTED.png',
   items: [
     {
-      itemImage: 'src/assets/images/pictures/1F/pointers/console.gif',
+      itemImage: 'src/assets/images/pictures/1F/pointers-bathroom/console.gif',
       itemPosition: { x: '456px', y: '466px' },
       itemSound: 'src/assets/audio/sounds/rooms/tv-switching.mp3',
       colliderSize: { w: '173px', h: '140px' },
@@ -15,7 +15,7 @@ const BATHROOM = {
       disappearOnClick: true,
     },
     {
-      itemImage: 'src/assets/images/pictures/1F/pointers/ticket.png',
+      itemImage: 'src/assets/images/pictures/1F/pointers-bathroom/ticket.png',
       itemPosition: { x: '1469px', y: '552px' },
       itemSound: 'src/assets/audio/sounds/rooms/metal-drag.mp3',
       colliderSize: { w: '45px', h: '30px' },
@@ -25,7 +25,7 @@ const BATHROOM = {
       disappearOnClick: false,
     },
     {
-      itemImage: 'src/assets/images/pictures/1F/pointers/door.png',
+      itemImage: 'src/assets/images/pictures/1F/pointers-bathroom/door.png',
       itemPosition: { x: '1180px', y: '636px' },
       itemSound: 'src/assets/audio/sounds/rooms/door-creaks.mp3',
       colliderSize: { w: '70px', h: '150px' },
@@ -35,7 +35,7 @@ const BATHROOM = {
       disappearOnClick: false,
     },
     {
-      itemImage: 'src/assets/images/pictures/1F/pointers/necessaire.png',
+      itemImage: 'src/assets/images/pictures/1F/pointers-bathroom/necessaire.png',
       itemPosition: { x: '1724px', y: '876px' },
       itemSound: 'src/assets/audio/sounds/rooms/toolbox.mp3',
       colliderSize: { w: '107px', h: '40px' },
@@ -45,7 +45,7 @@ const BATHROOM = {
       disappearOnClick: false,
     },
     {
-      itemImage: 'src/assets/images/pictures/1F/pointers/bottle.png',
+      itemImage: 'src/assets/images/pictures/1F/pointers-bathroom/bottle.png',
       itemPosition: { x: '1273px', y: '526px' },
       itemSound: 'src/assets/audio/sounds/rooms/drag-bottle.mp3',
       colliderSize: { w: '35px', h: '55px' },
@@ -55,7 +55,7 @@ const BATHROOM = {
       disappearOnClick: false,
     },
     {
-      itemImage: 'src/assets/images/pictures/1F/pointers/candle.png',
+      itemImage: 'src/assets/images/pictures/1F/pointers-bathroom/candle.png',
       itemPosition: { x: '615px', y: '388px' },
       itemSound: 'src/assets/audio/sounds/rooms/drag-bottle.mp3',
       colliderSize: { w: '20px', h: '65px' },
@@ -65,7 +65,7 @@ const BATHROOM = {
       disappearOnClick: false,
     },
     {
-      itemImage: 'src/assets/images/pictures/1F/pointers/jar.png',
+      itemImage: 'src/assets/images/pictures/1F/pointers-bathroom/jar.png',
       itemPosition: { x: '480px', y: '698px' },
       itemSound: 'src/assets/audio/sounds/rooms/toolbox.mp3',
       colliderSize: { w: '50px', h: '65px' },
@@ -75,7 +75,7 @@ const BATHROOM = {
       disappearOnClick: false,
     },
     {
-      itemImage: 'src/assets/images/pictures/1F/pointers/hatch.png',
+      itemImage: 'src/assets/images/pictures/1F/pointers-bathroom/hatch.png',
       itemPosition: { x: '218px', y: '460px' },
       itemSound: 'src/assets/audio/sounds/rooms/sliding-wood.mp3',
       colliderSize: { w: '73px', h: '65px' },
@@ -85,7 +85,7 @@ const BATHROOM = {
       disappearOnClick: false,
     },
     {
-      itemImage: 'src/assets/images/pictures/1F/pointers/switch.png',
+      itemImage: 'src/assets/images/pictures/1F/pointers-bathroom/switch.png',
       itemPosition: { x: '860px', y: '460px' },
       itemSound: 'src/assets/audio/sounds/rooms/sliding-wood.mp3',
       colliderSize: { w: '16px', h: '65px' },
@@ -95,7 +95,7 @@ const BATHROOM = {
       disappearOnClick: false,
     },
     {
-      itemImage: 'src/assets/images/pictures/1F/pointers/basket.png',
+      itemImage: 'src/assets/images/pictures/1F/pointers-bathroom/basket.png',
       itemPosition: { x: '213px', y: '773px' },
       itemSound: 'src/assets/audio/sounds/rooms/searching.mp3',
       colliderSize: { w: '45px', h: '40px' },
@@ -105,7 +105,7 @@ const BATHROOM = {
       disappearOnClick: false,
     },
     {
-      itemImage: 'src/assets/images/pictures/1F/pointers/paint.png',
+      itemImage: 'src/assets/images/pictures/1F/pointers-bathroom/paint.png',
       itemPosition: { x: '1072px', y: '350px' },
       itemSound: 'src/assets/audio/sounds/rooms/paint.mp3',
       colliderSize: { w: '54px', h: '75px' },
@@ -115,7 +115,7 @@ const BATHROOM = {
       disappearOnClick: false,
     },
     {
-      itemImage: 'src/assets/images/pictures/1F/pointers/picture.png',
+      itemImage: 'src/assets/images/pictures/1F/pointers-bathroom/picture.png',
       itemPosition: { x: '1603px', y: '373px' },
       itemSound: 'src/assets/audio/sounds/rooms/leaves.mp3',
       colliderSize: { w: '26px', h: '37px' },
@@ -125,7 +125,7 @@ const BATHROOM = {
       disappearOnClick: false,
     },
     {
-      itemImage: 'src/assets/images/pictures/1F/pointers/note.png',
+      itemImage: 'src/assets/images/pictures/1F/pointers-bathroom/note.png',
       itemPosition: { x: '948px', y: '304px' },
       itemSound: 'src/assets/audio/sounds/rooms/story-note.mp3',
       colliderSize: { w: '26px', h: '37px' },

@@ -3,8 +3,8 @@ import Smash from '../../../../games/smashThatTrash/Smash';
 
 const Repair = () => {
   // First Game
-  // MemoryPath();
-  Smash();
+  MemoryPath();
+  // Smash();
 
   // Soundtrack Change
   let audio = document.querySelector('audio');
