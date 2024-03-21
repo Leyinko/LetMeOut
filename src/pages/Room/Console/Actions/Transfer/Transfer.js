@@ -17,9 +17,6 @@ const Transfer = () => {
     const button = document.createElement('button');
     button.textContent = 'Download';
 
-    // Block
-    button.classList.add('block');
-
     container.appendChild(button);
 
     button.addEventListener('click', () => {

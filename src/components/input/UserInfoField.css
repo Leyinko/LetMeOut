@@ -3,12 +3,16 @@ input {
   line-height: 35px;
   margin-bottom: 20px;
   padding: 0px 20px;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   text-align: center;
   border: none;
-  font-family: 'JMH';
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: lighter;
   background-color: rgba(255, 255, 255, 0.041);
+}
+
+input:hover {
+  cursor: text;
 }
 
 [role='label'] {

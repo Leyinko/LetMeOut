@@ -1,8 +1,10 @@
 import MemoryPath from '../../../../games/memoryPath/memoryPath';
+import Smash from '../../../../games/smashThatTrash/Smash';
 
 const Repair = () => {
   // First Game
-  MemoryPath();
+  // MemoryPath();
+  Smash();
 
   // Soundtrack Change
   let audio = document.querySelector('audio');

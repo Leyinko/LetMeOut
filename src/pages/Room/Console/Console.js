@@ -6,7 +6,7 @@ import Chat from './Actions/Chat/Chat';
 import Repair from './Actions/Repair/Repair';
 import Reboot from './Actions/Reboot/Reboot';
 import { nextStage, passwordHandler } from '../Progression/Progression';
-import { mutationObserver } from '../../../mutation-observer';
+import { mutationObserver } from './Actions/mutation-observer';
 import './Console.css';
 
 const Terminal = (parent) => {
@@ -16,9 +16,6 @@ const Terminal = (parent) => {
     'click',
     () => animationReflow(terminal, 'players-hub-appearance 1s ease-in-out') && terminal.classList.add('opened')
   );
-
-  // Block TV
-  tv.classList.add('block');
 
   // = Full Background
   const terminal = document.createElement('section');
@@ -51,9 +48,6 @@ const Terminal = (parent) => {
   folder.src = 'src/assets/images/icons/console/Folder.png';
   folder.id = 'folder';
 
-  // Block Folder
-  folder.classList.add('block');
-
   screen.appendChild(folder);
 
   const panel = document.createElement('div');
@@ -75,13 +69,10 @@ const Terminal = (parent) => {
 
   screen.appendChild(panel);
 
-  // Transfer Time Block
+  // Transfer Panel
   createWindow('time-transfer', screen) &&
     Transfer() &&
     document.querySelector('#time-transfer').classList.remove('onscreen');
-
-  // Block Chat
-  document.querySelectorAll('.panel img')[1].classList.add('block');
 
   const exit = document.createElement('img');
   exit.src = 'src/assets/images/icons/console/turn-off.svg';

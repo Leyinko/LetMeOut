@@ -18,9 +18,31 @@ const audio = document.createElement('audio');
 app.appendChild(audio);
 
 // > Menus
-Main();
+// Main();
 // Launch();
 // Lobby();
 
 // > Game
-// Room();
+Room();
+
+// Cursor Test
+// let cursor = document.createElement('div');
+// cursor.id = 'cursor';
+
+// let hand = document.createElement('img');
+// hand.src = 'src/assets/images/cursor.png';
+
+// cursor.appendChild(hand);
+// document.querySelector('#app').appendChild(cursor);
+
+// document.addEventListener('mousemove', (e) => {
+//   cursor.setAttribute('style', 'top: ' + (e.pageY - 30) + 'px; left: ' + (e.pageX - 30) + 'px;');
+// });
+
+// document.addEventListener('mousedown', (e) => {
+//   hand.src = `src/assets/images/cursor-grab.png`;
+// });
+
+// document.addEventListener('mouseup', (e) => {
+//   hand.src = `src/assets/images/cursor.png`;
+// });

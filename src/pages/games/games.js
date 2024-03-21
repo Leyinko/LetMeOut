@@ -1,4 +1,19 @@
 import { fetchFinalCode } from '../../data/fetch';
+import { accessSound } from '../Room/Progression/Progression';
+import './games.css';
+
+export function start(win, callback) {
+  if (win == 'win') {
+    accessSound('success');
+  } else if (win == 'lose') {
+    accessSound('error');
+  }
+
+  var stageTimeout = setTimeout(() => {
+    clearTimeout(stageTimeout);
+    callback();
+  }, 2000);
+}
 
 export async function showFinalNumber() {
   const container = document.querySelector('#repair');

@@ -8,7 +8,7 @@ article[id$='party'] {
   align-items: center;
   transition: all 1s ease-in-out;
   backdrop-filter: blur(3px);
-  box-shadow: 0 0 30px 10px rgba(0, 0, 0, 0.253);
+  box-shadow: 2px 2px 50px 10px rgba(0, 0, 0, 0.253);
 }
 
 @keyframes menu-down {

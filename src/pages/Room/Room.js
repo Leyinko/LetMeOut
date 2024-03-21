@@ -1,7 +1,7 @@
 import BATHROOM from './Levels/1F/Bathroom/Bathroom';
 import Stage from './Class/Class';
 import Terminal from './Console/Console';
-import { firstClickStart } from './Progression/Progression';
+import { firstClickStart, lockPath } from './Progression/Progression';
 import { statsCollector } from '../../data/localStorage/LS';
 import { randomSounds } from '../../components/audio/Audio';
 import { inGameWebSocket } from '../../data/webSocket/webSocket';
@@ -25,6 +25,9 @@ export const Room = () => {
   let level = new Stage(BATHROOM);
   level.printRoom();
   Terminal(app);
+
+  // Lock Path
+  lockPath();
 
   // Game Controllers
   gameStartControllers();

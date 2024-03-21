@@ -1,5 +1,6 @@
 import { handleTime } from '../../../components/countdown/Countdown';
 import { fisherYatesShuffle, random } from '../../../utils';
+import { accessSound } from '../../Room/Progression/Progression';
 import './ethernetConnection.css';
 
 export default function EthernetConnection() {
@@ -79,11 +80,12 @@ function checkResult(selection, pairs, node) {
       document.querySelector(`#${selection[0]}`).classList.add('pin-ball-check');
       document.querySelector(`#${selection[1]}`).classList.add('pin-ball-check');
     } else {
-      handleTime(10, false);
+      accessSound('error') && handleTime(10, false);
     }
   }
 
   if (pairs.length == 16) {
+    accessSound('success');
     const access = document.createElement('h2');
     access.textContent = `${accessCode()}`;
     node.innerHTML = '';

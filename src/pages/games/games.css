@@ -2,10 +2,11 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -10%);
   /* border: 1px solid red; */
-  font-size: 7rem;
-  opacity: 0.8;
+  font-size: 3rem;
+  opacity: 0.56;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #games-password {
