@@ -1,6 +1,6 @@
-import './release.css';
 import { Lose } from '../../pages/Result/Result';
 import { playSound } from '../audio/Audio';
+import './release.css';
 
 const errorAudio = new Audio('src/assets/audio/sounds/console/error.mp3');
 const audio911 = new Audio('src/assets/audio/sounds/console/audio911.mp3');
@@ -12,7 +12,7 @@ const errorWindows = [
 ];
 const errors = 20;
 let counterBugs = 0;
-let intervalTime = 1000;
+let intervalTime = 700;
 
 // Create bugs
 const createBug = (bugsArea) => {
@@ -46,13 +46,15 @@ const Release = () => {
   const bugsArea = document.createElement('div');
   bugsArea.className = 'bugs-area';
   screen.appendChild(bugsArea);
+  //
+  document.querySelector('audio').remove();
+  document.querySelector('#countdown-timer').style.display = 'none';
 
-  const bugsInterval = setInterval(() => {
-    document.querySelector('#the-prospector').muted = true;
-    document.querySelector('#countdown-timer').style.display = 'none';
+  let bugsInterval = setInterval(() => {
     createBug(bugsArea);
     counterBugs++;
     intervalTime = Math.floor((intervalTime /= 1.1));
+
     console.log(intervalTime);
 
     // Release IANA

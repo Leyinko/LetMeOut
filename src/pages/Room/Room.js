@@ -17,23 +17,34 @@ export const Room = () => {
   room.id = 'room';
 
   // Time Stamp
-  room.setAttribute('stamp', new Date().getTime());
+  // room.setAttribute('stamp', new Date().getTime());
 
-  app.append(room);
+  // app.append(room);
 
   // Print Room
-  let level = new Stage(BATHROOM);
-  level.printRoom();
-  Terminal(app);
+  // let level = new Stage(BATHROOM);
+  // level.printRoom();
+  // Terminal(app);
+
+  // NB : Object/Collider Test
+  const object = document.createElement('img');
+  object.className = 'object';
+  object.src = 'src/assets/images/pictures/1F/pointers-livingroom/picture-wall.png';
+
+  const collider = document.createElement('div');
+  collider.className = 'collider';
+
+  app.append(object, collider);
+  // NB : Object/Collider Test
 
   // Lock Path
-  lockPath();
+  // lockPath();
 
   // Game Controllers
-  gameStartControllers();
+  // gameStartControllers();
 
   // Start First Click
-  room.addEventListener('animationend', () => firstClickStart(), { once: true });
+  // room.addEventListener('animationend', () => firstClickStart(), { once: true });
 };
 
 function gameStartControllers() {
@@ -50,14 +61,3 @@ function gameStartControllers() {
 const clicksStats = () => document.addEventListener('click', () => statsCollector('clickCount', 'clicks'));
 
 export default Room;
-
-// NB : Object/Collider Test
-// const object = document.createElement('img');
-// object.className = 'object';
-// object.src = 'src/assets/images/pictures/1F/pointers/console.gif';
-
-// const collider = document.createElement('div');
-// collider.className = 'collider';
-
-// app.append(object, collider);
-// NB : Object/Collider Test

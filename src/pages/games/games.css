@@ -2,10 +2,10 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -10%);
+  transform: translate(-50%, -20%);
   /* border: 1px solid red; */
-  font-size: 3rem;
-  opacity: 0.56;
+  font-size: 6rem;
+  opacity: 0.36;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
