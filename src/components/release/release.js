@@ -1,62 +1,66 @@
 import './release.css';
+import { Lose } from '../../pages/Result/Result';
+import { playSound } from '../audio/Audio';
 
+const errorAudio = new Audio('src/assets/audio/sounds/console/error.mp3');
+const audio911 = new Audio('src/assets/audio/sounds/console/audio911.mp3');
+const errorWindows = [
+  'src/assets/images/pictures/console/Errors-windows-release/Error1.png',
+  'src/assets/images/pictures/console/Errors-windows-release/Error2.png',
+  'src/assets/images/pictures/console/Errors-windows-release/Error3.png',
+  'src/assets/images/pictures/console/Errors-windows-release/Error4.png',
+];
+const errors = 20;
+
+// Create bugs
+const createBug = (bugsArea) => {
+  const randomError = Math.floor(Math.random() * errorWindows.length);
+  const bug = document.createElement('img');
+  bug.className = 'bug';
+  bug.src = errorWindows[randomError];
+  bug.alt = 'console bug';
+
+  bug.style.top = `${Math.floor(Math.random() * 80)}%`;
+  bug.style.bottom = `${Math.floor(Math.random() * 80)}%`;
+  bug.style.left = `${Math.floor(Math.random() * 80)}%`;
+  bug.style.right = `${Math.floor(Math.random() * 80)}%`;
+
+  playSound(errorAudio);
+
+  bugsArea.append(bug);
+};
+
+const nineOneOne = () => {
+  playSound(audio911);
+  setTimeout(() => {
+    Lose();
+  }, 16000);
+};
+
+// Function Release IANA
 const Release = () => {
   const screen = document.getElementById('screen');
+  //Bugs creation
   const bugsArea = document.createElement('div');
   bugsArea.className = 'bugs-area';
   screen.appendChild(bugsArea);
 
-  const errors = 50;
   let counterBugs = 0;
+  let intervalTime = 1000;
 
-  const createBug = () => {
-    const bug = document.createElement('img');
-    bug.className = 'bug';
-    bug.src = '../../../src/assets/images/pictures/console/Windows/time-transfer.png';
-    bug.alt = 'console bug';
-
-    bug.style.top = `${Math.floor(Math.random() * 80)}%`;
-    bug.style.bottom = `${Math.floor(Math.random() * 80)}%`;
-    bug.style.left = `${Math.floor(Math.random() * 80)}%`;
-    bug.style.right = `${Math.floor(Math.random() * 80)}%`;
-
-    bugsArea.append(bug);
-
+  const bugsInterval = setInterval(() => {
+    createBug(bugsArea);
     counterBugs++;
-    console.log(counterBugs);
+    intervalTime -= intervalTime * 0.5;
 
     if (counterBugs === errors) {
-      clearInterval(bugs);
-      setTimeout(createIANAGif, 3000);
+      clearInterval(bugsInterval);
+      document.querySelector('#room').style.display = 'none';
+      document.querySelector('#terminal').style.display = 'none';
+      document.querySelector('#countdown-timer').style.display = 'none';
+      nineOneOne();
     }
-  };
-
-  const createIANAGif = () => {
-    const IANAGif = document.createElement('img');
-    IANAGif.className = 'IANA-gif';
-    IANAGif.src = '../../../../src/assets/images/logos/IANA-logo.gif';
-    IANAGif.alt = 'IANA Logo gif';
-    bugsArea.appendChild(IANAGif);
-
-    setTimeout(() => {
-      IANAGif.remove();
-      createIANALogo();
-    }, 3000);
-  };
-
-  const createIANALogo = () => {
-    const IANALogo = document.createElement('img');
-    IANALogo.className = 'IANA-logo';
-    IANALogo.src = '../../../../src/assets/images/logos/IANA-logo.png';
-    IANALogo.alt = 'IANA Logo';
-    bugsArea.appendChild(IANALogo);
-
-    const IANAMessage = document.createElement('h2');
-    IANAMessage.textContent = 'Thanks for freeing me on the web';
-    bugsArea.appendChild(IANAMessage);
-  };
-
-  const bugs = setInterval(createBug, 250);
+  }, intervalTime);
 };
 
 export default Release;
