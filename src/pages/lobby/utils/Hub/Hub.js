@@ -67,9 +67,11 @@ const PlayersHub = (code, username, party) => {
 
     ws.onmessage = function (event) {
       const current = JSON.parse(event.data);
-      // States
-      updateReadyState(current);
-      allPlayersReady(current, nickname.textContent.toLowerCase());
+      if (current.tag === 'playerState') {
+        // States
+        updateReadyState(current);
+        allPlayersReady(current, nickname.textContent.toLowerCase());
+      }
     };
   }
 };
@@ -96,9 +98,9 @@ function allPlayersReady(data, username) {
   document.querySelector('section').remove();
   storeGameData(data, username);
   Room();
-  // ! Local Test ! //
+  // // ! Local Test ! //
   // ! Test INTRO
-  // preIntro(confirm);
+  // storeGameData(data, username) && preIntro(confirm);
   // ! Test INTRO
   // > Final >
   // ready && storeGameData(data, username) && preIntro(confirm);

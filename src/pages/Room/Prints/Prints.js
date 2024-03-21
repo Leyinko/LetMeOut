@@ -36,9 +36,6 @@ function itemPop(src, parent) {
   let collider = item.parentElement;
   collider.classList.add('clickable');
 
-  // Block Ticket
-  collider.id === 'ticket' && collider.classList.add('block');
-
   collider.addEventListener('click', () => item.classList.add('found'));
 
   item.addEventListener('click', (e) => {

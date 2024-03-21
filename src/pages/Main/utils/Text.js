@@ -17,7 +17,10 @@ export const opening_warning = {
 export const immersion_message = {
   image: 'src/assets/images/icons/menu/eye.svg',
   content: `This game is specifically designed to be played in Full Screen window mode.
-	It's a necessary instruction to ensure the optimal gameplay experience, as playing in any other mode could potentially impact the gameplay.
+  It's a necessary instruction to ensure the optimal gameplay experience, as playing in any other mode could potentially impact the gameplay.
+
+  Please make sure that the general display configuration is set to 100% on your Display settings.
+  This ensures that the game's visuals are displayed correctly and provides the best gaming experience.
 	
 	Additionally, we strongly advise using headphones to enhance the immersive experience while playing.`,
   continue: 'Click to continue',
@@ -30,13 +33,12 @@ export const modals_main_template = {
 
 export const introduction_lobby = {
   intro: `
-  Somewhere near Krakow, in the Wildlands of Poland, you stumble upon a forsaken house.
+  Somewhere in the Wildlands of Poland, you stumble upon a forsaken house.
   You find yourself locked in a room, separated from your friends.
 
-  All interactions and objects are crucial for the correct progression of the game.
-
-  We highly recommend not using external communication tools.
-
   Your objective is to find your way out.
+
+  All interactions and objects are crucial for the correct progression of the game.
+  We highly recommend not using external communication tools.
   `,
 };

@@ -1,7 +1,7 @@
 import { handleTime } from '../../components/countdown/Countdown';
 import { Win } from '../../pages/Result/Result';
 import { chatMessage } from '../../pages/Room/Console/Actions/Chat/Chat';
-import { denied, nextStage, unlockTicket } from '../../pages/Room/Progression/Progression';
+import { accessSound, nextStage, unlockTicket } from '../../pages/Room/Progression/Progression';
 
 // export const ws = new WebSocket('ws://5.250.185.179:3000');
 export const ws = new WebSocket('ws://localhost:3000');
@@ -44,7 +44,7 @@ export function inGameWebSocket() {
         current.receiver === self.textContent && handleTime(45, true);
         break;
       case 'checkExit':
-        current.win ? Win() : denied() && handleTime(40, false);
+        current.win ? Win() : accessSound('error') && handleTime(40, false);
         break;
       default:
         chatMessage(current.name, current.message);

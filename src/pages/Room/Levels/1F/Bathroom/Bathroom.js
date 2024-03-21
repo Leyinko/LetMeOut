@@ -117,7 +117,7 @@ const BATHROOM = {
     {
       itemImage: 'src/assets/images/pictures/1F/pointers/picture.png',
       itemPosition: { x: '1603px', y: '373px' },
-      itemSound: 'src/assets/audio/sounds/rooms/paint.mp3',
+      itemSound: 'src/assets/audio/sounds/rooms/leaves.mp3',
       colliderSize: { w: '26px', h: '37px' },
       colliderPosition: { x: '1603px', y: '373px' },
       size: '26px',

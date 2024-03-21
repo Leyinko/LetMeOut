@@ -1,8 +1,7 @@
 import { fisherYatesShuffle, timer } from '../../../utils';
 import { statsCollector } from '../../../data/localStorage/LS';
 // import { failsOnMinigames } from '../../../localStorage/LS';
-import { start } from '../game-utils';
-import { showFinalNumber } from '../games';
+import { start } from '../../Games/games';
 import Smash from '../smashThatTrash/Smash';
 import './neuralNetWork.css';
 import { handleTime } from '../../../components/countdown/Countdown';

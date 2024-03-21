@@ -46,10 +46,10 @@ export function handleTime(time, operation) {
   timerOperation.id = 'timer-operation';
   timerOperation.className = operation ? 'add-time' : 'subtract-time';
   timerOperation.textContent = operation ? `+${time}` : `-${time}`;
-  app.appendChild(timerOperation);
-  setTimeout(() => {
-    timerOperation.remove();
-  }, 300);
+
+  document.querySelector('#room').appendChild(timerOperation);
+
+  setTimeout(() => timerOperation.remove(), 700);
 }
 
 export default Countdown;
