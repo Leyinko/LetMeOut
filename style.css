@@ -21,7 +21,6 @@
   color: white;
   user-select: none;
   cursor: crosshair;
-  /* cursor: none; */
 }
 
 :root {
@@ -31,36 +30,19 @@
 body {
   background-color: black;
   color: #f4f4f4;
-  /* cursor */
   overflow: hidden;
-  /* cursor */
 }
 
 #app {
   width: 100svw;
-  height: 90svh;
-  margin-top: 5svh;
+  height: 100svh;
+  background: url('src/assets/images/pictures/1F/LIVINGROOM-POINTED.png') center/cover no-repeat;
+  /* height: 90svh; */
+  /* margin-top: 5svh; */
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-/* Cursor Test */
-/* 
-#cursor {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  pointer-events: none;
-  z-index: 9999999999999999999999999999999999999;
-}
-
-#cursor img {
-  width: 100%;
-  object-fit: cover;
-} */
-
-/* Cursor Test */
 
 @keyframes players-hub-appearance {
   100% {
