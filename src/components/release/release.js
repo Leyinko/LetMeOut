@@ -11,6 +11,8 @@ const errorWindows = [
   'src/assets/images/pictures/console/Errors-windows-release/Error4.png',
 ];
 const errors = 20;
+let counterBugs = 0;
+let intervalTime = 1000;
 
 // Create bugs
 const createBug = (bugsArea) => {
@@ -34,7 +36,7 @@ const nineOneOne = () => {
   playSound(audio911);
   setTimeout(() => {
     Lose();
-  }, 16000);
+  }, 17000);
 };
 
 // Function Release IANA
@@ -45,19 +47,19 @@ const Release = () => {
   bugsArea.className = 'bugs-area';
   screen.appendChild(bugsArea);
 
-  let counterBugs = 0;
-  let intervalTime = 1000;
-
   const bugsInterval = setInterval(() => {
+    document.querySelector('#the-prospector').muted = true;
+    document.querySelector('#countdown-timer').style.display = 'none';
     createBug(bugsArea);
     counterBugs++;
-    intervalTime -= intervalTime * 0.5;
+    intervalTime = Math.floor((intervalTime /= 1.1));
+    console.log(intervalTime);
 
+    // Release IANA
     if (counterBugs === errors) {
       clearInterval(bugsInterval);
-      document.querySelector('#room').style.display = 'none';
-      document.querySelector('#terminal').style.display = 'none';
-      document.querySelector('#countdown-timer').style.display = 'none';
+      document.querySelector('#room').remove();
+      document.querySelector('#terminal').remove();
       nineOneOne();
     }
   }, intervalTime);

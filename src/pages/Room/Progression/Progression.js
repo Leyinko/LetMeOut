@@ -27,6 +27,7 @@ export function firstClickStart() {
       setTimeout(() => {
         const audio = document.querySelector('audio');
         audio.src = 'src/assets/audio/music/The-Prospector.mp3';
+        audio.id = 'the-prospector';
         audioConfig(audio, true, true, 0.2);
       }, 4800);
     },
