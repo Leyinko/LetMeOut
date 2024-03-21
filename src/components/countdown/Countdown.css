@@ -11,9 +11,9 @@
   font-size: 20px;
   color: white;
   letter-spacing: 14px;
-  z-index: 9999999999999999;
+  z-index: 1000;
   opacity: 0.8;
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.945);
   /* opacity: 0.4; */
 }
 
@@ -23,24 +23,42 @@
   align-items: center;
   font-family: 'JMH';
   position: fixed;
-  top: 60px;
-  left: 54%;
-  width: 70px;
+  top: 80px;
+  width: fit-content;
   line-height: 40px;
   padding-left: 15px;
-  font-size: 20px;
+  /* font-size: 20px; */
   color: white;
   letter-spacing: 14px;
   z-index: 9999999999999999;
   opacity: 0.8;
   /* opacity: 0.4; */
 }
+
 .add-time {
-  background-color: green;
+  left: 41.25%;
+
+  font-size: 1.6rem;
+  animation: time 1s ease-in-out;
+  background-color: rgba(24, 70, 24, 0.781);
+  transform: rotate(-3deg);
+  animation: time 0.6s ease-in-out forwards;
 }
+
 .subtract-time {
-  background-color: red;
+  left: 53.5%;
+  /* color: var(--blood-color); */
+  background-color: var(--blood-color);
+  opacity: 0;
+  /* right: -50px; */
+  /* font-size: 2rem; */
+  transform: rotate(3deg);
+  animation: time 0.6s ease-in-out reverse forwards;
 }
-/* #countdown-timer:hover {
-  opacity: 1;
-} */
+
+@keyframes time {
+  100% {
+    transform: translateY(-40px);
+    opacity: 1;
+  }
+}

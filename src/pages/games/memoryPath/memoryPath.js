@@ -1,5 +1,5 @@
 import './memoryPath.css';
-import { start } from '../game-utils';
+import { start } from '../../Games/games';
 import neuralNetWork from '../neuralNetWork/neuralNetWork';
 import { statsCollector } from '../../../data/localStorage/LS';
 import { handleTime } from '../../../components/countdown/Countdown';

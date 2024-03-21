@@ -20,6 +20,8 @@
   letter-spacing: 1px;
   color: white;
   user-select: none;
+  cursor: crosshair;
+  /* cursor: none; */
 }
 
 :root {
@@ -29,6 +31,9 @@
 body {
   background-color: black;
   color: #f4f4f4;
+  /* cursor */
+  overflow: hidden;
+  /* cursor */
 }
 
 #app {
@@ -39,6 +44,23 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+/* Cursor Test */
+/* 
+#cursor {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  pointer-events: none;
+  z-index: 9999999999999999999999999999999999999;
+}
+
+#cursor img {
+  width: 100%;
+  object-fit: cover;
+} */
+
+/* Cursor Test */
 
 @keyframes players-hub-appearance {
   100% {

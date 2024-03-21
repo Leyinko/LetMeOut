@@ -2,8 +2,7 @@
 import { handleTime } from '../../../components/countdown/Countdown';
 import { statsCollector } from '../../../data/localStorage/LS';
 import { timer } from '../../../utils';
-import { start } from '../game-utils';
-import { showFinalNumber } from '../games';
+import { showFinalNumber, start } from '../../Games/games';
 import './Smash.css';
 
 let stage = 1;
@@ -28,7 +27,7 @@ function Smash() {
   // Buttons
   let buttons = 0;
   let rotation = 22.5;
-  const radius = 120;
+  const radius = 110;
   const totalButtons = 8;
 
   while (buttons < totalButtons) {

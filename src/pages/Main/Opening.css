@@ -63,8 +63,9 @@
 }
 
 #immersion p {
+  font-size: 14px;
   padding: 20px;
-  line-height: 2;
+  line-height: 2.3;
   text-align: center;
   white-space: pre-line;
   backdrop-filter: blur(0.625rem);

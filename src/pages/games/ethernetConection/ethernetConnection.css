@@ -1,12 +1,14 @@
 #ethernet-container {
   position: absolute;
-  bottom: 0px;
+  bottom: 40px;
+  padding: 0px 20px;
   left: 7px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 90%;
-  height: 77%;
+  opacity: 0.8;
+  /* height: 77%; */
   /* border: 1px solid green; */
 }
 
@@ -14,8 +16,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  width: 100px;
-  height: 230px;
+  width: 80px;
+  height: 190px;
   /* background-color: grey; */
 }
 
@@ -26,7 +28,7 @@
 .ethernet-port:nth-child(1) div div {
   position: absolute;
   bottom: -10px;
-  right: -30px;
+  right: -25px;
 }
 
 .ethernet-port:nth-child(2) {
@@ -36,82 +38,72 @@
 .ethernet-port:nth-child(2) div div {
   position: absolute;
   bottom: -10px;
-  left: -30px;
+  left: -25px;
 }
 
 .ethernet-pin {
   position: relative;
   width: 80%;
-  height: 13px;
+  height: 15px;
   border: 1px outset grey;
   border-radius: 4px;
 }
 
 .pin-ball {
-  margin-bottom: 5px;
-  width: 20px;
-  height: 20px;
-  border: 4px outset grey;
+  margin-bottom: 9px;
+  width: 13px;
+  height: 13px;
+  border: 2px outset grey;
   border-radius: 50%;
 }
 
 div[id*='ball'].pin-ball-check {
-  background-color: white;
+  background-color: rgb(0, 0, 0);
 }
 
 .pin-ball-selected {
-  background-color: black;
+  border: 4px outset black;
 }
 
 #ethernet-container h2 {
+  opacity: 0.4;
   width: 100%;
   text-align: center;
 }
 
+#ethernet-container div div {
+  filter: invert(1);
+  opacity: 0.9;
+}
+
 #E0 {
-  background-image: url('../../../assets/images/icons/console/games/patterns/pattern1.webp');
-  background-size: cover;
-  background-position: 0;
+  background: url('../../../assets/images/icons/console/games/patterns/pattern1.webp') center/cover no-repeat;
 }
 
 #E1 {
-  background-image: url('../../../assets/images/icons/console/games/patterns/pattern2.webp');
-  background-size: cover;
-  background-position: 0;
+  background: url('../../../assets/images/icons/console/games/patterns/pattern2.webp') center/cover no-repeat;
 }
 
 #E2 {
-  background-image: url('../../../assets/images/icons/console/games/patterns/pattern3.webp');
-  background-size: cover;
-  background-position: 0;
+  background: url('../../../assets/images/icons/console/games/patterns/pattern3.webp') center/cover no-repeat;
 }
 
 #E3 {
-  background-image: url('../../../assets/images/icons/console/games/patterns/pattern4.webp');
-  background-size: cover;
-  background-position: 0;
+  background: url('../../../assets/images/icons/console/games/patterns/pattern4.webp') center/cover no-repeat;
 }
 
 #E4 {
-  background-image: url('../../../assets/images/icons/console/games/patterns/pattern5.webp');
-  background-size: cover;
-  background-position: 0;
+  background: url('../../../assets/images/icons/console/games/patterns/pattern5.webp') center/cover no-repeat;
 }
 
 #E5 {
-  background-image: url('../../../assets/images/icons/console/games/patterns/pattern6.webp');
-  background-size: cover;
-  background-position: 0;
+  background: url('../../../assets/images/icons/console/games/patterns/pattern6.webp') center/cover no-repeat;
 }
 
 #E6 {
-  background-image: url('../../../assets/images/icons/console/games/patterns/pattern7.webp');
-  background-size: cover;
-  background-position: 0;
+  background: url('../../../assets/images/icons/console/games/patterns/pattern7.webp') center/cover no-repeat;
 }
 
 #E7 {
-  background-image: url('../../../assets/images/icons/console/games/patterns/pattern8.webp');
-  background-size: cover;
-  background-position: 0;
+  background: url('../../../assets/images/icons/console/games/patterns/pattern8.webp') center/cover no-repeat;
 }

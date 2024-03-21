@@ -4,6 +4,8 @@ const random_sounds = [
   'src/assets/audio/sounds/random/footsteps.mp3',
   'src/assets/audio/sounds/random/glass-breaking.mp3',
   'src/assets/audio/sounds/random/window-knocking.mp3',
+  'src/assets/audio/sounds/random/breathing.mp3',
+  'src/assets/audio/sounds/random/wood-cracking.mp3',
 ];
 
 export function audioConfig(target, autoplay, loop, volume) {

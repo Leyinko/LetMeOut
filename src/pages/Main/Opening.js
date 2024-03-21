@@ -57,7 +57,7 @@ function immersionModal(app) {
   });
 }
 
-function toMain(app) {
+export function toMain(app) {
   // Main Menu
   Main();
   // Audio
