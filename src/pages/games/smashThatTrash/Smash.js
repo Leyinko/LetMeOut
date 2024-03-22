@@ -3,6 +3,7 @@ import { handleTime } from '../../../components/countdown/Countdown';
 import { statsCollector } from '../../../data/localStorage/LS';
 import { timer } from '../../../utils';
 import { showFinalNumber, start } from '../../Games/games';
+import { accessSound } from '../../Room/Progression/Progression';
 import './Smash.css';
 
 let stage = 1;
@@ -94,6 +95,8 @@ function checkResult() {
     // Save Stamp
     statsCollector('timestamps', 'minigames', timer(stamp), '2');
     //
+    accessSound('success');
+
     showFinalNumber();
   }
 }
