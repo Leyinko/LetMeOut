@@ -1,44 +1,48 @@
-.ticket.active {
+[room='bathroom'] .console.active {
+  opacity: 0.7;
+}
+
+[room='bathroom'] img.ticket.active {
   transform: translateX(-30px);
 }
 
-.necessaire.active {
+[room='bathroom'] img.necessaire.active {
   transform: translate(40px, 90px) rotate(17deg);
 }
 
-.bottle.active {
+[room='bathroom'] img.bottle.active {
   transform: translateX(25px);
 }
 
-.candle.active {
+[room='bathroom'] img.candle.active {
   transform: translateX(20px);
 }
 
-.jar.active {
+[room='bathroom'] img.jar.active {
   transform: translate(-80px, 180px);
 }
 
-.hatch.active {
+[room='bathroom'] img.hatch.active {
   transform: translate(5px, 70px);
   filter: drop-shadow(1px 3px 5px black);
 }
 
-.switch.active {
+[room='bathroom'] img.switch.active {
   transform: rotate(13deg) scale(0.95) translate(-5px, 0px);
 }
 
-.basket.active {
+[room='bathroom'] img.basket.active {
   transform: translateY(170px);
 }
 
-.paint.active {
+[room='bathroom'] img.paint.active {
   transform: rotate(20deg);
 }
 
-.picture.active {
+[room='bathroom'] img.picture.active {
   transform: translateX(25px);
 }
 
-.door.active {
+[room='bathroom'] img.door.active {
   filter: brightness(0.8);
 }

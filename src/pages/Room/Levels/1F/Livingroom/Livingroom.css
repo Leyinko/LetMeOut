@@ -1,0 +1,39 @@
+[room='living'] .console.active {
+  /* opacity: 0.9; */
+}
+
+[room='living'] img.books.active {
+  transform: translate(20px, 3.125rem);
+}
+
+[room='living'] img.comode.active {
+  transform: translate(-25px, 1px);
+}
+
+[room='living'] img.picture.active {
+  transform: translateX(15px);
+}
+
+[room='living'] img.block {
+  filter: brightness(1.1);
+}
+
+[room='living'] img.block.active {
+  transform: translate(20px, 0.625rem);
+}
+
+[room='living'] img.camera.active {
+  transform: translate(40px, 3px);
+}
+
+[room='living'] img.wall.active {
+  transform: translateX(19px);
+}
+
+[room='living'] img.ticket.active {
+  transform: rotate(-2deg) scale(0.99) skewY(-3deg);
+}
+
+[room='living'] img.couch.active {
+  transform: translate(20px, 30px);
+}

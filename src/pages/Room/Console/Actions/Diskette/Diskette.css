@@ -56,7 +56,7 @@
 
 #download-usb {
   position: absolute;
-  bottom: 7px;
+  bottom: 6px;
   right: 6px;
   padding: 1px;
   display: flex;
@@ -69,7 +69,7 @@
 
 .downloading-block-usb {
   width: 8.68px;
-  height: 14px;
+  height: 11px;
   background-color: #1d1918b0;
 }
 

@@ -1,0 +1,43 @@
+[room='kitchen'] .console.active {
+  opacity: 0.7;
+}
+
+[room='kitchen'] img.ticket.active {
+  transform: translateX(20px);
+}
+
+[room='kitchen'] img.tv.active {
+  transform: translate(25px, 4px);
+}
+
+[room='kitchen'] img.mess.active {
+  transform: translate(25px, 4px);
+}
+
+[room='kitchen'] img.pan.active {
+  transform: translate(-30px, 2px);
+}
+
+[room='kitchen'] img.sarten.active {
+  transform: translateY(40px);
+}
+
+[room='kitchen'] img.shield.active {
+  transform: rotate(-10deg) translate(-20px, 20px);
+}
+
+[room='kitchen'] img.tea.active {
+  transform: translateX(20px);
+}
+
+[room='kitchen'] img.under.active {
+  transform: translate(-30px, 30px);
+}
+
+[room='kitchen'] img.hatch.active {
+  transform: translateY(25px);
+}
+
+[room='kitchen'] img.door.active {
+  filter: brightness(0.8);
+}
