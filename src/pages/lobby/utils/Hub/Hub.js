@@ -73,6 +73,9 @@ const PlayersHub = (code, username, party) => {
         // States
         updateReadyState(current);
         allPlayersReady(current, nickname.textContent.toLowerCase());
+      } else if (current.tag === 'assignRoom') {
+        // Save Data at Start
+        storeGameData(current, username);
       }
     };
   }
@@ -91,23 +94,24 @@ function updateReadyState(data) {
   });
 }
 
-async function allPlayersReady(data, username) {
+function allPlayersReady(data, username) {
   let players = Array.from(document.querySelectorAll('.players img'));
   let confirm = new Audio('src/assets/audio/sounds/lobby/Confirm-game.mp3');
   let ready = players.every((player) => player.style.opacity === '0.9');
 
-  // Room Assign
-  // sendRequest('assignRoom', username, data.lobbyCode);
-  // Final Code API
-  sendRequest('generateFinalCode');
-
-  // > Final >
-  // ready && storeGameData(data, username) && preIntro(confirm);
+  if (ready) {
+    // Room Assign
+    sendRequest('assignRoom', username, data.lobbyCode);
+    // Final Code API
+    sendRequest('generateFinalCode');
+    // Start
+    preIntro(confirm);
+  }
 
   // ! Local Test ! //
-  document.querySelector('section').remove();
-  storeGameData(data, username);
-  Room();
+  // document.querySelector('section').remove();
+  // storeGameData(data, username);
+  // Room();
   // ! Local Test ! //
 
   // ! Test INTRO

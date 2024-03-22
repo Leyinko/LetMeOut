@@ -16,7 +16,7 @@ let intervalTime = 700;
 
 // Create bugs
 const createBug = (bugsArea) => {
-  const randomError = Math.floor(Math.random() * errorWindows.length);
+  const randomError = Math.floor(Math.random() * errorWindows.length - 1);
   const bug = document.createElement('img');
   bug.className = 'bug';
   bug.src = errorWindows[randomError];

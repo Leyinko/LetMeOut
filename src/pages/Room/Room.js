@@ -24,18 +24,13 @@ export const Room = () => {
   app.append(room);
 
   // Rooms Assign
-  // let rooms = [BATHROOM, KITCHEN, LIVING];
-  // rooms.forEach((room) => {
-  //   let localRoom = assignRoom();
-  //   room == localRoom && new Stage(room).printRoom();
-  // });
+  let rooms = [BATHROOM, KITCHEN, LIVING];
+  rooms.forEach((room) => {
+    let localRoom = assignRoom();
+    room.room == localRoom && new Stage(room).printRoom();
+  });
 
-  // Print Room
-  // let level = new Stage(BATHROOM);
-  // let level = new Stage(KITCHEN);
-  let level = new Stage(LIVING);
-
-  level.printRoom();
+  // Terminal
   Terminal(app);
 
   // Lock Path
@@ -62,14 +57,3 @@ function gameStartControllers() {
 const clicksStats = () => document.addEventListener('click', () => statsCollector('clickCount', 'clicks'));
 
 export default Room;
-
-// // NB : Object/Collider Test
-// const object = document.createElement('img');
-// object.className = 'object';
-// object.src = 'src/assets/images/pictures/1F/pointers-livingroom/note.png';
-
-// const collider = document.createElement('div');
-// collider.className = 'collider';
-
-// app.append(object, collider);
-// // NB : Object/Collider Test
