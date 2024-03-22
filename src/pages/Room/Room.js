@@ -4,7 +4,7 @@ import LIVING from './Levels/1F/Livingroom/Livingroom';
 import Stage from './Class/Class';
 import Terminal from './Console/Console';
 import { firstClickStart, lockPath } from './Progression/Progression';
-import { statsCollector } from '../../data/localStorage/LS';
+import { assignRoom, statsCollector } from '../../data/localStorage/LS';
 import { randomSounds } from '../../components/audio/Audio';
 import { inGameWebSocket } from '../../data/webSocket/webSocket';
 import cheatDetect from '../../components/anticheat/cheatsDetect';
@@ -22,6 +22,13 @@ export const Room = () => {
   room.setAttribute('stamp', new Date().getTime());
 
   app.append(room);
+
+  // Rooms Assign
+  // let rooms = [BATHROOM, KITCHEN, LIVING];
+  // rooms.forEach((room) => {
+  //   let localRoom = assignRoom();
+  //   room == localRoom && new Stage(room).printRoom();
+  // });
 
   // Print Room
   // let level = new Stage(BATHROOM);
@@ -59,7 +66,7 @@ export default Room;
 // // NB : Object/Collider Test
 // const object = document.createElement('img');
 // object.className = 'object';
-// object.src = 'src/assets/images/pictures/1F/pointers-livingroom/picture-wall.png';
+// object.src = 'src/assets/images/pictures/1F/pointers-livingroom/note.png';
 
 // const collider = document.createElement('div');
 // collider.className = 'collider';

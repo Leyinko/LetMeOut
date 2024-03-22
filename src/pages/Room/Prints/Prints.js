@@ -39,20 +39,21 @@ function itemPop(src, parent) {
   collider.addEventListener('click', () => item.classList.add('found'));
 
   item.addEventListener('click', (e) => {
+    let active = document.querySelectorAll('#inventory-active .item-inv img');
     let collider = e.target.closest('div');
+
     item.remove();
 
     // Add to Inventory
     addItemToInventory(src);
 
-    // Polaroid & Ticket
-    let active = document.querySelectorAll('#inventory-active .item-inv img');
-
+    // Polaroid & Ticket to Inventory
     let polaroid = active[active.length - 2];
     let ticket = active[active.length - 1];
+    let pattern = /([a-zA-Z]*?[0-9]*)(?=\.|\-)/;
 
     collider.id === 'ticket' && (ticket.src = src);
-    collider.id === 'polaroid' && (polaroid.src = src);
+    src.match(pattern)[0] === 'Polaroid' && (polaroid.src = src);
   });
 }
 

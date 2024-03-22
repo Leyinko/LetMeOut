@@ -63,8 +63,10 @@ const PlayersHub = (code, username, party) => {
       setTimeout(() => closePlayersHub(playersHub, ready, cancel), 100);
     });
 
+    // First State Update
     updateReadyState(party);
 
+    // Hub WS
     ws.onmessage = function (event) {
       const current = JSON.parse(event.data);
       if (current.tag === 'playerState') {
@@ -89,23 +91,28 @@ function updateReadyState(data) {
   });
 }
 
-function allPlayersReady(data, username) {
+async function allPlayersReady(data, username) {
   let players = Array.from(document.querySelectorAll('.players img'));
   let confirm = new Audio('src/assets/audio/sounds/lobby/Confirm-game.mp3');
   let ready = players.every((player) => player.style.opacity === '0.9');
+
+  // Room Assign
+  // sendRequest('assignRoom', username, data.lobbyCode);
+  // Final Code API
+  sendRequest('generateFinalCode');
+
+  // > Final >
+  // ready && storeGameData(data, username) && preIntro(confirm);
 
   // ! Local Test ! //
   document.querySelector('section').remove();
   storeGameData(data, username);
   Room();
-  // // ! Local Test ! //
+  // ! Local Test ! //
+
   // ! Test INTRO
   // storeGameData(data, username) && preIntro(confirm);
   // ! Test INTRO
-  // > Final >
-  // ready && storeGameData(data, username) && preIntro(confirm);
-  // Final Code API
-  sendRequest('generateFinalCode');
 }
 
 const closePlayersHub = (...elements) => {

@@ -10,7 +10,7 @@ export function addNoteToCollectables(item) {
 
 export const getCollectables = () => JSON.parse(localStorage.getItem('story'));
 
-// Game Data
+// Game Data & Assign
 export function storeGameData(data, player) {
   let start = { lobbyCode: data.lobbyCode, players: data.players, username: player };
   localStorage.setItem('data', JSON.stringify(start));
@@ -25,6 +25,17 @@ export function getLocalID() {
     let player = data.players.find((player) => player.name.toLowerCase() === user);
 
     return player.id.toUpperCase();
+  }
+}
+
+export function assignRoom() {
+  let data = JSON.parse(localStorage.getItem('data'));
+
+  if (data) {
+    let user = data.username;
+    let player = data.players.find((player) => player.name.toLowerCase() === user);
+
+    return player.room;
   }
 }
 
