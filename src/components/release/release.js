@@ -50,21 +50,38 @@ const Release = () => {
   document.querySelector('audio').remove();
   document.querySelector('#countdown-timer').style.display = 'none';
 
-  let bugsInterval = setInterval(() => {
-    createBug(bugsArea);
-    counterBugs++;
-    intervalTime = Math.floor((intervalTime /= 1.1));
+  // let bugsInterval = setInterval(() => {
+  //   createBug(bugsArea);
+  //   counterBugs++;
+  //   intervalTime = Math.floor((intervalTime /= 1.1));
 
-    console.log(intervalTime);
+  //   console.log(intervalTime);
 
-    // Release IANA
-    if (counterBugs === errors) {
-      clearInterval(bugsInterval);
-      document.querySelector('#room').remove();
-      document.querySelector('#terminal').remove();
-      nineOneOne();
-    }
-  }, intervalTime);
+  //   // Release IANA
+  //   if (counterBugs === errors) {
+  //     clearInterval(bugsInterval);
+  //     document.querySelector('#room').remove();
+  //     document.querySelector('#terminal').remove();
+  //     nineOneOne();
+  //   }
+  // }, intervalTime);
+
+  createErrorWindow(bugsArea);
 };
+
+function createErrorWindow(bugsArea) {
+  if (counterBugs < errors) {
+    setTimeout(() => {
+      counterBugs++;
+      createBug(bugsArea);
+      intervalTime = Math.floor((intervalTime /= 1.1));
+      createErrorWindow(bugsArea);
+    }, intervalTime);
+  } else if (counterBugs == errors) {
+    document.querySelector('#room').remove();
+    document.querySelector('#terminal').remove();
+    nineOneOne();
+  }
+}
 
 export default Release;

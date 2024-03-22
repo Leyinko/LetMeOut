@@ -149,8 +149,11 @@ function checkResult() {
           resetGame();
           stage == 4 && checkResult();
           buttonOn = false;
-          cleanCell();
-          stage != 4 && start(`win`, createPath);
+          stage != 4 &&
+            start(`win`, () => {
+              cleanCell();
+              createPath();
+            });
         } else {
           resetGame();
           handleTime(20, false);

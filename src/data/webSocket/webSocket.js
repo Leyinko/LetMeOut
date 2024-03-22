@@ -4,7 +4,7 @@ import { chatMessage } from '../../pages/Room/Console/Actions/Chat/Chat';
 import { accessSound, nextStage, unlockTicket } from '../../pages/Room/Progression/Progression';
 
 // export const ws = new WebSocket('ws://5.250.185.179:3000');
-export const ws = new WebSocket('ws://localhost:3000');
+export const ws = new WebSocket('ws://5.250.185.179:3000');
 
 let listen = false;
 export const ticketWSListen = () => (listen = true);
