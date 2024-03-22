@@ -35,10 +35,8 @@ body {
 
 #app {
   width: 100svw;
-  height: 100svh;
-  background: url('src/assets/images/pictures/1F/LIVINGROOM-POINTED.png') center/cover no-repeat;
-  /* height: 90svh; */
-  /* margin-top: 5svh; */
+  height: 90svh;
+  margin-top: 5svh;
   display: flex;
   justify-content: center;
   align-items: center;
