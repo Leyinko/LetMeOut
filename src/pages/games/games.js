@@ -12,7 +12,7 @@ export function start(win, callback) {
   var stageTimeout = setTimeout(() => {
     clearTimeout(stageTimeout);
     callback();
-  }, 2000);
+  }, 1000);
 }
 
 export async function showFinalNumber() {
