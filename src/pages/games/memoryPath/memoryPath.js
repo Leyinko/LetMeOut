@@ -4,6 +4,7 @@ import neuralNetWork from '../neuralNetWork/neuralNetWork';
 import { statsCollector } from '../../../data/localStorage/LS';
 import { handleTime } from '../../../components/countdown/Countdown';
 import { timer } from '../../../utils';
+import { accessSound } from '../../Room/Progression/Progression';
 // import { failsOnMinigames } from '../../../localStorage/LS';
 
 const memoryPathContainer = document.createElement('section');
@@ -148,8 +149,8 @@ function checkResult() {
           resetGame();
           stage == 4 && checkResult();
           buttonOn = false;
+          cleanCell();
           stage != 4 && start(`win`, createPath);
-          setTimeout(cleanCell(), 200);
         } else {
           resetGame();
           handleTime(20, false);
@@ -162,6 +163,8 @@ function checkResult() {
     // Save Stamp
     statsCollector('timestamps', 'minigames', timer(stamp), '0');
     //
+
+    accessSound('success');
     memoryPathContainer.remove();
     neuralNetWork();
   }

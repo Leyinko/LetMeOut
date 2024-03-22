@@ -5,6 +5,7 @@ import { start } from '../../Games/games';
 import Smash from '../smashThatTrash/Smash';
 import './neuralNetWork.css';
 import { handleTime } from '../../../components/countdown/Countdown';
+import { accessSound } from '../../Room/Progression/Progression';
 
 const neuralNetWorkContainer = document.createElement('section');
 neuralNetWorkContainer.className = 'neuralnetwork-container';
@@ -130,6 +131,7 @@ function checkResult(resultOne, resultTwo) {
     // Save Stamp
     statsCollector('timestamps', 'minigames', timer(stamp), '1');
     //
+    accessSound('success');
     neuralNetWorkContainer.remove();
     Smash();
   }
