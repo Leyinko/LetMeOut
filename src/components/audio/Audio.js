@@ -27,6 +27,18 @@ export function stopSound(sound) {
   sound.pause();
 }
 
+// Access Granted/Denied/Success
+
+// success
+// access-granted
+// error
+
+export function accessSound(action) {
+  let sound = new Audio(`src/assets/audio/sounds/console/${action}.mp3`);
+  playSound(sound);
+  return true;
+}
+
 export function randomSounds() {
   const interval = setInterval(() => {
     const probabilities = Math.floor(Math.random() * 100);

@@ -80,3 +80,10 @@
   gap: 0.125rem;
   /* border: 1px solid red; */
 }
+
+#release {
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: url('src/assets/images/pictures/console/windows/chat-password.png') center/contain no-repeat;
+}

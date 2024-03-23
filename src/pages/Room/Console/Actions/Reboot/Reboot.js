@@ -23,7 +23,7 @@ const Reboot = () => {
     inputs.forEach((input) => {
       input.addEventListener('keydown', (e) => {
         let code = `${inputs[0].value}${inputs[1].value}${inputs[2].value}`;
-        e.key === 'Enter' && sendRequest('checkFinalCode', null, null, null, code);
+        e.key === 'Enter' && sendRequest('checkFinalCode', null, null, null, code, null, null, null, true);
       });
     });
   }

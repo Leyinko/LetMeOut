@@ -20,7 +20,7 @@
   letter-spacing: 1px;
   color: white;
   user-select: none;
-  cursor: crosshair;
+  cursor: grab;
 }
 
 :root {

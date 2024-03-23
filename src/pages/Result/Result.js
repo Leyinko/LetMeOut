@@ -1,5 +1,6 @@
 import Menu from '../../components/menu/Menu';
 import { statsCollector } from '../../data/localStorage/LS';
+import { toMain } from '../Main/Opening';
 import Main from '../Main/utils/Main/Main';
 import './Result.css';
 
@@ -52,9 +53,8 @@ export const Lose = () => {
   Menu('BACK TO MAIN', 'back-to-main', result);
   const back = document.querySelector('.back-to-main');
   back.addEventListener('click', () => {
-    // Reset Previous Section
-    result.remove();
     // Main
-    Main();
+    result.remove();
+    toMain(app);
   });
 };

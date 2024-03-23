@@ -4,7 +4,7 @@ import neuralNetWork from '../neuralNetWork/neuralNetWork';
 import { statsCollector } from '../../../data/localStorage/LS';
 import { handleTime } from '../../../components/countdown/Countdown';
 import { timer } from '../../../utils';
-import { accessSound } from '../../Room/Progression/Progression';
+import { accessSound } from '../../../components/audio/Audio';
 // import { failsOnMinigames } from '../../../localStorage/LS';
 
 const memoryPathContainer = document.createElement('section');

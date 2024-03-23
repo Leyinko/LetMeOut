@@ -1,5 +1,5 @@
+import { accessSound } from '../../components/audio/Audio';
 import { fetchFinalCode } from '../../data/fetch';
-import { accessSound } from '../Room/Progression/Progression';
 import './games.css';
 
 export function start(win, callback) {
