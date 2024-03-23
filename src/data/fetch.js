@@ -9,13 +9,10 @@ export async function fetchFinalCode() {
   // `http://5.250.185.179:3000/final-code?lobbyCode=${lobbyCode}&id=${encodeURIComponent(id)}`
 
   try {
-    let response = await fetch(
-      `http://5.250.185.179:3000/final-code?lobbyCode=${lobbyCode}&id=${encodeURIComponent(id)}`,
-      {
-        method: 'GET',
-        headers: [['Content-Type', 'application/json']],
-      }
-    );
+    let response = await fetch(`http://localhost:3000/final-code?lobbyCode=${lobbyCode}&id=${encodeURIComponent(id)}`, {
+      method: 'GET',
+      headers: [['Content-Type', 'application/json']],
+    });
     if (!response.ok) {
       throw new Error('Error accessing DDBB');
     }

@@ -1,10 +1,12 @@
+import { accessSound } from '../../components/audio/Audio';
 import { handleTime } from '../../components/countdown/Countdown';
-import { Win } from '../../pages/Result/Result';
+import Release from '../../components/release/release';
+import { Lose, Win } from '../../pages/Result/Result';
 import { chatMessage } from '../../pages/Room/Console/Actions/Chat/Chat';
-import { accessSound, nextStage, unlockTicket } from '../../pages/Room/Progression/Progression';
+import { nextStage, unlockTicket } from '../../pages/Room/Progression/Progression';
 
+export const ws = new WebSocket('ws://localhost:3000');
 // export const ws = new WebSocket('ws://5.250.185.179:3000');
-export const ws = new WebSocket('ws://5.250.185.179:3000');
 
 let listen = false;
 export const ticketWSListen = () => (listen = true);
@@ -17,7 +19,8 @@ function sendRequest(
   message = null,
   from = null,
   to = null,
-  signal = listen
+  signal = listen,
+  reboot = false
 ) {
   let req = {
     tag: tag,
@@ -28,6 +31,7 @@ function sendRequest(
     donor: from,
     receiver: to,
     signal: signal,
+    reboot: reboot,
   };
 
   ws.send(JSON.stringify(req));
@@ -35,6 +39,7 @@ function sendRequest(
 
 export function inGameWebSocket() {
   let self = document.querySelector('.id');
+  let ls = JSON.parse(localStorage.getItem('data'));
   // WS
   ws.onmessage = function (event) {
     const current = JSON.parse(event.data);
@@ -43,8 +48,20 @@ export function inGameWebSocket() {
         current.donor === self.textContent && handleTime(45, false);
         current.receiver === self.textContent && handleTime(45, true);
         break;
-      case 'checkExit':
-        current.win ? Win() : accessSound('error') && handleTime(40, false);
+      case 'endGame':
+        // Reboot Ending
+        current.win && Win();
+        // Alternative
+        current.alternative && current.name == ls.username ? Release() : Win();
+        // Error
+        !current.win &&
+          !current.alternative &&
+          current.name == ls.username &&
+          accessSound('error') &&
+          handleTime(40, false);
+        break;
+      case 'lose':
+        Lose();
         break;
       default:
         chatMessage(current.name, current.message);

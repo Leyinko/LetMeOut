@@ -1,3 +1,4 @@
+import sendRequest from '../../data/webSocket/webSocket';
 import { Lose } from '../../pages/Result/Result';
 import { playSound } from '../audio/Audio';
 import './Countdown.css';
@@ -34,7 +35,8 @@ const Countdown = () => {
       }
     } else {
       clearInterval(interval);
-      Lose();
+      // Game Lost
+      sendRequest('lose');
     }
   }, 1000);
 };

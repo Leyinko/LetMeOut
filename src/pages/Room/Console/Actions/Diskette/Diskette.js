@@ -1,7 +1,7 @@
 import Release from '../../../../../components/release/release';
 import EthernetConnection from '../../../../games/ethernetConection/ethernetConnection';
 import { inventoryModal } from '../../../Inventory/inventory';
-import { createWindow } from '../../Console';
+import { createPasswordModal, createWindow } from '../../Console';
 import './Diskette.css';
 
 const Diskette = () => {
@@ -58,7 +58,7 @@ const diskette_actions = {
   0: (e) => createWindow('ethernet-game', e.target.parentElement) && EthernetConnection(),
   1: () => inventoryModal('src/assets/images/pictures/console/USB/Doctor.png'),
   2: () => inventoryModal('src/assets/images/pictures/console/USB/DoctorAndDiana.jpg'),
-  3: () => Release(),
+  3: () => createPasswordModal('release', document.querySelector('#files-explorer'), Release),
 };
 
 export default Diskette;

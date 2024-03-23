@@ -5,7 +5,7 @@ import { start } from '../../Games/games';
 import Smash from '../smashThatTrash/Smash';
 import './neuralNetWork.css';
 import { handleTime } from '../../../components/countdown/Countdown';
-import { accessSound } from '../../Room/Progression/Progression';
+import { accessSound } from '../../../components/audio/Audio';
 
 const neuralNetWorkContainer = document.createElement('section');
 neuralNetWorkContainer.className = 'neuralnetwork-container';

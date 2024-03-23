@@ -1,6 +1,6 @@
+import { accessSound } from '../../../components/audio/Audio';
 import { handleTime } from '../../../components/countdown/Countdown';
 import { fisherYatesShuffle, random } from '../../../utils';
-import { accessSound } from '../../Room/Progression/Progression';
 import './ethernetConnection.css';
 
 export default function EthernetConnection() {
@@ -36,15 +36,6 @@ export default function EthernetConnection() {
 
         pinBall.addEventListener('click', () => {
           if (!pairs.includes(pinBall.id)) {
-            // if (selection.length < 2) {
-            //   selection.push(pinBall.id);
-            //   pairs.length < 15 && markCheck(selection);
-            //   checkResult(selection, pairs, EthernetContainer);
-            // } else {
-            //   selection = [];
-            //   selection.push(pinBall.id);
-            //   markCheck(selection);
-            // }
             if (selection.length < 1) {
               selection.push(pinBall.id);
               markCheck(selection);

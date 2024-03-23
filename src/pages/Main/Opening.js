@@ -67,7 +67,7 @@ export function toMain(app) {
 
   app.appendChild(audio);
   // FullScreen
-  document.documentElement.requestFullscreen();
+  !document.fullscreenElement && document.documentElement.requestFullscreen();
 }
 
 export default Launch;

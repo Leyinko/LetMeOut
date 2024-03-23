@@ -1,9 +1,9 @@
 // import { failsOnMinigames } from '../../../localStorage/LS';
+import { accessSound } from '../../../components/audio/Audio';
 import { handleTime } from '../../../components/countdown/Countdown';
 import { statsCollector } from '../../../data/localStorage/LS';
 import { timer } from '../../../utils';
 import { showFinalNumber, start } from '../../Games/games';
-import { accessSound } from '../../Room/Progression/Progression';
 import './Smash.css';
 
 let stage = 1;
