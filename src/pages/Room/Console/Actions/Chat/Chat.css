@@ -21,10 +21,10 @@
 }
 
 #chat-password {
-  top: 40%;
+  top: 43%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: url('src/assets/images/pictures/console/windows/chat-password.png') center/contain no-repeat;
+  background: url('src/assets/images/pictures/console/windows/chat-password.png') center/cover no-repeat;
 }
 
 .messages h3 {

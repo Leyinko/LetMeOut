@@ -1,5 +1,5 @@
 import { animationReflow } from '../../../utils';
-import { getLocalID } from '../../../data/localStorage/LS';
+import { getUserData } from '../../../data/localStorage/LS';
 import Diskette from './Actions/Diskette/Diskette';
 import Transfer from './Actions/Transfer/Transfer';
 import Chat from './Actions/Chat/Chat';
@@ -40,7 +40,7 @@ const Terminal = (parent) => {
   // Elements
   const id = document.createElement('h3');
   id.className = 'id';
-  id.textContent = getLocalID() ?? '#XXXX-XX-DEV';
+  id.textContent = getUserData('id').toUpperCase() ?? '#XXXX-XX-DEV';
 
   screen.appendChild(id);
 
@@ -130,21 +130,23 @@ export function createWindow(id, parent) {
 }
 
 export function createPasswordModal(id, parent, callback) {
-  const password = document.createElement('div');
-  password.className = 'password';
-  password.id = id;
+  if (!document.querySelector(`#${id}`)) {
+    const password = document.createElement('div');
+    password.className = 'password';
+    password.id = id;
 
-  const input = document.createElement('input');
-  input.type = 'text';
-  input.maxLength = 9;
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.maxLength = 9;
 
-  input.addEventListener('keydown', (e) => e.key === 'Enter' && passwordHandler(input, id));
+    input.addEventListener('keydown', (e) => e.key === 'Enter' && passwordHandler(input, id));
 
-  password.appendChild(input);
-  parent.appendChild(password);
+    password.appendChild(input);
+    parent.appendChild(password);
 
-  // Mutation Observer
-  mutationObserver(parent.id, callback);
+    // Mutation Observer
+    mutationObserver(parent.id, callback);
+  }
 }
 
 export default Terminal;

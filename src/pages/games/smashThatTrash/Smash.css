@@ -8,12 +8,12 @@
   border-radius: 50%;
   width: 300px;
   height: 300px;
-  opacity: 0.9;
+  opacity: 0.8;
   /* border: 1px solid red; */
 }
 
 #smash-container div {
-  /* cursor: pointer; */
+  cursor: pointer;
   width: 45px;
   height: 24.5%;
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);

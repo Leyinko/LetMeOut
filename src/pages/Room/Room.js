@@ -3,8 +3,8 @@ import BATHROOM from './Levels/1F/Bathroom/Bathroom';
 import LIVING from './Levels/1F/Livingroom/Livingroom';
 import Stage from './Class/Class';
 import Terminal from './Console/Console';
-import { firstClickStart, lockPath } from './Progression/Progression';
-import { assignRoom, statsCollector } from '../../data/localStorage/LS';
+import { firstClickStart, lockPaths } from './Progression/Progression';
+import { getUserData, statsCollector } from '../../data/localStorage/LS';
 import { randomSounds } from '../../components/audio/Audio';
 import { inGameWebSocket } from '../../data/webSocket/webSocket';
 import cheatDetect from '../../components/anticheat/cheatsDetect';
@@ -17,39 +17,33 @@ export const Room = () => {
   // Room
   const room = document.createElement('section');
   room.id = 'room';
-
-  // Time Stamp
-  room.setAttribute('stamp', new Date().getTime());
-
   app.append(room);
+
+  // Initial Time Stamp
+  room.setAttribute('stamp', new Date().getTime());
 
   // Rooms Assign
   let rooms = [BATHROOM, KITCHEN, LIVING];
-  rooms.forEach((room) => {
-    let localRoom = assignRoom();
-    room.room == localRoom && new Stage(room).printRoom();
+  rooms.forEach((level) => {
+    let localRoom = getUserData('room');
+    level.room == localRoom && new Stage(level).printRoom();
   });
 
   // Terminal
   Terminal(app);
 
-  // Lock Path
-  lockPath();
-
-  // Game Controllers
-  gameStartControllers();
-
-  // Start First Click
-  room.addEventListener('animationend', () => firstClickStart(), { once: true });
+  // General Settings
+  gameControllers(room);
 };
 
-function gameStartControllers() {
-  // Cheat Control
+function gameControllers(room) {
+  // Progression Control
+  room.addEventListener('animationend', () => firstClickStart(), { once: true });
+  inGameWebSocket();
+  lockPaths();
   // cheatDetect();
   // Random Sounds
   randomSounds();
-  // WS Listener
-  inGameWebSocket();
   // Stats
   clicksStats();
 }

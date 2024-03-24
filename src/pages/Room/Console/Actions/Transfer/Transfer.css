@@ -12,6 +12,7 @@
 }
 
 #transfer-panel button {
+  cursor: pointer;
   height: 20px;
   padding: 0px 20px;
   color: black;
@@ -34,7 +35,7 @@
 }
 
 .downloading-block {
-  width: 11.8px;
+  width: 10.09px;
   height: 25px;
   background-color: rgba(0, 0, 0, 0.911);
 }

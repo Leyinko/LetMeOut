@@ -1,4 +1,5 @@
 .bug {
+  opacity: 0.8;
   width: 250px;
   height: auto;
   position: absolute;
@@ -16,11 +17,27 @@
 }
 
 .deploying {
+  opacity: 0.9;
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
-  width: 40%;
+  /* width: 40%; */
   transform: translate(-50%, -50%);
   z-index: 9999999999;
   filter: drop-shadow(2px 2px 2px black);
+}
+
+#subtitles {
+  position: absolute;
+  bottom: 100px;
+  width: 400px;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid red; */
+}
+
+#subtitles span {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

@@ -1,4 +1,4 @@
-import Release from '../../../../../components/release/release';
+import Release from './Release/Release';
 import EthernetConnection from '../../../../games/ethernetConection/ethernetConnection';
 import { inventoryModal } from '../../../Inventory/inventory';
 import { createPasswordModal, createWindow } from '../../Console';

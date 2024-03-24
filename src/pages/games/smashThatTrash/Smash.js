@@ -96,7 +96,6 @@ function checkResult() {
     statsCollector('timestamps', 'minigames', timer(stamp), '2');
     //
     accessSound('success');
-
     showFinalNumber();
   }
 }

@@ -11,11 +11,3 @@
 input.error {
   animation: error-field 0.5s linear;
 }
-
-input:focus {
-  outline: none;
-}
-
-input::selection {
-  background-color: rgba(0, 0, 0, 0.336);
-}

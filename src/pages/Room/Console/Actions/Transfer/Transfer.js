@@ -1,4 +1,4 @@
-import { playSound } from '../../../../../components/audio/Audio';
+import { accessSound, playSound } from '../../../../../components/audio/Audio';
 import sendRequest from '../../../../../data/webSocket/webSocket';
 import './Transfer.css';
 
@@ -94,6 +94,8 @@ function transferInputError(text) {
     error.textContent = text;
 
     panel.appendChild(error);
+
+    accessSound('error');
 
     setTimeout(() => error.remove(), 1500);
   }

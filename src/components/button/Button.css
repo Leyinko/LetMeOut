@@ -17,8 +17,8 @@
 
 [role='lobby-buttons'].granted {
   pointer-events: all;
-  background-color: rgba(0, 0, 0, 0.342);
-  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.719);
+  opacity: 0.8;
 }
 
 [role='lobby-buttons'].error {

@@ -11,7 +11,7 @@
 }
 
 .room-code {
-  /* margin-top: 25px; */
+  margin-top: 25px;
   font-size: 3rem;
 }
 
@@ -61,7 +61,7 @@
   right: 0px;
   top: 50%;
   transform: translateY(-50%);
-  width: 29%;
+  /* width: 17%; */
   height: fit-content;
   display: flex;
   justify-content: center;

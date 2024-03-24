@@ -20,6 +20,8 @@ export async function showFinalNumber() {
   const finalNumberModal = document.createElement('h3');
   finalNumberModal.className = 'final-number';
 
+  container.style.background = `url('src/assets/images/pictures/console/Windows/fixed.png') center/contain no-repeat`;
+
   // Print
   finalNumberModal.textContent = String(await fetchFinalCode());
 

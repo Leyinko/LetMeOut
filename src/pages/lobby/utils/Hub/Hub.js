@@ -94,7 +94,7 @@ function updateReadyState(data) {
   });
 }
 
-function allPlayersReady(data, username) {
+async function allPlayersReady(data, username) {
   let players = Array.from(document.querySelectorAll('.players img'));
   let confirm = new Audio('src/assets/audio/sounds/lobby/Confirm-game.mp3');
   let ready = players.every((player) => player.style.opacity === '0.9');
@@ -110,10 +110,10 @@ function allPlayersReady(data, username) {
   // }
 
   // ! Local Test /W Random Room ! //
-  document.querySelector('section').remove();
   sendRequest('assignRoom', username, data.lobbyCode);
-  storeGameData(data, username);
   sendRequest('generateFinalCode');
+  document.querySelector('section').remove();
+  // preIntro(confirm);
   setTimeout(() => Room(), 1000);
   // ! Local Test /W Random Room ! //
 

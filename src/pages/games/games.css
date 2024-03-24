@@ -4,14 +4,30 @@
   left: 50%;
   transform: translate(-50%, -20%);
   /* border: 1px solid red; */
-  font-size: 6rem;
+  font-size: 4rem;
   opacity: 0.36;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #games-password {
-  top: 45%;
+  opacity: 0.85;
+  width: 182px;
+  height: 72px;
+  top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: url('src/assets/images/pictures/console/windows/games-password.png') center/contain no-repeat;
+  filter: sepia(15%);
+  box-shadow: 1px 1px 3px 1px rgba(0, 0, 0, 0.418);
+  /* border: 1px solid red; */
+}
+
+#games-password input {
+  position: absolute;
+  left: 13px;
+  bottom: -2px;
+  width: 83%;
+  height: 23px;
+  color: rgba(0, 0, 0, 0.699);
+  /* border: 1px solid red; */
 }

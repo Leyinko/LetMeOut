@@ -27,28 +27,27 @@ export function stopSound(sound) {
   sound.pause();
 }
 
-// Access Granted/Denied/Success
-
-// success
-// access-granted
-// error
-
 export function accessSound(action) {
+  // success
+  // access-granted
+  // error
   let sound = new Audio(`src/assets/audio/sounds/console/${action}.mp3`);
   playSound(sound);
   return true;
 }
 
 export function randomSounds() {
-  const interval = setInterval(() => {
-    const probabilities = Math.floor(Math.random() * 100);
+  var interval = setInterval(() => {
+    if (document.querySelector('#room')) {
+      const probabilities = Math.floor(Math.random() * 100);
 
-    if (probabilities <= 10) {
-      const index = Math.floor(Math.random() * random_sounds.length - 1);
-      const sound = new Audio(random_sounds[index]);
-      playSound(sound);
+      if (probabilities <= 10) {
+        const index = Math.floor(Math.random() * random_sounds.length - 1);
+        const sound = new Audio(random_sounds[index]);
+        playSound(sound);
+      }
+    } else {
+      clearInterval(interval);
     }
-    // End
-    !document.querySelector('#room') && clearInterval(interval);
-  }, 20000);
+  }, 25000);
 }

@@ -3,6 +3,7 @@ import Countdown, { handleTime } from '../../../components/countdown/Countdown';
 import { statsCollector } from '../../../data/localStorage/LS';
 import sendRequest, { ticketWSListen } from '../../../data/webSocket/webSocket';
 import { timer } from '../../../utils';
+import { worldwideRelease } from '../Console/Actions/Diskette/Release/Release';
 import { Inventory } from '../Inventory/inventory';
 import { itemsPrintOnStage } from '../Prints/Prints';
 import './Progression.css';
@@ -14,21 +15,21 @@ export function firstClickStart() {
   room.addEventListener(
     'click',
     () => {
-      let clock = new Audio('src/assets/audio/sounds/lobby/Clock-loading.mp3');
-      setTimeout(() => playSound(clock), 500);
-
-      // Time
-      Countdown();
-
-      // Inventory HUD
-      Inventory('active', room);
-      Inventory('passive', room);
-
-      setTimeout(() => {
-        const audio = document.querySelector('audio');
-        audio.src = 'src/assets/audio/music/The-Prospector.mp3';
-        audioConfig(audio, true, true, 0.2);
-      }, 4800);
+      // ! TEST
+      worldwideRelease();
+      // ! TEST
+      // let clock = new Audio('src/assets/audio/sounds/lobby/Clock-loading.mp3');
+      // setTimeout(() => playSound(clock), 500);
+      // // Time
+      // Countdown();
+      // // Inventory HUD
+      // Inventory('active', room);
+      // Inventory('passive', room);
+      // setTimeout(() => {
+      //   const audio = document.querySelector('audio');
+      //   audio.src = 'src/assets/audio/music/The-Prospector.mp3';
+      //   audioConfig(audio, true, true, 0.2);
+      // }, 4800);
     },
     { once: true }
   );
@@ -39,27 +40,30 @@ export function passwordHandler(input, box) {
   let access = document.querySelector(`#${box}`);
   let room = document.querySelector('#room');
 
-  if (access.id === 'games-password') {
-    let ticket = Array.from(document.querySelectorAll('#active img')).at(-1);
-    let code = /\-[0-9]*/;
-    // Check Access
-    ticket.classList.contains('got') && ticket.src.match(code)[0].substring(1) == input.value
-      ? accessSound('access-granted') &&
-        (access.remove(), statsCollector('timestamps', 'stage3', timer(room.getAttribute('stamp'))))
-      : accessSound('error') && handleTime(30, false);
-  } else if (access.id == 'release') {
-    sendRequest('checkFinalCode', null, null, null, input.value);
-  } else {
-    let connect = document.querySelector('img#connect').getAttribute('code');
-    // Check Access
-    connect == input.value
-      ? accessSound('access-granted') && access.remove()
-      : accessSound('error') && handleTime(30, false);
+  switch (access.id) {
+    case 'games-password':
+      let ticket = Array.from(document.querySelectorAll('#active img')).at(-1);
+      let code = /\-[0-9]*/;
+      // Check Access
+      ticket.classList.contains('got') && ticket.src.match(code)[0].substring(1) == input.value
+        ? accessSound('access-granted') &&
+          (access.remove(), statsCollector('timestamps', 'stage3', timer(room.getAttribute('stamp'))))
+        : accessSound('error') && handleTime(30, false);
+      break;
+    case 'release':
+      sendRequest('checkFinalCode', null, null, null, input.value);
+      break;
+    default:
+      let connect = document.querySelector('img#connect').getAttribute('code');
+      // Check Access
+      connect == input.value
+        ? accessSound('access-granted') && access.remove()
+        : accessSound('error') && handleTime(30, false);
   }
 }
 
 // Objects Lock & Unlock
-export function lockPath() {
+export function lockPaths() {
   let elements = ['#console', '#connect', '#folder', '#transfer-panel button', '#ticket'];
   elements.forEach((element) => document.querySelector(`${element}`).classList.add('block'));
 }
@@ -90,7 +94,7 @@ export function unlockTicket(signal) {
   playSound(new Audio('src/assets/audio/sounds/console/next-3.mp3'));
 }
 
-// Next Stage & Time Stamp
+// Next Stage
 export const nextStage = (current) => {
   let room = document.querySelector('#room');
   let sound = new Audio(`src/assets/audio/sounds/console/next-${current}.mp3`);

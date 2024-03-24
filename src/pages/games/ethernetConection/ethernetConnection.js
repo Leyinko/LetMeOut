@@ -85,15 +85,23 @@ function checkResult(selection, pairs, node) {
   }
 
   if (pairs.length == 16) {
+    let container = document.querySelector('#ethernet-game');
+
     accessSound('success');
+
     const access = document.createElement('h2');
     access.textContent = `${accessCode()}`;
     node.innerHTML = '';
-    node.appendChild(access);
+
+    let superposition = document.createElement('img');
+    superposition.className = 'superposition';
+    superposition.src = 'src/assets/images/pictures/console/Windows/ethernet-success.png';
+
+    container.append(access, superposition);
   }
 }
 
-// Final Code
+// Chat Code Access
 export function accessCode() {
   let code = random(9, 6).join('');
   document.querySelector('#connect').setAttribute('code', code);

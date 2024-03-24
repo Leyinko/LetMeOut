@@ -26,8 +26,9 @@ export const Main = () => {
   // First Animation
   openingAnimation(main, selections, inventory);
 
-  // Erase LS Data
-  localStorage.getItem('data');
+  // Reset for Re-Start
+  localStorage.removeItem('data');
+  localStorage.removeItem('stats');
 };
 
 function openingAnimation(...args) {

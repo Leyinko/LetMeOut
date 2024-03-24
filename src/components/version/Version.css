@@ -3,5 +3,12 @@
   bottom: 5px;
   left: 15px;
   font-size: 13px;
-  opacity: 0.2;
+  opacity: 0;
+  animation: version 1s ease-in-out forwards 13s;
+}
+
+@keyframes version {
+  100% {
+    opacity: 0.2;
+  }
 }

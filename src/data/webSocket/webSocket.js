@@ -1,12 +1,12 @@
 import { accessSound } from '../../components/audio/Audio';
 import { handleTime } from '../../components/countdown/Countdown';
-import Release from '../../components/release/release';
+import Release, { worldwideRelease } from '../../pages/Room/Console/Actions/Diskette/Release/Release';
 import { Lose, Win } from '../../pages/Result/Result';
 import { chatMessage } from '../../pages/Room/Console/Actions/Chat/Chat';
 import { nextStage, unlockTicket } from '../../pages/Room/Progression/Progression';
 
-export const ws = new WebSocket('ws://localhost:3000');
-// export const ws = new WebSocket('ws://5.250.185.179:3000');
+// export const ws = new WebSocket('ws://localhost:3000');
+export const ws = new WebSocket('ws://5.250.185.179:3000');
 
 let listen = false;
 export const ticketWSListen = () => (listen = true);
@@ -52,7 +52,11 @@ export function inGameWebSocket() {
         // Reboot Ending
         current.win && Win();
         // Alternative
-        current.alternative && current.name == ls.username ? Release() : Win();
+        if (current.alternative && current.name == ls.username) {
+          Release();
+        } else if (current.alternative && current.name !== ls.username) {
+          worldwideRelease();
+        }
         // Error
         !current.win &&
           !current.alternative &&

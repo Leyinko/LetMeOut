@@ -17,25 +17,14 @@ export function storeGameData(data, player) {
   return true;
 }
 
-export function getLocalID() {
+export function getUserData(property) {
   let data = JSON.parse(localStorage.getItem('data'));
 
   if (data) {
     let user = data.username;
-    let player = data.players.find((player) => player.name.toLowerCase() === user);
+    let player = data.players.find((player) => player.name.toLowerCase() == user.toLowerCase());
 
-    return player.id.toUpperCase();
-  }
-}
-
-export function assignRoom() {
-  let data = JSON.parse(localStorage.getItem('data'));
-
-  if (data) {
-    let user = data.username;
-    let player = data.players.find((player) => player.name.toLowerCase() === user);
-
-    return player.room;
+    return player[property];
   }
 }
 

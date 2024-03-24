@@ -2,6 +2,10 @@
   opacity: 0.7;
 }
 
+[room='kitchen'] img.drawer.active {
+  filter: drop-shadow(5px 5px 10px black);
+}
+
 [room='kitchen'] img.ticket.active {
   transform: translateX(20px);
 }
@@ -19,11 +23,11 @@
 }
 
 [room='kitchen'] img.sarten.active {
-  transform: translateY(40px);
+  transform: translateY(13px) rotate(-7deg);
 }
 
 [room='kitchen'] img.shield.active {
-  transform: rotate(-10deg) translate(-20px, 20px);
+  transform: rotate(-7deg) translate(-15px, 15px);
 }
 
 [room='kitchen'] img.tea.active {

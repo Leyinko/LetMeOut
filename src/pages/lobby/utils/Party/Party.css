@@ -1,4 +1,5 @@
 article[id$='party'] {
+  cursor: pointer;
   padding: 30px 50px 40px 50px;
   width: 400px;
   height: fit-content;
@@ -23,6 +24,7 @@ article[id$='party'] {
 }
 
 article[id$='party'] h2 {
+  cursor: pointer;
   margin-bottom: 5px;
   font-size: 3.5rem;
   transition: all 0.3s ease-in-out;

@@ -1,5 +1,9 @@
 [room='living'] .console.active {
-  /* opacity: 0.9; */
+  opacity: 0.7;
+}
+
+[room='living'] img.drawer.active {
+  filter: drop-shadow(5px 5px 10px black);
 }
 
 [room='living'] img.books.active {
@@ -15,7 +19,7 @@
 }
 
 [room='living'] img.block {
-  filter: brightness(1.1);
+  filter: brightness(1.3) contrast(1);
 }
 
 [room='living'] img.block.active {

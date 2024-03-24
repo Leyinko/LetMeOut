@@ -1,5 +1,4 @@
 import sendRequest from '../../data/webSocket/webSocket';
-import { Lose } from '../../pages/Result/Result';
 import { playSound } from '../audio/Audio';
 import './Countdown.css';
 
@@ -15,28 +14,33 @@ const Countdown = () => {
   app.appendChild(timer);
 
   // Functionality
-  const interval = setInterval(() => {
-    let minutes = Math.floor(remainingTime / 60);
-    let seconds = remainingTime % 60;
+  var interval = setInterval(() => {
+    if (document.querySelector('#countdown-timer')) {
+      let minutes = Math.floor(remainingTime / 60);
+      let seconds = remainingTime % 60;
 
-    if (remainingTime >= 0) {
-      minutes = minutes < gameTime ? '0' + minutes : minutes;
-      seconds = seconds < gameTime ? '0' + seconds : seconds;
+      if (remainingTime >= 0) {
+        minutes = minutes < gameTime ? '0' + minutes : minutes;
+        seconds = seconds < gameTime ? '0' + seconds : seconds;
 
-      timer.innerHTML = `${minutes}:${seconds}`;
+        timer.innerHTML = `${minutes}:${seconds}`;
 
-      remainingTime--;
+        remainingTime--;
 
-      if (remainingTime === 3) {
-        setTimeout(() => {
-          const lastAudio = new Audio('src/assets/audio/sounds/lobby/Clock-loading.mp3');
-          playSound(lastAudio);
-        }, 500);
+        if (remainingTime === 3) {
+          setTimeout(() => {
+            const lastAudio = new Audio('src/assets/audio/sounds/lobby/Clock-loading.mp3');
+            playSound(lastAudio);
+          }, 500);
+        }
+      } else {
+        clearInterval(interval);
+        // Game Lost
+        sendRequest('lose');
       }
     } else {
       clearInterval(interval);
-      // Game Lost
-      sendRequest('lose');
+      remainingTime = gameTime * 60;
     }
   }, 1000);
 };

@@ -7,7 +7,7 @@
   justify-content: space-between;
   align-items: center;
   width: 90%;
-  opacity: 0.8;
+  opacity: 0.7;
   /* height: 77%; */
   /* border: 1px solid green; */
 }
@@ -50,6 +50,7 @@
 }
 
 .pin-ball {
+  cursor: crosshair;
   margin-bottom: 9px;
   width: 13px;
   height: 13px;
@@ -65,10 +66,27 @@ div[id*='ball'].pin-ball-check {
   border: 4px outset black;
 }
 
-#ethernet-container h2 {
-  opacity: 0.4;
+.superposition {
+  position: absolute;
+  bottom: 1px;
+  left: 0px;
+  width: 100%;
+  /* opacity: 0.98; */
+  /* border: 1px solid red; */
+}
+
+#ethernet-game h2 {
+  position: absolute;
+  top: 47%;
+  /* bottom: 18px; */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  /* opacity: 0.9; */
   width: 100%;
   text-align: center;
+  /* border: 1px solid red; */
+  color: #2b2a27;
 }
 
 #ethernet-container div div {
