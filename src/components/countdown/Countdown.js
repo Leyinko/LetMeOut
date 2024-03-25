@@ -4,7 +4,7 @@ import './Countdown.css';
 
 const app = document.getElementById('app');
 const gameTime = 10;
-let remainingTime = gameTime * 60;
+export let remainingTime = gameTime * 60;
 
 const Countdown = () => {
   // Template

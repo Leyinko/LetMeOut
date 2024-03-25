@@ -1,5 +1,6 @@
 import { accessSound, audioConfig, playSound } from '../../../components/audio/Audio';
 import Countdown, { handleTime } from '../../../components/countdown/Countdown';
+import { accessBeta } from '../../../data/fetch';
 import { statsCollector } from '../../../data/localStorage/LS';
 import sendRequest, { ticketWSListen } from '../../../data/webSocket/webSocket';
 import { timer } from '../../../utils';
@@ -16,20 +17,20 @@ export function firstClickStart() {
     'click',
     () => {
       // ! TEST
-      worldwideRelease();
+      // worldwideRelease();
       // ! TEST
-      // let clock = new Audio('src/assets/audio/sounds/lobby/Clock-loading.mp3');
-      // setTimeout(() => playSound(clock), 500);
-      // // Time
-      // Countdown();
-      // // Inventory HUD
-      // Inventory('active', room);
-      // Inventory('passive', room);
-      // setTimeout(() => {
-      //   const audio = document.querySelector('audio');
-      //   audio.src = 'src/assets/audio/music/The-Prospector.mp3';
-      //   audioConfig(audio, true, true, 0.2);
-      // }, 4800);
+      let clock = new Audio('src/assets/audio/sounds/lobby/Clock-loading.mp3');
+      setTimeout(() => playSound(clock), 500);
+      // Time
+      Countdown();
+      // Inventory HUD
+      Inventory('active', room);
+      Inventory('passive', room);
+      setTimeout(() => {
+        const audio = document.querySelector('audio');
+        audio.src = 'src/assets/audio/music/The-Prospector.mp3';
+        audioConfig(audio, true, true, 0.2);
+      }, 4800);
     },
     { once: true }
   );
@@ -52,6 +53,11 @@ export function passwordHandler(input, box) {
       break;
     case 'release':
       sendRequest('checkFinalCode', null, null, null, input.value);
+      break;
+    case 'beta-access':
+      accessBeta(input.value).then((res) => {
+        res ? accessSound('access-granted') && access.remove() : accessSound('error');
+      });
       break;
     default:
       let connect = document.querySelector('img#connect').getAttribute('code');

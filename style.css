@@ -43,6 +43,29 @@ body {
   align-items: center;
 }
 
+/* BETA TEST */
+
+#beta-access {
+  width: 206px;
+  height: 84px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: url('src/assets/images/pictures/console/windows/release-password.png') center/contain no-repeat;
+  animation: text-shadow 1s linear infinite;
+}
+
+#beta-access input {
+  right: 3px;
+  bottom: 5px;
+  height: 21px;
+  line-height: 1;
+  animation: textShadow 1s linear infinite;
+  opacity: 0.8;
+}
+
+/* BETA TEST */
+
 @keyframes players-hub-appearance {
   100% {
     opacity: 1;

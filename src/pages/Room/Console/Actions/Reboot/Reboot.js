@@ -11,11 +11,12 @@ const Reboot = () => {
 
     parent.appendChild(container);
 
-    container.innerHTML = `
-			<input type="text" maxLength="1">
-			<input type="text" maxLength="1">
-			<input type="text" maxLength="1">
-		`;
+    // Inputs
+    let iteration = 1;
+    while (iteration <= 3) {
+      container.innerHTML += `<input type="text" maxLength="1">`;
+      iteration++;
+    }
 
     // Inputs
     let inputs = document.querySelectorAll('#final-reboot input');

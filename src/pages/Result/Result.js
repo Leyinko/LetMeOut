@@ -1,5 +1,8 @@
+import { remainingTime } from '../../components/countdown/Countdown';
 import Menu from '../../components/menu/Menu';
-import { statsCollector } from '../../data/localStorage/LS';
+import { sendScore } from '../../data/fetch';
+import { setTotalTime } from '../../data/localStorage/LS';
+import sendRequest from '../../data/webSocket/webSocket';
 import { toMain } from '../Main/Opening';
 import Main from '../Main/utils/Main/Main';
 import './Result.css';
@@ -18,6 +21,14 @@ export const Win = () => {
 
   result.appendChild(message);
 
+  // Time
+  setTotalTime();
+
+  // Score
+  sendRequest('setPlayerTime', null, null, null, remainingTime);
+  sendScore();
+  // let score = localStorage.getItem('stats');
+
   // Back To Main
   Menu('BACK TO MAIN', 'back-to-main', result);
   const back = document.querySelector('.back-to-main');
@@ -27,18 +38,16 @@ export const Win = () => {
     // Main
     Main();
   });
-
-  // Final Time
-  let totalTime = Object.values(JSON.parse(localStorage.getItem('stats'))[1])
-    .flat(1)
-    .reduce((acc, next) => acc + next);
-  statsCollector('timestamps', 'total', totalTime);
 };
 
 export const Lose = () => {
   // App
   const app = document.querySelector('#app');
   app.innerHTML = '';
+
+  // Animation
+  // const animation = document.createElement('img')
+  // animation.src =
 
   const result = document.createElement('section');
   result.id = 'result';
@@ -48,6 +57,9 @@ export const Lose = () => {
   message.textContent = 'Game Over';
 
   result.appendChild(message);
+
+  // Time
+  setTotalTime();
 
   // Back To Main
   Menu('BACK TO MAIN', 'back-to-main', result);

@@ -52,6 +52,7 @@ export function inGameWebSocket() {
         // Reboot Ending
         current.win && Win();
         // Alternative
+        current.alternative && localStorage.setItem('alternative', true);
         if (current.alternative && current.name == ls.username) {
           Release();
         } else if (current.alternative && current.name !== ls.username) {

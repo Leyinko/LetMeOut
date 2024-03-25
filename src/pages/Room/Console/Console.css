@@ -101,6 +101,11 @@
   filter: brightness(0) invert(0.2);
 }
 
+.panel img:nth-child(4):hover {
+  filter: none;
+  filter: invert(-0.25);
+}
+
 .exit {
   width: 60px;
   height: 60px;

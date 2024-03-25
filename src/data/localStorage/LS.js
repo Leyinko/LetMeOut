@@ -42,6 +42,14 @@ export let timestamps = {
   total: '',
 };
 
+export function setTotalTime() {
+  let totalTime = Object.values(JSON.parse(localStorage.getItem('stats'))[1])
+    .flat(1)
+    .reduce((acc, next) => acc + next);
+  // Save
+  statsCollector('timestamps', 'total', totalTime);
+}
+
 export let messages = {
   sent: 0,
   received: 0,

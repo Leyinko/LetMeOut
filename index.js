@@ -3,6 +3,8 @@ import Main from './src/pages/Main/utils/Main/Main';
 import { Lobby } from './src/pages/Lobby/Lobby';
 import Room from './src/pages/Room/Room.js';
 import { audioConfig } from './src/components/audio/Audio.js';
+import Version from './src/components/version/Version.js';
+import { createPasswordModal } from './src/pages/Room/Console/Console.js';
 import './style.css';
 
 //>  Audio src's
@@ -24,3 +26,7 @@ Lobby();
 
 // > Game
 // Room();
+
+// ! BETA TEST
+// createPasswordModal('beta-access', document.querySelector('#app'), Launch);
+// ! BETA TEST
