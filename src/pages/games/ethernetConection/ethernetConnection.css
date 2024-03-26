@@ -1,3 +1,7 @@
+#ethernet-game * {
+  cursor: crosshair;
+}
+
 #ethernet-container {
   position: absolute;
   bottom: 40px;

@@ -4,6 +4,7 @@ import { accessBeta } from '../../../data/fetch';
 import { statsCollector } from '../../../data/localStorage/LS';
 import sendRequest, { ticketWSListen } from '../../../data/webSocket/webSocket';
 import { timer } from '../../../utils';
+import { gameOverAnimation } from '../../Result/Result';
 import { worldwideRelease } from '../Console/Actions/Diskette/Release/Release';
 import { Inventory } from '../Inventory/inventory';
 import { itemsPrintOnStage } from '../Prints/Prints';
@@ -18,19 +19,20 @@ export function firstClickStart() {
     () => {
       // ! TEST
       // worldwideRelease();
+      gameOverAnimation();
       // ! TEST
-      let clock = new Audio('src/assets/audio/sounds/lobby/Clock-loading.mp3');
-      setTimeout(() => playSound(clock), 500);
-      // Time
-      Countdown();
-      // Inventory HUD
-      Inventory('active', room);
-      Inventory('passive', room);
-      setTimeout(() => {
-        const audio = document.querySelector('audio');
-        audio.src = 'src/assets/audio/music/The-Prospector.mp3';
-        audioConfig(audio, true, true, 0.2);
-      }, 4800);
+      // let clock = new Audio('src/assets/audio/sounds/lobby/Clock-loading.mp3');
+      // setTimeout(() => playSound(clock), 500);
+      // // Time
+      // Countdown();
+      // // Inventory HUD
+      // Inventory('active', room);
+      // Inventory('passive', room);
+      // setTimeout(() => {
+      //   const audio = document.querySelector('audio');
+      //   audio.src = 'src/assets/audio/music/The-Prospector.mp3';
+      //   audioConfig(audio, true, true, 0.2);
+      // }, 4800);
     },
     { once: true }
   );

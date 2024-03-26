@@ -14,10 +14,10 @@
 
 #smash-container div {
   cursor: pointer;
-  width: 45px;
-  height: 24.5%;
+  width: 35px;
+  height: 23.5%;
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  border: 18px inset black;
+  border: 14px inset black;
   background-color: rgba(160, 160, 160, 0.432);
   opacity: 0.9;
 }

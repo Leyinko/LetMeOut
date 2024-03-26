@@ -1,3 +1,4 @@
+import { audioConfig, playSound } from '../../components/audio/Audio';
 import { remainingTime } from '../../components/countdown/Countdown';
 import Menu from '../../components/menu/Menu';
 import { sendScore } from '../../data/fetch';
@@ -41,14 +42,6 @@ export const Win = () => {
 };
 
 export const Lose = () => {
-  // App
-  const app = document.querySelector('#app');
-  app.innerHTML = '';
-
-  // Animation
-  // const animation = document.createElement('img')
-  // animation.src =
-
   const result = document.createElement('section');
   result.id = 'result';
   app.append(result);
@@ -69,4 +62,42 @@ export const Lose = () => {
     result.remove();
     toMain(app);
   });
+  return true;
 };
+
+export function gameOverAnimation() {
+  // App
+  const app = document.querySelector('#app');
+  const room = document.querySelector('#room');
+  room.style.animation = 'glitch 0.6s ease-in-out';
+
+  const audio = document.createElement('audio');
+  audio.src = 'src/assets/game-over.mp3';
+  audioConfig(audio, true, false, 0.9);
+
+  audio.addEventListener('ended', () => Lose());
+
+  app.appendChild(audio);
+
+  setTimeout(() => {
+    room.remove();
+    document.querySelector('#terminal').remove();
+  }, 500);
+
+  setTimeout(() => {
+    // Animation
+    const animation = document.createElement('video');
+    animation.id = 'game-over ';
+    animation.autoplay = true;
+    animation.controls = false;
+    animation.src = 'src/assets/Lose-animation.mp4';
+
+    app.appendChild(animation);
+
+    animation.addEventListener('ended', () => animation.remove());
+  }, 2350);
+
+  setTimeout(() => {
+    playSound(new Audio('src/assets/audio/sounds/rooms/power-down-tv.mp3'));
+  }, 3500);
+}

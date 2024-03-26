@@ -22,10 +22,10 @@ app.appendChild(audio);
 // > Menus
 // Main();
 // Launch();
-Lobby();
+// Lobby();
 
 // > Game
-// Room();
+Room();
 
 // ! BETA TEST
 // createPasswordModal('beta-access', document.querySelector('#app'), Launch);
