@@ -28,12 +28,14 @@
 }
 
 #ending-stats {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   width: 1408px;
   height: 708px;
   background: url('src/assets/images/pictures/console/individual-stats.png') center/contain no-repeat;
+  background-color: black;
 }
 
 #ending-stats ul {
@@ -54,4 +56,83 @@
   height: 50px;
   background: url('src/assets/images/icons/menu/download.svg') center/contain no-repeat;
   /* border: 1px solid red; */
+}
+
+/*Stats elements id's*/
+
+.stat-span {
+  font-size: 17px;
+  font-family: 'segoe UI';
+  color: #b9a9a5;
+}
+
+#clicks {
+  position: absolute;
+  top: 484px;
+  left: 517px;
+}
+#games0 {
+  position: absolute;
+  top: 358px;
+  left: 517px;
+}
+#games1 {
+  position: absolute;
+  top: 399px;
+  left: 517px;
+}
+#games2 {
+  position: absolute;
+  top: 435px;
+  left: 517px;
+}
+#stage1 {
+  position: absolute;
+  top: 220px;
+  left: 517px;
+}
+#stage2 {
+  position: absolute;
+  top: 250px;
+  left: 517px;
+}
+#stage3 {
+  position: absolute;
+  top: 280px;
+  left: 517px;
+}
+#minigames0 {
+  position: absolute;
+  top: 358px;
+  left: 570px;
+}
+#minigames1 {
+  position: absolute;
+  top: 399px;
+  left: 570px;
+}
+#minigames2 {
+  position: absolute;
+  top: 435px;
+  left: 570px;
+}
+#total {
+  position: absolute;
+  top: 150px;
+  left: 517px;
+}
+#sent {
+  position: absolute;
+  top: 550px;
+  left: 517px;
+}
+#received {
+  position: absolute;
+  top: 550px;
+  left: 570px;
+}
+#alternative {
+  position: absolute;
+  top: 590px;
+  left: 517px;
 }
