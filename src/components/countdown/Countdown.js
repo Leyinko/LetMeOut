@@ -19,7 +19,7 @@ const Countdown = () => {
       let minutes = Math.floor(remainingTime / 60);
       let seconds = remainingTime % 60;
 
-      if (remainingTime >= 0) {
+      if (remainingTime > 0) {
         minutes = minutes < gameTime ? '0' + minutes : minutes;
         seconds = seconds < gameTime ? '0' + seconds : seconds;
 
@@ -34,6 +34,7 @@ const Countdown = () => {
           }, 500);
         }
       } else {
+        remainingTime = 0;
         clearInterval(interval);
         // Game Lost
         sendRequest('lose');

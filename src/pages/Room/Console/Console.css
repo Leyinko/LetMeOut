@@ -223,6 +223,10 @@
   /* border: 1px solid red; */
 }
 
+#reboot * {
+  cursor: text;
+}
+
 #reboot {
   display: none;
   top: 44%;

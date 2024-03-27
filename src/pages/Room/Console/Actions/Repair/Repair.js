@@ -8,8 +8,8 @@ const Repair = () => {
 
   setTimeout(() => {
     // First Game
-    // MemoryPath();
-    Smash();
+    MemoryPath();
+    // Smash();
 
     audio.src = 'src/assets/audio/music/The-Trapper.mp3';
     audio.play();

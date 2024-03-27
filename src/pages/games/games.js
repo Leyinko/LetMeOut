@@ -17,15 +17,14 @@ export function start(win, callback) {
 
 export async function showFinalNumber() {
   const container = document.querySelector('#repair');
-  const finalNumberModal = document.createElement('h3');
-  finalNumberModal.className = 'final-number';
+
+  document.querySelector('#smash-container').remove();
 
   container.style.background = `url('src/assets/images/pictures/console/Windows/fixed.png') center/contain no-repeat`;
 
-  // Print
+  const finalNumberModal = document.createElement('h3');
+  finalNumberModal.className = 'final-number';
   finalNumberModal.textContent = String(await fetchFinalCode());
-
-  document.querySelector('#smash-container').remove();
 
   container.appendChild(finalNumberModal);
 }

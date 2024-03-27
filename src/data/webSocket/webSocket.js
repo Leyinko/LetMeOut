@@ -1,12 +1,14 @@
-import { accessSound } from '../../components/audio/Audio';
-import { handleTime } from '../../components/countdown/Countdown';
+import { accessSound, playSound } from '../../components/audio/Audio';
+import { handleTime, remainingTime } from '../../components/countdown/Countdown';
 import Release, { worldwideRelease } from '../../pages/Room/Console/Actions/Diskette/Release/Release';
-import { Lose, Win } from '../../pages/Result/Result';
+import { Lose, Win, gameOverAnimation } from '../../pages/Result/Result';
 import { chatMessage } from '../../pages/Room/Console/Actions/Chat/Chat';
-import { nextStage, unlockTicket } from '../../pages/Room/Progression/Progression';
+import { nextStage, unlockTicket, waitingPlayersForReboot } from '../../pages/Room/Progression/Progression';
+import { sendScore } from '../fetch';
+import { setAlternativeTrue } from '../localStorage/LS';
 
-// export const ws = new WebSocket('ws://localhost:3000');
-export const ws = new WebSocket('ws://5.250.185.179:3000');
+export const ws = new WebSocket('ws://localhost:3000');
+// export const ws = new WebSocket('ws://5.250.185.179:3000');
 
 let listen = false;
 export const ticketWSListen = () => (listen = true);
@@ -40,7 +42,8 @@ function sendRequest(
 export function inGameWebSocket() {
   let self = document.querySelector('.id');
   let ls = JSON.parse(localStorage.getItem('data'));
-  // WS
+  let local = ls.players.find((player) => player.id == self.textContent);
+
   ws.onmessage = function (event) {
     const current = JSON.parse(event.data);
     switch (current.tag) {
@@ -49,28 +52,37 @@ export function inGameWebSocket() {
         current.receiver === self.textContent && handleTime(45, true);
         break;
       case 'endGame':
-        // Reboot Ending
-        current.win && Win();
-        // Alternative
-        current.alternative && localStorage.setItem('alternative', true);
+        // NB : NORMAL ENDING
+        if (current.access) {
+          let team = current.access.map((player) => player.access);
+          let states = team.filter((status) => status === true);
+          // Waiting Room
+          current.name === local.name
+            ? waitingPlayersForReboot(states)
+            : (document.querySelector('#confirmation-out').textContent = String(states.length));
+          // Send Team Score
+          team.every(Boolean) && ls.players.at(-1).id == self.textContent && sendScore();
+          // Win
+          team.every(Boolean) && Win();
+        }
+
+        // NB : ALTERNATIVE ENDING
+        current.alternative && setAlternativeTrue();
         if (current.alternative && current.name == ls.username) {
           Release();
         } else if (current.alternative && current.name !== ls.username) {
           worldwideRelease();
         }
-        // Error
-        !current.win &&
-          !current.alternative &&
-          current.name == ls.username &&
-          accessSound('error') &&
-          handleTime(40, false);
+
+        // NB : WRONG CODE
+        current.message == 'You are shit' && accessSound('error') && handleTime(40, false);
         break;
       case 'lose':
-        Lose();
+        gameOverAnimation();
         break;
       default:
         chatMessage(current.name, current.message);
-        // NEXT STAGE
+        // Next Stage
         JSON.parse(localStorage.getItem('stats')).at(-1).sent >= 1 && nextStage('2');
         // Ticket Unlock
         // current.ticket && current.name !== document.querySelector('.id').textContent && unlockTicket(current.ticket);

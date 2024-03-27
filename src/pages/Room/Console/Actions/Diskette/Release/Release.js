@@ -13,13 +13,19 @@ const subtitles = [
   '[CROWD PANIC]',
   '- I cannot get out of my -',
   '- I think I heard ...',
-  `- ... don't receive you -`,
+  `- ... my door is locked -`,
   '- Help me, I cannot find my daughter ...',
   '[EMERGENCY SOUND]',
   `- 911, What's your emergency?`,
   `- I don't know where he is -`,
   `- ... they are gone ... she's got ...`,
 ];
+const thanksMessage = `
+Dear player, thank you...
+You've finished the game on the "highest" difficulty.
+This shows not only that you like the game, 
+but also that you appreciated Let Me Out the way we had hoped.
+`;
 
 const errors = 20;
 let counterBugs = 0;
@@ -90,24 +96,30 @@ function createErrorWindow(bugsArea) {
 export function worldwideRelease() {
   const app = document.querySelector('#app');
   const room = document.querySelector('#room');
+  const terminal = document.querySelector('#terminal');
 
   let audio = document.querySelector('audio');
   audio.pause();
-  audio.src = 'src/assets/audio/sounds/console/audio911.mp3';
-  // audio.src = 'src/assets/audio/sounds/console/final-alternative-2.mp3';
+  // audio.src = 'src/assets/audio/sounds/console/audio911.mp3';
+  audio.src = 'src/assets/audio/sounds/console/final-alternative-2.mp3';
 
   audioConfig(audio, true, false, 0.7);
 
-  audio.addEventListener('ended', () => setTimeout(() => Lose(), 1000));
+  audio.addEventListener('ended', () =>
+    setTimeout(() => {
+      app.innerHTML = '';
+      Lose();
+    }, 1000)
+  );
 
   setTimeout(() => {
     room.style.animation = 'glitch 0.7s ease-in-out';
-    document.querySelector('#terminal').style.animation = 'glitch 0.7s ease-in-out';
+    terminal.style.animation = 'glitch 0.7s ease-in-out';
   }, 1400);
 
   setTimeout(() => {
     room.remove();
-    document.querySelector('#terminal').remove();
+    terminal.remove();
   }, 1900);
 
   setTimeout(() => {
@@ -125,15 +137,30 @@ export function worldwideRelease() {
       const lines = setInterval(() => {
         subtitle.textContent = subtitles[index];
         index++;
-        !subtitles[index] && clearInterval(lines);
+        // TEST
+        if (!subtitles[index]) {
+          clearInterval(lines);
+
+          setTimeout(() => {
+            container.remove();
+
+            // Thanks Message
+
+            let thanks = document.createElement('div');
+            thanks.id = 'thanks-container';
+
+            thanks.innerHTML = `
+            <img src="src/assets/images/logos/FAVICON.png">
+              <h1>SPECIAL THANKS</h1>
+              <p>${thanksMessage}</p>
+            `;
+
+            app.appendChild(thanks);
+          }, 2500);
+        }
       }, 1110);
     }, 1500);
   }, 1902);
-}
-
-function thanksForPlaying(parent) {
-  const thanks = document.createElement('h1');
-  thanks.textContent = 'Thanks for playing!';
 }
 
 export default Release;

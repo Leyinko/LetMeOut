@@ -1,10 +1,10 @@
 import { accessSound, audioConfig, playSound } from '../../../components/audio/Audio';
-import Countdown, { handleTime } from '../../../components/countdown/Countdown';
+import Countdown, { handleTime, remainingTime } from '../../../components/countdown/Countdown';
 import { accessBeta } from '../../../data/fetch';
 import { statsCollector } from '../../../data/localStorage/LS';
 import sendRequest, { ticketWSListen } from '../../../data/webSocket/webSocket';
 import { timer } from '../../../utils';
-import { gameOverAnimation } from '../../Result/Result';
+import { Lose, gameOverAnimation } from '../../Result/Result';
 import { worldwideRelease } from '../Console/Actions/Diskette/Release/Release';
 import { Inventory } from '../Inventory/inventory';
 import { itemsPrintOnStage } from '../Prints/Prints';
@@ -18,8 +18,10 @@ export function firstClickStart() {
     'click',
     () => {
       // ! TEST
+      document.querySelector('#app').innerHTML = '';
       // worldwideRelease();
-      gameOverAnimation();
+      // gameOverAnimation();
+      Lose();
       // ! TEST
       // let clock = new Audio('src/assets/audio/sounds/lobby/Clock-loading.mp3');
       // setTimeout(() => playSound(clock), 500);
@@ -115,3 +117,31 @@ export const nextStage = (current) => {
   // Reset
   room.setAttribute('stamp', new Date().getTime());
 };
+
+// Final Stage
+export function waitingPlayersForReboot(states) {
+  const app = document.querySelector('#app');
+
+  let waiting = document.querySelector('img');
+  waiting.src = 'src/assets/images/pictures/console/terminal-final.png';
+  waiting.className = 'waiting';
+
+  // Reset
+  app.innerHTML = '';
+
+  playSound(new Audio('src/assets/audio/sounds/rooms/screen-break.mp3'));
+
+  setTimeout(() => {
+    app.appendChild(waiting);
+
+    // Data
+    const confirmation = document.createElement('h3');
+    confirmation.id = 'confirmation-out';
+    confirmation.textContent = String(states.length);
+
+    app.appendChild(confirmation);
+  }, 1500);
+
+  // Save Individual Score
+  sendRequest('setPlayerTime', null, null, null, remainingTime);
+}

@@ -41,3 +41,33 @@
 #subtitles span {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+#thanks-container {
+  position: absolute;
+  right: 90px;
+}
+
+#thanks-container * {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  opacity: 0.85;
+}
+
+#thanks-container img {
+  width: 250px;
+  filter: invert();
+  margin-bottom: 40px;
+  margin-left: 45px;
+}
+
+#thanks-container h1 {
+  align-self: flex-start;
+  font-weight: 600;
+  font-size: 2.3rem;
+}
+
+#thanks-container p {
+  white-space: pre-line;
+  font-size: 1rem;
+  line-height: 1.7;
+  font-weight: 100;
+}

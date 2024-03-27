@@ -106,15 +106,19 @@ async function allPlayersReady(data, username) {
   //   // Final Code API
   //   sendRequest('generateFinalCode');
   //   // Start
-  //   preIntro(confirm);
+  //   // preIntro(confirm);
+  //   // ! Local Test /W Random Room ! //
+  //   document.querySelector('section').remove();
+  //   setTimeout(() => Room(), 1000);
+  //   // ! Local Test /W Random Room ! //
   // }
 
   // ! Local Test /W Random Room ! //
   sendRequest('assignRoom', username, data.lobbyCode);
   sendRequest('generateFinalCode');
   document.querySelector('section').remove();
-  // preIntro(confirm);
   setTimeout(() => Room(), 1000);
+  // // preIntro(confirm);
   // ! Local Test /W Random Room ! //
 
   // ! Test INTRO
