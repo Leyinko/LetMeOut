@@ -91,6 +91,27 @@ function containerImageStat(parent) {
   let container = document.createElement('div');
   container.id = 'ending-stats';
 
+  const statsElement = [];
+
+  Object.entries(stats).forEach(([key, value]) => {
+    if (Array.isArray(value)) {
+      value.forEach((element, index) => {
+        statsElement.push({ key: `${key}${index}`, value: element });
+      });
+    } else {
+      statsElement.push({ key, value });
+    }
+  });
+
+  statsElement.forEach((stat) => {
+    const element = document.createElement('span');
+    element.id = stat.key;
+    element.textContent = stat.value;
+    element.className = 'stat-span';
+
+    container.appendChild(element);
+  });
+
   parent.appendChild(container);
 
   // const stats = document.createElement('ul');
