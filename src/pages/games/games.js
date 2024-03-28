@@ -20,7 +20,7 @@ export async function showFinalNumber() {
 
   document.querySelector('#smash-container').remove();
 
-  container.style.background = `url('src/assets/images/pictures/console/Windows/fixed.png') center/contain no-repeat`;
+  container.style.background = `url('/assets/images/pictures/console/Windows/fixed.png') center/contain no-repeat`;
 
   const finalNumberModal = document.createElement('h3');
   finalNumberModal.className = 'final-number';

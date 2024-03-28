@@ -22,7 +22,7 @@ const PlayersHub = (code, username, party) => {
     room.textContent = code;
 
     const copy = document.createElement('img');
-    copy.src = 'src/assets/images/icons/menu/copy.svg';
+    copy.src = '/assets/images/icons/menu/copy.svg';
     copy.className = 'copy-code';
 
     copy.addEventListener('click', () => copyText());
@@ -38,7 +38,7 @@ const PlayersHub = (code, username, party) => {
 
     let player = 0;
     while (player < 3) {
-      players.innerHTML += `<img class="p${player + 1}" src="src/assets/images/pictures/lobby/P${player + 1}.png">`;
+      players.innerHTML += `<img class="p${player + 1}" src="/assets/images/pictures/lobby/P${player + 1}.png">`;
       player++;
     }
 
@@ -96,7 +96,7 @@ function updateReadyState(data) {
 
 async function allPlayersReady(data, username) {
   let players = Array.from(document.querySelectorAll('.players img'));
-  let confirm = new Audio('src/assets/audio/sounds/lobby/Confirm-game.mp3');
+  let confirm = new Audio('/assets/audio/sounds/lobby/Confirm-game.mp3');
   let ready = players.every((player) => player.style.opacity === '0.9');
 
   // Start Game

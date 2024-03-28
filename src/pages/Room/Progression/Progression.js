@@ -23,7 +23,7 @@ export function firstClickStart() {
       // gameOverAnimation();
       // Lose();
       // ! TEST
-      let clock = new Audio('src/assets/audio/sounds/lobby/Clock-loading.mp3');
+      let clock = new Audio('/assets/audio/sounds/lobby/Clock-loading.mp3');
       setTimeout(() => playSound(clock), 500);
       // Time
       Countdown();
@@ -32,7 +32,7 @@ export function firstClickStart() {
       Inventory('passive', room);
       setTimeout(() => {
         const audio = document.querySelector('audio');
-        audio.src = 'src/assets/audio/music/The-Prospector.mp3';
+        audio.src = '/assets/audio/music/The-Prospector.mp3';
         audioConfig(audio, true, true, 0.2);
       }, 4800);
     },
@@ -101,13 +101,13 @@ export function unlockPathFromObject(index) {
 export function unlockTicket(signal) {
   let room = document.querySelector(`#room[room="${signal}"]`);
   room && document.querySelector('#ticket').classList.remove('block');
-  playSound(new Audio('src/assets/audio/sounds/console/next-3.mp3'));
+  playSound(new Audio('/assets/audio/sounds/console/next-3.mp3'));
 }
 
 // Next Stage
 export const nextStage = (current) => {
   let room = document.querySelector('#room');
-  let sound = new Audio(`src/assets/audio/sounds/console/next-${current}.mp3`);
+  let sound = new Audio(`/assets/audio/sounds/console/next-${current}.mp3`);
   // Stage
   document.querySelector('#room').getAttribute('progression') === current &&
     playSound(sound) &&
@@ -123,13 +123,13 @@ export function waitingPlayersForReboot(states) {
   const app = document.querySelector('#app');
 
   let waiting = document.querySelector('img');
-  waiting.src = 'src/assets/images/pictures/console/terminal-final.png';
+  waiting.src = '/assets/images/pictures/console/terminal-final.png';
   waiting.className = 'waiting';
 
   // Reset
   app.innerHTML = '';
 
-  playSound(new Audio('src/assets/audio/sounds/rooms/screen-break.mp3'));
+  playSound(new Audio('/assets/audio/sounds/rooms/screen-break.mp3'));
 
   setTimeout(() => {
     app.appendChild(waiting);

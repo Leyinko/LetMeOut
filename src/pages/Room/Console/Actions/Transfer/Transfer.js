@@ -76,10 +76,10 @@ function sendTime(input) {
     sendRequest('shareTime', null, null, null, null, self.textContent, input.value);
 
     // Reset
-    window.style.background = `url('src/assets/images/pictures/console/windows/time-transferred.png') center/contain no-repeat`;
+    window.style.background = `url('/assets/images/pictures/console/windows/time-transferred.png') center/contain no-repeat`;
     window.style.animation = 'glitch 0.3s forwards';
 
-    let sound = new Audio('src/assets/audio/sounds/console/time-sent.mp3');
+    let sound = new Audio('/assets/audio/sounds/console/time-sent.mp3');
     playSound(sound);
 
     input.remove();

@@ -85,7 +85,7 @@ export function inGameWebSocket() {
         // Next Stage
         JSON.parse(localStorage.getItem('stats')).at(-1).sent >= 1 && nextStage('2');
         // Ticket Unlock
-        current.ticket && current.name !== document.querySelector('.id').textContent && unlockTicket(current.ticket);
+        current.ticket && current.name !== local.name && unlockTicket(current.ticket);
       //   // ! TEST
       //   current.ticket && unlockTicket(current.ticket);
       // // ! TEST

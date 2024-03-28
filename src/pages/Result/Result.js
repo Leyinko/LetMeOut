@@ -138,7 +138,7 @@ export function gameOverAnimation() {
   const room = document.querySelector('#room');
   room.style.animation = 'glitch 0.6s ease-in-out';
 
-  playSound(new Audio('src/assets/game-over.mp3'));
+  playSound(new Audio('/assets/audio/sounds/game-over.mp3'));
 
   setTimeout(() => (app.innerHTML = ''), 500);
 
@@ -148,7 +148,7 @@ export function gameOverAnimation() {
     animation.id = 'game-over ';
     animation.autoplay = true;
     animation.controls = false;
-    animation.src = 'src/assets/Lose-animation.mp4';
+    animation.src = '/assets/Lose-animation.mp4';
 
     app.appendChild(animation);
 
@@ -156,7 +156,7 @@ export function gameOverAnimation() {
   }, 2200);
 
   setTimeout(() => {
-    playSound(new Audio('src/assets/audio/sounds/rooms/power-down-tv.mp3'));
+    playSound(new Audio('/assets/audio/sounds/rooms/power-down-tv.mp3'));
   }, 3500);
 
   setTimeout(() => Lose(), 12000);

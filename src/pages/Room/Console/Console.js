@@ -45,7 +45,7 @@ const Terminal = (parent) => {
   screen.appendChild(id);
 
   const folder = document.createElement('img');
-  folder.src = 'src/assets/images/icons/console/Folder.png';
+  folder.src = '/assets/images/icons/console/Folder.png';
   folder.id = 'folder';
 
   screen.appendChild(folder);
@@ -54,10 +54,10 @@ const Terminal = (parent) => {
   panel.className = 'panel';
 
   let icons = [
-    '/src/assets/images/icons/console/transfer.svg',
-    '/src/assets/images/icons/console/connect.svg',
-    '/src/assets/images/icons/console/fix.svg',
-    '/src/assets/images/icons/console/restart.svg',
+    '/assets/images/icons/console/transfer.svg',
+    '/assets/images/icons/console/connect.svg',
+    '/assets/images/icons/console/fix.svg',
+    '/assets/images/icons/console/restart.svg',
   ];
 
   icons.forEach((icon) => {
@@ -75,7 +75,7 @@ const Terminal = (parent) => {
     document.querySelector('#time-transfer').classList.remove('onscreen');
 
   const exit = document.createElement('img');
-  exit.src = 'src/assets/images/icons/console/turn-off.svg';
+  exit.src = '/assets/images/icons/console/turn-off.svg';
   exit.className = 'exit';
 
   exit.addEventListener('click', () => closeAllWindows(terminal));

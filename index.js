@@ -9,19 +9,19 @@ import './style.css';
 import preloadAssets from './src/data/preloadAssets.js';
 
 //>  Audio src's
-// audio.src = './src/assets/audio/sounds/lobby/Clock-loading.mp3';
-// audio.src = 'src/assets/audio/music/The-Trapper.mp3';
-// audio.src = 'src/assets/audio/music/The-Prospector.mp3';
+// audio.src = '/assets/audio/sounds/lobby/Clock-loading.mp3';
+// audio.src = '/assets/audio/music/The-Trapper.mp3';
+// audio.src = '/assets/audio/music/The-Prospector.mp3';
 
 // NB : Audio for Intro test
 // const audio = document.createElement('audio');
-// audio.src = 'src/assets/audio/music/Main-soundtrack.mp3';
+// audio.src = '/assets/audio/music/Main-soundtrack.mp3';
 // audioConfig(audio, true, true, 0.5);
 // app.appendChild(audio);
 
 // > Menus
 // Main();
-// Launch();
+Launch();
 // Lobby();
 
 // > Game

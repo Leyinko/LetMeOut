@@ -11,7 +11,7 @@ const Repair = () => {
     MemoryPath();
     // Smash();
 
-    audio.src = 'src/assets/audio/music/The-Trapper.mp3';
+    audio.src = '/assets/audio/music/The-Trapper.mp3';
     audio.play();
   }, 1600);
 };

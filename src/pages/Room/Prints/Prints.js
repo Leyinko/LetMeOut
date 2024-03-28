@@ -23,7 +23,7 @@ export function itemsPrintOnStage(stage) {
 
 function itemPop(src, parent) {
   let item = document.createElement('img');
-  item.src = 'src/assets/images/icons/active/object-found.png';
+  item.src = '/assets/images/icons/active/object-found.png';
   item.className = 'item';
 
   let colliderPosition = parent.getBoundingClientRect();

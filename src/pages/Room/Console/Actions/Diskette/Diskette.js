@@ -58,8 +58,8 @@ function downloadFiles(parent) {
 
 const diskette_actions = {
   0: (e) => createWindow('ethernet-game', e.target.parentElement) && EthernetConnection(),
-  1: () => inventoryModal('src/assets/images/pictures/console/USB/Doctor.png'),
-  2: () => inventoryModal('src/assets/images/pictures/console/USB/DoctorAndDiana.jpg'),
+  1: () => inventoryModal('/assets/images/pictures/console/USB/Doctor.png'),
+  2: () => inventoryModal('/assets/images/pictures/console/USB/DoctorAndDiana.jpg'),
   3: () => createPasswordModal('release', document.querySelector('#files-explorer'), Release),
 };
 
