@@ -75,7 +75,7 @@ div[id*='ball'].pin-ball-check {
   bottom: 1px;
   left: 0px;
   width: 100%;
-  /* opacity: 0.98; */
+  opacity: 0.95;
   /* border: 1px solid red; */
 }
 

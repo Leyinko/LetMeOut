@@ -27,7 +27,7 @@ const Transfer = () => {
       const bar = document.createElement('div');
       container.appendChild(bar);
 
-      let blocks = 23;
+      let blocks = 20;
 
       let download = setInterval(() => {
         let bar = document.querySelector('#transfer-panel div');
@@ -53,7 +53,7 @@ const Transfer = () => {
 
           document.querySelector('#transfer-panel').appendChild(input);
         }
-      }, 300);
+      }, 2250);
     });
   }
 

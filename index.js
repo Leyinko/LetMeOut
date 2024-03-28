@@ -13,11 +13,10 @@ import './style.css';
 // audio.src = 'src/assets/audio/music/The-Prospector.mp3';
 
 // NB : Audio for Intro test
-const audio = document.createElement('audio');
+// const audio = document.createElement('audio');
 // audio.src = 'src/assets/audio/music/Main-soundtrack.mp3';
 // audioConfig(audio, true, true, 0.5);
-
-app.appendChild(audio);
+// app.appendChild(audio);
 
 // > Menus
 // Main();
@@ -25,8 +24,8 @@ app.appendChild(audio);
 // Lobby();
 
 // > Game
-Room();
+// Room();
 
 // ! BETA TEST
-// createPasswordModal('beta-access', document.querySelector('#app'), Launch);
+createPasswordModal('beta-access', document.querySelector('#app'), Launch);
 // ! BETA TEST

@@ -7,8 +7,8 @@ import { nextStage, unlockTicket, waitingPlayersForReboot } from '../../pages/Ro
 import { sendScore } from '../fetch';
 import { setAlternativeTrue } from '../localStorage/LS';
 
-export const ws = new WebSocket('ws://localhost:3000');
-// export const ws = new WebSocket('ws://5.250.185.179:3000');
+// export const ws = new WebSocket('ws://localhost:3000');
+export const ws = new WebSocket('ws://5.250.185.179:3000');
 
 let listen = false;
 export const ticketWSListen = () => (listen = true);
@@ -85,10 +85,10 @@ export function inGameWebSocket() {
         // Next Stage
         JSON.parse(localStorage.getItem('stats')).at(-1).sent >= 1 && nextStage('2');
         // Ticket Unlock
-        // current.ticket && current.name !== document.querySelector('.id').textContent && unlockTicket(current.ticket);
-        // ! TEST
-        current.ticket && unlockTicket(current.ticket);
-      // ! TEST
+        current.ticket && current.name !== document.querySelector('.id').textContent && unlockTicket(current.ticket);
+      //   // ! TEST
+      //   current.ticket && unlockTicket(current.ticket);
+      // // ! TEST
     }
   };
 }

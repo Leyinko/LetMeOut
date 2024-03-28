@@ -47,7 +47,7 @@ export async function sendScore() {
     lobbyCode: JSON.parse(localStorage.getItem('data')).lobbyCode,
   };
   try {
-    let response = await fetch(`http://localhost:3000/save-ranking`, {
+    let response = await fetch(`http://5.250.185.179:3000/save-ranking`, {
       method: 'POST',
       body: JSON.stringify(body),
       headers: { 'Content-Type': 'application/json' },
