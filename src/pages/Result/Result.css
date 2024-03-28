@@ -1,3 +1,8 @@
+#result {
+  opacity: 0;
+  animation: players-hub-appearance 2s ease-in-out forwards;
+}
+
 /* Final State */
 
 .waiting {
@@ -17,7 +22,7 @@
   font-size: 1.3rem;
 }
 
-/* Final State */
+/* STATS */
 
 #result > h1 {
   display: none;
@@ -25,6 +30,10 @@
   position: absolute;
   top: 18%;
   font-size: 5rem;
+}
+
+#ending-stats * {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #ending-stats {
@@ -38,101 +47,115 @@
   background-color: black;
 }
 
-#ending-stats ul {
-  display: none;
-  flex-direction: column;
-  gap: 0.5125rem;
-}
-
-#ending-stats ul * {
-  display: flex;
-  font-size: small;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  list-style-type: none;
-}
-
 .download-button {
+  position: absolute;
+  bottom: 140px;
+  left: 100px;
+  cursor: pointer;
   width: 50px;
   height: 50px;
   background: url('src/assets/images/icons/menu/download.svg') center/contain no-repeat;
-  /* border: 1px solid red; */
+  opacity: 0;
+  filter: brightness(0.6);
+  animation: players-hub-appearance 2s ease-in-out forwards;
 }
 
-/*Stats elements id's*/
+.download-button:hover {
+  opacity: 1;
+  filter: none;
+
+  /* animation: glitch 0.6s ease-in-out; */
+}
 
 .stat-span {
-  font-size: 17px;
-  font-family: 'segoe UI';
+  position: absolute;
+  font-size: 15px;
   color: #b9a9a5;
 }
 
-#clicks {
+#ending-stats > h1 {
   position: absolute;
-  top: 484px;
-  left: 517px;
+  /* right: 455px; */
+  right: 438px;
+  font-size: 7rem;
+  font-weight: 400;
+  margin-top: 60px;
 }
-#games0 {
-  position: absolute;
-  top: 358px;
-  left: 517px;
+
+#LS-username {
+  font-size: 13px;
+  top: 33px;
+  left: 520px;
+  opacity: 0.6;
 }
-#games1 {
-  position: absolute;
-  top: 399px;
-  left: 517px;
+
+#LS-clicks {
+  top: 470px;
+  left: 620px;
 }
-#games2 {
-  position: absolute;
-  top: 435px;
-  left: 517px;
+
+#LS-games0 {
+  top: 362px;
+  left: 620px;
 }
-#stage1 {
-  position: absolute;
-  top: 220px;
-  left: 517px;
+
+#LS-games1 {
+  top: 393px;
+  left: 620px;
 }
-#stage2 {
-  position: absolute;
-  top: 250px;
-  left: 517px;
+
+#LS-games2 {
+  top: 424px;
+  left: 620px;
 }
-#stage3 {
-  position: absolute;
-  top: 280px;
-  left: 517px;
+
+#LS-stage1 {
+  top: 228px;
+  left: 620px;
 }
-#minigames0 {
-  position: absolute;
-  top: 358px;
-  left: 570px;
+
+#LS-stage2 {
+  top: 258px;
+  left: 620px;
 }
-#minigames1 {
-  position: absolute;
-  top: 399px;
-  left: 570px;
+
+#LS-stage3 {
+  top: 288px;
+  left: 620px;
 }
-#minigames2 {
-  position: absolute;
-  top: 435px;
-  left: 570px;
+
+#LS-minigames0 {
+  top: 362px;
+  left: 674px;
 }
-#total {
-  position: absolute;
-  top: 150px;
-  left: 517px;
+
+#LS-minigames1 {
+  top: 393px;
+  left: 674px;
 }
-#sent {
-  position: absolute;
-  top: 550px;
-  left: 517px;
+
+#LS-minigames2 {
+  top: 424px;
+  left: 674px;
 }
-#received {
-  position: absolute;
-  top: 550px;
-  left: 570px;
+
+#LS-total {
+  font-size: 3rem;
+  top: 116px;
+  left: 645px;
 }
-#alternative {
-  position: absolute;
-  top: 590px;
-  left: 517px;
+
+#LS-sent {
+  top: 541px;
+  left: 623px;
+}
+
+#LS-received {
+  top: 541px;
+  left: 677px;
+}
+
+#LS-alternative {
+  top: 582px;
+  left: 625px;
 }

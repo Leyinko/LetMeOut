@@ -9,6 +9,11 @@ import './Result.css';
 
 import html2canvas from 'html2canvas';
 
+// export function GameResult(result) {
+//   if (result) {
+//   }
+// }
+
 export const Win = () => {
   // App
   const app = document.querySelector('#app');
@@ -33,10 +38,9 @@ export const Win = () => {
   Menu('BACK TO MAIN', 'back-to-main', result);
   const back = document.querySelector('.back-to-main');
   back.addEventListener('click', () => {
-    // Reset Previous Section
+    // MAin
     result.remove();
-    // Main
-    Main();
+    toMain(app);
   });
 };
 
@@ -54,7 +58,7 @@ export const Lose = () => {
   setTotalTime();
 
   // Test IMG Stat
-  containerImageStat(result);
+  resultStatsPNG(result);
   // Test IMG Stat
 
   // Back To Main
@@ -68,45 +72,36 @@ export const Lose = () => {
   return true;
 };
 
-function containerImageStat(parent) {
-  let data = JSON.parse(localStorage.getItem('mock'));
-  let username = JSON.parse(localStorage.getItem('data')).username;
+function resultStatsPNG(parent) {
   let app = document.querySelector('#app');
+  let username = JSON.parse(localStorage.getItem('data')).username;
 
-  let stats = {};
+  let data = JSON.parse(localStorage.getItem('mock'));
+  // let data = JSON.parse(localStorage.getItem('stats'));
 
+  // Stats
+  let stats = { username: username };
   data.forEach((object) => {
-    let keys = Object.keys(object);
-    keys.forEach((key) => {
-      if (!stats.hasOwnProperty(object[key])) {
+    let entries = Object.entries(object);
+    entries.forEach(([key, value]) => {
+      if (!stats.hasOwnProperty(object[key]) && !Array.isArray(value)) {
         stats[key] = object[key];
+      } else {
+        value.forEach((value, index) => {
+          stats[`${key}${index}`] = value;
+        });
       }
     });
   });
 
-  console.log(Object.entries(stats));
-
-  // console.log(data.flat());
-
+  // Print Stats
   let container = document.createElement('div');
   container.id = 'ending-stats';
 
-  const statsElement = [];
-
   Object.entries(stats).forEach(([key, value]) => {
-    if (Array.isArray(value)) {
-      value.forEach((element, index) => {
-        statsElement.push({ key: `${key}${index}`, value: element });
-      });
-    } else {
-      statsElement.push({ key, value });
-    }
-  });
-
-  statsElement.forEach((stat) => {
     const element = document.createElement('span');
-    element.id = stat.key;
-    element.textContent = stat.value;
+    element.id = `LS-${key}`;
+    element.textContent = value === true ? '✔' : /minigame|stage/.test(key) ? value + 's' : value;
     element.className = 'stat-span';
 
     container.appendChild(element);
@@ -114,25 +109,13 @@ function containerImageStat(parent) {
 
   parent.appendChild(container);
 
-  // const stats = document.createElement('ul');
-  // stats.innerHTML = `
-  //   <li>Clicks: ${data[0].clicks}</li>
-  //   <h3>Errors and Time on Mini Games:</h3>
-  //   <li>1- ${data[0].games[0]} Errors | Time: ${data[1].minigames[0]} sec</li>
-  //   <li>2- ${data[0].games[1]} Errors | Time: ${data[1].minigames[1]} sec</li>
-  //   <li>3- ${data[0].games[2]} Errors | Time: ${data[1].minigames[2]} sec</li>
-  //   <h3>Time spend on Stages:</h3>
-  //   <li>Stage 1: ${data[1].stage1}</li>
-  //   <li>Stage 2: ${data[1].stage2}</li>
-  //   <li>Stage 3: ${data[1].stage3}</li>
-  //   <h1>Total time: ${data[1].total}</h1>
-  //   <li>${data[2].sent} messages sent and ${data[2].received} messages received</li>
-  //   <li>Hidden Ending: ${data[3].alternative ? '✔' : '❌'}</li>
-  // `;
+  // Rank
+  const note = document.createElement('h1');
+  note.textContent = getIndividualRankNote(Number(stats.total));
 
-  // container.appendChild(stats);
+  container.appendChild(note);
 
-  // Download PNG
+  // Download
   const download = document.createElement('a');
   download.className = 'download-button';
   html2canvas(document.querySelector('#ending-stats')).then((canvas) => {
@@ -142,6 +125,14 @@ function containerImageStat(parent) {
   download.download = `${username}-${new Date().toLocaleDateString('en-US')}.png`;
 
   app.appendChild(download);
+}
+
+function getIndividualRankNote(score) {
+  if (score > 600) return 'S';
+  if (score < 600 && score > 500) return 'A';
+  if (score > 300 && score < 500) return 'B';
+  if (score > 200 && score < 300) return 'C';
+  if (score < 200) return 'D';
 }
 
 export function gameOverAnimation() {
