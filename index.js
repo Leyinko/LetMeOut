@@ -6,6 +6,7 @@ import { audioConfig } from './src/components/audio/Audio.js';
 import Version from './src/components/version/Version.js';
 import { createPasswordModal } from './src/pages/Room/Console/Console.js';
 import './style.css';
+import preloadAssets from './src/data/preloadAssets.js';
 
 //>  Audio src's
 // audio.src = './src/assets/audio/sounds/lobby/Clock-loading.mp3';
@@ -25,7 +26,7 @@ import './style.css';
 
 // > Game
 // Room();
-
+console.log(preloadAssets());
 // ! BETA TEST
 createPasswordModal('beta-access', document.querySelector('#app'), Launch);
 // ! BETA TEST
