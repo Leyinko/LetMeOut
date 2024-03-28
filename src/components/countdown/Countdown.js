@@ -29,7 +29,7 @@ const Countdown = () => {
 
         if (remainingTime === 3) {
           setTimeout(() => {
-            const lastAudio = new Audio('src/assets/audio/sounds/lobby/Clock-loading.mp3');
+            const lastAudio = new Audio('/assets/audio/sounds/lobby/Clock-loading.mp3');
             playSound(lastAudio);
           }, 500);
         }

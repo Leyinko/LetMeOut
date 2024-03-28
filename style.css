@@ -1,13 +1,13 @@
 @font-face {
   font-family: 'Hells';
-  src: url('/src/assets/fonts/hells-kittchen-devil-god.bold.otf') format('truetype');
+  src: url('/assets/fonts/hells-kittchen-devil-god.bold.otf') format('truetype');
   font-style: normal;
   font-weight: normal;
 }
 
 @font-face {
   font-family: 'JMH';
-  src: url('/src/assets/fonts/JMHTypewriter.ttf') format('truetype');
+  src: url('/assets/fonts/JMHTypewriter.ttf') format('truetype');
   font-style: normal;
   font-weight: normal;
 }
@@ -51,7 +51,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: url('src/assets/images/pictures/console/windows/release-password.png') center/contain no-repeat;
+  background: url('/assets/images/pictures/console/windows/release-password.png') center/contain no-repeat;
   animation: text-shadow 1s linear infinite;
 }
 

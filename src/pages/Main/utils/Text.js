@@ -15,7 +15,7 @@ export const opening_warning = {
 };
 
 export const immersion_message = {
-  image: 'src/assets/images/icons/menu/eye.svg',
+  image: '/assets/images/icons/menu/eye.svg',
   content: `This game is specifically designed to be played in Full Screen window mode.
   It's a necessary instruction to ensure the optimal gameplay experience, as playing in any other mode could potentially impact the gameplay.
 

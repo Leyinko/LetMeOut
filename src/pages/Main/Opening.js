@@ -62,7 +62,7 @@ export function toMain(app) {
   Main();
   // Audio
   const audio = document.createElement('audio');
-  audio.src = 'src/assets/audio/music/Main-soundtrack.mp3';
+  audio.src = '/assets/audio/music/Main-soundtrack.mp3';
   audioConfig(audio, true, true, 0.7);
 
   app.appendChild(audio);

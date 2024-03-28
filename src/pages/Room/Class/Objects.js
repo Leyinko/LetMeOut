@@ -1,55 +1,55 @@
 export const stage1 = {
   query: 'div[stage="1"]',
-  items: ['src/assets/images/icons/active/Fusible.png'],
+  items: ['/assets/images/icons/active/Fusible.png'],
 };
 
 export const stage2 = {
   query: '[stage="2"]',
   items: [
-    'src/assets/images/icons/active/Ethernet.png',
-    'src/assets/images/icons/active/Diskette.png',
-    'src/assets/images/icons/active/Clock.png',
+    '/assets/images/icons/active/Ethernet.png',
+    '/assets/images/icons/active/Diskette.png',
+    '/assets/images/icons/active/Clock.png',
   ],
 };
 
 export const stage3 = {
   query: '[stage="3"]',
   items: [
-    'src/assets/images/pictures/enigmas/polaroids/Polaroid-bathroom.png',
-    'src/assets/images/pictures/enigmas/polaroids/Polaroid-kitchen.png',
-    'src/assets/images/pictures/enigmas/polaroids/Polaroid-living.png',
+    '/assets/images/pictures/enigmas/polaroids/Polaroid-bathroom.png',
+    '/assets/images/pictures/enigmas/polaroids/Polaroid-kitchen.png',
+    '/assets/images/pictures/enigmas/polaroids/Polaroid-living.png',
   ],
 };
 
 export const tickets = {
   query: '#ticket',
   items: [
-    'src/assets/images/pictures/enigmas/tickets/Ticket1-01500017.png',
-    'src/assets/images/pictures/enigmas/tickets/Ticket2-33110713.png',
-    'src/assets/images/pictures/enigmas/tickets/Ticket3-42302070.png',
+    '/assets/images/pictures/enigmas/tickets/Ticket1-01500017.png',
+    '/assets/images/pictures/enigmas/tickets/Ticket2-33110713.png',
+    '/assets/images/pictures/enigmas/tickets/Ticket3-42302070.png',
   ],
 };
 
 export const actives = [
-  'src/assets/images/icons/active/Fusible.png',
-  'src/assets/images/icons/active/Ethernet.png',
-  'src/assets/images/icons/active/Diskette.png',
-  'src/assets/images/icons/active/Clock.png',
-  'src/assets/images/pictures/enigmas/polaroids/Polaroid-bathroom.png',
-  'src/assets/images/pictures/enigmas/tickets/Ticket1-01500017.png',
+  '/assets/images/icons/active/Fusible.png',
+  '/assets/images/icons/active/Ethernet.png',
+  '/assets/images/icons/active/Diskette.png',
+  '/assets/images/icons/active/Clock.png',
+  '/assets/images/pictures/enigmas/polaroids/Polaroid-bathroom.png',
+  '/assets/images/pictures/enigmas/tickets/Ticket1-01500017.png',
 ];
 
 export const notes = {
   query: '#note',
   items: [
-    'src/assets/images/pictures/storyNotes/1.png',
-    'src/assets/images/pictures/storyNotes/2.png',
-    'src/assets/images/pictures/storyNotes/3.png',
-    'src/assets/images/pictures/storyNotes/4.png',
-    'src/assets/images/pictures/storyNotes/5.png',
-    'src/assets/images/pictures/storyNotes/6.png',
-    'src/assets/images/pictures/storyNotes/7.png',
-    'src/assets/images/pictures/storyNotes/8.png',
-    'src/assets/images/pictures/storyNotes/9.png',
+    '/assets/images/pictures/storyNotes/1.png',
+    '/assets/images/pictures/storyNotes/2.png',
+    '/assets/images/pictures/storyNotes/3.png',
+    '/assets/images/pictures/storyNotes/4.png',
+    '/assets/images/pictures/storyNotes/5.png',
+    '/assets/images/pictures/storyNotes/6.png',
+    '/assets/images/pictures/storyNotes/7.png',
+    '/assets/images/pictures/storyNotes/8.png',
+    '/assets/images/pictures/storyNotes/9.png',
   ],
 };

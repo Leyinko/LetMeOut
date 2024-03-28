@@ -17,7 +17,7 @@ const Intro = () => {
 
   // Logo
   const logo = document.createElement('img');
-  logo.src = 'src/assets/images/logos/IANA-logo.gif';
+  logo.src = '/assets/images/logos/IANA-logo.gif';
   intro.appendChild(logo);
 
   setTimeout(() => {
@@ -35,13 +35,13 @@ const Intro = () => {
   setTimeout(() => {
     intro.append(date, location);
 
-    audio.src = 'src/assets/audio/sounds/lobby/Intro-2.mp3';
+    audio.src = '/assets/audio/sounds/lobby/Intro-2.mp3';
     audioConfig(audio, true, false, 1);
   }, 7000);
 
   // Hands
   const gif = document.createElement('img');
-  gif.src = 'src/assets/images/pictures/lobby/Hands-1-2.gif';
+  gif.src = '/assets/images/pictures/lobby/Hands-1-2.gif';
   gif.className = 'gif';
 
   setTimeout(() => {
@@ -56,7 +56,7 @@ const Intro = () => {
   setTimeout(() => {
     app.appendChild(gif);
 
-    const breathing = new Audio('src/assets/audio/sounds/lobby/Breathing.mp3');
+    const breathing = new Audio('/assets/audio/sounds/lobby/Breathing.mp3');
     breathing.volume = 0.4;
     playSound(breathing);
   }, 26350);
@@ -74,7 +74,7 @@ export function preIntro(confirm) {
   setTimeout(() => audio.pause(), 1000);
 
   setTimeout(() => {
-    audio.src = 'src/assets/audio/sounds/lobby/Clock-loading.mp3';
+    audio.src = '/assets/audio/sounds/lobby/Clock-loading.mp3';
     audioConfig(audio, true, true, 0.9);
     readyButton.remove();
   }, 1000);

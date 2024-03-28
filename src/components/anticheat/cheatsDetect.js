@@ -2,7 +2,7 @@ import { playSound, stopSound } from '../audio/Audio';
 import { handleTime } from '../countdown/Countdown';
 
 let interval = undefined;
-const blurSound = new Audio('src/assets/audio/sounds/console/window-blur.mp3');
+const blurSound = new Audio('/assets/audio/sounds/console/window-blur.mp3');
 
 export default function cheatDetect() {
   window.addEventListener('blur', () => startSpeedUp());

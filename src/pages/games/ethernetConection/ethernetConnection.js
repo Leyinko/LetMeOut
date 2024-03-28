@@ -95,7 +95,7 @@ function checkResult(selection, pairs, node) {
 
     let superposition = document.createElement('img');
     superposition.className = 'superposition';
-    superposition.src = 'src/assets/images/pictures/console/Windows/ethernet-success.png';
+    superposition.src = '/assets/images/pictures/console/Windows/ethernet-success.png';
 
     container.append(access, superposition);
   }

@@ -2,7 +2,7 @@
   position: relative;
   width: inherit;
   height: inherit;
-  background: url('/src/assets/images/pictures/menu/Menu-16-9-2.png') center/cover no-repeat;
+  background: url('/assets/images/pictures/menu/Menu-16-9-2.png') center/cover no-repeat;
   opacity: 0;
   animation: animation-fade 2s ease-in-out forwards;
 }

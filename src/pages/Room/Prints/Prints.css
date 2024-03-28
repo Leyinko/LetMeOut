@@ -19,7 +19,7 @@
 }
 
 .completed {
-  background: url('src/assets/images/icons/menu/ReadyY.png') center/cover no-repeat;
+  background: url('/assets/images/icons/menu/ReadyY.png') center/cover no-repeat;
 }
 
 /* Temporary STAGES */

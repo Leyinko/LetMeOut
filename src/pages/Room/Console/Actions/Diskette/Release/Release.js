@@ -2,12 +2,12 @@ import { Lose } from '../../../../../Result/Result';
 import { accessSound, audioConfig, playSound } from '../../../../../../components/audio/Audio';
 import './Release.css';
 
-const errorAudio = new Audio('src/assets/audio/sounds/console/error.mp3');
+const errorAudio = new Audio('/assets/audio/sounds/console/error.mp3');
 const errorWindows = [
-  'src/assets/images/pictures/console/Errors-windows-release/Error1.png',
-  'src/assets/images/pictures/console/Errors-windows-release/Error2.png',
-  'src/assets/images/pictures/console/Errors-windows-release/Error3.png',
-  'src/assets/images/pictures/console/Errors-windows-release/Error4.png',
+  '/assets/images/pictures/console/Errors-windows-release/Error1.png',
+  '/assets/images/pictures/console/Errors-windows-release/Error2.png',
+  '/assets/images/pictures/console/Errors-windows-release/Error3.png',
+  '/assets/images/pictures/console/Errors-windows-release/Error4.png',
 ];
 const subtitles = [
   '[CROWD PANIC]',
@@ -80,7 +80,7 @@ function createErrorWindow(bugsArea) {
   } else if (counterBugs == errors) {
     setTimeout(() => {
       let deploying = document.createElement('img');
-      deploying.src = 'src/assets/images/pictures/console/Errors-windows-release/deploying.gif';
+      deploying.src = '/assets/images/pictures/console/Errors-windows-release/deploying.gif';
       deploying.className = 'deploying';
 
       document.querySelector('.bugs-area').appendChild(deploying);
@@ -100,8 +100,8 @@ export function worldwideRelease() {
 
   let audio = document.querySelector('audio');
   audio.pause();
-  // audio.src = 'src/assets/audio/sounds/console/audio911.mp3';
-  audio.src = 'src/assets/audio/sounds/console/final-alternative-2.mp3';
+  // audio.src = '/assets/audio/sounds/console/audio911.mp3';
+  audio.src = '/assets/audio/sounds/console/final-alternative-2.mp3';
 
   audioConfig(audio, true, false, 0.7);
 
@@ -150,7 +150,7 @@ export function worldwideRelease() {
             thanks.id = 'thanks-container';
 
             thanks.innerHTML = `
-            <img src="src/assets/images/logos/FAVICON.png">
+            <img src="/assets/images/logos/FAVICON.png">
               <h1>SPECIAL THANKS</h1>
               <p>${thanksMessage}</p>
             `;

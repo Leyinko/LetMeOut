@@ -72,7 +72,7 @@
 }
 
 .ready-button {
-  background: url('src/assets/images/icons/menu/ReadyN.png') center/contain no-repeat;
+  background: url('/assets/images/icons/menu/ReadyN.png') center/contain no-repeat;
   position: absolute;
   bottom: 40px;
   left: 50%;
@@ -91,6 +91,6 @@
 }
 
 .ready-button.ready {
-  background: url('src/assets/images/icons/menu/ReadyY.png') center/contain no-repeat;
+  background: url('/assets/images/icons/menu/ReadyY.png') center/contain no-repeat;
   opacity: 1;
 }

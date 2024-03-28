@@ -54,7 +54,7 @@ export default function MemoryPath() {
   for (let i = 0; i < 4; i++) {
     const button = document.createElement('img');
     button.className = 'button-memorypath';
-    button.src = 'src/assets/images/icons/console/games/arrow.svg';
+    button.src = '/assets/images/icons/console/games/arrow.svg';
     button.id = `b${i}`;
     button.textContent = '⬆️';
 

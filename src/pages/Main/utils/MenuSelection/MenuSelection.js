@@ -4,7 +4,7 @@ import createModal from '../Modal/Modal';
 import { playSound } from '../../../../components/audio/Audio';
 import './MenuSelection.css';
 
-const selectionSound = new Audio('../../../../src/assets/audio/sounds/main/Menu-hover.mp3');
+const selectionSound = new Audio('../../../../assets/audio/sounds/main/Menu-hover.mp3');
 
 const menuSelection = (parent) => {
   const menuField$ = document.createElement('div');

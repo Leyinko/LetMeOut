@@ -38,7 +38,7 @@
 }
 
 .locked {
-  background: url('src/assets/images/icons/console/loading.gif') center/60% no-repeat;
+  background: url('/assets/images/icons/console/loading.gif') center/60% no-repeat;
   backdrop-filter: blur(0.05rem);
   pointer-events: none;
   /* border: 1px solid red; */
@@ -87,7 +87,7 @@
   top: 67%;
   left: 20%;
   transform: translate(-50%, -50%);
-  background: url('src/assets/images/pictures/console/windows/release-password.png') center/contain no-repeat;
+  background: url('/assets/images/pictures/console/windows/release-password.png') center/contain no-repeat;
   filter: grayscale(100%) sepia(18%);
   animation: text-shadow 1s linear infinite;
   box-shadow: none;

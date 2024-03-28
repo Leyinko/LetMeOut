@@ -1,11 +1,11 @@
 const random_sounds = [
-  'src/assets/audio/sounds/random/door-knocking.mp3',
-  'src/assets/audio/sounds/random/door-slam.mp3',
-  'src/assets/audio/sounds/random/footsteps.mp3',
-  'src/assets/audio/sounds/random/glass-breaking.mp3',
-  'src/assets/audio/sounds/random/window-knocking.mp3',
-  'src/assets/audio/sounds/random/breathing.mp3',
-  'src/assets/audio/sounds/random/wood-cracking.mp3',
+  '/assets/audio/sounds/random/door-knocking.mp3',
+  '/assets/audio/sounds/random/door-slam.mp3',
+  '/assets/audio/sounds/random/footsteps.mp3',
+  '/assets/audio/sounds/random/glass-breaking.mp3',
+  '/assets/audio/sounds/random/window-knocking.mp3',
+  '/assets/audio/sounds/random/breathing.mp3',
+  '/assets/audio/sounds/random/wood-cracking.mp3',
 ];
 
 export function audioConfig(target, autoplay, loop, volume) {
@@ -32,7 +32,7 @@ export function accessSound(action) {
   // success
   // access-granted
   // error
-  let sound = new Audio(`src/assets/audio/sounds/console/${action}.mp3`);
+  let sound = new Audio(`/assets/audio/sounds/console/${action}.mp3`);
   playSound(sound);
   return true;
 }

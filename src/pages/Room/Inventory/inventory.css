@@ -18,7 +18,7 @@
   position: absolute;
   bottom: 30px;
   right: 50px;
-  background: url('src/assets/images/icons/passive/Notebook.png') center/contain no-repeat;
+  background: url('/assets/images/icons/passive/Notebook.png') center/contain no-repeat;
   border-radius: 5px;
   padding: 5px;
   opacity: 0;
