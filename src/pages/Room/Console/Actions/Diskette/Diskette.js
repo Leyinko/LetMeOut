@@ -36,7 +36,9 @@ function downloadFiles(parent) {
   bar.id = 'download-usb';
   parent.appendChild(bar);
 
-  let blocks = 20;
+  let blocks = 24;
+  // Unlock first App
+  document.querySelector('#usb-0').classList.remove('locked');
 
   let download = setInterval(() => {
     let bar = document.querySelector('#download-usb');
@@ -49,9 +51,9 @@ function downloadFiles(parent) {
 
     // Files
     let ids = Array.from(document.querySelectorAll('[id*="usb-"].locked'));
-    blocks % 5 === 0 && ids.at(0).classList.remove('locked');
+    blocks % 8 === 0 && ids.at(0).classList.remove('locked');
     blocks === 0 && !clearInterval(download);
-  }, 200);
+  }, 30000);
 }
 
 const diskette_actions = {

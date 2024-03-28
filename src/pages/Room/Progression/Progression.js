@@ -18,23 +18,23 @@ export function firstClickStart() {
     'click',
     () => {
       // ! TEST
-      document.querySelector('#app').innerHTML = '';
+      // document.querySelector('#app').innerHTML = '';
       // worldwideRelease();
       // gameOverAnimation();
-      Lose();
+      // Lose();
       // ! TEST
-      // let clock = new Audio('src/assets/audio/sounds/lobby/Clock-loading.mp3');
-      // setTimeout(() => playSound(clock), 500);
-      // // Time
-      // Countdown();
-      // // Inventory HUD
-      // Inventory('active', room);
-      // Inventory('passive', room);
-      // setTimeout(() => {
-      //   const audio = document.querySelector('audio');
-      //   audio.src = 'src/assets/audio/music/The-Prospector.mp3';
-      //   audioConfig(audio, true, true, 0.2);
-      // }, 4800);
+      let clock = new Audio('src/assets/audio/sounds/lobby/Clock-loading.mp3');
+      setTimeout(() => playSound(clock), 500);
+      // Time
+      Countdown();
+      // Inventory HUD
+      Inventory('active', room);
+      Inventory('passive', room);
+      setTimeout(() => {
+        const audio = document.querySelector('audio');
+        audio.src = 'src/assets/audio/music/The-Prospector.mp3';
+        audioConfig(audio, true, true, 0.2);
+      }, 4800);
     },
     { once: true }
   );

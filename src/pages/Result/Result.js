@@ -24,12 +24,16 @@ export const Win = () => {
   app.append(result);
 
   let message = document.createElement('h1');
-  message.textContent = 'Congratulations!';
+  message.textContent = 'Con-DRAG-ulations!';
 
   result.appendChild(message);
 
   // Time
   setTotalTime();
+
+  // Test IMG Stat
+  resultStatsPNG(result);
+  // Test IMG Stat
 
   // Test
   setTimeout(() => sendScore(), 6000);
@@ -50,16 +54,9 @@ export const Lose = () => {
   app.append(result);
 
   let message = document.createElement('h1');
-  message.textContent = 'Game Over';
+  message.textContent = 'GAME OVER';
 
   result.appendChild(message);
-
-  // Time
-  setTotalTime();
-
-  // Test IMG Stat
-  resultStatsPNG(result);
-  // Test IMG Stat
 
   // Back To Main
   Menu('BACK TO MAIN', 'back-to-main', result);
@@ -76,8 +73,8 @@ function resultStatsPNG(parent) {
   let app = document.querySelector('#app');
   let username = JSON.parse(localStorage.getItem('data')).username;
 
-  let data = JSON.parse(localStorage.getItem('mock'));
-  // let data = JSON.parse(localStorage.getItem('stats'));
+  // let data = JSON.parse(localStorage.getItem('mock'));
+  let data = JSON.parse(localStorage.getItem('stats'));
 
   // Stats
   let stats = { username: username };

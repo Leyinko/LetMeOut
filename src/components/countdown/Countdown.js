@@ -3,7 +3,7 @@ import { playSound } from '../audio/Audio';
 import './Countdown.css';
 
 const app = document.getElementById('app');
-const gameTime = 10;
+const gameTime = 15;
 export let remainingTime = gameTime * 60;
 
 const Countdown = () => {
@@ -20,8 +20,8 @@ const Countdown = () => {
       let seconds = remainingTime % 60;
 
       if (remainingTime > 0) {
-        minutes = minutes < gameTime ? '0' + minutes : minutes;
-        seconds = seconds < gameTime ? '0' + seconds : seconds;
+        minutes = minutes < 10 ? '0' + minutes : minutes;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
 
         timer.innerHTML = `${minutes}:${seconds}`;
 

@@ -19,6 +19,7 @@ export function audioConfig(target, autoplay, loop, volume) {
 
 export function playSound(sound) {
   sound.currentTime = 0;
+  sound.volume = 0.8;
   sound.play();
   return true;
 }

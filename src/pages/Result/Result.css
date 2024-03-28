@@ -25,7 +25,7 @@
 /* STATS */
 
 #result > h1 {
-  display: none;
+  /* display: none; */
   font-family: 'JMH';
   position: absolute;
   top: 18%;
