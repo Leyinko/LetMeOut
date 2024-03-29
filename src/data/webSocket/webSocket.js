@@ -1,7 +1,7 @@
 import { accessSound, playSound } from '../../components/audio/Audio';
-import { handleTime, remainingTime } from '../../components/countdown/Countdown';
+import { handleTime } from '../../components/countdown/Countdown';
 import Release, { worldwideRelease } from '../../pages/Room/Console/Actions/Diskette/Release/Release';
-import { Lose, Win, gameOverAnimation } from '../../pages/Result/Result';
+import { GameResult, gameOverAnimation } from '../../pages/Result/Result';
 import { chatMessage } from '../../pages/Room/Console/Actions/Chat/Chat';
 import { nextStage, unlockTicket, waitingPlayersForReboot } from '../../pages/Room/Progression/Progression';
 import { sendScore } from '../fetch';
@@ -56,14 +56,17 @@ export function inGameWebSocket() {
         if (current.access) {
           let team = current.access.map((player) => player.access);
           let states = team.filter((status) => status === true);
+          let confirmation = document.querySelector('#confirmation-out');
+
           // Waiting Room
-          current.name === local.name
+          current.name === local.name && states.length <= 2
             ? waitingPlayersForReboot(states)
-            : (document.querySelector('#confirmation-out').textContent = String(states.length));
+            : confirmation && (confirmation.textContent = String(states.length));
           // Send Team Score
           team.every(Boolean) && ls.players.at(-1).id == self.textContent && sendScore();
           // Win
-          team.every(Boolean) && Win();
+          team.every(Boolean) && GameResult(true);
+          return;
         }
 
         // NB : ALTERNATIVE ENDING
@@ -72,10 +75,15 @@ export function inGameWebSocket() {
           Release();
         } else if (current.alternative && current.name !== ls.username) {
           worldwideRelease();
+          return;
         }
 
         // NB : WRONG CODE
-        current.message == 'You are shit' && accessSound('error') && handleTime(40, false);
+        current.name == ls.username &&
+          current.message == 'You are shit' &&
+          accessSound('error') &&
+          handleTime(40, false);
+
         break;
       case 'lose':
         gameOverAnimation();
@@ -85,8 +93,8 @@ export function inGameWebSocket() {
         // Next Stage
         JSON.parse(localStorage.getItem('stats')).at(-1).sent >= 1 && nextStage('2');
         // Ticket Unlock
-        current.ticket && current.name !== local.name && unlockTicket(current.ticket);
-      //   // ! TEST
+        current.ticket && current.name != self.textContent && unlockTicket(current.ticket);
+      // // ! TEST
       //   current.ticket && unlockTicket(current.ticket);
       // // ! TEST
     }

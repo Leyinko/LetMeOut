@@ -59,6 +59,8 @@ const Intro = () => {
     const breathing = new Audio('/assets/audio/sounds/lobby/Breathing.mp3');
     breathing.volume = 0.4;
     playSound(breathing);
+
+    setTimeout(() => gif.remove(), 2000);
   }, 26350);
 };
 

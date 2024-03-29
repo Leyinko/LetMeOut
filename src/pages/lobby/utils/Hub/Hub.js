@@ -18,14 +18,14 @@ const PlayersHub = (code, username, party) => {
     main.insertAdjacentElement('afterbegin', playersHub);
 
     const room = document.createElement('span');
-    room.className = 'room-code';
+    room.id = 'room-code';
     room.textContent = code;
 
     const copy = document.createElement('img');
     copy.src = '/assets/images/icons/menu/copy.svg';
     copy.className = 'copy-code';
 
-    copy.addEventListener('click', () => copyText());
+    copy.addEventListener('click', () => copyText('room-code'));
 
     room.appendChild(copy);
 
@@ -100,25 +100,25 @@ async function allPlayersReady(data, username) {
   let ready = players.every((player) => player.style.opacity === '0.9');
 
   // Start Game
-  // if (ready) {
-  //   // Room Assign
-  //   sendRequest('assignRoom', username, data.lobbyCode);
-  //   // Final Code API
-  //   sendRequest('generateFinalCode');
-  //   // Start
-  //   preIntro(confirm);
-  //   // ! Local Test /W Random Room ! //
-  //   // document.querySelector('section').remove();
-  //   // setTimeout(() => Room(), 1000);
-  //   // ! Local Test /W Random Room ! //
-  // }
+  if (ready) {
+    // Room Assign
+    sendRequest('assignRoom', username, data.lobbyCode);
+    // Final Code API
+    sendRequest('generateFinalCode');
+    // Start
+    preIntro(confirm);
+    // ! Local Test /W Random Room ! //
+    // document.querySelector('section').remove();
+    // setTimeout(() => Room(), 1000);
+    // ! Local Test /W Random Room ! //
+  }
 
   // ! Local Test /W Random Room ! //
-  sendRequest('assignRoom', username, data.lobbyCode);
-  sendRequest('generateFinalCode');
-  document.querySelector('section').remove();
-  setTimeout(() => Room(), 1000);
-  // // preIntro(confirm);
+  // sendRequest('assignRoom', username, data.lobbyCode);
+  // sendRequest('generateFinalCode');
+  // document.querySelector('section').remove();
+  // setTimeout(() => Room(), 1000);
+  // preIntro(confirm);
   // ! Local Test /W Random Room ! //
 
   // ! Test INTRO

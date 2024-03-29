@@ -1,4 +1,4 @@
-import { Lose } from '../../../../../Result/Result';
+import { GameResult } from '../../../../../Result/Result';
 import { accessSound, audioConfig, playSound } from '../../../../../../components/audio/Audio';
 import './Release.css';
 
@@ -22,19 +22,16 @@ const subtitles = [
 ];
 const thanksMessage = `
 Dear player, thank you...
-You've finished the game on the "highest" difficulty.
+You found the hidden ending.
 This shows not only that you like the game, 
-but also that you appreciated Let Me Out the way we had hoped.
+but also that you appreciated Let Me Out the way we had hoped ♥
 `;
 
 const errors = 20;
 let counterBugs = 0;
 let intervalTime = 700;
 
-// Release
 const Release = () => {
-  console.log(document.querySelector('#room'), '<- Release()');
-
   const screen = document.getElementById('screen');
   let audio = document.querySelector('audio');
 
@@ -100,7 +97,6 @@ export function worldwideRelease() {
 
   let audio = document.querySelector('audio');
   audio.pause();
-  // audio.src = '/assets/audio/sounds/console/audio911.mp3';
   audio.src = '/assets/audio/sounds/console/final-alternative-2.mp3';
 
   audioConfig(audio, true, false, 0.7);
@@ -108,7 +104,7 @@ export function worldwideRelease() {
   audio.addEventListener('ended', () =>
     setTimeout(() => {
       app.innerHTML = '';
-      Lose();
+      GameResult(false);
     }, 1000)
   );
 
@@ -145,17 +141,18 @@ export function worldwideRelease() {
             container.remove();
 
             // Thanks Message
+            setTimeout(() => {
+              let thanks = document.createElement('div');
+              thanks.id = 'thanks-container';
 
-            let thanks = document.createElement('div');
-            thanks.id = 'thanks-container';
+              thanks.innerHTML = `
+              <img src="/assets/images/logos/FAVICON.png">
+                <h1>SPECIAL THANKS</h1>
+                <p>${thanksMessage}</p>
+              `;
 
-            thanks.innerHTML = `
-            <img src="/assets/images/logos/FAVICON.png">
-              <h1>SPECIAL THANKS</h1>
-              <p>${thanksMessage}</p>
-            `;
-
-            app.appendChild(thanks);
+              app.appendChild(thanks);
+            }, 300);
           }, 2500);
         }
       }, 1110);

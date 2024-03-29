@@ -93,7 +93,8 @@
 }
 
 .item-modal img {
-  max-height: 50%;
+  /* max-height: 50%; */
+  width: 400px;
   pointer-events: all;
   filter: drop-shadow(1px 1px 3px black);
   -webkit-user-drag: none;

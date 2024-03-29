@@ -4,7 +4,7 @@ import { accessBeta } from '../../../data/fetch';
 import { statsCollector } from '../../../data/localStorage/LS';
 import sendRequest, { ticketWSListen } from '../../../data/webSocket/webSocket';
 import { timer } from '../../../utils';
-import { Lose, gameOverAnimation } from '../../Result/Result';
+import { GameResult, gameOverAnimation } from '../../Result/Result';
 import { worldwideRelease } from '../Console/Actions/Diskette/Release/Release';
 import { Inventory } from '../Inventory/inventory';
 import { itemsPrintOnStage } from '../Prints/Prints';
@@ -21,7 +21,7 @@ export function firstClickStart() {
       // document.querySelector('#app').innerHTML = '';
       // worldwideRelease();
       // gameOverAnimation();
-      // Lose();
+      // GameResult(false);
       // ! TEST
       let clock = new Audio('/assets/audio/sounds/lobby/Clock-loading.mp3');
       setTimeout(() => playSound(clock), 500);
@@ -100,8 +100,9 @@ export function unlockPathFromObject(index) {
 
 export function unlockTicket(signal) {
   let room = document.querySelector(`#room[room="${signal}"]`);
-  room && document.querySelector('#ticket').classList.remove('block');
-  playSound(new Audio('/assets/audio/sounds/console/next-3.mp3'));
+  room &&
+    playSound(new Audio('/assets/audio/sounds/console/next-3.mp3')) &&
+    document.querySelector('#ticket').classList.remove('block');
 }
 
 // Next Stage

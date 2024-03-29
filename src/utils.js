@@ -8,9 +8,13 @@ export function generateRandomString() {
   return randomString.toUpperCase();
 }
 
-export function copyText() {
-  let code = document.querySelector('.room-code').textContent;
-  navigator.clipboard.writeText(code);
+export async function copyText(id) {
+  let text = document.getElementById(id).textContent;
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch (err) {
+    console.error('Failed to copy: ', err);
+  }
 }
 
 export function fisherYatesShuffle(arr) {
