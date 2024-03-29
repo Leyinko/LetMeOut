@@ -34,12 +34,16 @@ const Countdown = () => {
           }, 500);
         }
       } else {
-        remainingTime = 0;
+        console.log('Reset Time on remainingTime < 0');
+
         clearInterval(interval);
         // Game Lost
         sendRequest('lose');
+        // Reset
+        remainingTime = gameTime * 60;
       }
     } else {
+      console.log('No Countdown Element in DOM');
       clearInterval(interval);
       remainingTime = gameTime * 60;
     }

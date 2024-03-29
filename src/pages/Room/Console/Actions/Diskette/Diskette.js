@@ -41,18 +41,22 @@ function downloadFiles(parent) {
   document.querySelector('#usb-0').classList.remove('locked');
 
   let download = setInterval(() => {
-    let bar = document.querySelector('#download-usb');
+    let progression = document.querySelector('#download-usb');
 
-    let block = document.createElement('div');
-    block.className = 'downloading-block-usb';
+    if (progression) {
+      let block = document.createElement('div');
+      block.className = 'downloading-block-usb';
 
-    bar.appendChild(block);
-    blocks--;
+      progression && progression.appendChild(block);
+      blocks--;
 
-    // Files
-    let ids = Array.from(document.querySelectorAll('[id*="usb-"].locked'));
-    blocks % 8 === 0 && ids.at(0).classList.remove('locked');
-    blocks === 0 && !clearInterval(download);
+      // Files
+      let ids = Array.from(document.querySelectorAll('[id*="usb-"].locked'));
+      blocks % 8 === 0 && ids.at(0).classList.remove('locked');
+      blocks === 0 && !clearInterval(download);
+    } else {
+      clearInterval(download);
+    }
   }, 30000);
 }
 

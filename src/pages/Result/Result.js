@@ -1,79 +1,57 @@
-import { audioConfig, playSound } from '../../components/audio/Audio';
+import { playSound } from '../../components/audio/Audio';
 import Menu from '../../components/menu/Menu';
 import { sendScore } from '../../data/fetch';
 import { setTotalTime } from '../../data/localStorage/LS';
-import sendRequest from '../../data/webSocket/webSocket';
+import { preloadVideo } from '../../data/preload';
 import { toMain } from '../Main/Opening';
-import Main from '../Main/utils/Main/Main';
+import html2canvas from 'html2canvas';
 import './Result.css';
 
-import html2canvas from 'html2canvas';
+// ! ANIMATION PRELOAD
+const gameover = preloadVideo('game-over', '/assets/Lose-animation.mp4');
+// const win = preloadVideo('game-over', '/assets/Lose-animation.mp4');
+// ! ANIMATION PRELOAD
 
-// export function GameResult(result) {
-//   if (result) {
-//   }
-// }
-
-export const Win = () => {
+export function GameResult(out) {
   // App
   const app = document.querySelector('#app');
   app.innerHTML = '';
 
+  // Container
   const result = document.createElement('section');
   result.id = 'result';
   app.append(result);
 
+  // Message
   let message = document.createElement('h1');
-  message.textContent = 'Con-DRAG-ulations!';
-
-  result.appendChild(message);
-
-  // Time
-  setTotalTime();
-
-  // Test IMG Stat
-  resultStatsPNG(result);
-  // Test IMG Stat
-
-  // Test
-  setTimeout(() => sendScore(), 6000);
-
-  // Back To Main
-  Menu('BACK TO MAIN', 'back-to-main', result);
-  const back = document.querySelector('.back-to-main');
-  back.addEventListener('click', () => {
-    // MAin
-    result.remove();
-    toMain(app);
-  });
-};
-
-export const Lose = () => {
-  const result = document.createElement('section');
-  result.id = 'result';
-  app.append(result);
-
-  let message = document.createElement('h1');
-  message.textContent = 'GAME OVER';
-
   result.appendChild(message);
 
   // Back To Main
   Menu('BACK TO MAIN', 'back-to-main', result);
   const back = document.querySelector('.back-to-main');
   back.addEventListener('click', () => {
-    // Main
-    result.remove();
+    app.innerHTML = '';
     toMain(app);
   });
+
+  // Condition
+  if (out) {
+    message.textContent = 'Con-DRAG-ulations';
+    // Time
+    setTotalTime();
+    // Score PNG
+    resultStatsPNG(result);
+    // Send Team Score to DDBB
+    setTimeout(() => sendScore(), 6000);
+  } else {
+    message.textContent = 'YOU LOSE';
+  }
   return true;
-};
+}
 
 function resultStatsPNG(parent) {
   let app = document.querySelector('#app');
   let username = JSON.parse(localStorage.getItem('data')).username;
-
-  // let data = JSON.parse(localStorage.getItem('mock'));
   let data = JSON.parse(localStorage.getItem('stats'));
 
   // Stats
@@ -143,21 +121,15 @@ export function gameOverAnimation() {
   setTimeout(() => (app.innerHTML = ''), 500);
 
   setTimeout(() => {
-    // Animation
-    const animation = document.createElement('video');
-    animation.id = 'game-over ';
-    animation.autoplay = true;
-    animation.controls = false;
-    animation.src = '/assets/Lose-animation.mp4';
+    app.appendChild(gameover);
+    gameover.play();
 
-    app.appendChild(animation);
-
-    animation.addEventListener('ended', () => animation.remove());
+    gameover.addEventListener('ended', () => gameover.remove());
   }, 2200);
 
   setTimeout(() => {
     playSound(new Audio('/assets/audio/sounds/rooms/power-down-tv.mp3'));
   }, 3500);
 
-  setTimeout(() => Lose(), 12000);
+  setTimeout(() => GameResult(false), 12000);
 }

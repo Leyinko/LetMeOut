@@ -52,7 +52,7 @@ function collectablesDropdown(e, type) {
 
 export function addItemToInventory(item) {
   let actives = document.querySelectorAll('[id^="inventory"] img');
-  let pattern = /([a-zA-Z]*?[0-9]*)(?=\.|\-)/;
+  let pattern = /([a-zA-Z]*?[0-9]*)(?=\.png|\-)/;
 
   item.match(pattern)[0].length === 1
     ? addNoteToCollectables(item)

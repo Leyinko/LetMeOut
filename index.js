@@ -3,10 +3,10 @@ import Main from './src/pages/Main/utils/Main/Main';
 import { Lobby } from './src/pages/Lobby/Lobby';
 import Room from './src/pages/Room/Room.js';
 import { audioConfig } from './src/components/audio/Audio.js';
-import Version from './src/components/version/Version.js';
 import { createPasswordModal } from './src/pages/Room/Console/Console.js';
+import { preloadAllAssets } from './src/data/preload.js';
 import './style.css';
-import preloadAssets from './src/data/preloadAssets.js';
+import Loader from './src/components/loader/Loader.js';
 
 //>  Audio src's
 // audio.src = '/assets/audio/sounds/lobby/Clock-loading.mp3';
@@ -22,13 +22,20 @@ import preloadAssets from './src/data/preloadAssets.js';
 // > Menus
 // Main();
 // Launch();
-Lobby();
-
-// > Preload
-// preloadAssets();
+// Lobby();
 
 // > Game
 // Room();
+
 // ! BETA TEST
-// createPasswordModal('beta-access', document.querySelector('#app'), Launch);
+// > Preload Assets
+preloadAllAssets();
+
+// > Loader Test
+Loader(document.querySelector('#app'));
+
+window.addEventListener('load', () => {
+  document.querySelector('.loader').remove();
+  createPasswordModal('beta-access', document.querySelector('#app'), Launch);
+});
 // ! BETA TEST

@@ -41,7 +41,7 @@ function gameControllers(room) {
   room.addEventListener('animationend', () => firstClickStart(), { once: true });
   inGameWebSocket();
   lockPaths();
-  cheatDetect();
+  // cheatDetect();
   // Random Sounds
   randomSounds();
   // Stats

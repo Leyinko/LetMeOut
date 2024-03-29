@@ -50,7 +50,7 @@ function itemPop(src, parent) {
     // Polaroid & Ticket to Inventory
     let polaroid = active[active.length - 2];
     let ticket = active[active.length - 1];
-    let pattern = /([a-zA-Z]*?[0-9]*)(?=\.|\-)/;
+    let pattern = /([a-zA-Z]*?[0-9]*)(?=\.png|\-)/;
 
     collider.id === 'ticket' && (ticket.src = src);
     src.match(pattern)[0] === 'Polaroid' && (polaroid.src = src);

@@ -78,19 +78,6 @@ export function statsCollector(action, property, value = null, index = null) {
   localStorage.setItem('stats', JSON.stringify(stats));
 }
 
-// TEST DATA
-let MOCK_LS = [
-  { clicks: '157', games: ['13', '2', '18'] },
-  { stage1: '16', stage2: '78', stage3: '186', minigames: ['15', '40', '23'], total: '589' },
-  {
-    sent: '25',
-    received: '26',
-  },
-  { alternative: true },
-];
-
-localStorage.setItem('mock', JSON.stringify(MOCK_LS));
-
 // ! CLEAR !
 // localStorage.clear();
 // ! CLEAR !
