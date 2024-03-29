@@ -21,12 +21,14 @@ import preloadAssets from './src/data/preloadAssets.js';
 
 // > Menus
 // Main();
-Launch();
-// Lobby();
+// Launch();
+Lobby();
+
+// > Preload
+// preloadAssets();
 
 // > Game
 // Room();
-console.log(preloadAssets());
 // ! BETA TEST
-createPasswordModal('beta-access', document.querySelector('#app'), Launch);
+// createPasswordModal('beta-access', document.querySelector('#app'), Launch);
 // ! BETA TEST
