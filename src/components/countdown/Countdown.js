@@ -7,6 +7,9 @@ const gameTime = 15;
 export let remainingTime = gameTime * 60;
 
 const Countdown = () => {
+  // Reset
+  remainingTime = gameTime * 60;
+
   // Template
   const timer = document.createElement('span');
   timer.id = 'countdown-timer';
@@ -34,23 +37,19 @@ const Countdown = () => {
           }, 500);
         }
       } else {
-        console.log('Reset Time on remainingTime < 0');
-
         clearInterval(interval);
         // Game Lost
         sendRequest('lose');
-        // Reset
-        remainingTime = gameTime * 60;
       }
     } else {
-      console.log('No Countdown Element in DOM');
       clearInterval(interval);
-      remainingTime = gameTime * 60;
     }
   }, 1000);
 };
 
 export function handleTime(time, operation) {
+  let room = document.querySelector('#room');
+
   remainingTime = operation ? remainingTime + time : remainingTime - time;
 
   const timerOperation = document.createElement('span');
@@ -58,7 +57,7 @@ export function handleTime(time, operation) {
   timerOperation.className = operation ? 'add-time' : 'subtract-time';
   timerOperation.textContent = operation ? `+${time}` : `-${time}`;
 
-  document.querySelector('#room').appendChild(timerOperation);
+  room && room.appendChild(timerOperation);
 
   setTimeout(() => timerOperation.remove(), 700);
 }

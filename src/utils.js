@@ -10,11 +10,12 @@ export function generateRandomString() {
 
 export async function copyText(id) {
   let text = document.getElementById(id).textContent;
-  try {
-    await navigator.clipboard.writeText(text);
-  } catch (err) {
-    console.error('Failed to copy: ', err);
-  }
+  let temporal = document.createElement('textarea');
+  temporal.value = text;
+  document.body.appendChild(temporal);
+  temporal.select();
+  document.execCommand('copy');
+  document.body.removeChild(temporal);
 }
 
 export function fisherYatesShuffle(arr) {

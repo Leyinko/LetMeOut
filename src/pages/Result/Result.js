@@ -7,26 +7,23 @@ import { toMain } from '../Main/Opening';
 import html2canvas from 'html2canvas';
 import './Result.css';
 
-// ! ANIMATION PRELOAD
-const gameover = preloadVideo('game-over', '/assets/Lose-animation.mp4');
-// const win = preloadVideo('game-over', '/assets/Lose-animation.mp4');
-// ! ANIMATION PRELOAD
+// Video Preload
+const gameover = preloadVideo('game-over', '/assets/video/Lose-animation.mp4');
+const win = preloadVideo('game-over', '/assets/video/Win-animation.mp4');
 
 export function GameResult(out) {
-  // App
+  //
   const app = document.querySelector('#app');
   app.innerHTML = '';
 
-  // Container
   const result = document.createElement('section');
   result.id = 'result';
   app.append(result);
 
-  // Message
   let message = document.createElement('h1');
   result.appendChild(message);
 
-  // Back To Main
+  // Back to Main
   Menu('BACK TO MAIN', 'back-to-main', result);
   const back = document.querySelector('.back-to-main');
   back.addEventListener('click', () => {
@@ -34,15 +31,13 @@ export function GameResult(out) {
     toMain(app);
   });
 
-  // Condition
+  // Conditions
   if (out) {
     message.textContent = 'Con-DRAG-ulations';
-    // Time
+    // Total Time
     setTotalTime();
     // Score PNG
     resultStatsPNG(result);
-    // Send Team Score to DDBB
-    setTimeout(() => sendScore(), 6000);
   } else {
     message.textContent = 'YOU LOSE';
   }
@@ -111,10 +106,10 @@ function getIndividualRankNote(score) {
 }
 
 export function gameOverAnimation() {
-  // App
+  //
   const app = document.querySelector('#app');
   const room = document.querySelector('#room');
-  room.style.animation = 'glitch 0.6s ease-in-out';
+  room && (room.style.animation = 'glitch 0.6s ease-in-out');
 
   playSound(new Audio('/assets/audio/sounds/game-over.mp3'));
 
@@ -132,4 +127,21 @@ export function gameOverAnimation() {
   }, 3500);
 
   setTimeout(() => GameResult(false), 12000);
+}
+
+export function winAnimation() {
+  //
+  const app = document.querySelector('#app');
+
+  setTimeout(() => (app.innerHTML = ''), 500);
+
+  setTimeout(() => {
+    app.appendChild(win);
+    win.volume = 1;
+    win.play();
+
+    win.addEventListener('ended', () => win.remove());
+  }, 2200);
+
+  setTimeout(() => GameResult(true), 12000);
 }

@@ -11,11 +11,14 @@
 }
 
 #room-code {
+  /* user-select: all; */
+  /* cursor: text; */
   margin-top: 25px;
   font-size: 3rem;
 }
 
 .copy-code {
+  /* display: none; */
   position: absolute;
   margin-left: 10px;
   width: 20px;
@@ -51,9 +54,10 @@
 
 .intro-lobby span {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 11px;
+  font-size: 12px;
   text-align: center;
   line-height: 2.5;
+  font-weight: 100;
 }
 
 .intro-lobby {
@@ -61,7 +65,7 @@
   right: 0px;
   top: 50%;
   transform: translateY(-50%);
-  /* width: 17%; */
+  /* width: 25%; */
   height: fit-content;
   display: flex;
   justify-content: center;

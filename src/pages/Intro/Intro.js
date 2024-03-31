@@ -25,15 +25,12 @@ const Intro = () => {
     logo.remove();
   }, 5000);
 
-  // Date
-  const date = document.createElement('h3');
-  const location = document.createElement('span');
-
-  date.textContent = 'October, 28, 1991';
-  location.innerText = 'Krakow, Poland';
-
   setTimeout(() => {
-    intro.append(date, location);
+    // Date
+    const date = document.createElement('h3');
+    date.textContent = 'October, 28, 1991';
+
+    intro.appendChild(date);
 
     audio.src = '/assets/audio/sounds/lobby/Intro-2.mp3';
     audioConfig(audio, true, false, 1);

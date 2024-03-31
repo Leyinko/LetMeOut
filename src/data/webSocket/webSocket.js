@@ -1,7 +1,7 @@
 import { accessSound, playSound } from '../../components/audio/Audio';
 import { handleTime } from '../../components/countdown/Countdown';
 import Release, { worldwideRelease } from '../../pages/Room/Console/Actions/Diskette/Release/Release';
-import { GameResult, gameOverAnimation } from '../../pages/Result/Result';
+import { gameOverAnimation, winAnimation } from '../../pages/Result/Result';
 import { chatMessage } from '../../pages/Room/Console/Actions/Chat/Chat';
 import { nextStage, unlockTicket, waitingPlayersForReboot } from '../../pages/Room/Progression/Progression';
 import { sendScore } from '../fetch';
@@ -10,7 +10,7 @@ import { setAlternativeTrue } from '../localStorage/LS';
 // export const ws = new WebSocket('ws://localhost:3000');
 export const ws = new WebSocket('ws://5.250.185.179:3000');
 
-let listen = false;
+export let listen = false;
 export const ticketWSListen = () => (listen = true);
 
 function sendRequest(
@@ -49,7 +49,7 @@ export function inGameWebSocket() {
     switch (current.tag) {
       case 'shareTime':
         current.donor === self.textContent && handleTime(45, false);
-        current.receiver === self.textContent && handleTime(45, true);
+        current.receiver === self.textContent && handleTime(120, true);
         break;
       case 'endGame':
         // NB : NORMAL ENDING
@@ -65,7 +65,7 @@ export function inGameWebSocket() {
           // Send Team Score
           team.every(Boolean) && ls.players.at(-1).id == self.textContent && sendScore();
           // Win
-          team.every(Boolean) && GameResult(true);
+          team.every(Boolean) && winAnimation();
           return;
         }
 
@@ -88,15 +88,17 @@ export function inGameWebSocket() {
       case 'lose':
         gameOverAnimation();
         break;
-      default:
+      case 'chat':
         chatMessage(current.name, current.message);
         // Next Stage
         JSON.parse(localStorage.getItem('stats')).at(-1).sent >= 1 && nextStage('2');
         // Ticket Unlock
-        current.ticket && current.name != self.textContent && unlockTicket(current.ticket);
+        current.ticket && listen && current.name != self.textContent && unlockTicket(current.ticket);
       // // ! TEST
       //   current.ticket && unlockTicket(current.ticket);
       // // ! TEST
+      default:
+        console.log('No available tag for WS');
     }
   };
 }

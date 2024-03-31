@@ -44,11 +44,23 @@ const assets = [
 ];
 
 export function preloadAllAssets() {
-  let element = undefined;
+  let length = 0;
+  let loaded = undefined;
+
+  let percentage = document.createElement('span');
+  percentage.className = 'loading-percentage';
+  document.querySelector('#app').appendChild(percentage);
+
   assets.forEach((type) => {
     type.forEach((asset) => {
-      /.mp3$/.test(asset) ? (element = new Audio()) : (element = new Image());
-      element.src = asset;
+      /.mp3$/.test(asset) ? (loaded = new Audio()) : (loaded = new Image());
+      loaded.src = asset;
+
+      loaded.addEventListener('load', () => {
+        length++;
+        percentage.textContent = `LOADING... ${Math.floor((length / 35) * 100)}%`;
+        length === 35 && percentage.remove();
+      });
     });
   });
 }
@@ -59,6 +71,7 @@ export function preloadVideo(result, src) {
   Object.assign(animation, {
     id: `#${result}`,
     autoplay: true,
+    volume: 0,
     controls: false,
     preload: 'auto',
     src: src,
