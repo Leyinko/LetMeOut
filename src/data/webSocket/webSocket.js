@@ -94,9 +94,6 @@ export function inGameWebSocket() {
         JSON.parse(localStorage.getItem('stats')).at(-1).sent >= 1 && nextStage('2');
         // Ticket Unlock
         current.ticket && listen && current.name != self.textContent && unlockTicket(current.ticket);
-      // // ! TEST
-      //   current.ticket && unlockTicket(current.ticket);
-      // // ! TEST
       default:
         console.log('No available tag for WS');
     }

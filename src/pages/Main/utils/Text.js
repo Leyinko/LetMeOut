@@ -16,13 +16,14 @@ export const opening_warning = {
 
 export const immersion_message = {
   image: '/assets/images/icons/menu/eye.svg',
-  content: `This game is specifically designed to be played in Full Screen window mode.
-  It's a necessary instruction to ensure the optimal gameplay experience, as playing in any other mode could potentially impact the gameplay.
-
-  Please make sure that the general display configuration is set to 100% on your Display settings.
-  This ensures that the game's visuals are displayed correctly and provides the best gaming experience.
-	
-	Additionally, we strongly advise using headphones to enhance the immersive experience while playing.`,
+  content: `
+  This game is optimized for Full Screen window mode to ensure the best gameplay experience. 
+  Playing in any other mode could potentially impact the gameplay.
+  
+  Please ensure that your display configuration is set to 100% scale and a resolution of 1920 x 1080 in your Display settings.
+  This will ensure that the game's visuals are displayed correctly and provide an optimal gaming experience.
+  
+  Additionally, we recommend using headphones to enhance the immersive experience while playing.`,
   continue: 'Click to continue',
 };
 

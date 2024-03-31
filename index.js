@@ -14,10 +14,10 @@ import Loader from './src/components/loader/Loader.js';
 // audio.src = '/assets/audio/music/The-Prospector.mp3';
 
 // NB : Audio for Intro test
-// const audio = document.createElement('audio');
+const audio = document.createElement('audio');
 // audio.src = '/assets/audio/music/Main-soundtrack.mp3';
 // audioConfig(audio, true, true, 0.5);
-// app.appendChild(audio);
+app.appendChild(audio);
 
 // > Menus
 // Main();
@@ -28,7 +28,7 @@ Lobby();
 // Room();
 
 // ! BETA TEST
-// // > Preload Assets
+// > Preload Assets
 // preloadAllAssets();
 
 // // > Loader Test

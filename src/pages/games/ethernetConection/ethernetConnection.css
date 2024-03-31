@@ -75,22 +75,25 @@ div[id*='ball'].pin-ball-check {
   bottom: 1px;
   left: 0px;
   width: 100%;
-  opacity: 1;
+  opacity: 0.96;
   /* border: 1px solid red; */
+  z-index: 2;
 }
 
 #ethernet-game h2 {
   position: absolute;
-  top: 45.9%;
+  top: 28%;
   /* bottom: 18px; */
-  left: 50%;
-  transform: translate(-50%, -50%);
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
   font-size: 2rem;
   /* opacity: 0.9; */
   width: 100%;
   text-align: center;
   /* border: 1px solid red; */
   color: #2b2a27;
+  animation: glitch 0.3s ease-in-out 4;
+  z-index: 1;
 }
 
 #ethernet-container div div {

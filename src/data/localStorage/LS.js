@@ -12,7 +12,7 @@ export const getCollectables = () => JSON.parse(localStorage.getItem('story'));
 
 // Game Data & Assign
 export function storeGameData(data, player) {
-  let start = { lobbyCode: data.lobbyCode, players: data.players, username: player };
+  let start = { lobbyCode: data.lobbyCode, players: data.players, username: player, date: data.date };
   localStorage.setItem('data', JSON.stringify(start));
   return true;
 }

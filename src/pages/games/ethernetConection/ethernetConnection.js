@@ -80,7 +80,7 @@ function checkResult(selection, pairs, node) {
       document.querySelector(`#${selection[0]}`).classList.add('pin-ball-check');
       document.querySelector(`#${selection[1]}`).classList.add('pin-ball-check');
     } else {
-      accessSound('error') && handleTime(10, false);
+      accessSound('error') && handleTime(20, false);
     }
   }
 
@@ -97,7 +97,9 @@ function checkResult(selection, pairs, node) {
     superposition.className = 'superposition';
     superposition.src = '/assets/images/pictures/console/Windows/ethernet-success.png';
 
-    container.append(access, superposition);
+    container.appendChild(superposition);
+
+    setTimeout(() => container.appendChild(access), 500);
   }
 }
 

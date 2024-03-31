@@ -92,6 +92,12 @@
   opacity: 0.6;
 }
 
+#LS-date {
+  font-size: 13px;
+  top: 80px;
+  left: 900px;
+}
+
 #LS-clicks {
   top: 470px;
   left: 620px;

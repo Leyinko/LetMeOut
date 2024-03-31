@@ -23,6 +23,7 @@ export function firstClickStart() {
       // gameOverAnimation();
       // winAnimation();
       // GameResult(false);
+      // GameResult(true);
       // ! TEST
       let clock = new Audio('/assets/audio/sounds/lobby/Clock-loading.mp3');
       setTimeout(() => playSound(clock), 500);

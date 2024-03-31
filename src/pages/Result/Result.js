@@ -1,6 +1,6 @@
 import { playSound } from '../../components/audio/Audio';
 import Menu from '../../components/menu/Menu';
-import { sendScore } from '../../data/fetch';
+import { sendUserStats } from '../../data/fetch';
 import { setTotalTime } from '../../data/localStorage/LS';
 import { preloadVideo } from '../../data/preload';
 import { toMain } from '../Main/Opening';
@@ -40,18 +40,21 @@ export function GameResult(out) {
     resultStatsPNG(result);
   } else {
     message.textContent = 'YOU LOSE';
+    // ! BETA
+    // Send Stats
+    sendUserStats();
   }
   return true;
 }
 
 function resultStatsPNG(parent) {
   let app = document.querySelector('#app');
-  let username = JSON.parse(localStorage.getItem('data')).username;
-  let data = JSON.parse(localStorage.getItem('stats'));
+  let dataLS = JSON.parse(localStorage.getItem('data'));
+  let statsLS = JSON.parse(localStorage.getItem('stats'));
 
   // Stats
-  let stats = { username: username };
-  data.forEach((object) => {
+  let stats = { username: dataLS.username, date: dataLS.date };
+  statsLS.forEach((object) => {
     let entries = Object.entries(object);
     entries.forEach(([key, value]) => {
       if (!stats.hasOwnProperty(object[key]) && !Array.isArray(value)) {
@@ -92,7 +95,7 @@ function resultStatsPNG(parent) {
     download.href = canvas.toDataURL('image/png');
   });
 
-  download.download = `${username}-${new Date().toLocaleDateString('en-US')}.png`;
+  download.download = `${dataLS.username}-${new Date().toLocaleDateString('en-US')}.png`;
 
   app.appendChild(download);
 }
