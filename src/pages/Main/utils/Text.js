@@ -33,7 +33,7 @@ export const modals_main_template = {
 
 export const introduction_lobby = {
   intro: `
-  Somewhere in the Wildlands of Poland, you stumble upon a forsaken house.
+  Somewhere in the Wildlands, you stumble upon a forsaken house.
   You find yourself locked in a room, separated from your friends.
 
   Your objective is to find your way out.

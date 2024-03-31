@@ -45,6 +45,14 @@ body {
 
 /* BETA TEST */
 
+.loading-percentage {
+  position: absolute;
+  bottom: 50px;
+  left: 80px;
+  font-size: 1.5rem;
+  opacity: 0.8;
+}
+
 #beta-access {
   width: 206px;
   height: 84px;

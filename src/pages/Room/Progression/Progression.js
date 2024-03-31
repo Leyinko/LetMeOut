@@ -4,7 +4,7 @@ import { accessBeta } from '../../../data/fetch';
 import { statsCollector } from '../../../data/localStorage/LS';
 import sendRequest, { ticketWSListen } from '../../../data/webSocket/webSocket';
 import { timer } from '../../../utils';
-import { GameResult, gameOverAnimation } from '../../Result/Result';
+import { GameResult, gameOverAnimation, winAnimation } from '../../Result/Result';
 import { worldwideRelease } from '../Console/Actions/Diskette/Release/Release';
 import { Inventory } from '../Inventory/inventory';
 import { itemsPrintOnStage } from '../Prints/Prints';
@@ -21,6 +21,7 @@ export function firstClickStart() {
       // document.querySelector('#app').innerHTML = '';
       // worldwideRelease();
       // gameOverAnimation();
+      // winAnimation();
       // GameResult(false);
       // ! TEST
       let clock = new Audio('/assets/audio/sounds/lobby/Clock-loading.mp3');

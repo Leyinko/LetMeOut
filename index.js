@@ -22,20 +22,20 @@ import Loader from './src/components/loader/Loader.js';
 // > Menus
 // Main();
 // Launch();
-// Lobby();
+Lobby();
 
 // > Game
 // Room();
 
 // ! BETA TEST
-// > Preload Assets
-preloadAllAssets();
+// // > Preload Assets
+// preloadAllAssets();
 
-// > Loader Test
-Loader(document.querySelector('#app'));
+// // > Loader Test
+// Loader(document.querySelector('#app'));
 
-window.addEventListener('load', () => {
-  document.querySelector('.loader').remove();
-  createPasswordModal('beta-access', document.querySelector('#app'), Launch);
-});
+// window.addEventListener('load', () => {
+//   document.querySelector('.loader').remove();
+//   createPasswordModal('beta-access', document.querySelector('#app'), Launch);
+// });
 // ! BETA TEST

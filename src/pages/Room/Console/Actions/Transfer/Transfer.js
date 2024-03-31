@@ -53,8 +53,6 @@ const Transfer = () => {
             input.addEventListener('keydown', (e) => e.key === 'Enter' && sendTime(input));
 
             document.querySelector('#transfer-panel').appendChild(input);
-          } else {
-            clearInterval(download);
           }
         }
       }, 2250);
