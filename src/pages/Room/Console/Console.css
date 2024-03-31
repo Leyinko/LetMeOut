@@ -82,6 +82,12 @@
   cursor: pointer;
 }
 
+.panel img:nth-child(1) {
+  /* width: 55px; */
+  margin-top: 7px;
+  margin-right: 3px;
+}
+
 .panel img:nth-child(2) {
   width: 55px;
   margin-bottom: 8px;
@@ -90,20 +96,20 @@
 
 .panel img:nth-child(3) {
   width: 34px;
-  margin-right: 11px;
+  margin-right: 8px;
   margin-top: 5px;
 }
 
 .panel img:nth-child(4) {
-  width: 35px;
+  /* width: 35px; */
   margin-top: 5px;
-  transform: rotate(15deg);
-  filter: brightness(0) invert(0.2);
+  /* transform: rotate(15deg); */
+  filter: brightness(-2) invert(-3);
 }
 
 .panel img:nth-child(4):hover {
   filter: none;
-  filter: invert(-0.25);
+  /* filter: invert(-0.25); */
 }
 
 .exit {
@@ -218,7 +224,7 @@
   left: 50%;
   transform: translate(-54%, -50%);
   width: 500px;
-  height: 470px;
+  height: 469px;
   background: url('/assets/images/pictures/console/Windows/fix.png') center/contain no-repeat;
   /* border: 1px solid red; */
 }

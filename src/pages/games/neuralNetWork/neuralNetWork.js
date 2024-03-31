@@ -118,7 +118,7 @@ function checkResult(resultOne, resultTwo) {
         stage == 4 && checkResult();
         stage != 4 && start('win', animatePattern);
       } else {
-        handleTime(25, false);
+        handleTime(20, false);
         generateNewPatterns();
         playerPattern = playerPattern.map((row) => row.map((element) => 0));
         touchOn = false;

@@ -28,7 +28,7 @@ const Intro = () => {
   setTimeout(() => {
     // Date
     const date = document.createElement('h3');
-    date.textContent = 'October, 28, 1991';
+    date.textContent = JSON.parse(localStorage.getItem('data')).date;
 
     intro.appendChild(date);
 

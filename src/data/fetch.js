@@ -58,3 +58,23 @@ export async function sendScore() {
     console.error('Error sending Score to DDBB', error);
   }
 }
+
+// ! BETA DATA ! //
+
+export async function sendUserStats() {
+  let body = {
+    username: JSON.parse(localStorage.getItem('data').username),
+    stats: JSON.parse(localStorage.getItem('stats')),
+  };
+  try {
+    let response = await fetch(`http://5.250.185.179:3000/game-data`, {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    console.log(response);
+  } catch (error) {
+    console.error('Error sending Score to DDBB', error);
+  }
+}

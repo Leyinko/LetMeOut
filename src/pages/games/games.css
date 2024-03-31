@@ -10,14 +10,14 @@
 }
 
 #games-password {
-  opacity: 0.92;
+  /* opacity: 0.92; */
   width: 182px;
   height: 72px;
   top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
   background: url('/assets/images/pictures/console/Windows/games-password.png') center/contain no-repeat;
-  filter: sepia(20%);
+  filter: sepia(10%);
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.418);
   /* border: 1px solid red; */
 }
