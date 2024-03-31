@@ -63,9 +63,11 @@ export async function sendScore() {
 
 export async function sendUserStats() {
   let body = {
-    username: JSON.parse(localStorage.getItem('data').username),
+    username: JSON.parse(localStorage.getItem('data')).username,
     stats: JSON.parse(localStorage.getItem('stats')),
+    alternative: localStorage.getItem('alternative'),
   };
+
   try {
     let response = await fetch(`http://5.250.185.179:3000/game-data`, {
       method: 'POST',

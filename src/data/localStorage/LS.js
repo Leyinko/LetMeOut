@@ -41,11 +41,11 @@ export let clickCount = {
 };
 
 export let timestamps = {
-  stage1: '',
-  stage2: '',
-  stage3: '',
-  minigames: ['', '', ''],
-  total: '',
+  stage1: 0,
+  stage2: 0,
+  stage3: 0,
+  minigames: [0, 0, 0],
+  total: 0,
 };
 
 export function setTotalTime() {
