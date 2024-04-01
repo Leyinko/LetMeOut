@@ -1,4 +1,4 @@
-import { accessSound, playSound } from '../../components/audio/Audio';
+import { accessSound } from '../../components/audio/Audio';
 import { handleTime } from '../../components/countdown/Countdown';
 import Release, { worldwideRelease } from '../../pages/Room/Console/Actions/Diskette/Release/Release';
 import { gameOverAnimation, winAnimation } from '../../pages/Result/Result';

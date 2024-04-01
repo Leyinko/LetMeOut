@@ -100,24 +100,24 @@ async function allPlayersReady(data, username) {
   let ready = players.every((player) => player.style.opacity === '0.85');
 
   // Start Game
-  // if (ready) {
-  //   // Room Assign
-  //   sendRequest('assignRoom', username, data.lobbyCode);
-  //   // Final Code API
-  //   sendRequest('generateFinalCode');
-  //   // Start
-  //   preIntro(confirm);
-  //   // ! Local Test /W Random Room ! //
-  //   // document.querySelector('section').remove();
-  //   // setTimeout(() => Room(), 1000);
-  //   // ! Local Test /W Random Room ! //
-  // }
+  if (ready) {
+    // Room Assign
+    sendRequest('assignRoom', username, data.lobbyCode);
+    // Final Code API
+    sendRequest('generateFinalCode');
+    // Start
+    preIntro(confirm);
+    // ! Local Test /W Random Room ! //
+    // document.querySelector('section').remove();
+    // setTimeout(() => Room(), 1000);
+    // ! Local Test /W Random Room ! //
+  }
 
   // ! Local Test /W Random Room ! //
-  sendRequest('assignRoom', username, data.lobbyCode);
-  sendRequest('generateFinalCode');
-  document.querySelector('section').remove();
-  setTimeout(() => Room(), 1000);
+  // sendRequest('assignRoom', username, data.lobbyCode);
+  // sendRequest('generateFinalCode');
+  // document.querySelector('section').remove();
+  // setTimeout(() => Room(), 1000);
   // preIntro(confirm);
   // ! Local Test /W Random Room ! //
 

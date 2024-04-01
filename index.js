@@ -14,28 +14,28 @@ import Loader from './src/components/loader/Loader.js';
 // audio.src = '/assets/audio/music/The-Prospector.mp3';
 
 // NB : Audio for Intro test
-const audio = document.createElement('audio');
+// const audio = document.createElement('audio');
 // audio.src = '/assets/audio/music/Main-soundtrack.mp3';
 // audioConfig(audio, true, true, 0.5);
-app.appendChild(audio);
+// app.appendChild(audio);
 
 // > Menus
 // Main();
 // Launch();
-Lobby();
+// Lobby();
 
 // > Game
 // Room();
 
 // ! BETA TEST
 // > Preload Assets
-// preloadAllAssets();
+preloadAllAssets();
 
-// // > Loader Test
-// Loader(document.querySelector('#app'));
+// > Loader Test
+Loader(document.querySelector('#app'));
 
-// window.addEventListener('load', () => {
-//   document.querySelector('.loader').remove();
-//   createPasswordModal('beta-access', document.querySelector('#app'), Launch);
-// });
+window.addEventListener('load', () => {
+  document.querySelector('.loader').remove();
+  createPasswordModal('beta-access', document.querySelector('#app'), Launch);
+});
 // ! BETA TEST
