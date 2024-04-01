@@ -114,7 +114,7 @@ export function gameOverAnimation() {
   const room = document.querySelector('#room');
   room && (room.style.animation = 'glitch 0.6s ease-in-out');
 
-  playSound(new Audio('/assets/audio/sounds/game-over.mp3'));
+  playSound(new Audio('/assets/audio/sounds/console/game-over.mp3'));
 
   setTimeout(() => (app.innerHTML = ''), 500);
 
@@ -123,13 +123,9 @@ export function gameOverAnimation() {
     gameover.play();
 
     gameover.addEventListener('ended', () => gameover.remove());
-  }, 2200);
+  }, 1200);
 
-  setTimeout(() => {
-    playSound(new Audio('/assets/audio/sounds/rooms/power-down-tv.mp3'));
-  }, 3500);
-
-  setTimeout(() => GameResult(false), 12000);
+  setTimeout(() => GameResult(false), 10000);
 }
 
 export function winAnimation() {
@@ -143,8 +139,6 @@ export function winAnimation() {
     win.volume = 1;
     win.play();
 
-    win.addEventListener('ended', () => win.remove());
+    win.addEventListener('ended', () => GameResult(true) && win.remove());
   }, 2200);
-
-  setTimeout(() => GameResult(true), 12000);
 }
