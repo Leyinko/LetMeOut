@@ -39,7 +39,6 @@
   0% {
     opacity: 0;
     height: 75%;
-    /* transform: scale(1.2); */
     filter: blur(8px);
   }
   35% {
@@ -51,6 +50,5 @@
     opacity: 1;
     height: 90svh;
     filter: none;
-    /* transform: none; */
   }
 }

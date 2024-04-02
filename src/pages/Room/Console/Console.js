@@ -10,8 +10,8 @@ import { mutationObserver } from './Actions/mutation-observer';
 import './Console.css';
 
 const Terminal = (parent) => {
+  // Console
   const tv = document.querySelector('#console');
-
   tv.addEventListener(
     'click',
     () => animationReflow(terminal, 'players-hub-appearance 1s ease-in-out') && terminal.classList.add('opened')
@@ -20,36 +20,36 @@ const Terminal = (parent) => {
   // = Full Background
   const terminal = document.createElement('section');
   terminal.id = 'terminal';
-
   parent.appendChild(terminal);
 
   // = Elements Delimitation
   const screen = document.createElement('article');
   screen.id = 'screen';
-
   terminal.appendChild(screen);
 
-  // Actions Trigger
+  // Actions
   screen.addEventListener('click', (e) => {
     console_actions.hasOwnProperty(e.target.id) && console_actions[e.target.id](screen);
   });
 
-  // Next Stage
+  // ! Next Stage -> PROGRESSION !
   screen.addEventListener('click', () => nextStage('1'), { once: true });
 
-  // Elements
+  // Elements On Screen
   const id = document.createElement('h3');
   id.className = 'id';
   id.textContent = getUserData('id').toUpperCase() ?? '#XXXX-XX-DEV';
 
   screen.appendChild(id);
 
+  // Diskette
   const folder = document.createElement('img');
   folder.src = '/assets/images/icons/console/Folder.png';
   folder.id = 'folder';
 
   screen.appendChild(folder);
 
+  // Icons Panel
   const panel = document.createElement('div');
   panel.className = 'panel';
 
@@ -69,18 +69,18 @@ const Terminal = (parent) => {
 
   screen.appendChild(panel);
 
-  // Transfer Panel
+  // Time Transfer (Exception PRINT PRIORITY)
   createWindow('time-transfer', screen) &&
     Transfer() &&
     document.querySelector('#time-transfer').classList.remove('onscreen');
 
+  // Exit
   const exit = document.createElement('img');
   exit.src = '/assets/images/icons/console/turn-off.svg';
   exit.className = 'exit';
 
   exit.addEventListener('click', () => closeAllWindows(terminal));
 
-  // Exit on ESC
   document.addEventListener('keydown', (e) => {
     e.key === 'Escape' && document.querySelector('#terminal').classList.contains('opened') && exit.click();
   });
@@ -122,7 +122,6 @@ export function createWindow(id, parent) {
     close.addEventListener('click', () => window.classList.remove('onscreen'));
 
     window.appendChild(close);
-    // Window Created With Success ✔ (for && Logical Operator *wink wink*)
     return true;
   } else {
     !document.querySelector(`#${id}`).classList.add('onscreen');

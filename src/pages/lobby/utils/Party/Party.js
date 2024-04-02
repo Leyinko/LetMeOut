@@ -2,8 +2,6 @@ import { playSound } from '../../../../components/audio/Audio';
 import UserFieldsModal from '../User/User';
 import './Party.css';
 
-const selectionSound = new Audio('../../../../assets/audio/sounds/main/Menu-hover.mp3');
-
 const GameSelect = (title, id, ...fields) => {
   const container = document.createElement('article');
   container.id = `${id}-party`;
@@ -13,7 +11,9 @@ const GameSelect = (title, id, ...fields) => {
   selection.id = id;
   selection.textContent = title;
 
-  selection.addEventListener('click', () => playSound(selectionSound));
+  selection.addEventListener('click', () =>
+    playSound(new Audio('../../../../assets/audio/sounds/main/Menu-hover.mp3'))
+  );
 
   container.appendChild(selection);
 

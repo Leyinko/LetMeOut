@@ -43,6 +43,7 @@ const assets = [
   ],
 ];
 
+// Assets Preload (Loader %)
 export function preloadAllAssets() {
   let length = 0;
   let loaded = undefined;

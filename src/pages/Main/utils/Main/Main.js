@@ -21,12 +21,12 @@ export const Main = () => {
   let inventory = document.querySelector('#inventory-passive');
 
   // Version
-  Version('V1.0', main);
+  Version('V1.1', main);
 
   // First Animation
   openingAnimation(main, selections, inventory);
 
-  // Reset for Re-Start
+  // Reset for New Game
   localStorage.removeItem('data');
   localStorage.removeItem('stats');
 };

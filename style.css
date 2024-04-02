@@ -74,6 +74,8 @@ body {
 
 /* BETA TEST */
 
+/* General Animations */
+
 @keyframes players-hub-appearance {
   100% {
     opacity: 1;

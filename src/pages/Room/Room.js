@@ -19,35 +19,36 @@ export const Room = () => {
   room.id = 'room';
   app.append(room);
 
-  // Initial Time Stamp
+  // Start Time Stamp
   room.setAttribute('stamp', new Date().getTime());
 
-  // Rooms Assign
+  // Room Print
   let rooms = [BATHROOM, KITCHEN, LIVING];
   rooms.forEach((level) => {
     let localRoom = getUserData('room');
     level.room == localRoom && new Stage(level).printRoom();
   });
 
-  // Terminal
+  // Console On
   Terminal(app);
 
-  // General Settings
+  // Game Settings
   gameControllers(room);
 };
 
 function gameControllers(room) {
-  // Progression Control
+  // First Click
   room.addEventListener('animationend', () => firstClickStart(), { once: true });
+  // Active WS
   inGameWebSocket();
+  // Lock Progression Paths
   lockPaths();
+  // ANTI-CHEAT
   cheatDetect();
   // Random Sounds
   randomSounds();
-  // Stats
-  clicksStats();
+  // Clicks
+  document.addEventListener('click', () => statsCollector('clickCount', 'clicks'));
 }
-
-const clicksStats = () => document.addEventListener('click', () => statsCollector('clickCount', 'clicks'));
 
 export default Room;

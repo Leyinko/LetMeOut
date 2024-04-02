@@ -86,7 +86,7 @@ export function inGameWebSocket() {
 
         break;
       case 'lose':
-        gameOverAnimation();
+        document.querySelector('#room') && gameOverAnimation();
         break;
       case 'chat':
         chatMessage(current.name, current.message);
@@ -94,8 +94,9 @@ export function inGameWebSocket() {
         JSON.parse(localStorage.getItem('stats')).at(-1).sent >= 1 && nextStage('2');
         // Ticket Unlock
         current.ticket && listen && current.name != self.textContent && unlockTicket(current.ticket);
+        break;
       default:
-        console.log('No available tag for WS');
+        console.info('No matching tag');
     }
   };
 }

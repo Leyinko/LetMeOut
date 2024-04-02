@@ -99,31 +99,23 @@ async function allPlayersReady(data, username) {
   let confirm = new Audio('/assets/audio/sounds/lobby/Confirm-game.mp3');
   let ready = players.every((player) => player.style.opacity === '0.85');
 
-  // Start Game
-  if (ready) {
-    // Room Assign
-    sendRequest('assignRoom', username, data.lobbyCode);
-    // Final Code API
-    sendRequest('generateFinalCode');
-    // Start
-    preIntro(confirm);
-    // ! Local Test /W Random Room ! //
-    // document.querySelector('section').remove();
-    // setTimeout(() => Room(), 1000);
-    // ! Local Test /W Random Room ! //
-  }
+  // if (ready) {
+  //   // Room Assign
+  //   sendRequest('assignRoom', username, data.lobbyCode);
+  //   // Generate Final Code
+  //   sendRequest('generateFinalCode');
+  //   // Start
+  //   preIntro(confirm);
+  // }
 
-  // ! Local Test /W Random Room ! //
-  // sendRequest('assignRoom', username, data.lobbyCode);
-  // sendRequest('generateFinalCode');
-  // document.querySelector('section').remove();
-  // setTimeout(() => Room(), 1000);
+  // ! Solo Launch Test
+  sendRequest('assignRoom', username, data.lobbyCode);
+  sendRequest('generateFinalCode');
+  document.querySelector('section').remove();
+  setTimeout(() => Room(), 1000);
+  // ! Intro OR Not >
   // preIntro(confirm);
-  // ! Local Test /W Random Room ! //
-
-  // ! Test INTRO
-  // storeGameData(data, username) && preIntro(confirm);
-  // ! Test INTRO
+  // ! Solo Launch Test
 }
 
 const closePlayersHub = (...elements) => {

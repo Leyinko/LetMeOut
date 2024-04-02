@@ -7,13 +7,11 @@ const Transfer = () => {
   let parent = document.querySelector('#time-transfer');
 
   if (!document.querySelector('#transfer-panel')) {
-    // Container
     let container = document.createElement('div');
     container.id = 'transfer-panel';
 
     parent.appendChild(container);
 
-    // Button
     const button = document.createElement('button');
     button.textContent = 'Download';
 

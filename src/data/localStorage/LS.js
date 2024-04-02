@@ -12,7 +12,13 @@ export const getCollectables = () => JSON.parse(localStorage.getItem('story'));
 
 // Game Data & Assign
 export function storeGameData(data, player) {
-  let start = { lobbyCode: data.lobbyCode, players: data.players, username: player, date: data.date };
+  let start = {
+    lobbyCode: data.lobbyCode,
+    username: player,
+    date: data.date,
+    players: data.players,
+    alternative: '❌',
+  };
   localStorage.setItem('data', JSON.stringify(start));
   return true;
 }
@@ -45,16 +51,7 @@ export let timestamps = {
   stage2: 0,
   stage3: 0,
   minigames: [0, 0, 0],
-  total: 0,
 };
-
-export function setTotalTime() {
-  let totalTime = Object.values(JSON.parse(localStorage.getItem('stats'))[1])
-    .flat(1)
-    .reduce((acc, next) => acc + next);
-  // Save
-  statsCollector('timestamps', 'total', totalTime);
-}
 
 export let messages = {
   sent: 0,
@@ -77,7 +74,3 @@ export function statsCollector(action, property, value = null, index = null) {
 
   localStorage.setItem('stats', JSON.stringify(stats));
 }
-
-// ! CLEAR !
-// localStorage.clear();
-// ! CLEAR !

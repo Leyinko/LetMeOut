@@ -2,7 +2,6 @@ import sendRequest from '../../data/webSocket/webSocket';
 import { playSound } from '../audio/Audio';
 import './Countdown.css';
 
-const app = document.getElementById('app');
 const gameTime = 15;
 export let remainingTime = gameTime * 60;
 
@@ -14,7 +13,7 @@ const Countdown = () => {
   const timer = document.createElement('span');
   timer.id = 'countdown-timer';
 
-  app.appendChild(timer);
+  document.getElementById('app').appendChild(timer);
 
   // Functionality
   var interval = setInterval(() => {

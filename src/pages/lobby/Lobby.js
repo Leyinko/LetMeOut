@@ -34,5 +34,5 @@ export const Lobby = () => {
   });
 
   // Version
-  Version('V1.0', lobby);
+  Version('V1.1', lobby);
 };

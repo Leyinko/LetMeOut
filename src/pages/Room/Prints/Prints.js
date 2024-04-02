@@ -15,7 +15,7 @@ export function itemsPrintOnStage(stage) {
       polaroidPrint(stage3);
       break;
   }
-  // Tickets and Note
+  // Tickets and Note (ONCE)
   stage < 1 && ticketAndNotePrint(tickets, notes);
   // Set Next Stage
   document.querySelector('#room').setAttribute('progression', stage + 1);
@@ -44,10 +44,10 @@ function itemPop(src, parent) {
 
     item.remove();
 
-    // Add to Inventory
+    // Send to Inventory
     addItemToInventory(src);
 
-    // Polaroid & Ticket to Inventory
+    // Send to Inventory -> Polaroid & Ticket (Exception)
     let polaroid = active[active.length - 2];
     let ticket = active[active.length - 1];
     let pattern = /([a-zA-Z]*?[0-9]*)(?=\.png|\-)/;
