@@ -11,18 +11,14 @@
   transform: translate(-50%, -34%);
   width: 390px;
   opacity: 0.7;
-  /* border: 1px solid blue; */
 }
 
 .map-row {
-  /* clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%); */
-  /* border: 25px inset black; */
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 15px;
   width: 100%;
-  /* border: 1px solid red; */
 }
 
 .cell {
@@ -31,7 +27,6 @@
   align-items: center;
   width: 35px;
   height: 35px;
-  /* background-color: blue; */
 }
 
 .void-cell {
@@ -43,8 +38,6 @@
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   border: 8px outset rgb(0, 0, 0);
   background-color: #000000;
-  /* opacity: 0.9; */
-  /* border: 2px outset rgba(0, 0, 0, 0.308); */
 }
 
 .pop {
@@ -60,13 +53,10 @@
   position: relative;
   margin-top: 10px;
   padding-left: 10px;
-  /* width: 100px; */
-  /* height: 100px; */
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  /* border: 1px solid green; */
 }
 
 .button-memorypath {

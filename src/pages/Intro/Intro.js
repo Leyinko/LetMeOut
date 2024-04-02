@@ -12,10 +12,8 @@ const Intro = () => {
   intro.id = 'intro';
   app.append(intro);
 
-  // Audio
   const audio = document.querySelector('audio');
 
-  // Logo
   const logo = document.createElement('img');
   logo.src = '/assets/images/logos/IANA-logo.gif';
   intro.appendChild(logo);

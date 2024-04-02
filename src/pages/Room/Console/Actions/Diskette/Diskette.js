@@ -9,7 +9,6 @@ const Diskette = () => {
   let parent = document.querySelector('#window-usb');
 
   if (!document.querySelector('#files-explorer')) {
-    // Container
     let container = document.createElement('div');
     container.id = 'files-explorer';
 
@@ -37,7 +36,8 @@ function downloadFiles(parent) {
   parent.appendChild(bar);
 
   let blocks = 24;
-  // Unlock first App
+
+  // ! Unlock First App -> PROGRESSION !
   document.querySelector('#usb-0').classList.remove('locked');
 
   let download = setInterval(() => {

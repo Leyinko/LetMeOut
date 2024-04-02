@@ -1,10 +1,10 @@
 import { playSound } from '../../components/audio/Audio';
 import Menu from '../../components/menu/Menu';
 import { sendUserStats } from '../../data/fetch';
-import { setTotalTime } from '../../data/localStorage/LS';
 import { preloadVideo } from '../../data/preload';
 import { toMain } from '../Main/Opening';
 import html2canvas from 'html2canvas';
+import { remainingTime } from '../../components/countdown/Countdown';
 import './Result.css';
 
 // Video Preload
@@ -12,7 +12,6 @@ const gameover = preloadVideo('game-over', '/assets/video/Lose-animation.mp4');
 const win = preloadVideo('game-over', '/assets/video/Win-animation.mp4');
 
 export function GameResult(out) {
-  //
   const app = document.querySelector('#app');
   app.innerHTML = '';
 
@@ -34,8 +33,6 @@ export function GameResult(out) {
   // Conditions
   if (out) {
     message.textContent = 'Con-DRAG-ulations';
-    // Total Time
-    setTotalTime();
     // Score PNG
     resultStatsPNG(result);
   } else {
@@ -47,13 +44,60 @@ export function GameResult(out) {
   return true;
 }
 
+export function gameOverAnimation() {
+  const app = document.querySelector('#app');
+  const room = document.querySelector('#room');
+  room && (room.style.animation = 'glitch 0.6s ease-in-out');
+
+  playSound(new Audio('/assets/audio/sounds/console/game-over.mp3'));
+
+  setTimeout(() => (app.innerHTML = ''), 500);
+
+  setTimeout(() => {
+    app.appendChild(gameover);
+    gameover.play();
+
+    gameover.addEventListener('ended', () => gameover.remove());
+  }, 1200);
+
+  setTimeout(() => GameResult(false), 10000);
+}
+
+export function winAnimation() {
+  //
+  const app = document.querySelector('#app');
+
+  setTimeout(() => (app.innerHTML = ''), 500);
+
+  setTimeout(() => {
+    app.appendChild(win);
+    win.volume = 1;
+    win.play();
+
+    win.addEventListener('ended', () => GameResult(true) && win.remove());
+  }, 2200);
+}
+
 function resultStatsPNG(parent) {
   let app = document.querySelector('#app');
   let dataLS = JSON.parse(localStorage.getItem('data'));
   let statsLS = JSON.parse(localStorage.getItem('stats'));
 
+  // Score
+  let clicksScore = statsLS[0].clicks * 100;
+  let errorsScore = statsLS[0].games.reduce((acc, next) => acc + next) * 10000;
+  let score = Math.pow(remainingTime, 2) * 3 - errorsScore - clicksScore;
+
   // Stats
-  let stats = { username: dataLS.username, date: dataLS.date };
+  let stats = {
+    username: dataLS.username,
+    date: dataLS.date,
+    total: score,
+    errors_clicks: `-${clicksScore}`,
+    errors_points: `-${errorsScore}`,
+    alternative: dataLS.alternative,
+  };
+
   statsLS.forEach((object) => {
     let entries = Object.entries(object);
     entries.forEach(([key, value]) => {
@@ -101,44 +145,9 @@ function resultStatsPNG(parent) {
 }
 
 function getIndividualRankNote(score) {
-  if (score > 600) return 'S';
-  if (score < 600 && score > 500) return 'A';
-  if (score > 300 && score < 500) return 'B';
-  if (score > 200 && score < 300) return 'C';
-  if (score < 200) return 'D';
-}
-
-export function gameOverAnimation() {
-  //
-  const app = document.querySelector('#app');
-  const room = document.querySelector('#room');
-  room && (room.style.animation = 'glitch 0.6s ease-in-out');
-
-  playSound(new Audio('/assets/audio/sounds/console/game-over.mp3'));
-
-  setTimeout(() => (app.innerHTML = ''), 500);
-
-  setTimeout(() => {
-    app.appendChild(gameover);
-    gameover.play();
-
-    gameover.addEventListener('ended', () => gameover.remove());
-  }, 1200);
-
-  setTimeout(() => GameResult(false), 10000);
-}
-
-export function winAnimation() {
-  //
-  const app = document.querySelector('#app');
-
-  setTimeout(() => (app.innerHTML = ''), 500);
-
-  setTimeout(() => {
-    app.appendChild(win);
-    win.volume = 1;
-    win.play();
-
-    win.addEventListener('ended', () => GameResult(true) && win.remove());
-  }, 2200);
+  if (score >= 800000) return 'S';
+  if (score < 800000 && score >= 700000) return 'A';
+  if (score < 700000 && score >= 500000) return 'B';
+  if (score < 500000 && score >= 350000) return 'C';
+  if (score < 350000) return 'D';
 }

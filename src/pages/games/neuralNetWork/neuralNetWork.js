@@ -1,11 +1,10 @@
 import { fisherYatesShuffle, timer } from '../../../utils';
 import { statsCollector } from '../../../data/localStorage/LS';
-// import { failsOnMinigames } from '../../../localStorage/LS';
 import { start } from '../../Games/games';
 import Smash from '../smashThatTrash/Smash';
-import './neuralNetWork.css';
 import { handleTime } from '../../../components/countdown/Countdown';
 import { accessSound } from '../../../components/audio/Audio';
+import './neuralNetWork.css';
 
 const neuralNetWorkContainer = document.createElement('section');
 neuralNetWorkContainer.className = 'neuralnetwork-container';

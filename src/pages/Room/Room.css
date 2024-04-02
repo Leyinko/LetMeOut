@@ -1,32 +1,10 @@
-/* TEST POSITIONING */
-
-/* .object {
-  display: none;
-  position: absolute;
-  left: 1591px;
-  top: 38.5px;
-  width: 64px;
-  filter: drop-shadow(5px 20px 3px black);
-}
-
-.collider {
-  position: absolute;
-  left: 1625px;
-  top: 59px;
-  width: 21px;
-  height: 20px;
-  border: 1px solid yellow;
-} */
-
-/* TEST POSITIONING */
-
 #ticket.clickable.block {
   pointer-events: none;
 }
 
 section#room {
-  animation: room 8s ease-in-out backwards;
-  /* animation: room 0.1s ease-in-out backwards; */
+  /* animation: room 8s ease-in-out backwards; */
+  animation: room 0.1s ease-in-out backwards;
 }
 
 section#room {

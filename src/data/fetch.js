@@ -27,6 +27,23 @@ export async function fetchFinalCode() {
   }
 }
 
+export async function sendScore() {
+  let body = {
+    lobbyCode: JSON.parse(localStorage.getItem('data')).lobbyCode,
+  };
+  try {
+    let response = await fetch(`http://5.250.185.179:3000/save-ranking`, {
+      method: 'POST',
+      body: JSON.stringify(body),
+      headers: { 'Content-Type': 'application/json' },
+    });
+  } catch (error) {
+    console.error('Error sending Score to DDBB', error);
+  }
+}
+
+// ! BETA DATA ! //
+
 export async function accessBeta(value) {
   try {
     let response = await fetch(`http://5.250.185.179:3000/access-game?pass=${value}`, {
@@ -42,25 +59,6 @@ export async function accessBeta(value) {
   }
 }
 
-export async function sendScore() {
-  let body = {
-    lobbyCode: JSON.parse(localStorage.getItem('data')).lobbyCode,
-  };
-  try {
-    let response = await fetch(`http://5.250.185.179:3000/save-ranking`, {
-      method: 'POST',
-      body: JSON.stringify(body),
-      headers: { 'Content-Type': 'application/json' },
-    });
-
-    console.log(response);
-  } catch (error) {
-    console.error('Error sending Score to DDBB', error);
-  }
-}
-
-// ! BETA DATA ! //
-
 export async function sendUserStats() {
   let body = {
     username: JSON.parse(localStorage.getItem('data')).username,
@@ -74,8 +72,6 @@ export async function sendUserStats() {
       body: JSON.stringify(body),
       headers: { 'Content-Type': 'application/json' },
     });
-
-    console.log(response);
   } catch (error) {
     console.error('Error sending Score to DDBB', error);
   }

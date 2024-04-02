@@ -11,14 +11,11 @@
 }
 
 #room-code {
-  /* user-select: all; */
-  /* cursor: text; */
   margin-top: 25px;
   font-size: 3rem;
 }
 
 .copy-code {
-  /* display: none; */
   position: absolute;
   margin-left: 10px;
   width: 20px;
@@ -65,7 +62,6 @@
   right: 0px;
   top: 50%;
   transform: translateY(-50%);
-  /* width: 25%; */
   height: fit-content;
   display: flex;
   justify-content: center;

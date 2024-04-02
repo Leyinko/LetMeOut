@@ -20,9 +20,6 @@
   border: 2px outset rgba(0, 0, 0, 0.623);
   background-color: transparent;
   font-size: 10px;
-  /* border-radius: 4px; */
-  /* pointer-events: none;
-  opacity: 0.6; */
 }
 
 #transfer-panel > div {
@@ -49,7 +46,6 @@
   color: rgba(0, 0, 0, 0.87);
   background-color: rgba(255, 255, 255, 0.322);
   border: 2px inset rgba(0, 0, 0, 0.438);
-  /* border-radius: 5px; */
 }
 
 #transfer-panel p {

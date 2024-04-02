@@ -1,11 +1,10 @@
-import './memoryPath.css';
 import { start } from '../../Games/games';
 import neuralNetWork from '../neuralNetWork/neuralNetWork';
 import { statsCollector } from '../../../data/localStorage/LS';
 import { handleTime } from '../../../components/countdown/Countdown';
 import { timer } from '../../../utils';
 import { accessSound } from '../../../components/audio/Audio';
-// import { failsOnMinigames } from '../../../localStorage/LS';
+import './memoryPath.css';
 
 const memoryPathContainer = document.createElement('section');
 memoryPathContainer.className = 'memorypath-container';

@@ -4,27 +4,16 @@ import { accessBeta } from '../../../data/fetch';
 import { statsCollector } from '../../../data/localStorage/LS';
 import sendRequest, { ticketWSListen } from '../../../data/webSocket/webSocket';
 import { timer } from '../../../utils';
-import { GameResult, gameOverAnimation, winAnimation } from '../../Result/Result';
-import { worldwideRelease } from '../Console/Actions/Diskette/Release/Release';
 import { Inventory } from '../Inventory/inventory';
 import { itemsPrintOnStage } from '../Prints/Prints';
-import './Progression.css';
 
-// Start Game
+// Start Game Trigger
 export function firstClickStart() {
   const room = document.querySelector('#room');
 
   room.addEventListener(
     'click',
     () => {
-      // ! TEST
-      // document.querySelector('#app').innerHTML = '';
-      // worldwideRelease();
-      // gameOverAnimation();
-      // winAnimation();
-      // GameResult(false);
-      // GameResult(true);
-      // ! TEST
       let clock = new Audio('/assets/audio/sounds/lobby/Clock-loading.mp3');
       setTimeout(() => playSound(clock), 500);
       // Time
@@ -42,7 +31,7 @@ export function firstClickStart() {
   );
 }
 
-// Inputs = Chat/GameAccess/Release
+// Inputs = Chat/Games/Final/Beta
 export function passwordHandler(input, box) {
   let access = document.querySelector(`#${box}`);
   let room = document.querySelector('#room');

@@ -3,6 +3,7 @@ import { accessSound, audioConfig, playSound } from '../../../../../../component
 import './Release.css';
 
 const errorAudio = new Audio('/assets/audio/sounds/console/error.mp3');
+
 const errorWindows = [
   '/assets/images/pictures/console/Errors-windows-release/Error1.png',
   '/assets/images/pictures/console/Errors-windows-release/Error2.png',
@@ -65,7 +66,7 @@ function createBug(bugsArea) {
   bugsArea.append(bug);
 }
 
-// Alternative Ending
+// Hidden Ending
 function createErrorWindow(bugsArea) {
   if (counterBugs < errors) {
     setTimeout(() => {
@@ -89,7 +90,7 @@ function createErrorWindow(bugsArea) {
   }
 }
 
-// Final Alternative Intro
+// Animation
 export function worldwideRelease() {
   const app = document.querySelector('#app');
   const room = document.querySelector('#room');
@@ -104,7 +105,7 @@ export function worldwideRelease() {
   audio.addEventListener('ended', () =>
     setTimeout(() => {
       app.innerHTML = '';
-      GameResult(false);
+      GameResult(true);
     }, 1000)
   );
 

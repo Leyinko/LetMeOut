@@ -20,7 +20,7 @@ export function Inventory(type, parent) {
 
   parent.appendChild(inventoryContainer);
 
-  // Page
+  // Section
   inventoryContainer.parentElement.id === 'main' && (inventoryContainer.className = 'init-main');
 }
 
@@ -39,9 +39,9 @@ function collectablesDropdown(e, type) {
         if (page) {
           let note = document.querySelector(`#note-${page} img`);
           let parent = note.parentElement;
-          // In inventory
+          // Added to Inventory
           note.classList.add('got');
-          // Examine
+          // Examine enabled
           parent.addEventListener('click', () => inventoryModal(note.src));
         }
       });
@@ -59,11 +59,11 @@ export function addItemToInventory(item) {
     : actives.forEach((active, index) => {
         if (active.src.match(pattern)[0].at(0) === item.match(pattern)[0].at(0)) {
           let parent = active.parentElement;
-          // In inventory
+          // Added to Inventory
           active.classList.add('got');
-          // Unlock
+          // ! Unlock new Path -> PROGRESSION !
           unlockPathFromObject(index);
-          // Examine
+          // Examine enabled
           parent.addEventListener('click', () => inventoryModal(item));
         }
       });
