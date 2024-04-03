@@ -139,9 +139,9 @@ export function waitingPlayersForReboot(states) {
 // Scores
 export function calculateScore() {
   let statsLS = JSON.parse(localStorage.getItem('stats'));
-  let clicksScore = statsLS[0].clicks * 100;
-  let errorsScore = statsLS[0].games.reduce((acc, next) => acc + next) * 10000;
-  let score = Math.pow(remainingTime, 2) * 3 - errorsScore - clicksScore;
+  let clicksScore = statsLS[0].clicks * 11;
+  let errorsScore = statsLS[0].games.reduce((acc, next) => acc + next) * 999;
+  let score = remainingTime * 3000 - errorsScore - clicksScore;
   return score;
 }
 

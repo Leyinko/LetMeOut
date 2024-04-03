@@ -76,3 +76,18 @@ export async function sendUserStats() {
     console.error('Error sending Score to DDBB', error);
   }
 }
+
+export async function getRankings() {
+  try {
+    const response = await fetch('http://5.250.185.179:3000/get-ranking', {
+      method: 'GET',
+      headers: [['Content-Type', 'application/json']],
+    });
+
+    const data = await response.json();
+
+    return data.ranking;
+  } catch (err) {
+    console.log('Error getting ranks', err);
+  }
+}
