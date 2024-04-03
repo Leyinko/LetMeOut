@@ -46,6 +46,7 @@ const Release = () => {
   document.querySelector('#countdown-timer').remove();
 
   setTimeout(() => createErrorWindow(bugsArea), 1000);
+  return true;
 };
 
 // Create bugs

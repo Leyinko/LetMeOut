@@ -72,7 +72,7 @@ export function inGameWebSocket() {
         // NB : ALTERNATIVE ENDING
         current.alternative && setAlternativeTrue();
         if (current.alternative && current.name == ls.username) {
-          Release();
+          Release() && sendScore();
         } else if (current.alternative && current.name !== ls.username) {
           worldwideRelease();
           return;
