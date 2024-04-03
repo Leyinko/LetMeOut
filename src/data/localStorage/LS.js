@@ -38,6 +38,7 @@ export function setAlternativeTrue() {
   let data = JSON.parse(localStorage.getItem('data'));
   data.alternative = true;
   localStorage.setItem('data', JSON.stringify(data));
+  return true;
 }
 
 // Stats

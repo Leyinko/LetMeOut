@@ -91,9 +91,10 @@ export function unlockPathFromObject(index) {
 
 export function unlockTicket(signal) {
   let room = document.querySelector(`#room[room="${signal}"]`);
-  room &&
+  if (room && document.querySelector('#ticket').classList.contains('block')) {
     playSound(new Audio('/assets/audio/sounds/console/next-3.mp3')) &&
-    document.querySelector('#ticket').classList.remove('block');
+      document.querySelector('#ticket').classList.remove('block');
+  }
 }
 
 // Next Stage
@@ -133,14 +134,24 @@ export function waitingPlayersForReboot(states) {
 
     app.appendChild(confirmation);
   }, 1500);
+}
 
-  // Save Individual Score
-  //try before Luca kills me
-
+// Scores
+export function calculateScore() {
   let statsLS = JSON.parse(localStorage.getItem('stats'));
   let clicksScore = statsLS[0].clicks * 100;
   let errorsScore = statsLS[0].games.reduce((acc, next) => acc + next) * 10000;
   let score = Math.pow(remainingTime, 2) * 3 - errorsScore - clicksScore;
+  return score;
+}
 
-  sendRequest('setPlayerTime', null, null, null, score);
+export function setScores() {
+  let data = JSON.parse(localStorage.getItem('data'));
+  let self = data.players.find((player) => player.name === data.username);
+  let score = calculateScore();
+  // Send Individual Score
+  let timeout = (data.players.indexOf(self) + 1) * 2000;
+  setTimeout(() => sendRequest('setPlayerTime', null, null, null, score), timeout);
+  // Send Team Score
+  data.players.at(-1).name == data.username && setTimeout(() => sendScore(), 20000);
 }

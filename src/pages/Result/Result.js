@@ -1,10 +1,10 @@
 import { playSound } from '../../components/audio/Audio';
 import Menu from '../../components/menu/Menu';
-import { sendUserStats } from '../../data/fetch';
+import { sendScore, sendUserStats } from '../../data/fetch';
 import { preloadVideo } from '../../data/preload';
 import { toMain } from '../Main/Opening';
 import html2canvas from 'html2canvas';
-import { remainingTime } from '../../components/countdown/Countdown';
+import { calculateScore, setScores } from '../Room/Progression/Progression';
 import './Result.css';
 
 // Video Preload
@@ -33,6 +33,8 @@ export function GameResult(out) {
   // Conditions
   if (out) {
     message.textContent = 'Con-DRAG-ulations';
+    // TEST
+    setScores();
     // Score PNG
     resultStatsPNG(result);
   } else {
@@ -86,7 +88,7 @@ function resultStatsPNG(parent) {
   // Score
   let clicksScore = statsLS[0].clicks * 100;
   let errorsScore = statsLS[0].games.reduce((acc, next) => acc + next) * 10000;
-  let score = Math.pow(remainingTime, 2) * 3 - errorsScore - clicksScore;
+  let score = calculateScore();
 
   // Stats
   let stats = {
