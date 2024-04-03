@@ -4,7 +4,6 @@ import Release, { worldwideRelease } from '../../pages/Room/Console/Actions/Disk
 import { gameOverAnimation, winAnimation } from '../../pages/Result/Result';
 import { chatMessage } from '../../pages/Room/Console/Actions/Chat/Chat';
 import { nextStage, unlockTicket, waitingPlayersForReboot } from '../../pages/Room/Progression/Progression';
-import { sendScore } from '../fetch';
 import { setAlternativeTrue } from '../localStorage/LS';
 
 // export const ws = new WebSocket('ws://localhost:3000');
@@ -62,8 +61,7 @@ export function inGameWebSocket() {
           current.name === local.name && states.length <= 2
             ? waitingPlayersForReboot(states)
             : confirmation && (confirmation.textContent = String(states.length));
-          // Send Team Score
-          team.every(Boolean) && ls.players.at(-1).id == self.textContent && sendScore();
+
           // Win
           team.every(Boolean) && winAnimation();
           return;
@@ -72,7 +70,7 @@ export function inGameWebSocket() {
         // NB : ALTERNATIVE ENDING
         current.alternative && setAlternativeTrue();
         if (current.alternative && current.name == ls.username) {
-          Release() && sendScore();
+          Release();
         } else if (current.alternative && current.name !== ls.username) {
           worldwideRelease();
           return;

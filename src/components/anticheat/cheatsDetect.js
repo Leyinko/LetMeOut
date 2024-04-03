@@ -9,6 +9,11 @@ export default function cheatDetect() {
   window.addEventListener('focus', () => stopSpeedUp());
 }
 
+export function initiateAntiCheat() {
+  interval && stopSpeedUp();
+  cheatDetect();
+}
+
 function startSpeedUp() {
   const timer = document.querySelector('#countdown-timer');
 
