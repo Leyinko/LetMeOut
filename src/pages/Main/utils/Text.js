@@ -1,3 +1,5 @@
+import { getRankings } from '../../../data/fetch';
+
 export const opening_warning = {
   warning: 'WARNING: PLEASE READ BEFORE PLAYING',
   content: `The motion pictures contained in this video game are protected under the copyright laws of the United States and Other countries.
@@ -28,8 +30,45 @@ export const immersion_message = {
 };
 
 export const modals_main_template = {
-  credits: `<h1>COMING SOON</h1>`,
-  scores: `<h1>COMING SOON</h1>`,
+  credits: () => {
+    return 'Comming soon';
+  },
+  scores: async () => {
+    const ranking = await getRankings();
+
+    console.log(ranking);
+
+    const rankingModal = document.createElement('div');
+    rankingModal.id = 'ranking-modal';
+
+    ranking.forEach((rank) => {
+      const position = document.createElement('ul');
+      position.className = 'rank-position';
+
+      const teamName = document.createElement('li');
+      teamName.className = 'team-name';
+      teamName.textContent = `${rank.teamName}`;
+
+      const teamScore = document.createElement('li');
+      teamScore.className = 'team-score';
+      teamScore.textContent = `${rank.teamScore}`;
+
+      const players = document.createElement('ul');
+      players.className = 'ranking-players';
+
+      rank.players.forEach((player) => {
+        const playerScore = document.createElement('li');
+        playerScore.textContent = `${player.name} - ${player.time}`;
+
+        players.append(playerScore);
+      });
+
+      position.append(teamName, teamScore, players);
+      rankingModal.appendChild(position);
+    });
+
+    return rankingModal;
+  },
 };
 
 export const introduction_lobby = {
