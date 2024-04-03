@@ -1,7 +1,7 @@
 import { playSound, stopSound } from '../audio/Audio';
 import { handleTime } from '../countdown/Countdown';
 
-let interval = undefined;
+export let interval = undefined;
 const blurSound = new Audio('/assets/audio/sounds/console/window-blur.mp3');
 
 export default function cheatDetect() {
@@ -22,7 +22,7 @@ function startSpeedUp() {
   interval && playSound(blurSound);
 }
 
-function stopSpeedUp() {
+export function stopSpeedUp() {
   document.title = 'letmeout';
   stopSound(blurSound);
   clearInterval(interval);

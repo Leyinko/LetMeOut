@@ -8,7 +8,7 @@ import { sendScore } from '../fetch';
 import { setAlternativeTrue } from '../localStorage/LS';
 
 // export const ws = new WebSocket('ws://localhost:3000');
-export const ws = new WebSocket('ws://5.250.185.179:3000');
+export const ws = new WebSocket('ws://localhost:3000');
 
 export let listen = false;
 export const ticketWSListen = () => (listen = true);
