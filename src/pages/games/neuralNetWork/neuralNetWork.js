@@ -41,7 +41,7 @@ export default function neuralNetWork() {
   generateNewPatterns();
   printPattern(playerPattern);
   start('default', animatePattern);
-  parent.append(neuralNetWorkContainer);
+  !parent.contains(neuralNetWorkContainer) && parent.append(neuralNetWorkContainer);
 }
 
 function patternGenerator(pattern) {

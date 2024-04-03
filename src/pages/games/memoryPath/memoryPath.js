@@ -84,7 +84,7 @@ export default function MemoryPath() {
 
   memoryPathContainer.appendChild(keyboard);
 
-  parent.appendChild(memoryPathContainer);
+  !parent.contains(memoryPathContainer) && parent.appendChild(memoryPathContainer);
   start('default', createPath);
 }
 

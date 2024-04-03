@@ -135,5 +135,12 @@ export function waitingPlayersForReboot(states) {
   }, 1500);
 
   // Save Individual Score
-  sendRequest('setPlayerTime', null, null, null, remainingTime);
+  //try before Luca kills me
+
+  let statsLS = JSON.parse(localStorage.getItem('stats'));
+  let clicksScore = statsLS[0].clicks * 100;
+  let errorsScore = statsLS[0].games.reduce((acc, next) => acc + next) * 10000;
+  let score = Math.pow(remainingTime, 2) * 3 - errorsScore - clicksScore;
+
+  sendRequest('setPlayerTime', null, null, null, score);
 }

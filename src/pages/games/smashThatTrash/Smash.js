@@ -23,7 +23,7 @@ function Smash() {
 
   smashContainer.id = 'smash-container';
 
-  parent.appendChild(smashContainer);
+  !parent.contains(smashContainer) && parent.appendChild(smashContainer);
 
   // Buttons
   let buttons = 0;
