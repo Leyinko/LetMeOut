@@ -20,7 +20,6 @@ function Smash() {
 
   // App
   const parent = document.querySelector('#repair');
-
   smashContainer.id = 'smash-container';
 
   parent.appendChild(smashContainer);
