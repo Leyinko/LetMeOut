@@ -44,8 +44,8 @@ function gameControllers(room) {
   // Lock Progression Paths
   lockPaths();
   // ANTI-CHEAT
-  // interval && stopSpeedUp();
-  // cheatDetect();
+  interval && stopSpeedUp();
+  cheatDetect();
   // Random Sounds
   randomSounds();
   // Clicks

@@ -9,10 +9,13 @@ export async function fetchFinalCode() {
   // `http://5.250.185.179:3000/final-code?lobbyCode=${lobbyCode}&id=${encodeURIComponent(id)}`
 
   try {
-    let response = await fetch(`http://localhost:3000/final-code?lobbyCode=${lobbyCode}&id=${encodeURIComponent(id)}`, {
-      method: 'GET',
-      headers: [['Content-Type', 'application/json']],
-    });
+    let response = await fetch(
+      `http://5.250.185.179:3000/final-code?lobbyCode=${lobbyCode}&id=${encodeURIComponent(id)}`,
+      {
+        method: 'GET',
+        headers: [['Content-Type', 'application/json']],
+      }
+    );
     if (!response.ok) {
       throw new Error('Error accessing DDBB');
     }
@@ -29,7 +32,7 @@ export async function sendScore() {
     lobbyCode: JSON.parse(localStorage.getItem('data')).lobbyCode,
   };
   try {
-    let response = await fetch(`http://localhost:3000/save-ranking`, {
+    let response = await fetch(`http://5.250.185.179:3000/save-ranking`, {
       method: 'POST',
       body: JSON.stringify(body),
       headers: { 'Content-Type': 'application/json' },
@@ -43,7 +46,7 @@ export async function sendScore() {
 
 export async function accessBeta(value) {
   try {
-    let response = await fetch(`http://localhost:3000/access-game?pass=${value}`, {
+    let response = await fetch(`http://5.250.185.179:3000/access-game?pass=${value}`, {
       method: 'GET',
       headers: [['Content-Type', 'application/json']],
     });
@@ -64,7 +67,7 @@ export async function sendUserStats() {
   };
 
   try {
-    let response = await fetch(`http://localhost:3000/game-data`, {
+    let response = await fetch(`http://5.250.185.179:3000/game-data`, {
       method: 'POST',
       body: JSON.stringify(body),
       headers: { 'Content-Type': 'application/json' },
