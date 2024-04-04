@@ -99,20 +99,20 @@ async function allPlayersReady(data, username) {
   let confirm = new Audio('/assets/audio/sounds/lobby/Confirm-game.mp3');
   let ready = players.every((player) => player.style.opacity === '0.85');
 
-  // if (ready) {
-  //   // Room Assign
-  //   sendRequest('assignRoom', username, data.lobbyCode);
-  //   // Generate Final Code
-  //   sendRequest('generateFinalCode');
-  //   // Start
-  //   preIntro(confirm);
-  // }
+  if (ready) {
+    // Room Assign
+    sendRequest('assignRoom', username, data.lobbyCode);
+    // Generate Final Code
+    sendRequest('generateFinalCode');
+    // Start
+    preIntro(confirm);
+  }
 
   // ! Solo Launch Test
-  sendRequest('assignRoom', username, data.lobbyCode);
-  sendRequest('generateFinalCode');
-  document.querySelector('section').remove();
-  setTimeout(() => Room(), 1000);
+  // sendRequest('assignRoom', username, data.lobbyCode);
+  // sendRequest('generateFinalCode');
+  // document.querySelector('section').remove();
+  // setTimeout(() => Room(), 1000);
   // ! Intro OR Not >
   // preIntro(confirm);
   // ! Solo Launch Test

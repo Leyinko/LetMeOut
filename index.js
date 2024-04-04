@@ -7,28 +7,25 @@ import { createPasswordModal } from './src/pages/Room/Console/Console.js';
 import { preloadAllAssets } from './src/data/preload.js';
 import Loader from './src/components/loader/Loader.js';
 import './style.css';
-import { getRankings } from './src/data/fetch.js';
 
 // NB : Audio for Test
-const audio = document.createElement('audio');
-app.appendChild(audio);
+// const audio = document.createElement('audio');
+// app.appendChild(audio);
 
 // > Menus
 // Main();
-Lobby();
+// Lobby();
 // Room();
 
 // ! BETA TEST
-// // NB : Preload Assets
-// preloadAllAssets();
+// NB : Preload Assets
+preloadAllAssets();
 
-// // > Loader Test
-// Loader(document.querySelector('#app'));
+// > Loader Test
+Loader(document.querySelector('#app'));
 
-// window.addEventListener('load', () => {
-//   document.querySelector('.loader').remove();
-//   createPasswordModal('beta-access', document.querySelector('#app'), Launch);
-// });
+window.addEventListener('load', () => {
+  document.querySelector('.loader').remove();
+  createPasswordModal('beta-access', document.querySelector('#app'), Launch);
+});
 // ! BETA TEST
-
-getRankings();
