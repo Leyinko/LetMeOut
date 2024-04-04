@@ -1,34 +1,28 @@
 import { playSound, stopSound } from '../audio/Audio';
-import { handleTime } from '../countdown/Countdown';
+import { handleTime, remainingTime } from '../countdown/Countdown';
 
-export let interval = undefined;
 const blurSound = new Audio('/assets/audio/sounds/console/window-blur.mp3');
 
 export default function cheatDetect() {
-  window.addEventListener('blur', () => startSpeedUp());
-  window.addEventListener('focus', () => stopSpeedUp());
-}
+  let interval;
+  window.addEventListener('blur', () => {
+    const timer = document.querySelector('#countdown-timer');
 
-export function initiateAntiCheat() {
-  interval && stopSpeedUp();
-  cheatDetect();
-}
-
-function startSpeedUp() {
-  const timer = document.querySelector('#countdown-timer');
-
-  interval =
-    timer &&
-    setInterval(() => {
+    interval = setInterval(() => {
       document.title = `${timer.textContent} 👁️`;
       handleTime(40, false, false);
+
+      if (remainingTime <= 0) {
+        stopSound(blurSound);
+        clearInterval(interval);
+      }
     }, 1000);
 
-  interval && playSound(blurSound);
-}
-
-export function stopSpeedUp() {
-  document.title = 'letmeout';
-  stopSound(blurSound);
-  clearInterval(interval);
+    interval && playSound(blurSound);
+  });
+  window.addEventListener('focus', () => {
+    clearInterval(interval);
+    document.title = 'letmeout';
+    stopSound(blurSound);
+  });
 }
