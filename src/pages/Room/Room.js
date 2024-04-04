@@ -7,8 +7,8 @@ import { firstClickStart, lockPaths } from './Progression/Progression';
 import { getUserData, statsCollector } from '../../data/localStorage/LS';
 import { randomSounds } from '../../components/audio/Audio';
 import { inGameWebSocket } from '../../data/webSocket/webSocket';
-import { initiateAntiCheat } from '../../components/anticheat/cheatsDetect';
 import './Room.css';
+import cheatDetect from '../../components/anticheat/cheatsDetect';
 
 export const Room = () => {
   // App
@@ -44,7 +44,7 @@ function gameControllers(room) {
   // Lock Progression Paths
   lockPaths();
   // ANTI-CHEAT
-  initiateAntiCheat();
+  cheatDetect();
   // Random Sounds
   randomSounds();
   // Clicks
