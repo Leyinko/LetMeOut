@@ -18,6 +18,7 @@
   z-index: 999999;
   backdrop-filter: blur(3.1875rem) brightness(0.4);
   box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0.636);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .close-modal-button {
