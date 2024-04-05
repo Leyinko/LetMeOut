@@ -4,6 +4,7 @@ import Menu from '../../components/menu/Menu';
 import Main from '../Main/utils/Main/Main';
 import Version from '../../components/version/Version';
 import './Lobby.css';
+import SelectDifficulty from '../../components/difficulty/SelectDifficulty';
 
 export const Lobby = () => {
   // App
@@ -20,7 +21,12 @@ export const Lobby = () => {
   lobby.appendChild(main);
 
   // Lobby Selections Menus
-  GameSelect('Create Party', 'create', UserInfoField('USERNAME', 'username'));
+  GameSelect(
+    'Create Party',
+    'create',
+    UserInfoField('USERNAME', 'username'),
+    SelectDifficulty('DIFFICULTY', 'difficulty')
+  );
   GameSelect('JOin Party', 'join', UserInfoField('USERNAME', 'username'), UserInfoField('ROOM', 'room'));
 
   // General Menu

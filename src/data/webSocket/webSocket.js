@@ -6,8 +6,8 @@ import { chatMessage } from '../../pages/Room/Console/Actions/Chat/Chat';
 import { nextStage, unlockTicket, waitingPlayersForReboot } from '../../pages/Room/Progression/Progression';
 import { setAlternativeTrue } from '../localStorage/LS';
 
-// export const ws = new WebSocket('ws://localhost:3000');
-export const ws = new WebSocket('ws://5.250.185.179:3000');
+export const ws = new WebSocket('ws://localhost:3000');
+// export const ws = new WebSocket('ws://5.250.185.179:3000');
 
 export let listen = false;
 export const ticketWSListen = () => (listen = true);
