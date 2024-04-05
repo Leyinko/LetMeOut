@@ -29,16 +29,17 @@ const PlayersHub = (code, username, party) => {
 
     room.appendChild(copy);
 
-    const nickname = document.createElement('h3');
-    nickname.className = 'player';
-    nickname.textContent = username.toUpperCase();
-
     const players = document.createElement('div');
     players.className = 'players';
 
     let player = 0;
     while (player < 3) {
-      players.innerHTML += `<img class="p${player + 1}" src="/assets/images/pictures/lobby/P${player + 1}.png">`;
+      players.innerHTML += `
+      <div>
+        <h3></h3>
+        <img class="p${player + 1}" src="/assets/images/pictures/lobby/P${player + 1}.png">
+      </div>
+      `;
       player++;
     }
 
@@ -50,7 +51,7 @@ const PlayersHub = (code, username, party) => {
 
     introduction.appendChild(text);
 
-    playersHub.append(room, nickname, players, introduction);
+    playersHub.append(room, players, introduction);
 
     Button('', 'ready-button', 'lobby-buttons', 'submit', lobby);
     let ready = document.querySelector('.ready-button');
@@ -63,8 +64,9 @@ const PlayersHub = (code, username, party) => {
       setTimeout(() => closePlayersHub(playersHub, ready, cancel), 100);
     });
 
-    // First State Update
+    // First Data Update
     updateReadyState(party);
+    setPlayerName(party);
 
     // Hub WS
     ws.onmessage = function (event) {
@@ -72,10 +74,13 @@ const PlayersHub = (code, username, party) => {
       if (current.tag === 'playerState') {
         // States
         updateReadyState(current);
-        allPlayersReady(current, nickname.textContent.toLowerCase());
+        allPlayersReady(current, username.toLowerCase());
       } else if (current.tag === 'assignRoom') {
         // Save Data at Start
         storeGameData(current, username);
+      } else {
+        // Players Info
+        setPlayerName(current);
       }
     };
   }
@@ -92,6 +97,13 @@ function updateReadyState(data) {
   data.players.forEach((player, index) => {
     player.ready ? (players[index].style.opacity = '0.85') : (players[index].style.opacity = '');
   });
+}
+
+function setPlayerName(data) {
+  let players = document.querySelectorAll('.players div h3');
+  for (let i = 0; i < 3; i++) {
+    players[i] && (players[i].textContent = data.players[i] ? data.players[i].name : '');
+  }
 }
 
 async function allPlayersReady(data, username) {
