@@ -15,19 +15,14 @@ export const Lobby = () => {
   lobby.id = 'lobby';
   app.append(lobby);
 
-  // Main Lobby Container
+  // Main Container
   const main = document.createElement('main');
   main.id = 'lobby-main';
   lobby.appendChild(main);
 
-  // Lobby Selections Menus
-  GameSelect(
-    'Create Party',
-    'create',
-    UserInfoField('USERNAME', 'username'),
-    SelectDifficulty('DIFFICULTY', 'difficulty')
-  );
-  GameSelect('JOin Party', 'join', UserInfoField('USERNAME', 'username'), UserInfoField('ROOM', 'room'));
+  // Selections Menu
+  GameSelect('CREATE', 'create', UserInfoField('USERNAME', 'username'), SelectDifficulty('DIFFICULTY', 'difficulty'));
+  GameSelect('JOIN', 'join', UserInfoField('USERNAME', 'username'), UserInfoField('ROOM', 'room'));
 
   // General Menu
   Menu('BACK TO MAIN', 'back-to-main', lobby);
@@ -40,5 +35,5 @@ export const Lobby = () => {
   });
 
   // Version
-  Version('V1.1', lobby);
+  Version('V2.0', lobby);
 };

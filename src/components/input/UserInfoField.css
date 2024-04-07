@@ -1,14 +1,23 @@
+[role='label'] {
+  margin-bottom: 8px;
+  margin-left: 5px;
+  font-size: 1.3rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 300;
+}
+
 input {
-  width: 90%;
+  width: 70%;
   line-height: 35px;
   margin-bottom: 20px;
   padding: 0px 20px;
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   text-align: center;
   border: none;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-weight: lighter;
-  background-color: rgba(255, 255, 255, 0.041);
+  /* font-weight: lighter; */
+  background-color: rgba(255, 255, 255, 0.795);
+  color: black;
 }
 
 input:hover {
@@ -25,10 +34,6 @@ input::selection {
 
 #fields-modal input {
   opacity: 0.9;
-  font-family: 'JMH';
-}
-
-[role='label'] {
-  margin-bottom: 5px;
-  font-size: 1.3rem;
+  text-align: left;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

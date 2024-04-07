@@ -5,24 +5,27 @@
   background: url('/assets/images/pictures/lobby/Lobby-2-2.png') center/cover no-repeat;
   opacity: 0;
   animation: animation-fade 0.6s ease-in-out forwards;
+  transition: all 1s ease-in-out;
+  /* transform: scale(1.2) translateX(12.5rem); */
 }
 
 #lobby-main {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 45%;
+  left: 10%;
   transform: translate(-50%, -50%);
-  width: inherit;
-  height: 55%;
+  /* width: inherit; */
+  /* height: 60%; */
   display: flex;
-  justify-content: space-evenly;
-  overflow: hidden;
+  flex-direction: column;
+  gap: 1.25rem;
+  /* overflow: hidden; */
 }
 
 .cancel-lobby {
   position: absolute;
-  bottom: 80px;
-  right: 80px;
+  bottom: 130px;
+  left: 80px;
   opacity: 0.7;
 }
 

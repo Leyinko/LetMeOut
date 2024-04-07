@@ -16,15 +16,11 @@ export const Main = () => {
   menuSelection(main);
   let selections = document.querySelector('#menu-field');
 
-  // Collectables
-  Inventory('passive', main);
-  let inventory = document.querySelector('#inventory-passive');
-
   // Version
-  Version('V1.1', main);
+  Version('V2.0', main);
 
   // First Animation
-  openingAnimation(main, selections, inventory);
+  openingAnimation(main, selections);
 
   // Reset for New Game
   localStorage.removeItem('data');

@@ -6,19 +6,20 @@
   pointer-events: none;
   opacity: 0.6;
   background-color: transparent;
+  font-size: 11px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 [role='lobby-buttons'].granted:hover {
   cursor: pointer;
   opacity: 1;
-  outline: 1px solid rgba(255, 255, 255, 0.075);
   animation: glitch 0.4s linear;
 }
 
 [role='lobby-buttons'].granted {
   pointer-events: all;
-  background-color: rgba(0, 0, 0, 0.719);
   opacity: 0.8;
+  outline: 1px solid rgba(255, 255, 255, 0.747);
 }
 
 [role='lobby-buttons'].error {

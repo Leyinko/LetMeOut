@@ -13,8 +13,8 @@ const audio = document.createElement('audio');
 app.appendChild(audio);
 
 // > Menus
-// Main();
-Lobby();
+Main();
+// Lobby();
 // Room();
 
 // ! BETA TEST

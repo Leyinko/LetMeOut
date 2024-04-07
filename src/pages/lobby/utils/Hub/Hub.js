@@ -10,12 +10,11 @@ import './Hub.css';
 
 const PlayersHub = (code, username, party) => {
   const lobby = document.querySelector('#lobby');
-  const main = document.querySelector('#lobby-main');
 
   if (!document.querySelector('#players-hub')) {
     const playersHub = document.createElement('div');
     playersHub.id = 'players-hub';
-    main.insertAdjacentElement('afterbegin', playersHub);
+    lobby.insertAdjacentElement('afterbegin', playersHub);
 
     const room = document.createElement('span');
     room.id = 'room-code';
@@ -35,9 +34,8 @@ const PlayersHub = (code, username, party) => {
     let player = 0;
     while (player < 3) {
       players.innerHTML += `
-      <div>
-        <h3></h3>
-        <img class="p${player + 1}" src="/assets/images/pictures/lobby/P${player + 1}.png">
+      <div class="p${player + 1}" >
+        <img src="/assets/images/pictures/lobby/P${player + 1}.png">
       </div>
       `;
       player++;
@@ -49,11 +47,12 @@ const PlayersHub = (code, username, party) => {
     const text = document.createElement('span');
     text.textContent = introduction_lobby.intro;
 
-    introduction.appendChild(text);
+    introduction.append(room, text);
 
-    playersHub.append(room, players, introduction);
+    lobby.appendChild(introduction);
+    playersHub.appendChild(players);
 
-    Button('', 'ready-button', 'lobby-buttons', 'submit', lobby);
+    Button('', 'ready-button', 'lobby-buttons', 'submit', introduction);
     let ready = document.querySelector('.ready-button');
     ready.addEventListener('click', () => toggleReadyState(ready, code, username));
 
@@ -61,7 +60,7 @@ const PlayersHub = (code, username, party) => {
     let cancel = document.querySelector('.cancel-lobby');
     cancel.addEventListener('click', () => {
       sendRequest('exitLobby', username, code);
-      setTimeout(() => closePlayersHub(playersHub, ready, cancel), 100);
+      setTimeout(() => closePlayersHub(playersHub, ready, cancel, document.querySelector('.intro-lobby')), 100);
     });
 
     // First Data Update
@@ -78,19 +77,13 @@ const PlayersHub = (code, username, party) => {
       } else if (current.tag === 'assignRoom') {
         // Save Data at Start
         storeGameData(current, username);
-      } else {
+      } else if (/Lobby/.test(current.tag)) {
         // Players Info
         setPlayerName(current);
       }
     };
   }
 };
-
-function toggleReadyState(ready, code, username) {
-  ready.classList.toggle('ready');
-  const buttonState = ready.classList.contains('ready') ? true : false;
-  sendRequest('playerState', username, code, buttonState);
-}
 
 function updateReadyState(data) {
   let players = document.querySelectorAll('.players img');
@@ -100,10 +93,20 @@ function updateReadyState(data) {
 }
 
 function setPlayerName(data) {
-  let players = document.querySelectorAll('.players div h3');
-  for (let i = 0; i < 3; i++) {
-    players[i] && (players[i].textContent = data.players[i] ? data.players[i].name : '');
-  }
+  let players = document.querySelectorAll('.players div');
+  players.forEach((user) => user.childElementCount > 1 && user.querySelector('h3').remove());
+
+  data.players.forEach((player, index) => {
+    let username = document.createElement('h3');
+    username.textContent = player.name;
+    players[index].appendChild(username);
+  });
+}
+
+function toggleReadyState(ready, code, username) {
+  ready.classList.toggle('ready');
+  const buttonState = ready.classList.contains('ready') ? true : false;
+  sendRequest('playerState', username, code, buttonState);
 }
 
 async function allPlayersReady(data, username) {
