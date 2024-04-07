@@ -2,6 +2,7 @@ import Button from '../../../../components/button/Button';
 import PlayersHub from '../Hub/Hub';
 import { generateRandomString } from '../../../../utils';
 import sendRequest, { ws } from '../../../../data/webSocket/webSocket';
+import { difficulties_info } from '../../../Main/utils/Text';
 import './User.css';
 
 const UserFieldsModal = (button, parent, ...field) => {
@@ -18,12 +19,15 @@ const UserFieldsModal = (button, parent, ...field) => {
   let inputs = document.querySelectorAll('input');
   fieldsControl(inputs, submit);
 
+  button === 'CREATE' && difficultySelection();
+
   submit.addEventListener('click', (e) => {
     let username = document.querySelector('#username');
     let room = document.querySelector('#room');
+    let difficulty = document.querySelector('#difficulty-container h4.selected');
 
     if (e.target.textContent === 'CREATE') {
-      sendRequest('createLobby', username.value, generateRandomString());
+      sendRequest('createLobby', username.value, generateRandomString(), null, difficulty.textContent);
     } else {
       sendRequest('joinLobby', username.value, room.value);
     }
@@ -58,6 +62,37 @@ function fieldsControl(inputs, button) {
     input.addEventListener('keydown', (e) => {
       e.key === 'Tab' && e.preventDefault();
       e.key === 'Enter' && document.querySelector('button').click();
+    });
+  });
+}
+
+function difficultySelection() {
+  const difficulties = document.querySelectorAll('#difficulty-container h4');
+  let button = document.querySelector('#difficulty-container img');
+
+  button.addEventListener('click', (e) => {
+    button.classList.toggle('selected');
+
+    if (!document.querySelector('#difficulty-info')) {
+      let modal = document.createElement('div');
+      modal.id = 'difficulty-info';
+
+      let information = document.createElement('p');
+      information.textContent = difficulties_info;
+
+      modal.appendChild(information);
+      e.target.parentElement.parentElement.appendChild(modal);
+      console.log(e.target.parentElement.parentElement);
+    } else {
+      document.querySelector('#difficulty-info').remove();
+    }
+  });
+
+  // Select
+  difficulties.forEach((selection) => {
+    selection.addEventListener('click', (e) => {
+      difficulties.forEach((selection) => selection.classList.remove('selected'));
+      e.target.classList.toggle('selected');
     });
   });
 }

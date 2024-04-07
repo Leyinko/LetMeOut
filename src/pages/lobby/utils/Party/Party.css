@@ -1,54 +1,45 @@
 article[id$='party'] {
-  cursor: pointer;
-  padding: 30px 50px 40px 50px;
-  width: 400px;
+  margin-left: 300px;
+  padding: 30px 50px 40px 0px;
+  width: 390px;
   height: fit-content;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   transition: all 1s ease-in-out;
-  backdrop-filter: blur(3px);
-  box-shadow: 2px 2px 50px 10px rgba(0, 0, 0, 0.253);
+  /* backdrop-filter: blur(5px); */
 }
 
 article[id$='party'] h2 {
   cursor: pointer;
-  margin-bottom: 5px;
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   transition: all 0.3s ease-in-out;
-  filter: blur(0.1875rem);
+  opacity: 0.3;
+  font-weight: 200;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin-left: 80px;
 }
 
 article[id$='party'] h2:hover {
-  filter: none;
-  transition: all 0.3s ease-in-out;
+  opacity: 1;
 }
 
 article[id$='party'] h2.active {
-  filter: none;
+  opacity: 1;
 }
 
-#join-party.out {
-  transform: translate(1700px, 100px);
-  opacity: 0;
-  transition: all 1s ease-in-out;
-}
-
-#create-party.out {
+article[id$='party'].out {
   transform: translate(-1700px, 100px);
   opacity: 0;
   transition: all 1s ease-in-out;
 }
 
 #fields-modal {
-  margin-top: 20px;
+  padding-left: 40px;
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   opacity: 0;
-  animation: players-hub-appearance 1s ease-in-out forwards;
+  animation: players-hub-appearance 1.5s ease-in-out forwards;
+  transition: all 1s ease-in-out;
 }
 
 @keyframes menu-down {

@@ -1,10 +1,10 @@
 .error-field {
   position: absolute;
-  bottom: 10px;
-  font-size: 10px;
+  bottom: 5px;
+  font-size: 12px;
   font-weight: bold;
   color: var(--blood-color);
-  font-family: 'JMH';
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   opacity: 0.7;
 }
 

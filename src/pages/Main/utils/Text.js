@@ -1,5 +1,3 @@
-import { getRankings } from '../../../data/fetch';
-
 export const opening_warning = {
   warning: 'WARNING: PLEASE READ BEFORE PLAYING',
   content: `The motion pictures contained in this video game are protected under the copyright laws of the United States and Other countries.
@@ -28,6 +26,27 @@ export const immersion_message = {
   Additionally, we recommend using headphones to enhance the immersive experience while playing.`,
   continue: 'Click to continue',
 };
+
+export const introduction_lobby = {
+  intro: `
+  Somewhere in the Wildlands, you stumble upon a forsaken house.
+  You find yourself locked in a room, separated from your friends.
+
+  Your objective is to find your way out.
+
+  Object interactions are crucial for the correct progression of the game.
+  We highly recommend not using external communication tools.
+  `,
+};
+
+export const difficulties_info = `
+Difficulty levels will impact gameplay and scores:
+
+- Object searching assistance in Easy mode.
+- Points deduction for errors.
+- Hidden ending access and reward.
+- Final score.
+`;
 
 export const modals_main_template = {
   credits: () => {
@@ -72,16 +91,4 @@ export const modals_main_template = {
 
   //   return rankingModal;
   // },
-};
-
-export const introduction_lobby = {
-  intro: `
-  Somewhere in the Wildlands, you stumble upon a forsaken house.
-  You find yourself locked in a room, separated from your friends.
-
-  Your objective is to find your way out.
-
-  All interactions and objects are crucial for the correct progression of the game.
-  We highly recommend not using external communication tools.
-  `,
 };
