@@ -25,6 +25,7 @@
   padding: 5px;
   opacity: 0;
   animation: players-hub-appearance 1.6s ease-in-out forwards 2s;
+  z-index: 1111;
 }
 
 #inventory-passive {
@@ -39,6 +40,7 @@
   opacity: 0;
   animation: players-hub-appearance 1.6s ease-in-out forwards 3s;
   cursor: pointer;
+  z-index: 1111;
 }
 
 #inventory-passive.init-main {

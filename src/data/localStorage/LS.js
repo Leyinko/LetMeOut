@@ -17,8 +17,10 @@ export function storeGameData(data, player) {
     username: player,
     date: data.date,
     players: data.players,
+    difficulty: data.difficulty,
     alternative: '❌',
   };
+
   localStorage.setItem('data', JSON.stringify(start));
   return true;
 }
@@ -39,6 +41,14 @@ export function setAlternativeTrue() {
   data.alternative = true;
   localStorage.setItem('data', JSON.stringify(data));
   return true;
+}
+
+export const getDifficulty = () => JSON.parse(localStorage.getItem('data')).difficulty.toUpperCase();
+
+export function resetDataForNewGame() {
+  localStorage.removeItem('data');
+  localStorage.removeItem('stats');
+  resetStats();
 }
 
 // Stats
@@ -74,4 +84,12 @@ export function statsCollector(action, property, value = null, index = null) {
   stats = [clickCount, timestamps, messages];
 
   localStorage.setItem('stats', JSON.stringify(stats));
+}
+
+export function resetStats() {
+  let stats = [clickCount, timestamps, messages];
+  stats.forEach((stat) => {
+    let keys = Object.keys(stat);
+    keys.forEach((key) => (!Array.isArray(stat[key]) ? (stat[key] = 0) : stat[key].forEach((value) => (value = 0))));
+  });
 }

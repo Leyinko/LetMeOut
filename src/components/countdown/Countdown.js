@@ -1,12 +1,15 @@
 import sendRequest from '../../data/webSocket/webSocket';
+import { difficulty_settings } from '../../pages/Room/Progression/Difficulty';
+import { difficulty } from '../../pages/Room/Room';
 import { playSound } from '../audio/Audio';
 import './Countdown.css';
 
-const gameTime = 15;
-export let remainingTime = gameTime * 60;
+export let remainingTime = null;
+let gameTime = null;
 
 const Countdown = () => {
   // Reset
+  gameTime = difficulty_settings[difficulty].global;
   remainingTime = gameTime * 60;
 
   // Template
@@ -57,6 +60,12 @@ export function handleTime(time, operation) {
   timerOperation.textContent = operation ? `+${time}` : `-${time}`;
 
   room && room.appendChild(timerOperation);
+
+  // Difficulty Errors Hidden End
+  let games = document.querySelector('#repair.onscreen');
+  let dots = document.querySelectorAll('.green');
+
+  games && dots.length > 0 && dots[0].classList.remove('green');
 
   setTimeout(() => timerOperation.remove(), 700);
 }

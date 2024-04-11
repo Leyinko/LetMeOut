@@ -80,20 +80,20 @@
 #release {
   width: 166px;
   height: 65px;
-  top: 67%;
-  left: 20%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   background: url('/assets/images/pictures/console/Windows/release-password.png') center/contain no-repeat;
-  filter: grayscale(100%) sepia(18%);
+  filter: grayscale(100%) sepia(18%) opacity(0.9);
   animation: text-shadow 1s linear infinite;
   box-shadow: none;
 }
 
 #release input {
-  right: 19px;
-  bottom: -4px;
+  margin-right: 15px;
   height: 21px;
   line-height: 1;
   animation: textShadow 1s linear infinite;
   opacity: 0.8;
+  /* width: 100%; */
 }

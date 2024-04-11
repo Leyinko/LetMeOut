@@ -4,28 +4,19 @@ import { Lobby } from './src/pages/Lobby/Lobby';
 import Room from './src/pages/Room/Room.js';
 import { audioConfig } from './src/components/audio/Audio.js';
 import { createPasswordModal } from './src/pages/Room/Console/Console.js';
-import { preloadAllAssets } from './src/data/preload.js';
+import { preloadAndLaunch } from './src/data/preload.js';
 import Loader from './src/components/loader/Loader.js';
 import './style.css';
 
 // NB : Audio for Test
-const audio = document.createElement('audio');
-app.appendChild(audio);
+// const audio = document.createElement('audio');
+// app.appendChild(audio);
 
 // > Menus
-Main();
+// Main();
 // Lobby();
 // Room();
+// Launch();
 
-// ! BETA TEST
-// // NB : Preload Assets
-// preloadAllAssets();
-
-// // > Loader Test
-// Loader(document.querySelector('#app'));
-
-// window.addEventListener('load', () => {
-//   document.querySelector('.loader').remove();
-//   createPasswordModal('beta-access', document.querySelector('#app'), Launch);
-// });
-// ! BETA TEST
+// NB : Launch
+preloadAndLaunch();

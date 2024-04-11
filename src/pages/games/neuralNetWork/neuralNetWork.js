@@ -5,6 +5,8 @@ import Smash from '../smashThatTrash/Smash';
 import { handleTime } from '../../../components/countdown/Countdown';
 import { accessSound } from '../../../components/audio/Audio';
 import './neuralNetWork.css';
+import { difficulty_settings } from '../../Room/Progression/Difficulty';
+import { difficulty } from '../../Room/Room';
 
 const neuralNetWorkContainer = document.createElement('section');
 neuralNetWorkContainer.className = 'neuralnetwork-container';
@@ -117,7 +119,7 @@ function checkResult(resultOne, resultTwo) {
         stage == 4 && checkResult();
         stage != 4 && start('win', animatePattern);
       } else {
-        handleTime(20, false);
+        handleTime(difficulty_settings[difficulty].errors, false);
         generateNewPatterns();
         playerPattern = playerPattern.map((row) => row.map((element) => 0));
         touchOn = false;

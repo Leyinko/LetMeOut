@@ -1,15 +1,16 @@
 import { playSound } from '../../components/audio/Audio';
 import Menu from '../../components/menu/Menu';
-import { sendScore, sendUserStats } from '../../data/fetch';
 import { preloadVideo } from '../../data/preload';
 import { toMain } from '../Main/Opening';
 import html2canvas from 'html2canvas';
-import { calculateScore, setScores } from '../Room/Progression/Progression';
+import { calculateScore } from '../Room/Progression/Progression';
+import { difficulty_settings } from '../Room/Progression/Difficulty';
+import { difficulty } from '../Room/Room';
 import './Result.css';
 
-// Video Preload
+// Videos Preload
 const gameover = preloadVideo('game-over', '/assets/video/Lose-animation.mp4');
-const win = preloadVideo('game-over', '/assets/video/Win-animation.mp4');
+const win = preloadVideo('win', '/assets/video/Win-animation.mp4');
 
 export function GameResult(out) {
   const app = document.querySelector('#app');
@@ -27,21 +28,16 @@ export function GameResult(out) {
   const back = document.querySelector('.back-to-main');
   back.addEventListener('click', () => {
     app.innerHTML = '';
+    // Main
     toMain(app);
   });
 
-  // Conditions
   if (out) {
     message.textContent = 'Con-DRAG-ulations';
-    // TEST
-    setScores();
-    // Score PNG
+    // Score Result
     resultStatsPNG(result);
   } else {
     message.textContent = 'YOU LOSE';
-    // ! BETA
-    // Send Stats
-    sendUserStats();
   }
   return true;
 }
@@ -51,22 +47,22 @@ export function gameOverAnimation() {
   const room = document.querySelector('#room');
   room && (room.style.animation = 'glitch 0.6s ease-in-out');
 
-  playSound(new Audio('/assets/audio/sounds/console/game-over.mp3'));
-
-  setTimeout(() => (app.innerHTML = ''), 500);
+  setTimeout(() => {
+    app.innerHTML = '';
+    playSound(new Audio('/assets/audio/sounds/console/game-over.mp3'));
+  }, 500);
 
   setTimeout(() => {
     app.appendChild(gameover);
     gameover.play();
 
     gameover.addEventListener('ended', () => gameover.remove());
-  }, 1200);
+  }, 800);
 
-  setTimeout(() => GameResult(false), 10000);
+  setTimeout(() => GameResult(false), 10500);
 }
 
 export function winAnimation() {
-  //
   const app = document.querySelector('#app');
 
   setTimeout(() => (app.innerHTML = ''), 500);
@@ -78,6 +74,7 @@ export function winAnimation() {
 
     win.addEventListener('ended', () => GameResult(true) && win.remove());
   }, 2200);
+  return true;
 }
 
 function resultStatsPNG(parent) {
@@ -86,17 +83,18 @@ function resultStatsPNG(parent) {
   let statsLS = JSON.parse(localStorage.getItem('stats'));
 
   // Score
-  let clicksScore = statsLS[0].clicks * 100;
-  let errorsScore = statsLS[0].games.reduce((acc, next) => acc + next) * 10000;
+  let clicksScore = statsLS[0].clicks * difficulty_settings[difficulty].score.clicks;
+  let errorsScore = statsLS[0].games.reduce((acc, next) => acc + next) * difficulty_settings[difficulty].score.repair;
   let score = calculateScore();
 
   // Stats
   let stats = {
     username: dataLS.username,
-    date: dataLS.date,
     total: score,
-    errors_clicks: `-${clicksScore}`,
-    errors_points: `-${errorsScore}`,
+    difficulty: `${dataLS.difficulty} +${difficulty_settings[difficulty].score.end}`,
+    errors_clicks: `- ${clicksScore}`,
+    errors_points: `- ${errorsScore}`,
+    bonus_alternative: dataLS.alternative !== '❌' ? `+${difficulty_settings[difficulty].score.hidden}` : '',
     alternative: dataLS.alternative,
   };
 
@@ -141,7 +139,7 @@ function resultStatsPNG(parent) {
     download.href = canvas.toDataURL('image/png');
   });
 
-  download.download = `${dataLS.username}-${new Date().toLocaleDateString('en-US')}.png`;
+  download.download = `${dataLS.username.toUpperCase()}-LETMEOUT.png`;
 
   app.appendChild(download);
 }

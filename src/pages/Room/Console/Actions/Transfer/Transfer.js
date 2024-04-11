@@ -79,7 +79,7 @@ function sendTime(input) {
     window.style.background = `url('/assets/images/pictures/console/Windows/time-transferred.png') center/contain no-repeat`;
     window.style.animation = 'glitch 0.3s forwards';
 
-    let sound = new Audio('/assets/audio/sounds/console/time-sent.mp3');
+    let sound = new Audio('/assets/audio/sounds/console/success.mp3');
     playSound(sound);
 
     input.remove();

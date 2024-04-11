@@ -16,8 +16,8 @@
 
 .neuron {
   cursor: pointer;
-  width: 33px;
-  height: 33px;
+  width: 29px;
+  height: 29px;
   border: 2px inset rgb(19, 19, 19);
   border-radius: 50%;
   clip-path: circle(50% at 50% 50%);
@@ -27,8 +27,8 @@
 
 .neuron-active {
   cursor: pointer;
-  width: 33px;
-  height: 33px;
+  width: 29px;
+  height: 29px;
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.932);
   clip-path: circle(50% at 50% 50%);

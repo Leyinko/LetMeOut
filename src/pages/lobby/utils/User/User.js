@@ -82,7 +82,6 @@ function difficultySelection() {
 
       modal.appendChild(information);
       e.target.parentElement.parentElement.appendChild(modal);
-      console.log(e.target.parentElement.parentElement);
     } else {
       document.querySelector('#difficulty-info').remove();
     }

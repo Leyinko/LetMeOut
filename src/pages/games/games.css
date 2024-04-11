@@ -9,21 +9,23 @@
 }
 
 #games-password {
-  width: 182px;
-  height: 72px;
+  width: 191px;
+  height: 75px;
   top: 55%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: url('/assets/images/pictures/console/Windows/games-password.png') center/contain no-repeat;
-  filter: sepia(10%);
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.418);
+  background: url('/assets/images/pictures/console/Windows/games-password.png') center/cover no-repeat;
+  filter: grayscale(30%) opacity(0.8);
+  box-shadow: none;
+  border: none;
 }
 
 #games-password input {
   position: absolute;
-  left: 13px;
+  left: 16px;
   bottom: -2px;
-  width: 83%;
+  width: 84%;
   height: 23px;
   color: rgba(0, 0, 0, 0.699);
+  background-color: rgba(255, 255, 255, 0.459);
 }

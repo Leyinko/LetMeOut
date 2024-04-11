@@ -1,5 +1,6 @@
 import { accessSound } from '../../components/audio/Audio';
 import { fetchFinalCode } from '../../data/fetch';
+import { unlockHiddenEnding } from '../Room/Progression/Progression';
 import './games.css';
 
 export function start(win, callback) {
@@ -17,6 +18,9 @@ export function start(win, callback) {
 
 export async function showFinalNumber() {
   const container = document.querySelector('#repair');
+
+  // Hidden Access Condition
+  !!document.querySelector('.green') ? unlockHiddenEnding() : accessSound('success');
 
   document.querySelector('#smash-container').remove();
 

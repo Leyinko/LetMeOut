@@ -17,11 +17,11 @@
 }
 
 .deploying {
-  opacity: 0.9;
+  opacity: 0.8;
   position: absolute;
   top: 40%;
   left: 50%;
-  /* width: 40%; */
+  width: 30%;
   transform: translate(-50%, -50%);
   z-index: 9999999999;
   filter: drop-shadow(2px 2px 2px black);
@@ -35,7 +35,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border: 1px solid red; */
 }
 
 #subtitles span {

@@ -17,10 +17,9 @@ export const opening_warning = {
 export const immersion_message = {
   image: '/assets/images/icons/menu/eye.svg',
   content: `
-  This game is optimized for Full Screen window mode to ensure the best gameplay experience. 
-  Playing in any other mode could potentially impact the gameplay.
-  
-  Please ensure that your display configuration is set to 100% scale and a resolution of 1920 x 1080 in your Display settings.
+  This game is optimized for Full Screen window mode.
+  Please ensure that your Display settings are set to 100% scale and a resolution of 1920 x 1080.
+
   This will ensure that the game's visuals are displayed correctly and provide an optimal gaming experience.
   
   Additionally, we recommend using headphones to enhance the immersive experience while playing.`,
@@ -34,7 +33,6 @@ export const introduction_lobby = {
 
   Your objective is to find your way out.
 
-  Object interactions are crucial for the correct progression of the game.
   We highly recommend not using external communication tools.
   `,
 };
@@ -45,50 +43,6 @@ Difficulty levels will impact gameplay and scores:
 - Object searching assistance in Easy mode.
 - Points deduction for errors.
 - Hidden ending access and reward.
+- Global difficulty.
 - Final score.
 `;
-
-export const modals_main_template = {
-  credits: () => {
-    return 'COMING SOON';
-  },
-  scores: () => {
-    return 'COMING SOON';
-  },
-  // scores: async () => {
-  //   const ranking = await getRankings();
-
-  //   console.log(ranking);
-
-  //   const rankingModal = document.createElement('div');
-  //   rankingModal.id = 'ranking-modal';
-
-  //   ranking.forEach((rank) => {
-  //     const position = document.createElement('ul');
-  //     position.className = 'rank-position';
-
-  //     const teamName = document.createElement('li');
-  //     teamName.className = 'team-name';
-  //     teamName.textContent = `${rank.teamName}`;
-
-  //     const teamScore = document.createElement('li');
-  //     teamScore.className = 'team-score';
-  //     teamScore.textContent = `${rank.teamScore}`;
-
-  //     const players = document.createElement('ul');
-  //     players.className = 'ranking-players';
-
-  //     rank.players.forEach((player) => {
-  //       const playerScore = document.createElement('li');
-  //       playerScore.textContent = `${player.name} - ${player.time}`;
-
-  //       players.append(playerScore);
-  //     });
-
-  //     position.append(teamName, teamScore, players);
-  //     rankingModal.appendChild(position);
-  //   });
-
-  //   return rankingModal;
-  // },
-};

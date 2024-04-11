@@ -1,3 +1,7 @@
+import Loader from '../components/loader/Loader';
+import Launch from '../pages/Main/Opening';
+import { createPasswordModal } from '../pages/Room/Console/Console';
+
 const assets = [
   [
     '/assets/images/logos/Loader.gif',
@@ -44,13 +48,16 @@ const assets = [
 ];
 
 // Assets Preload (Loader %)
-export function preloadAllAssets() {
+export function preloadAndLaunch() {
+  const app = document.querySelector('#app');
   let length = 0;
   let loaded = undefined;
 
+  Loader(app);
+
   let percentage = document.createElement('span');
   percentage.className = 'loading-percentage';
-  document.querySelector('#app').appendChild(percentage);
+  app.appendChild(percentage);
 
   assets.forEach((type) => {
     type.forEach((asset) => {
@@ -64,13 +71,18 @@ export function preloadAllAssets() {
       });
     });
   });
+
+  window.addEventListener('load', () => {
+    document.querySelector('.loader').remove();
+    createPasswordModal('access', app, Launch);
+  });
 }
 
 export function preloadVideo(result, src) {
   const animation = document.createElement('video');
 
   Object.assign(animation, {
-    id: `#${result}`,
+    id: `${result}-video`,
     autoplay: true,
     volume: 0,
     controls: false,

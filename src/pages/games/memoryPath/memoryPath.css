@@ -25,16 +25,16 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
 }
 
 .void-cell {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
   border: 8px outset rgb(0, 0, 0);
   background-color: #000000;

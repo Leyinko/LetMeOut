@@ -96,6 +96,7 @@ export function worldwideRelease() {
   const app = document.querySelector('#app');
   const room = document.querySelector('#room');
   const terminal = document.querySelector('#terminal');
+  const timer = document.querySelector('#countdown-timer');
 
   let audio = document.querySelector('audio');
   audio.pause();
@@ -116,6 +117,7 @@ export function worldwideRelease() {
   }, 1400);
 
   setTimeout(() => {
+    timer && timer.remove();
     room.remove();
     terminal.remove();
   }, 1900);
