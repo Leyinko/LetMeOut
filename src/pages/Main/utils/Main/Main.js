@@ -1,5 +1,5 @@
 import Version from '../../../../components/version/Version';
-import { Inventory } from '../../../Room/Inventory/inventory';
+import { resetDataForNewGame } from '../../../../data/localStorage/LS';
 import menuSelection from '../MenuSelection/MenuSelection';
 import './Main.css';
 
@@ -22,9 +22,8 @@ export const Main = () => {
   // First Animation
   openingAnimation(main, selections);
 
-  // Reset for New Game
-  localStorage.removeItem('data');
-  localStorage.removeItem('stats');
+  // Reset Data
+  resetDataForNewGame();
 };
 
 function openingAnimation(...args) {

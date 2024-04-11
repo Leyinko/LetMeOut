@@ -1,16 +1,11 @@
 #players-hub {
-  margin-left: 5px;
   position: absolute;
-  left: 62%;
+  left: 62.5%;
   bottom: -130px;
   transform: translateX(-50%);
   height: 100%;
-  width: inherit;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  gap: 7.125rem;
   opacity: 0;
   animation: players-hub-appearance 0.6s ease-in-out forwards;
 }
@@ -32,6 +27,13 @@
   margin-left: 10px;
   width: 20px;
   cursor: pointer;
+}
+
+.difficulty {
+  position: absolute;
+  top: -40px;
+  left: 30px;
+  opacity: 0.4;
 }
 
 .players {
@@ -61,7 +63,7 @@
   font-weight: 100;
   line-height: 20px;
   padding: 0px 10px;
-  background-color: rgba(0, 0, 0, 0.781);
+  background-color: rgb(0, 0, 0);
 }
 
 .players div img {
@@ -81,23 +83,23 @@
   margin-bottom: 80px;
 }
 
-.intro-lobby span {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  font-size: 0.8rem;
-  line-height: 2;
-  font-weight: 100;
-}
-
 .intro-lobby {
   position: absolute;
-  top: 45%;
+  top: 49%;
   transform: translateY(-50%);
-  left: 80px;
+  left: 70px;
   padding: 10px 30px 40px 0px;
   backdrop-filter: blur(3px);
   opacity: 0;
   white-space: pre-line;
   animation: players-hub-appearance 0.6s ease-in-out forwards;
+}
+
+.intro-lobby span {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.8rem;
+  line-height: 2;
+  font-weight: 100;
 }
 
 .ready-button {

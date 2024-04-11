@@ -37,7 +37,7 @@ function downloadFiles(parent) {
 
   let blocks = 24;
 
-  // ! Unlock First App -> PROGRESSION !
+  // Progression Ethernet
   document.querySelector('#usb-0').classList.remove('locked');
 
   let download = setInterval(() => {
@@ -52,12 +52,19 @@ function downloadFiles(parent) {
 
       // Files
       let ids = Array.from(document.querySelectorAll('[id*="usb-"].locked'));
-      blocks % 8 === 0 && ids.at(0).classList.remove('locked');
+      blocks % 8 === 0 &&
+        document.querySelector('#usb-3').classList.contains('locked') &&
+        ids.at(0).classList.remove('locked');
       blocks === 0 && !clearInterval(download);
+
+      // Hidden Ending Lock icon
+      blocks === 0 &&
+        (document.querySelector('#usb-3').style.background =
+          "url('/assets/images/icons/console/lock.svg') center/80% no-repeat");
     } else {
       clearInterval(download);
     }
-  }, 30000);
+  }, 15000);
 }
 
 const diskette_actions = {

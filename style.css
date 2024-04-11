@@ -43,17 +43,17 @@ body {
   align-items: center;
 }
 
-/* BETA TEST */
-
 .loading-percentage {
   position: absolute;
   bottom: 50px;
   left: 80px;
   font-size: 1.5rem;
   opacity: 0.8;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 100;
 }
 
-#beta-access {
+#access {
   width: 206px;
   height: 84px;
   top: 50%;
@@ -63,22 +63,34 @@ body {
   animation: text-shadow 1s linear infinite;
 }
 
-#beta-access input {
-  right: 3px;
-  bottom: 5px;
-  height: 21px;
+#access input {
+  margin-left: 3px;
+  bottom: 4px;
+  height: 23px;
   line-height: 1;
   animation: textShadow 1s linear infinite;
   opacity: 0.8;
 }
 
-/* BETA TEST */
-
-/* General Animations */
+@keyframes click-assistance {
+  0% {
+    filter: drop-shadow(3px 5px 1px rgba(255, 255, 255, 0.411));
+  }
+  100% {
+    filter: drop-shadow(-3px -5px -1px white);
+  }
+}
 
 @keyframes players-hub-appearance {
   100% {
     opacity: 1;
+  }
+}
+
+@keyframes appearance {
+  100% {
+    opacity: 1;
+    visibility: visible;
   }
 }
 

@@ -1,6 +1,9 @@
 import { playSound } from '../../../components/audio/Audio';
 import { fisherYatesShuffle, soundFadeOut } from '../../../utils';
+import Terminal from '../Console/Console';
 import { itemsPrintOnStage } from '../Prints/Prints';
+import { difficulty_settings, pointerAssistanceHandler } from '../Progression/Difficulty';
+import { difficulty } from '../Room';
 
 class Stage {
   constructor(roomJSON) {
@@ -49,6 +52,9 @@ class Stage {
     // Start Game
     let start = room.getAttribute('progression');
     itemsPrintOnStage(Number(start));
+
+    // Console
+    Terminal(document.querySelector('#app'));
   }
 }
 
@@ -68,6 +74,9 @@ function colliderAssign(collider, y, x, width, height) {
 
 function pointerHandlers(object, collider, item) {
   let room = document.querySelector('#room');
+
+  // Assistance Easy Mode
+  difficulty_settings[difficulty].assistance && pointerAssistanceHandler(collider, object);
 
   collider.addEventListener(
     'click',

@@ -11,8 +11,8 @@ const menuSelection = (parent) => {
   menuField$.id = 'menu-field';
 
   Menu('NEW GAME', 'start-menu', menuField$);
-  Menu('SCORES', 'scores-menu', menuField$);
-  Menu('CREDITS', 'credits-menu', menuField$);
+  Menu('RANKING', 'scores-menu', menuField$);
+  Menu('', 'git-menu', menuField$);
 
   parent.append(menuField$);
 
@@ -31,7 +31,7 @@ const menuSelection = (parent) => {
           Lobby();
         }
         selected === 'scores' && createModal('scores', parent);
-        selected === 'credits' && createModal('credits', parent);
+        selected === 'git' && window.open('https://github.com/Leyinko/LetMeOut', '_blank');
       }
     });
   });

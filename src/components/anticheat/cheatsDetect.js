@@ -18,7 +18,7 @@ export default function cheatDetect() {
       }
     }, 1000);
 
-    interval && playSound(blurSound);
+    interval && document.querySelector('#room') && playSound(blurSound);
   });
   window.addEventListener('focus', () => {
     clearInterval(interval);

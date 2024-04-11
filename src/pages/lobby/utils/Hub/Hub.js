@@ -28,6 +28,10 @@ const PlayersHub = (code, username, party) => {
 
     room.appendChild(copy);
 
+    const difficulty = document.createElement('span');
+    difficulty.className = 'difficulty';
+    difficulty.textContent = party.difficulty;
+
     const players = document.createElement('div');
     players.className = 'players';
 
@@ -47,7 +51,7 @@ const PlayersHub = (code, username, party) => {
     const text = document.createElement('span');
     text.textContent = introduction_lobby.intro;
 
-    introduction.append(room, text);
+    introduction.append(room, difficulty, text);
 
     lobby.appendChild(introduction);
     playersHub.appendChild(players);
@@ -88,7 +92,7 @@ const PlayersHub = (code, username, party) => {
 function updateReadyState(data) {
   let players = document.querySelectorAll('.players img');
   data.players.forEach((player, index) => {
-    player.ready ? (players[index].style.opacity = '0.85') : (players[index].style.opacity = '');
+    player.ready ? (players[index].style.opacity = '1') : (players[index].style.opacity = '');
   });
 }
 
@@ -112,7 +116,7 @@ function toggleReadyState(ready, code, username) {
 async function allPlayersReady(data, username) {
   let players = Array.from(document.querySelectorAll('.players img'));
   let confirm = new Audio('/assets/audio/sounds/lobby/Confirm-game.mp3');
-  let ready = players.every((player) => player.style.opacity === '0.85');
+  let ready = players.every((player) => player.style.opacity === '1');
 
   if (ready) {
     // Room Assign

@@ -10,3 +10,21 @@
   opacity: 0;
   animation: players-hub-appearance 0.6s ease-in-out forwards 0.7s;
 }
+
+.git-menu {
+  position: relative;
+}
+
+.git-menu:hover {
+  transform: none;
+}
+
+.git-menu::before {
+  position: absolute;
+  top: 15px;
+  content: '';
+  width: 35px;
+  height: 35px;
+  background: url('/assets/images/icons/menu/github.svg') center/cover no-repeat;
+  filter: invert(1);
+}

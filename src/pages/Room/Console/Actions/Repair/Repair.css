@@ -1,0 +1,22 @@
+#error-games-controller {
+  position: absolute;
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.3125rem;
+  left: 10px;
+  bottom: 6px;
+  width: 100px;
+}
+
+#error-games-controller p {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 2px outset grey;
+  background-color: rgba(255, 0, 0, 0.11);
+}
+
+#error-games-controller p.green {
+  background-color: rgba(0, 128, 0, 0.11);
+}

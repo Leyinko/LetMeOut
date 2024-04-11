@@ -23,7 +23,7 @@ export function itemsPrintOnStage(stage) {
 
 function itemPop(src, parent) {
   let item = document.createElement('img');
-  item.src = '/assets/images/icons/active/object-found.png';
+  item.src = src;
   item.className = 'item';
 
   let colliderPosition = parent.getBoundingClientRect();
@@ -43,6 +43,7 @@ function itemPop(src, parent) {
     let collider = e.target.closest('div');
 
     item.remove();
+    collider.classList.remove('clickable');
 
     // Send to Inventory
     addItemToInventory(src);

@@ -1,6 +1,6 @@
 .item {
   position: fixed;
-  width: 30px;
+  width: 25px;
   display: none;
 }
 
@@ -11,6 +11,7 @@
 
 .found {
   animation: object-found 2s infinite ease-in-out;
+  margin-left: 10px;
   cursor: pointer;
 }
 
@@ -19,11 +20,11 @@
     transform: scale(1);
   }
   50% {
-    filter: drop-shadow(1px 2px 6px #ffffff3a);
-    transform: scale(1.2) rotate(13deg);
+    filter: drop-shadow(0px 0px 6px #ffffff4d);
+    transform: scale(1.2);
   }
   100% {
     transform: scale(1);
-    filter: drop-shadow(1px 1px 1px #ffffff1e);
+    filter: drop-shadow(2px 2px 2px #ffffff1e);
   }
 }

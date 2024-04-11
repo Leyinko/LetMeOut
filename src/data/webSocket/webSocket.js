@@ -3,11 +3,11 @@ import { handleTime } from '../../components/countdown/Countdown';
 import Release, { worldwideRelease } from '../../pages/Room/Console/Actions/Diskette/Release/Release';
 import { gameOverAnimation, winAnimation } from '../../pages/Result/Result';
 import { chatMessage } from '../../pages/Room/Console/Actions/Chat/Chat';
-import { nextStage, unlockTicket, waitingPlayersForReboot } from '../../pages/Room/Progression/Progression';
+import { nextStage, setScores, unlockTicket, waitingPlayersForReboot } from '../../pages/Room/Progression/Progression';
 import { setAlternativeTrue } from '../localStorage/LS';
 
-export const ws = new WebSocket('ws://localhost:3000');
-// export const ws = new WebSocket('ws://5.250.185.179:3000');
+// export const ws = new WebSocket('ws://localhost:3000');
+export const ws = new WebSocket('ws://5.250.185.179:3000');
 
 export let listen = false;
 export const ticketWSListen = () => (listen = true);
@@ -63,14 +63,15 @@ export function inGameWebSocket() {
             : confirmation && (confirmation.textContent = String(states.length));
 
           // Win
-          team.every(Boolean) && winAnimation();
+          team.every(Boolean) && winAnimation() && setScores();
           return;
         }
 
         // NB : ALTERNATIVE ENDING
-        current.alternative && setAlternativeTrue();
+        current.alternative && setScores();
         if (current.alternative && current.name == ls.username) {
           Release();
+          setAlternativeTrue();
         } else if (current.alternative && current.name !== ls.username) {
           worldwideRelease();
           return;
@@ -89,7 +90,9 @@ export function inGameWebSocket() {
       case 'chat':
         chatMessage(current.name, current.message);
         // Next Stage
-        JSON.parse(localStorage.getItem('stats')).at(-1).sent >= 1 && nextStage('2');
+        current.name === self.textContent &&
+          JSON.parse(localStorage.getItem('stats')).at(-1).sent === 1 &&
+          nextStage('2');
         // Ticket Unlock
         current.ticket && listen && current.name != self.textContent && unlockTicket(current.ticket);
         break;

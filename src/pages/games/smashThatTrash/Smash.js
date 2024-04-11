@@ -1,13 +1,13 @@
-// import { failsOnMinigames } from '../../../localStorage/LS';
-import { accessSound } from '../../../components/audio/Audio';
 import { handleTime } from '../../../components/countdown/Countdown';
 import { statsCollector } from '../../../data/localStorage/LS';
 import { timer } from '../../../utils';
 import { showFinalNumber, start } from '../../Games/games';
+import { difficulty_settings } from '../../Room/Progression/Difficulty';
+import { difficulty } from '../../Room/Room';
 import './Smash.css';
 
 let stage = 1;
-let speed = 1100;
+let speed;
 let times = 10;
 
 let stamp = 0;
@@ -18,6 +18,9 @@ function Smash() {
   // Stamp
   stamp = new Date().getTime();
 
+  // Difficulty
+  speed = difficulty_settings[difficulty].assistance ? 1250 : 1100;
+
   // App
   const parent = document.querySelector('#repair');
   smashContainer.id = 'smash-container';
@@ -27,7 +30,7 @@ function Smash() {
   // Buttons
   let buttons = 0;
   let rotation = 22.5;
-  const radius = 110;
+  const radius = 100;
   const totalButtons = 8;
 
   while (buttons < totalButtons) {
@@ -52,7 +55,6 @@ function Smash() {
 }
 
 function startGame() {
-  // Difficulty
   let index = 0;
 
   const stageStart = setInterval(() => {
@@ -66,7 +68,7 @@ function startGame() {
 
       setTimeout(() => {
         if (!click) {
-          handleTime(10, false);
+          handleTime(difficulty_settings[difficulty].errors, false);
           start('lose', startGame);
           clearInterval(stageStart);
           // Error
@@ -94,7 +96,6 @@ function checkResult() {
     // Save Stamp
     statsCollector('timestamps', 'minigames', timer(stamp), '2');
     //
-    accessSound('success');
     showFinalNumber();
   }
 }

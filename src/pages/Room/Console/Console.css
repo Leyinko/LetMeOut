@@ -12,6 +12,7 @@
   transition: all 0.1s ease-in-out;
   pointer-events: all;
   cursor: pointer;
+  z-index: 1111;
 }
 
 #room #console.block {
@@ -35,6 +36,7 @@
   visibility: hidden;
   filter: brightness(0);
   background-color: black;
+  z-index: 1112;
 }
 
 #terminal.opened {
@@ -81,12 +83,12 @@
 
 .panel img {
   width: 43px;
-  filter: invert(0.15);
+  filter: invert(0.2);
 }
 
 .panel img:hover {
   opacity: 1;
-  filter: none;
+  filter: brightness(0.3);
   cursor: pointer;
 }
 
@@ -109,11 +111,10 @@
 
 .panel img:nth-child(4) {
   margin-top: 5px;
-  filter: brightness(-2) invert(-3);
 }
 
 .panel img:nth-child(4):hover {
-  filter: none;
+  filter: brightness(0.3);
 }
 
 .exit {
@@ -162,6 +163,7 @@
   width: 153px;
   height: 57px;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.418);
+  filter: none;
 }
 
 .password input {
@@ -197,7 +199,7 @@
 #time-transfer {
   display: none;
   bottom: 180px;
-  left: 180px;
+  left: 160px;
   width: 310px;
   height: 163px;
   background: url('/assets/images/pictures/console/Windows/time-transfer.png') center/contain no-repeat;
@@ -208,15 +210,15 @@
   top: 45%;
   left: 50%;
   transform: translate(-54%, -50%);
-  width: 500px;
-  height: 469px;
+  width: 450px;
+  height: 419px;
   background: url('/assets/images/pictures/console/Windows/fix.png') center/contain no-repeat;
 }
 
 #screen #repair.onscreen {
   opacity: 1;
   filter: contrast(1.2) brightness(0.9);
-  filter: drop-shadow(2px 2px 2px black);
+  filter: drop-shadow(2px 1px 2px black);
 }
 
 #reboot * {

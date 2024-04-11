@@ -3,22 +3,16 @@
 }
 
 .modal {
+  opacity: 0;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  gap: 30px;
-  width: 55svw;
-  height: 50svh;
-  z-index: 999999;
   backdrop-filter: blur(3.1875rem) brightness(0.4);
   box-shadow: 1px 1px 10px 5px rgba(0, 0, 0, 0.636);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: appearance 0.3s ease-in-out forwards;
 }
 
 .close-modal-button {
@@ -26,12 +20,12 @@
   top: 0px;
   right: 0px;
   padding: 20px;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   pointer-events: all;
   opacity: 0.7;
   background-color: transparent;
   border: none;
-  font-family: 'Hells';
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .close-modal-button:hover {
@@ -39,68 +33,91 @@
   opacity: 1;
 }
 
-.modal span,
-.modal h3 {
-  font-size: 14px;
-  width: 70%;
+#ranking-modal h2 {
+  opacity: 0.8;
+  width: 100%;
   text-align: center;
-  white-space: pre-line;
-  line-height: 2;
+  padding-left: 15px;
+  font-size: 2rem;
+  font-weight: 100;
 }
 
-@keyframes appearance {
-  100% {
-    opacity: 1;
-    visibility: visible;
-  }
+.ranking {
+  margin-top: 40px;
 }
 
-/*Ranking styles*/
-
-#ranking-modal {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  width: 100%;
-  height: 100%;
-  overflow-y: scroll;
-}
-#ranking-modal::-webkit-scrollbar {
-  display: none;
+[class='#-ranking'] > * {
+  font-weight: 100;
 }
 
-.rank-position {
+#ranking-modal li:first-of-type * {
+  font-size: 1.2rem;
+  font-weight: 100;
+  opacity: 0.4;
+}
+
+#ranking-modal li:first-of-type {
   position: relative;
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  min-height: 150px;
-  border: 1px solid white;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.247);
 }
 
-.team-name {
-  font-size: 25px;
-  position: absolute;
-  top: 20px;
-  left: 50px;
+#ranking-modal li:first-of-type h3:last-of-type {
+  margin-left: 5px;
 }
-.team-score {
-  font-size: 25px;
+
+#ranking-modal li:first-of-type h5 {
   position: absolute;
-  top: 60px;
-  left: 50px;
+  left: 79%;
+  top: 0px;
+  transform: translateX(-50%);
+  text-align: center;
+}
+
+[class^='#'] {
+  display: flex;
+  align-items: center;
+  margin: 8px 0px;
+}
+
+[class^='#'] span {
+  font-size: 20px;
+  width: 30px;
+  margin-right: 10px;
+  text-align: right;
+}
+
+[class^='#'] p {
+  margin-right: 25px;
+  font-size: 30px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+[class^='#'] h3 {
+  font-size: 18px;
+  width: 150px;
+  text-align: center;
+}
+
+[class^='#'] h3:first-of-type {
+  width: 140px;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 900;
 }
 
 .ranking-players {
-  position: absolute;
-  top: 10%;
-  right: 50px;
   list-style: none;
   display: flex;
-  flex-direction: column;
-  gap: 15px;
-  width: 300px;
-  height: 150px;
+  justify-content: space-between;
+}
+
+.ranking-players h5 {
+  width: 100px;
+  text-align: center;
+  font-weight: 100;
+}
+
+.ranking-players h5:last-of-type {
+  border: none;
 }

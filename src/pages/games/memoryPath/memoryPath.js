@@ -5,6 +5,8 @@ import { handleTime } from '../../../components/countdown/Countdown';
 import { timer } from '../../../utils';
 import { accessSound } from '../../../components/audio/Audio';
 import './memoryPath.css';
+import { difficulty_settings } from '../../Room/Progression/Difficulty';
+import { difficulty } from '../../Room/Room';
 
 const memoryPathContainer = document.createElement('section');
 memoryPathContainer.className = 'memorypath-container';
@@ -134,7 +136,7 @@ function checkResult() {
     if (resultPath[moves] != playerPath[moves]) {
       cleanCell();
       resetGame();
-      handleTime(20, false);
+      handleTime(difficulty_settings[difficulty].errors, false);
       buttonOn = false;
       start('lose', createPath);
       // Error
@@ -155,7 +157,7 @@ function checkResult() {
             });
         } else {
           resetGame();
-          handleTime(20, false);
+          handleTime(difficulty_settings[difficulty].errors, false);
           buttonOn = false;
           start(`lose`, createPath);
         }

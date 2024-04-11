@@ -1,11 +1,15 @@
 import { accessSound, audioConfig, playSound } from '../../../components/audio/Audio';
 import Countdown, { handleTime, remainingTime } from '../../../components/countdown/Countdown';
-import { accessBeta } from '../../../data/fetch';
+import { accessBeta, sendScore } from '../../../data/fetch';
 import { statsCollector } from '../../../data/localStorage/LS';
 import sendRequest, { ticketWSListen } from '../../../data/webSocket/webSocket';
 import { timer } from '../../../utils';
+import { GameResult } from '../../Result/Result';
+import { worldwideRelease } from '../Console/Actions/Diskette/Release/Release';
 import { Inventory } from '../Inventory/inventory';
 import { itemsPrintOnStage } from '../Prints/Prints';
+import { difficulty } from '../Room';
+import { difficulty_settings } from './Difficulty';
 
 // Start Game Trigger
 export function firstClickStart() {
@@ -14,6 +18,9 @@ export function firstClickStart() {
   room.addEventListener(
     'click',
     () => {
+      // ! TEST
+      // setTimeout(() => GameResult(true), 6000);
+      // ! TEST
       let clock = new Audio('/assets/audio/sounds/lobby/Clock-loading.mp3');
       setTimeout(() => playSound(clock), 500);
       // Time
@@ -49,7 +56,7 @@ export function passwordHandler(input, box) {
     case 'release':
       sendRequest('checkFinalCode', null, null, null, input.value);
       break;
-    case 'beta-access':
+    case 'access':
       accessBeta(input.value).then((res) => {
         res ? accessSound('access-granted') && access.remove() : accessSound('error');
       });
@@ -92,8 +99,9 @@ export function unlockPathFromObject(index) {
 export function unlockTicket(signal) {
   let room = document.querySelector(`#room[room="${signal}"]`);
   if (room && document.querySelector('#ticket').classList.contains('block')) {
-    playSound(new Audio('/assets/audio/sounds/console/next-3.mp3')) &&
-      document.querySelector('#ticket').classList.remove('block');
+    playSound(new Audio('/assets/audio/sounds/console/next-3.mp3'));
+    nextStage('3');
+    document.querySelector('#ticket').classList.remove('block');
   }
 }
 
@@ -101,17 +109,49 @@ export function unlockTicket(signal) {
 export const nextStage = (current) => {
   let room = document.querySelector('#room');
   let sound = new Audio(`/assets/audio/sounds/console/next-${current}.mp3`);
+
   // Stage
-  document.querySelector('#room').getAttribute('progression') === current &&
-    playSound(sound) &&
-    itemsPrintOnStage(Number(current));
+  if (document.querySelector('#room').getAttribute('progression') === current) {
+    difficulty !== 'HARD' && setTimeout(() => signalStage(current), 800);
+    playSound(sound) && itemsPrintOnStage(Number(current));
+  }
   // Stats
   statsCollector('timestamps', `stage${current}`, timer(room.getAttribute('stamp')));
-  // Reset
+  // Reset Stamp
   room.setAttribute('stamp', new Date().getTime());
 };
 
-// Final Stage
+export function signalStage(current) {
+  let subtitles = [
+    '- What was that? Did that sound come from the room?',
+    '- That noise again...',
+    '- Something definitely happened.',
+  ];
+
+  let halo = document.createElement('div');
+  halo.id = 'halo';
+
+  let subtitle = document.createElement('span');
+  subtitle.textContent = subtitles[current - 1];
+
+  halo.appendChild(subtitle);
+  app.appendChild(halo);
+
+  halo.addEventListener('animationend', () => halo.remove());
+}
+
+// Final
+export function unlockHiddenEnding() {
+  const folder = document.querySelector('#folder');
+
+  playSound(new Audio('assets/audio/sounds/console/time-sent.mp3'));
+
+  folder.style.animation = 'glitch 0.6s ease-in-out infinite alternate-reverse';
+  folder.addEventListener('click', () => (folder.style.animation = ''), { once: true });
+
+  document.querySelector('#usb-3').classList.remove('locked');
+}
+
 export function waitingPlayersForReboot(states) {
   const app = document.querySelector('#app');
 
@@ -136,13 +176,22 @@ export function waitingPlayersForReboot(states) {
   }, 1500);
 }
 
-// Scores
 export function calculateScore() {
   let statsLS = JSON.parse(localStorage.getItem('stats'));
-  let clicksScore = statsLS[0].clicks * 11;
-  let errorsScore = statsLS[0].games.reduce((acc, next) => acc + next) * 999;
-  let score = remainingTime * 3000 - errorsScore - clicksScore;
-  return score;
+  let dataLS = JSON.parse(localStorage.getItem('data'));
+
+  let clicksScore = statsLS[0].clicks * difficulty_settings[difficulty].score.clicks;
+  let errorsScore = statsLS[0].games.reduce((acc, next) => acc + next) * difficulty_settings[difficulty].score.repair;
+  let loss = (difficulty_settings[difficulty].global * 60 - remainingTime) * difficulty_settings[difficulty].score.loss;
+
+  let score =
+    difficulty_settings[difficulty].score.initial -
+    clicksScore -
+    errorsScore -
+    loss +
+    difficulty_settings[difficulty].score.end;
+
+  return dataLS.alternative ? score + difficulty_settings[difficulty].score.hidden : score;
 }
 
 export function setScores() {
@@ -153,5 +202,5 @@ export function setScores() {
   let timeout = (data.players.indexOf(self) + 1) * 2000;
   setTimeout(() => sendRequest('setPlayerTime', null, null, null, score), timeout);
   // Send Team Score
-  data.players.at(-1).name == data.username && setTimeout(() => sendScore(), 20000);
+  data.players.at(-1).name == data.username && setTimeout(() => sendScore(), 10000);
 }

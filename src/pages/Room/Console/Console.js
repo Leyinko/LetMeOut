@@ -136,7 +136,7 @@ export function createPasswordModal(id, parent, callback) {
 
     const input = document.createElement('input');
     input.type = 'text';
-    input.maxLength = id === 'release' ? 15 : 9;
+    input.maxLength = 9;
 
     input.addEventListener('keydown', (e) => e.key === 'Enter' && passwordHandler(input, id));
 

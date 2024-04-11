@@ -28,7 +28,7 @@ section#room {
 
 #room > div.clickable {
   pointer-events: all;
-  /* border: 1px solid red; */
+  z-index: 1111;
 }
 
 #background {
@@ -36,6 +36,46 @@ section#room {
   width: 1920px;
   height: 1080px;
   overflow: hidden;
+}
+
+#halo {
+  position: absolute;
+  width: 100svw;
+  height: 100svh;
+  z-index: 111111;
+  animation: sixteen-nine 4s ease-in-out;
+}
+
+#halo span {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-60%);
+  bottom: 250px;
+  line-height: 25px;
+  width: fit-content;
+  padding: 0px 25px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: rgba(0, 0, 0, 0.781);
+  pointer-events: none;
+}
+
+@keyframes sixteen-nine {
+  0% {
+    border-top: 0px solid black;
+    border-bottom: 0px solid black;
+  }
+  20% {
+    border-top: 100px solid black;
+    border-bottom: 150px solid black;
+  }
+  80% {
+    border-top: 100px solid black;
+    border-bottom: 150px solid black;
+  }
+  100% {
+    border-top: 0px solid black;
+    border-bottom: 0px solid black;
+  }
 }
 
 @keyframes room {

@@ -2,7 +2,7 @@
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-45%, -32%);
+  transform: translate(-44%, -34%);
   display: flex;
   justify-content: center;
   border-radius: 50%;
@@ -13,10 +13,10 @@
 
 #smash-container div {
   cursor: pointer;
-  width: 35px;
-  height: 23.5%;
+  width: 33px;
+  height: 21.5%;
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  border: 14px inset black;
+  border: 13px inset black;
   background-color: rgba(160, 160, 160, 0.432);
   opacity: 0.9;
 }

@@ -2,13 +2,14 @@ import KITCHEN from './Levels/1F/Kitchen/Kitchen';
 import BATHROOM from './Levels/1F/Bathroom/Bathroom';
 import LIVING from './Levels/1F/Livingroom/Livingroom';
 import Stage from './Class/Class';
-import Terminal from './Console/Console';
 import { firstClickStart, lockPaths } from './Progression/Progression';
-import { getUserData, statsCollector } from '../../data/localStorage/LS';
+import { getDifficulty, getUserData, statsCollector } from '../../data/localStorage/LS';
 import { randomSounds } from '../../components/audio/Audio';
 import { inGameWebSocket } from '../../data/webSocket/webSocket';
-import './Room.css';
 import cheatDetect from '../../components/anticheat/cheatsDetect';
+import './Room.css';
+
+export let difficulty;
 
 export const Room = () => {
   // App
@@ -19,6 +20,9 @@ export const Room = () => {
   room.id = 'room';
   app.append(room);
 
+  // Set Difficulty
+  difficulty = getDifficulty();
+
   // Start Time Stamp
   room.setAttribute('stamp', new Date().getTime());
 
@@ -28,9 +32,6 @@ export const Room = () => {
     let localRoom = getUserData('room');
     level.room == localRoom && new Stage(level).printRoom();
   });
-
-  // Console On
-  Terminal(app);
 
   // Game Settings
   gameControllers(room);
@@ -48,7 +49,7 @@ function gameControllers(room) {
   // Random Sounds
   randomSounds();
   // Clicks
-  document.addEventListener('click', () => statsCollector('clickCount', 'clicks'));
+  room.addEventListener('click', () => statsCollector('clickCount', 'clicks'));
 }
 
 export default Room;
