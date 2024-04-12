@@ -19,7 +19,6 @@ export const immersion_message = {
   content: `
   This game is optimized for Full Screen window mode.
   Please ensure that your Display settings are set to 100% scale and a resolution of 1920 x 1080.
-
   This will ensure that the game's visuals are displayed correctly and provide an optimal gaming experience.
   
   Additionally, we recommend using headphones to enhance the immersive experience while playing.`,
