@@ -2,7 +2,7 @@
 
 ###### (GameHub RTC Project)
 
-<img src="https://res.cloudinary.com/dkntqu2iu/image/upload/v1712935256/MENU_begsvn.png">
+<img src="https://res.cloudinary.com/dkntqu2iu/image/upload/v1712942796/MENU_lgjlez.png">
 
 # Overview
 
