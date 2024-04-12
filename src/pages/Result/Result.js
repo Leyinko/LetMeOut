@@ -82,7 +82,7 @@ function resultStatsPNG(parent) {
   let dataLS = JSON.parse(localStorage.getItem('data'));
   let statsLS = JSON.parse(localStorage.getItem('stats'));
 
-  // Score
+  // Score Info
   let clicksScore = statsLS[0].clicks * difficulty_settings[difficulty].score.clicks;
   let errorsScore = statsLS[0].games.reduce((acc, next) => acc + next) * difficulty_settings[difficulty].score.repair;
   let score = calculateScore();

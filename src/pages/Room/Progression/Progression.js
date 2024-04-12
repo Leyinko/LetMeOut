@@ -1,11 +1,9 @@
 import { accessSound, audioConfig, playSound } from '../../../components/audio/Audio';
 import Countdown, { handleTime, remainingTime } from '../../../components/countdown/Countdown';
-import { accessBeta, sendScore } from '../../../data/fetch';
+import { gameAccess, sendScore } from '../../../data/fetch';
 import { statsCollector } from '../../../data/localStorage/LS';
 import sendRequest, { ticketWSListen } from '../../../data/webSocket/webSocket';
 import { timer } from '../../../utils';
-import { GameResult } from '../../Result/Result';
-import { worldwideRelease } from '../Console/Actions/Diskette/Release/Release';
 import { Inventory } from '../Inventory/inventory';
 import { itemsPrintOnStage } from '../Prints/Prints';
 import { difficulty } from '../Room';
@@ -18,9 +16,9 @@ export function firstClickStart() {
   room.addEventListener(
     'click',
     () => {
-      // ! TEST
-      // setTimeout(() => GameResult(true), 6000);
-      // ! TEST
+      // ! TEST for Insta Trigger
+      //
+      // ! TEST for Insta Trigger
       let clock = new Audio('/assets/audio/sounds/lobby/Clock-loading.mp3');
       setTimeout(() => playSound(clock), 500);
       // Time
@@ -57,7 +55,7 @@ export function passwordHandler(input, box) {
       sendRequest('checkFinalCode', null, null, null, input.value);
       break;
     case 'access':
-      accessBeta(input.value).then((res) => {
+      gameAccess(input.value).then((res) => {
         res ? accessSound('access-granted') && access.remove() : accessSound('error');
       });
       break;

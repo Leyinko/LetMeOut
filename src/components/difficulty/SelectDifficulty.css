@@ -8,7 +8,6 @@
   width: 70%;
   display: flex;
   justify-content: space-between;
-  /* background-color: rgba(255, 255, 255, 0.041); */
   padding: 0px 5px;
   line-height: 35px;
 
@@ -47,25 +46,16 @@
 }
 
 #difficulty-info {
-  /* position: absolute; */
-  /* right: -362px; */
   bottom: -50px;
-  /* transform: translateX(-50%); */
-  /* width: 330px; */
-  /* height: 60px; */
-  /* height: fit-content; */
   transition: all 1s ease-in-out;
   backdrop-filter: blur(3px);
-  /* box-shadow: 2px 2px 50px 10px rgba(0, 0, 0, 0.253); */
   opacity: 0;
   animation: players-hub-appearance 1.5s ease-in-out forwards;
   transition: all 1s ease-in-out;
-  /* background-color: rgba(0, 0, 0, 0.918); */
   padding-top: 15px;
 }
 
 #difficulty-info p {
-  /* opacity: 0.5; */
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 0.75rem;
   line-height: 1.6;

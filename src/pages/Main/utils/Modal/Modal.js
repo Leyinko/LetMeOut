@@ -7,7 +7,7 @@ const createModal = async (id, parent) => {
   modal.id = `${id}-modal`;
   modal.className = 'modal';
 
-  modal.append(await rankingPrintHTML());
+  modal.append(await rankingFetchAndPrint());
 
   Button('X', 'close-modal-button', 'close-modal-main', 'button', modal);
 
@@ -17,7 +17,7 @@ const createModal = async (id, parent) => {
   close.addEventListener('click', () => modal.remove());
 };
 
-async function rankingPrintHTML() {
+async function rankingFetchAndPrint() {
   let scores = [
     { teamName: 'TEAM', teamScore: 'SCORE', difficulty: 'MODE', players: [{ name: 'PLAYERS' }] },
     ...(await getRankings()),

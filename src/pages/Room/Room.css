@@ -4,7 +4,9 @@
 
 section#room {
   animation: room 8s ease-in-out backwards;
+  /* Insta Animation for Quick Tests */
   /* animation: room 0.1s ease-in-out backwards; */
+  /* Insta Animation for Quick Tests */
 }
 
 section#room {

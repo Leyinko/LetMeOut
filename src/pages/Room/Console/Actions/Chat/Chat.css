@@ -24,7 +24,6 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background: url('/assets/images/pictures/console/Windows/chat-password.png') center/cover no-repeat;
-  /* filter: opacity(0.8); */
 }
 
 #chat-password input {
