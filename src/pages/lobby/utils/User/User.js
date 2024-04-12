@@ -32,6 +32,7 @@ const UserFieldsModal = (button, parent, ...field) => {
       sendRequest('joinLobby', username.value, room.value);
     }
 
+    // Lobby Creation WS
     ws.onmessage = function (event) {
       const data = JSON.parse(event.data);
       const tag = /[a-zA-Z]*/.exec(data.message);

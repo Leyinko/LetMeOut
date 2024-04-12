@@ -11,10 +11,15 @@ import './Hub.css';
 const PlayersHub = (code, username, party) => {
   const lobby = document.querySelector('#lobby');
 
+  // Hub
   if (!document.querySelector('#players-hub')) {
     const playersHub = document.createElement('div');
     playersHub.id = 'players-hub';
     lobby.insertAdjacentElement('afterbegin', playersHub);
+
+    // Introduction Section
+    const introduction = document.createElement('div');
+    introduction.className = 'intro-lobby';
 
     const room = document.createElement('span');
     room.id = 'room-code';
@@ -28,10 +33,17 @@ const PlayersHub = (code, username, party) => {
 
     room.appendChild(copy);
 
+    const text = document.createElement('span');
+    text.textContent = introduction_lobby.intro;
+
     const difficulty = document.createElement('span');
     difficulty.className = 'difficulty';
     difficulty.textContent = party.difficulty;
 
+    introduction.append(room, difficulty, text);
+    lobby.appendChild(introduction);
+
+    // Ready States
     const players = document.createElement('div');
     players.className = 'players';
 
@@ -45,15 +57,6 @@ const PlayersHub = (code, username, party) => {
       player++;
     }
 
-    const introduction = document.createElement('div');
-    introduction.className = 'intro-lobby';
-
-    const text = document.createElement('span');
-    text.textContent = introduction_lobby.intro;
-
-    introduction.append(room, difficulty, text);
-
-    lobby.appendChild(introduction);
     playersHub.appendChild(players);
 
     Button('', 'ready-button', 'lobby-buttons', 'submit', introduction);
@@ -67,7 +70,7 @@ const PlayersHub = (code, username, party) => {
       setTimeout(() => closePlayersHub(playersHub, ready, cancel, document.querySelector('.intro-lobby')), 100);
     });
 
-    // First Data Update
+    // First Data Update (DOM Update for joining players)
     updateReadyState(party);
     setPlayerName(party);
 
@@ -75,7 +78,7 @@ const PlayersHub = (code, username, party) => {
     ws.onmessage = function (event) {
       const current = JSON.parse(event.data);
       if (current.tag === 'playerState') {
-        // States
+        // Ready States
         updateReadyState(current);
         allPlayersReady(current, username.toLowerCase());
       } else if (current.tag === 'assignRoom') {

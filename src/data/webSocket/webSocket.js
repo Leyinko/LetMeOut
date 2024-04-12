@@ -97,7 +97,7 @@ export function inGameWebSocket() {
         current.ticket && listen && current.name != self.textContent && unlockTicket(current.ticket);
         break;
       default:
-        console.info('No matching tag');
+        console.info('No matching tag - (WebSocket)');
     }
   };
 }

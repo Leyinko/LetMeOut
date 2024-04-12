@@ -18,9 +18,7 @@ const Reboot = () => {
       iteration++;
     }
 
-    // Inputs
     let inputs = document.querySelectorAll('#final-reboot input');
-
     inputs.forEach((input) => {
       input.addEventListener('keydown', (e) => {
         let code = `${inputs[0].value}${inputs[1].value}${inputs[2].value}`;

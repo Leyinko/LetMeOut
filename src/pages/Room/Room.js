@@ -48,7 +48,7 @@ function gameControllers(room) {
   cheatDetect();
   // Random Sounds
   randomSounds();
-  // Clicks
+  // Click Collector
   room.addEventListener('click', () => statsCollector('clickCount', 'clicks'));
 }
 

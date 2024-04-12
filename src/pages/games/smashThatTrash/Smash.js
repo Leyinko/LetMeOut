@@ -95,7 +95,7 @@ function checkResult() {
   } else {
     // Save Stamp
     statsCollector('timestamps', 'minigames', timer(stamp), '2');
-    //
+    // Final Code
     showFinalNumber();
   }
 }
