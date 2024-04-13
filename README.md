@@ -6,36 +6,36 @@
 
 # Overview
 
-Let Me Out is multiplayer online escape room experience for three players, exclusively on the web. Through seamless integration of interactive puzzles, players are immersed in a dynamic adventure with the objective of beating the clock and breaking free!
+Let Me Out is a multiplayer online escape room experience filled with exploration, puzzles, and mini-games. Effective communication and teamwork are crucial for success as players race against the clock to get out!
 
-Customizable difficulty settings allow players to tailor their experience. Whether seeking a relaxed journey or a challenging adventure, meticulously crafted puzzles, multiple endings, and hidden collectibles add depth and intrigue to the gameplay.
+Whether you're a casual player seeking a more relaxed journey or a gamer craving a challenge, the difficulty selection will ensure an experience that suits your team style.
 
-Thorough scores and statistics track player progress, allowing effortless comparison with friends. The combined efforts of teams lead to a final score, impacting their standing in the Ranking.
+Player progress is tracked through statistics, with each receiving an individual score and rank based on their performance. Additionally, the team will receive a collective score, determining their placement in the overall ranking.
 
-# Handcrafted Achievement
+## Dev Note
 
-From concept to execution, every aspect of the game - from ideas to visuals - is meticulously handcrafted, infused with countless hours of imagination, programming, and the use of various tools. By drawing inspiration from renowned titles such as Inscryption and Resident Evil, we aimed to enhance depth and familiarity in the gaming experience.
+From concept to execution, every aspect of the game - from ideas to visuals - are originally made, infused with many hours of imagination, programming, the use of various tools and the inspiration from renowned titles such as Inscryption and Resident Evil.
 
-Our objective was to replicate the immersive quality of AAA video games, transcending the limitations typically associated with browser-based platforms. The goal was to create an environment where players would be fully absorbed in the game, forgetting they were playing within a browser - This ambitious endeavor represents our commitment to push ourselves always more!
+The objective was to replicate the immersive quality of AAA video games, transcending the limitations typically associated with browser-based platforms; and create an environment where players would be fully absorbed in the game, forgetting they are playing within a browser.
 
-###### If you find this... Contact us and we will share the Password Access.
+This ambitious endeavor represents a commitment to always push for more!
+
+###### If you find this... Ask for the Access Code. Good luck!
 
 <br>
 
-## Technologies used
+## Made with ♥ and :
 
 - HTML / CSS / JavaScript
-- MongoDB
-- Personal Web Hosting Server
-- Automatized Scripts
-- WebSocket
-- Adobe PhotoShop
-- Adobe After Effects
-- Adobe Premiere (Audio/Video)
+- MongoDB / ExpressJS / Mongoose - [API repository [here](https://github.com/ManuChaso/letmeout-api)]
+- Personal Web Hosting Server / Automated Scripts
+- Web Socket Protocol
+- Leonardo.AI / Playground AI
+- Adobe PhotoShop / After Effects / Premiere PRO
 
 <br>
 
-### Start Playing -> [http://5.250.185.179:3002/](http://5.250.185.179:3002/)
+### LETMEOUT -> [http://5.250.185.179:3002/](http://5.250.185.179:3002/)
 
 <br>
 
