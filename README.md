@@ -4,9 +4,7 @@
 
 <img src="https://res.cloudinary.com/dkntqu2iu/image/upload/v1712942796/MENU_lgjlez.png">
 
-### Gameplay Trailer
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/i6h-ra1XQLY?si=ccHqLjfbSusQJrfh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+### [LETMEOUT Gameplay Trailer](https://www.youtube.com/watch?v=i6h-ra1XQLY&ab_channel=GiroLuca)
 
 # Overview
 
