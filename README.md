@@ -2,9 +2,9 @@
 
 ###### (GameHub RTC Project)
 
+### [LETMEOUT Gameplay Trailer](https://www.youtube.com/watch?v=i6h-ra1XQLY&ab_channel=GiroLuca)
 <img src="https://res.cloudinary.com/dkntqu2iu/image/upload/v1712942796/MENU_lgjlez.png">
 
-### [LETMEOUT Gameplay Trailer](https://www.youtube.com/watch?v=i6h-ra1XQLY&ab_channel=GiroLuca)
 
 # Overview
 
