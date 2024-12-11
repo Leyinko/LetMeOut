@@ -89,7 +89,7 @@
   backdrop-filter: blur(7px) brightness(0.6);
   opacity: 0;
   animation: players-hub-appearance 0.3s ease-in-out forwards;
-  z-index: 777;
+  z-index: 77777777777;
 }
 
 .item-modal img {
